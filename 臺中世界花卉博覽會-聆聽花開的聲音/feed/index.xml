@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>
+	〈臺中世界花卉博覽會 聆聽花開的聲音〉的留言	</title>
+	<atom:link href="./../../%E8%87%BA%E4%B8%AD%E4%B8%96%E7%95%8C%E8%8A%B1%E5%8D%89%E5%8D%9A%E8%A6%BD%E6%9C%83-%E8%81%86%E8%81%BD%E8%8A%B1%E9%96%8B%E7%9A%84%E8%81%B2%E9%9F%B3/feed/index.html" rel="self" type="application/rss+xml" />
+	<link>./../index.html</link>
+	<description>DECADE.TW since2008</description>
+	<lastBuildDate>Thu, 17 Jun 2021 11:25:52 +0000</lastBuildDate>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=6.3.1</generator>
+</channel>
+</rss>
