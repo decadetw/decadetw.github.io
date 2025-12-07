@@ -1,5 +1,5 @@
 import React, {useEffect, memo} from "react";
-import {Button, Card, Carousel, Divider, Flex, Image, theme, Typography} from 'antd';
+import {Button, Card, Carousel, Divider, Space, Image, Flex, theme, Typography} from 'antd';
 
 const {Meta} = Card;
 const contentStyle = {
@@ -40,14 +40,14 @@ const list_content_algorithm_youtube = [
     {t: 'Arduino教父', d: '', url: 'https://www.youtube.com/embed/b9wYHVMWJ10?feature=oembed'},
 ];
 const justifyOptions = [
-    'flex-start',
+    'Space-start',
     'center',
-    'flex-end',
+    'Space-end',
     'space-between',
     'space-around',
     'space-evenly',
 ];
-const alignOptions = ['flex-start', 'center', 'flex-end'];
+const alignOptions = ['Space-start', 'center', 'Space-end'];
 const StaticHTML = () => {
     const {token: {colorBgContainer, borderRadiusLG},
     } = theme.useToken();
@@ -57,7 +57,7 @@ const StaticHTML = () => {
             <Divider style={{
                 fontSize: '1em', fontStyle: 'italic', fontWeight: 'bold',
                 borderColor: '#ffffff'
-            }}> ＤＥＣＡＤＥ.TW since 2008</Divider>
+            }}> ＤＥＣＡＤＥ.TW since 2008 (possesses {new Date().getFullYear()-2008}years experience as a interactive artisan.)</Divider>
             <Carousel autoplay arrows>
                 {Array.from({length: 21}, (value, index) => index).map((e) => {
                     return <div>
@@ -90,10 +90,10 @@ const StaticHTML = () => {
                     fontSize: '1em', fontStyle: 'italic', fontWeight: 'bold',
                     borderColor: '#ffffff'
                 }}>提供展場軟硬體整合設計規劃；舞台燈光控制</Divider>
-                <Flex wrap gap="small" justify={justify} align={alignItems}>
+                <Space wrap gap="small" justify={justify} align={alignItems}>
                     {list_content_youtube.map(e => (
                         <Card hoverable
-                              style={{width: `${100/4.3}vw`,}}
+                              style={{width: `${100/4.4}vw`,}}
                               cover={
                                   <div className="wrapper">
 
@@ -110,7 +110,7 @@ const StaticHTML = () => {
 
                         </Card>
                     ))}
-                </Flex>
+                </Space>
                 <Divider style={{
                     fontSize: '3em', fontStyle: 'italic', fontWeight: 'bold',
                     borderColor: '#000000'
@@ -119,7 +119,7 @@ const StaticHTML = () => {
                     fontSize: '1em', fontStyle: 'italic', fontWeight: 'bold',
                     borderColor: '#ffffff'
                 }}>軟/體/硬/電子電路/多媒體</Divider>
-                <Flex wrap gap="small" justify={justify} align={alignItems}>
+                <Space wrap gap="small" justify={justify} align={alignItems}>
                     {list_content_algorithm_youtube.map(e => (
                         <Card hoverable
                               style={{width: `${100/3.2}vw`,}}
@@ -138,7 +138,7 @@ const StaticHTML = () => {
 
                         </Card>
                     ))}
-                </Flex>
+                </Space>
 
                 <Divider style={{
                     fontSize: '3em', fontStyle: 'italic', fontWeight: 'bold',
@@ -148,7 +148,7 @@ const StaticHTML = () => {
                     fontSize: '1em', fontStyle: 'italic', fontWeight: 'bold',
                     borderColor: '#ffffff'
                 }}>常設／半永久性裝置</Divider>
-                <Flex wrap gap="small" justify={justify} align={alignItems}>
+                <Space wrap gap="small" justify={justify} align={alignItems}>
                     {Array.from({length: 21}, (value, index) => index).map((e) => {
                         return <Card hoverable
                                      style={{width: `${100/3.2}vw`,
@@ -168,7 +168,7 @@ const StaticHTML = () => {
                         </Card>
                     })}
 
-                </Flex>
+                </Space>
                 <Divider style={{
                     fontSize: '3em', fontStyle: 'italic', fontWeight: 'bold',
                     borderColor: '#000000'
@@ -177,8 +177,8 @@ const StaticHTML = () => {
                     fontSize: '1em', fontStyle: 'italic', fontWeight: 'bold',
                     borderColor: '#ffffff'
                 }}>effect algorithm / model training / fineTune</Divider>
-                <Flex wrap gap="small" justify={justify} align={alignItems}>
-                    {Array.from({length: 9}, (value, index) => index).map((e) => {
+                <Space wrap gap="small" justify={justify} align={alignItems}>
+                    {Array.from({length: 9}, (value, index) => index).map((e,i,a) => {
                         return <Card hoverable
                                      // bodyStyle={{padding: "0"}}
                                      style={{width: `${100/3.2}vw`,
@@ -187,10 +187,11 @@ const StaticHTML = () => {
                                      cover={
                                          <Image
                                              width={`100%`}
+                                             height={i>=a.length-3?'500px':`300px`}
                                              alt="basic image"
                                              src={`algorithmPic/${e}.png`}
                                              preview={{
-                                                 src: `slide/${e}.png`,
+                                                 src: `algorithmPic/${e}.png`,
                                              }}
                                          />
                                      }>
@@ -204,7 +205,7 @@ const StaticHTML = () => {
                         </Card>
                     })}
 
-                </Flex>
+                </Space>
             </div>
 
 
