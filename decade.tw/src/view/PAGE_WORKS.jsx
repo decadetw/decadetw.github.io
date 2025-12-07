@@ -4,14 +4,14 @@ const contentStyle = {
     margin: 0,
     padding:0,
     // height: '660px',
-    width:'100%',
+    width:'50%',
     color: '#fff',
     lineHeight: '160px',
     textAlign: 'center',
     background: '#000',
 };
-const works_2025='「兩廳院 - 國家交響樂團」－ NSO X AI,「豪華朗機工」－ 宇宙寫生,「豪華朗機工」－ 日光域,「豪華朗機工」－ 手識,「豪華朗機工」－ 很難很難,「ＩＯＮＩＣ」－ SacoMeasure'
-+'「桃園會展中心」－ 入口裝置藝術 匯聚流 丁建中 ,「信義區微風顯示器」－ 視訊控制中心 ,「台中都會公園」－ 顯示控制中心 ,「特拉維夫」－ 裝置藝術 丁建中 ,「IRCAM 法國龐畢度美術館」－ 失眠寫生簿 豪華朗機工 ,「兩廳院 舞鈴劇團」－ 兩廳院 5G手環無線點控 資策會 ,「密室逃脫」－ 超高頻ＲＦＩＤ ,「北區資安中心」－ 顯示控制中心 ,「北區球場」－ 顯示控制中心 ,「資策會」－ 震動演算法分析 ,「台北流行音樂中心－幻流行光 Ｘ 豪華朗機工」－中央控制軟體建置與技術總監 ,「高雄流行音樂中心 波光之翼 Ｘ 豪華朗機工」－中央控制軟體建置與技術總監,「基隆火車站 山海鳴光 Ｘ 豪華朗機工」－中央控制軟體建置與技術總監'
+const works_2025='「兩廳院 - 國家交響樂團」－ III資策會 X NSO X AI,「豪華朗機工」－ 宇宙寫生,「豪華朗機工」－ 日光域,「豪華朗機工」－ 手識,「豪華朗機工」－ 四合,「豪華朗機工」－ 很難很難,「ＩＯＮＩＣ」－ SacoMeasure'
++'「桃園會展中心」－ 入口裝置藝術 匯聚流 丁建中 ,「信義區微風顯示器」－ 視訊控制中心 ,「台中都會公園」－ 顯示控制中心 ,「特拉維夫」－ 裝置藝術 丁建中 ,「IRCAM 法國龐畢度美術館」－ 失眠寫生簿 豪華朗機工 ,「兩廳院 舞鈴劇團」－ 兩廳院 5G手環無線點控 資策會 ,「密室逃脫」－ 超高頻ＲＦＩＤ ,「北區資安中心」－ 顯示控制中心 ,「北區球場」－ 顯示控制中心 ,「ＩＴＲＩ」－ 震動演算法分析 ,「台北流行音樂中心－幻流行光 Ｘ 豪華朗機工」－中央控制軟體建置與技術總監 ,「高雄流行音樂中心 波光之翼 Ｘ 豪華朗機工」－中央控制軟體建置與技術總監,「基隆火車站 山海鳴光 Ｘ 豪華朗機工」－中央控制軟體建置與技術總監'
 const works_2020='「台灣燈會－新竹主燈 Ｘ 豪華朗機工」－中央控制軟體技術總監,「台北燈會－台北萬華主燈 Ｘ ＡＫＩＢＯ老師」－中央控制軟體技術總監'
 const works_2019='「信義誠品30週年」 一起幻想 Ｘ 豪華朗機工－機械手臂中央控制技術總監 ,「臺南奇美博物館」 影子特展 Ｘ 豪華朗機工－中央控制技術總監 ,「台北當代藝術館 」查無此人小花展 Ｘ 豪華朗機工 －中央控制技術總監,「永豐餘元太科技EINK 」電子紙控制計劃案'
 const works_2018='「臺中世界花卉博覽會」聆聽花開的聲音 Ｘ 豪華朗機工－中央控制系統建置 天下雜誌 – https://youtu.be/AMcD4XxWp9Y 台中市政府 – https://youtu.be/T3IjXiGFess 台中市政府 – https://youtu.be/4oMRcMvEvJg ,「GoGoRo新⾞發表會」硬體控制系統建置 ,「宜蘭蘭傳藝中心 」互動介⾯多點控制設計,「臺北小巨蛋CTC世界盃國際標準舞公開賽」RF無線控制設計'
@@ -43,7 +43,7 @@ const StaticHTML = () => {
                 }}
             >
                 <Divider/>
-                <h1 style={{alignContent:'center'}}>歷年實績 </h1>
+                <h1 style={{alignContent:'center'}}>歷年實績|Works </h1>
                 <Divider/>
                 <Row>
                     <Col span={16}>
@@ -100,29 +100,33 @@ const StaticHTML = () => {
                             ]}
                         />
                         <Divider/>
-                        <h3 style={{alignContent:'center'}}>台中花博 </h3>
+                        <h3 style={{ margin: 10,alignContent:'center'}}>works reviews </h3>
                         <Divider/>
-                        <Flex wrap={true} gap={'small'}>
+                        <Carousel autoplay arrows>
                             {Array.from({length: 21}, (value, index) => index).map((e) => {
-                                return <Card hoverable
-                                             style={{width: `40%`,
-                                                 boxShadow: '0px 1px 10px rgba(0,1,1,0.15)'
-                                             }}
-                                             cover={
-                                    <Image
-                                        width={`100%`}
-                                        alt="basic image"
-                                        src={`slide/${e}.png`}
-                                        preview={{
-                                            src: `slide/${e}.png`,
-                                        }}
-                                    />
-                                }>
-                                    {/*<Meta title={e.t} description={e.d}/>*/}
-
-                                </Card>
+                                return <div>
+                                    <div style={{
+                                        margin: 10,
+                                        padding:0,
+                                        // height: '660px',
+                                        width:'50%',
+                                        // color: '#1ff',
+                                        // lineHeight: '160px',
+                                        textAlign: 'center',
+                                        background: '#000',
+                                    }}>
+                                        <Image
+                                            width={`100%`}
+                                            alt="basic image"
+                                            src={`slide/${e}.png`}
+                                            preview={{
+                                                src: `slide/${e}.png`,
+                                            }}
+                                        /></div>
+                                </div>
                             })}
-                        </Flex>
+
+                        </Carousel>
                     </Col>
                 </Row>
                 <Divider/>
