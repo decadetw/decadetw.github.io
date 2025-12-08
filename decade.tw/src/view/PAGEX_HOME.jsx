@@ -60,13 +60,15 @@ const StaticHTML = (prop) => {
     const [justify, setJustify] = React.useState(justifyOptions[3]);
     const [alignItems, setAlignItems] = React.useState(alignOptions[0]);
     return (<>
-            <Typing style={{display: 'flex',alignSelf: 'center'}}
-                text={[
-                    `ＤＥＣＡＤＥ since 2008 (possesses ${new Date().getFullYear()-2008}years experience as a interactive artisan.)`,
-                    `ＤＥＣＡＤＥ.TW since 2008 (possesses ${new Date().getFullYear()-2008}years experience as a interactive artisan.)`,
-                ]}
-                smartBackspace
-            />
+            <div style={{height:'2em',margin:'0px',backgroundColor:'whitesmoke'}}>
+                <Typing element="h4" styleClass='typing_style'
+                    text={[
+                        `ＤＥＣＡＤＥ since 2008 (possesses ${new Date().getFullYear()-2008}years experience as a interactive artisan.)`,
+                        `ＤＥＣＡＤＥ.TW since 2008 (possesses ${new Date().getFullYear()-2008}years experience as a interactive artisan.)`,
+                    ]}
+                    smartBackspace
+                />
+            </div>
             {/*<p style={{*/}
             {/*    textAlign:'center',*/}
             {/*    fontSize: '1em', fontStyle: 'italic', fontWeight: 'bold',*/}

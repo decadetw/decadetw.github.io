@@ -18,11 +18,11 @@ import {
     UnorderedListOutline,
 } from 'antd-mobile-icons'
 import {Button, Dropdown, Flex, FloatButton, Grid, Image, Layout, Menu, Space, theme} from 'antd';
-import PAGEX0 from "./view/PAGEX0.jsx";
+import PAGEX_HOME from "./view/PAGEX_HOME.jsx";
 import PAGEX_BLOG from "./view/PAGEX_BLOG.jsx";
 import PAGE_WORKS from "./view/PAGE_WORKS.jsx";
 import PAGEX_ABOUT from "./view/PAGEX_ABOUT.jsx";
-import PAGEX4 from "./view/PAGEX4.jsx";
+import PAGEX_CONTACT from "./view/PAGEX_CONTACT.jsx";
 
 const {Header, Content, Footer} = Layout;
 const tabs = [{
@@ -52,7 +52,7 @@ function BoardX(prop) {
     // const pageID = useStoreX((state) => state.pageID);
     switch (prop.whichid) {
         case tabs[0].key:
-            return (<PAGEX0 isMobile={prop.isMobile}/>)
+            return (<PAGEX_HOME isMobile={prop.isMobile}/>)
         case tabs[1].key:
             return (<PAGEX_BLOG isMobile={prop.isMobile}/>)
         case tabs[2].key:
@@ -60,10 +60,12 @@ function BoardX(prop) {
         case tabs[3].key:
             return (<PAGEX_ABOUT isMobile={prop.isMobile}/>)
         case tabs[4].key:
-            return (<PAGEX4 isMobile={prop.isMobile}/>)
+            return (<PAGEX_CONTACT isMobile={prop.isMobile}/>)
     }
 }
-let initTab='tab1'
+
+let initTab = 'tab1'
+
 //about contact qa
 function detectMob1() {
     const toMatch = [
@@ -80,9 +82,11 @@ function detectMob1() {
         return navigator.userAgent.match(toMatchItem);
     });
 }
+
 function detectMob2() {
-    return ( ( window.innerWidth <= 800 ) && ( window.innerHeight <= 600 ) );
+    return ((window.innerWidth <= 800) && (window.innerHeight <= 600));
 }
+
 function App() {
     const {useBreakpoint} = Grid;
     const screens = useBreakpoint();
@@ -95,10 +99,10 @@ function App() {
     for (const [key, value] of params.entries()) {
         console.log(`[DECADE.TW][][]${key}: ${value}`);
     }
-    const initTab=params.entries()['tab']===undefined?'home':params.entries()['tab']
-    const r=tabs.filter((e)=>initTab===e.key)
-    console.log(`[DECADE.TW][App][r]: `,r,r.length);
-    const [InitPageID, setInitPageID] = useState(r.length<=0?tabs[0].key:r[0].key)
+    const initTab = params.entries()['tab'] === undefined ? 'home' : params.entries()['tab']
+    const r = tabs.filter((e) => initTab === e.key)
+    console.log(`[DECADE.TW][App][r]: `, r, r.length);
+    const [InitPageID, setInitPageID] = useState(r.length <= 0 ? tabs[0].key : r[0].key)
     console.log(`[DECADE.TW][][InitPageID]: ${InitPageID}`);
     const [menuMode, setMenuMode] = useState();
     const [isMobile, setisMobile] = useState(false);
@@ -109,35 +113,44 @@ function App() {
         console.log('click ', e);
         setInitPageID(e.key);
     };
+
     function isMobileUserAgent2() {
         const userAgent = navigator.userAgent || navigator.vendor || window.opera;
         return /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent);
 
     }
+
     function isMobileUserAgent() {
         return /Mobi|Android|iPhone|iPad|Windows Phone/i.test(navigator.userAgent);
     }
+
     function hasTouchSupport() {
         return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
     }
+
     function hasTouchScreen2() {
         if ('maxTouchPoints' in navigator) {
             return navigator.maxTouchPoints > 0;
         }
         return false; // Fallback for older browsers
     }
+
     function isTouchEnabled() {
         return 'ontouchstart' in document.documentElement;
     }
+
     function hasTouchScreen() {
         return navigator.maxTouchPoints > 0;
     }
+
     function isMobileScreen() {
         return window.innerWidth < 1280; // Example threshold for mobile width
     }
+
     function detectMobRatio() {
-        return ( ( window.innerWidth < window.innerHeight   ) );
+        return ((window.innerWidth < window.innerHeight));
     }
+
     const checkWindowSize = () => {
         if (detectMobRatio()) {
             setMenuMode("inline");
@@ -164,30 +177,25 @@ function App() {
             {/*    badge={{ dot: true }}*/}
             {/*    style={{ right: `60px`, top: 4 ,height:'50px' }}*/}
             {/*/>*/}
-            <FloatButton.BackTop visibilityHeight={0} onClick={()=>{window.scrollTo(0,0)}}/>
-            <Header style={{width:'100%',backgroundColor: "black"}}>
-                <Flex align={'center'} justify={isMobile?'center':'flex-start'}>
 
-                <Image style={{display: 'flex',
-                    // justifyContent: 'left',
-                    // alignItems: 'left',
-                    height: '50px'}} src={`logo/decade_logo.png`}/>
-
-                <div style={{width: isMobile?'50px':'100%'}} >
-
-                <Menu
-                    // mode={menuMode}
-                    mode="horizontal"
-                    // mode={isMobile ? "inline" : "horizontal"}
-                    theme="dark"
-                    defaultSelectedKeys={[InitPageID]}
-                    items={tabs}
-                    style={{ float: isMobile?'':'right',flex: 'auto', minWidth: 0,backgroundColor:"black"}}
-                    onClick={onClickMenu}
-
-                />
-
-                </div>
+            <Header style={{width: '100%', backgroundColor: "black"}}>
+                <Flex align={'center'} justify={'space-between'}>
+                    <div style={{ display: 'flex', alignItems: 'right' ,justifyContent: 'center' }}>
+                        <Image style={{height: '50px'}} src={`logo/decade_logo.png`} />
+                    </div>
+                    <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                    <Menu
+                        mode="horizontal"
+                        theme="dark"
+                        defaultSelectedKeys={[InitPageID]}
+                        items={tabs}
+                        style={{
+                            float: isMobile ? 'right' : 'right',
+                            width: isMobile ? '1%' : '100%',
+                        }}
+                        onClick={onClickMenu}
+                    />
+                    </div>
                 </Flex>
 
             </Header>
@@ -210,15 +218,15 @@ function App() {
                             onClick={() => window.open("https://www.facebook.com/decade.tw", "_blank")}
                         />
                         <YoutubeOutlined
-                             style={{fontSize: '35px'}}
+                            style={{fontSize: '35px'}}
                             onClick={() => window.open("https://www.facebook.com/decade.tw", "_blank")}
                         />
                         <TwitterOutlined
-                             style={{fontSize: '35px'}}
+                            style={{fontSize: '35px'}}
                             onClick={() => window.open("https://twitter.com/", "_blank")}
                         />
                         <GithubOutlined
-                             style={{fontSize: '35px'}}
+                            style={{fontSize: '35px'}}
                             onClick={() => window.open("https://github.com/xlinx/sd-webui-decadetw-auto-prompt-llm", "_blank")}
                         />
                         <MailOutlined
@@ -231,6 +239,9 @@ function App() {
                 <p>©{new Date().getFullYear()} DECADE.TW - 帝凱科技有限公司 - 台北市北投路一段9-C號 | 隱私權政策</p>
 
             </Footer>
+            <FloatButton.BackTop type="primary" visibilityHeight={0} onClick={() => {
+                window.scrollTo(0, 0)
+            }}/>
         </Layout>
     );
 }

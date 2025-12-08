@@ -38,7 +38,13 @@ body{
 .card {
   padding: 2em;
 }
-
+.typing_style {
+    color: #dbdbdb;
+    font-size: 0.7em;
+    /*background-color: #000000;*/
+    margin: 1px;
+    border: #1e1e1e;
+}
 .read-the-docs {
   color: #888;
 }
