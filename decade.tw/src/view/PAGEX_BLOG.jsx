@@ -1,5 +1,5 @@
 import React, {useEffect,memo} from "react";
-import {Button, Carousel, Image,theme} from 'antd';
+import {Button, Card, Carousel, Image, theme} from 'antd';
 const contentStyle = {
     margin: 0,
     padding:0,
@@ -24,7 +24,9 @@ const StaticHTML = () => {
                     borderRadius: borderRadiusLG,
                 }}
             >
-                Content1
+                <Card style={{margin:'0px',padding:'0px'}}>
+                <iframe style={{height:'100vh',width:'100%'}} src={'https://decadetw.wordpress.com/'}></iframe>
+                </Card>
             </div>
         </>
     )

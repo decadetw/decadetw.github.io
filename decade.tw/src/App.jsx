@@ -19,9 +19,9 @@ import {
 } from 'antd-mobile-icons'
 import {Button, Grid, Image, Layout, Menu, Space, theme} from 'antd';
 import PAGEX0 from "./view/PAGEX0.jsx";
-import PAGEX1 from "./view/PAGEX1.jsx";
+import PAGEX_BLOG from "./view/PAGEX_BLOG.jsx";
 import PAGE_WORKS from "./view/PAGE_WORKS.jsx";
-import PAGEX3 from "./view/PAGEX3.jsx";
+import PAGEX_ABOUT from "./view/PAGEX_ABOUT.jsx";
 import PAGEX4 from "./view/PAGEX4.jsx";
 
 const {Header, Content, Footer} = Layout;
@@ -54,11 +54,11 @@ function BoardX(prop) {
         case tabs[0].key:
             return (<PAGEX0/>)
         case tabs[1].key:
-            return (<PAGEX1/>)
+            return (<PAGEX_BLOG/>)
         case tabs[2].key:
             return (<PAGE_WORKS/>)
         case tabs[3].key:
-            return (<PAGEX3/>)
+            return (<PAGEX_ABOUT/>)
         case tabs[4].key:
             return (<PAGEX4/>)
     }
