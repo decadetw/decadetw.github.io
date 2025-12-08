@@ -1,5 +1,5 @@
 import React, {useEffect, memo} from "react";
-import {Button, Card, Carousel, Divider, Space, Image, Flex, theme, Typography} from 'antd';
+import {Button, Card, Carousel, Divider, Space, Image, Flex, theme, Typography, Masonry} from 'antd';
 
 const {Meta} = Card;
 const contentStyle = {
@@ -48,7 +48,7 @@ const justifyOptions = [
     'space-evenly',
 ];
 const alignOptions = ['Space-start', 'center', 'Space-end'];
-const StaticHTML = () => {
+const StaticHTML = (prop) => {
     const {token: {colorBgContainer, borderRadiusLG},
     } = theme.useToken();
     const [justify, setJustify] = React.useState(justifyOptions[3]);
@@ -90,27 +90,51 @@ const StaticHTML = () => {
                     fontSize: '1em', fontStyle: 'italic', fontWeight: 'bold',
                     borderColor: '#ffffff'
                 }}>提供展場軟硬體整合設計規劃；舞台燈光控制</Divider>
-                <Space wrap gap="small" justify={justify} align={alignItems}>
-                    {list_content_youtube.map(e => (
+                <Masonry
+                    columns={prop.isMobile?1:4}
+                    gutter={4}
+                    items={list_content_youtube.map((img, index) => ({
+                        key: `item-${index}`,
+                        data: img,
+                    }))}
+                    itemRender={({ data }) => (
                         <Card hoverable
-                              style={{width: `${100/4.4}vw`,}}
-                              cover={
-                                  <div className="wrapper">
-
-                                      <div className="frame-container">
-                                          <iframe height="315"
-                                                  src={e.url}
-                                                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                  referrerPolicy="strict-origin-when-cross-origin"
-                                                  allowFullScreen></iframe>
-                                      </div>
+                            // style={{width: `${100/3.2}vw`,}}
+                              cover={<div className="wrapper">
+                                  <div className="frame-container">
+                                      <iframe height="315"
+                                              src={data.url}
+                                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                              referrerPolicy="strict-origin-when-cross-origin"
+                                              allowFullScreen></iframe>
                                   </div>
+                              </div>
                               }>
-                            <Meta title={e.t} description={e.d}/>
-
+                            <Meta title={data.t} description={data.d}/>
                         </Card>
-                    ))}
-                </Space>
+                    )}
+                />
+                {/*<Space wrap gap="small" justify={justify} align={alignItems}>*/}
+                {/*    {list_content_youtube.map(e => (*/}
+                {/*        <Card hoverable*/}
+                {/*              style={{width: `${100/4.4}vw`,}}*/}
+                {/*              cover={*/}
+                {/*                  <div className="wrapper">*/}
+
+                {/*                      <div className="frame-container">*/}
+                {/*                          <iframe height="315"*/}
+                {/*                                  src={e.url}*/}
+                {/*                                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"*/}
+                {/*                                  referrerPolicy="strict-origin-when-cross-origin"*/}
+                {/*                                  allowFullScreen></iframe>*/}
+                {/*                      </div>*/}
+                {/*                  </div>*/}
+                {/*              }>*/}
+                {/*            <Meta title={e.t} description={e.d}/>*/}
+
+                {/*        </Card>*/}
+                {/*    ))}*/}
+                {/*</Space>*/}
                 <Divider style={{
                     fontSize: '3em', fontStyle: 'italic', fontWeight: 'bold',
                     borderColor: '#000000'
@@ -119,26 +143,50 @@ const StaticHTML = () => {
                     fontSize: '1em', fontStyle: 'italic', fontWeight: 'bold',
                     borderColor: '#ffffff'
                 }}>軟/體/硬/電子電路/多媒體</Divider>
-                <Space wrap gap="small" justify={justify} align={alignItems}>
-                    {list_content_algorithm_youtube.map(e => (
-                        <Card hoverable
-                              style={{width: `${100/3.2}vw`,}}
-                              cover={<div className="wrapper">
-
-                                  <div className="frame-container">
-                                      <iframe height="315"
-                                              src={e.url}
-                                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                              referrerPolicy="strict-origin-when-cross-origin"
-                                              allowFullScreen></iframe>
+                <Masonry
+                    columns={prop.isMobile?1:3}
+                    gutter={4}
+                    items={list_content_algorithm_youtube.map((img, index) => ({
+                        key: `item-${index}`,
+                        data: img,
+                    }))}
+                    itemRender={({ data }) => (
+                                <Card hoverable
+                                  // style={{width: `${100/3.2}vw`,}}
+                                  cover={<div className="wrapper">
+                                      <div className="frame-container">
+                                          <iframe height="315"
+                                                  src={data.url}
+                                                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                  referrerPolicy="strict-origin-when-cross-origin"
+                                                  allowFullScreen></iframe>
+                                      </div>
                                   </div>
-                              </div>
-                              }>
-                            <Meta title={e.t} description={e.d}/>
+                                  }>
+                                <Meta title={data.t} description={data.d}/>
+                            </Card>
+                    )}
+                />
+                {/*<Space wrap gap="small" justify={justify} align={alignItems}>*/}
+                {/*    {list_content_algorithm_youtube.map(e => (*/}
+                {/*        <Card hoverable*/}
+                {/*              style={{width: `${100/3.2}vw`,}}*/}
+                {/*              cover={<div className="wrapper">*/}
 
-                        </Card>
-                    ))}
-                </Space>
+                {/*                  <div className="frame-container">*/}
+                {/*                      <iframe height="315"*/}
+                {/*                              src={e.url}*/}
+                {/*                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"*/}
+                {/*                              referrerPolicy="strict-origin-when-cross-origin"*/}
+                {/*                              allowFullScreen></iframe>*/}
+                {/*                  </div>*/}
+                {/*              </div>*/}
+                {/*              }>*/}
+                {/*            <Meta title={e.t} description={e.d}/>*/}
+
+                {/*        </Card>*/}
+                {/*    ))}*/}
+                {/*</Space>*/}
 
                 <Divider style={{
                     fontSize: '3em', fontStyle: 'italic', fontWeight: 'bold',
@@ -148,27 +196,36 @@ const StaticHTML = () => {
                     fontSize: '1em', fontStyle: 'italic', fontWeight: 'bold',
                     borderColor: '#ffffff'
                 }}>常設／半永久性裝置</Divider>
-                <Space wrap gap="small" justify={justify} align={alignItems}>
-                    {Array.from({length: 21}, (value, index) => index).map((e) => {
-                        return <Card hoverable
-                                     style={{width: `${100/3.2}vw`,
-                                         boxShadow: '0px 1px 10px rgba(0,1,1,0.15)'
-                                     }}                                     cover={
-                                         <Image
-                                             width={`100%`}
-                                             alt="basic image"
-                                             src={`slide/${e}.png`}
-                                             preview={{
-                                                 src: `slide/${e}.png`,
-                                             }}
-                                         />
-                                     }>
-                            {/*<Meta title={e.t} description={e.d}/>*/}
-
-                        </Card>
-                    })}
-
-                </Space>
+                <Masonry
+                    columns={prop.isMobile?1:4}
+                    gutter={16}
+                    items={Array.from({length: 20}, (value, index) => index).map((img, index) => ({
+                        key: `item-${index}`,
+                        data: `slide/${img}.png`,
+                    }))}
+                    itemRender={({ data }) => (
+                        <Image src={`${data}`} alt="sample" style={{ width: '100%' }} />
+                    )}
+                />
+                {/*<Space wrap gap="small" justify={justify} align={alignItems}>*/}
+                {/*    {Array.from({length: 21}, (value, index) => index).map((e) => {*/}
+                {/*        return <Card hoverable*/}
+                {/*                     style={{width: `${100/3.2}vw`,*/}
+                {/*                         boxShadow: '0px 1px 10px rgba(0,1,1,0.15)'*/}
+                {/*                     }}                                     cover={*/}
+                {/*                         <Image*/}
+                {/*                             width={`100%`}*/}
+                {/*                             alt="basic image"*/}
+                {/*                             src={`slide/${e}.png`}*/}
+                {/*                             preview={{*/}
+                {/*                                 src: `slide/${e}.png`,*/}
+                {/*                             }}*/}
+                {/*                         />*/}
+                {/*                     }>*/}
+                {/*            /!*<Meta title={e.t} description={e.d}/>*!/*/}
+                {/*        </Card>*/}
+                {/*    })}*/}
+                {/*</Space>*/}
                 <Divider style={{
                     fontSize: '3em', fontStyle: 'italic', fontWeight: 'bold',
                     borderColor: '#000000'
@@ -177,35 +234,39 @@ const StaticHTML = () => {
                     fontSize: '1em', fontStyle: 'italic', fontWeight: 'bold',
                     borderColor: '#ffffff'
                 }}>effect algorithm / model training / fineTune</Divider>
-                <Space wrap gap="small" justify={justify} align={alignItems}>
-                    {Array.from({length: 9}, (value, index) => index).map((e,i,a) => {
-                        return <Card hoverable
-                                     // bodyStyle={{padding: "0"}}
-                                     style={{width: `${100/3.2}vw`,
-                                         boxShadow: '0px 1px 10px rgba(0,1,1,0.15)'
-                                     }}
-                                     cover={
-                                         <Image
-                                             width={`100%`}
-                                             height={i>=a.length-3?'500px':`300px`}
-                                             alt="basic image"
-                                             src={`algorithmPic/${e}.png`}
-                                             preview={{
-                                                 src: `algorithmPic/${e}.png`,
-                                             }}
-                                         />
-                                     }>
-                            {/*<Meta title={e.t} description={e.d}/>*/}
-                            {/*<Image*/}
-                            {/*    src={`algorithmPic/${e}.png`}*/}
-                            {/*    preview={{*/}
-                            {/*        src: `slide/${e}.png`,*/}
-                            {/*    }}*/}
-                            {/*/>*/}
-                        </Card>
-                    })}
-
-                </Space>
+                <Masonry
+                    columns={prop.isMobile?1:4}
+                    gutter={8}
+                    items={Array.from({length: 9}, (value, index) => index).map((img, index) => ({
+                        key: `item-${index}`,
+                        data: `algorithmPic/${img}.png`,
+                    }))}
+                    itemRender={({ data }) => (
+                        <Image src={`${data}`} alt="sample" style={{ width: '100%' }} />
+                    )}
+                />
+                {/*<Space wrap gap="small" justify={justify} align={alignItems}>*/}
+                {/*    {Array.from({length: 9}, (value, index) => index).map((e,i,a) => {*/}
+                {/*        return <Card hoverable*/}
+                {/*                     // bodyStyle={{padding: "0"}}*/}
+                {/*                     style={{width: `${100/3.2}vw`,*/}
+                {/*                         boxShadow: '0px 1px 10px rgba(0,1,1,0.15)'*/}
+                {/*                     }}*/}
+                {/*                     cover={*/}
+                {/*                         <Image*/}
+                {/*                             width={`100%`}*/}
+                {/*                             height={i>=a.length-3?'500px':`300px`}*/}
+                {/*                             alt="basic image"*/}
+                {/*                             src={`algorithmPic/${e}.png`}*/}
+                {/*                             preview={{*/}
+                {/*                                 src: `algorithmPic/${e}.png`,*/}
+                {/*                             }}*/}
+                {/*                         />*/}
+                {/*                     }>*/}
+                {/*            */}
+                {/*        </Card>*/}
+                {/*    })}*/}
+                {/*</Space>*/}
             </div>
 
 

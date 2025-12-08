@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -6,7 +6,7 @@ import React from 'react';
 // import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import {
-    AlertFilled, FacebookOutlined, FolderViewOutlined,
+    AlertFilled, DownOutlined, EllipsisOutlined, FacebookOutlined, FolderViewOutlined,
     FormOutlined, FundViewOutlined, GithubOutlined,
     LeftOutlined, MailOutlined,
     MenuUnfoldOutlined, PoweroffOutlined,
@@ -17,7 +17,7 @@ import {
     AppOutline, StarFill,
     UnorderedListOutline,
 } from 'antd-mobile-icons'
-import {Button, Grid, Image, Layout, Menu, Space, theme} from 'antd';
+import {Button, Dropdown, Grid, Image, Layout, Menu, Space, theme} from 'antd';
 import PAGEX0 from "./view/PAGEX0.jsx";
 import PAGEX_BLOG from "./view/PAGEX_BLOG.jsx";
 import PAGE_WORKS from "./view/PAGE_WORKS.jsx";
@@ -52,15 +52,15 @@ function BoardX(prop) {
     // const pageID = useStoreX((state) => state.pageID);
     switch (prop.whichid) {
         case tabs[0].key:
-            return (<PAGEX0/>)
+            return (<PAGEX0 isMobile={prop.isMobile}/>)
         case tabs[1].key:
-            return (<PAGEX_BLOG/>)
+            return (<PAGEX_BLOG isMobile={prop.isMobile}/>)
         case tabs[2].key:
-            return (<PAGE_WORKS/>)
+            return (<PAGE_WORKS isMobile={prop.isMobile}/>)
         case tabs[3].key:
-            return (<PAGEX_ABOUT/>)
+            return (<PAGEX_ABOUT isMobile={prop.isMobile}/>)
         case tabs[4].key:
-            return (<PAGEX4/>)
+            return (<PAGEX4 isMobile={prop.isMobile}/>)
     }
 }
 let initTab='tab1'
@@ -86,8 +86,8 @@ function detectMob2() {
 function App() {
     const {useBreakpoint} = Grid;
     const screens = useBreakpoint();
-    const isMobile = !screens.lg;
-    console.log(`[DECADE.TW][][isMobile]: ${isMobile}`);
+    const isMobile2 = !screens.lg;
+    console.log(`[DECADE.TW][][isMobile]: ${isMobile2}`);
     console.log(`[DECADE.TW][][window.location]: ${window.location}`);
     const params = new URLSearchParams(window.location.search);
     console.log(`[DECADE.TW][][params]: ${params}`);
@@ -100,7 +100,8 @@ function App() {
     console.log(`[DECADE.TW][App][r]: `,r,r.length);
     const [InitPageID, setInitPageID] = useState(r.length<=0?tabs[0].key:r[0].key)
     console.log(`[DECADE.TW][][InitPageID]: ${InitPageID}`);
-
+    const [menuMode, setMenuMode] = useState();
+    const [isMobile, setisMobile] = useState(false);
     const {
         token: {colorBgContainer, borderRadiusLG},
     } = theme.useToken();
@@ -108,19 +109,45 @@ function App() {
         console.log('click ', e);
         setInitPageID(e.key);
     };
+    const checkWindowSize = () => {
+        if (window.innerWidth > 599) {
+            setMenuMode("horizontal");
+            setisMobile(false)
+        } else {
+            setMenuMode("inline");
+            setisMobile(true)
+        }
+    };
+    useEffect(() => {
+        window.addEventListener("resize", checkWindowSize);
+        checkWindowSize();
+        return () => window.removeEventListener("resize", checkWindowSize);
+    }, [checkWindowSize]);
     return (
         <Layout>
-            <Header style={{backgroundColor: "black"}}>
-                <Image style={{height: '50px'}} src={`logo/decade_logo.png`}/>
-                <Menu
-                    // mode="inline"
-                    mode={isMobile ? "inline" : "horizontal"}
-                    theme="dark"
-                    defaultSelectedKeys={[InitPageID]}
-                    items={tabs}
-                    style={{float: 'right', flex: 1, minWidth: 0}}
-                    onClick={onClickMenu}
-                />
+            <Header style={{width:'100%',backgroundColor: "red"}}>
+                <Image style={{display: 'flex',
+                    // justifyContent: 'left',
+                    // alignItems: 'left',
+                    height: '50px'}} src={`logo/decade_logo.png`}/>
+                {/*<Dropdown style={{ }} menu={{ tabs }} placement="bottomRight" arrow>*/}
+                {/*    <a onClick={e => e.preventDefault()}>*/}
+                {/*        <Space>*/}
+
+                {/*            <EllipsisOutlined style={{fontSize:'2em'}}/>*/}
+                {/*        </Space>*/}
+                {/*    </a>*/}
+                {/*</Dropdown>*/}
+                {/*<Menu*/}
+                {/*    mode={menuMode}*/}
+                {/*    // mode="horizontal"*/}
+                {/*    // mode={isMobile ? "inline" : "horizontal"}*/}
+                {/*    theme="dark"*/}
+                {/*    defaultSelectedKeys={[InitPageID]}*/}
+                {/*    items={tabs}*/}
+                {/*    style={{float: 'right', flex: 1, minWidth: 0}}*/}
+                {/*    onClick={onClickMenu}*/}
+                {/*/>*/}
             </Header>
             <Content style={{padding: '0 0px'}}>
                 {/*<Breadcrumb*/}
@@ -128,7 +155,7 @@ function App() {
                 {/*    items={[{ title: 'Home' }, { title: 'List' }, { title: 'App' }]}*/}
                 {/*/>*/}
                 {/*<RouterProvider router={router} />*/}
-                <BoardX whichid={InitPageID}/>
+                <BoardX isMobile={isMobile} whichid={InitPageID}/>
 
 
             </Content>
