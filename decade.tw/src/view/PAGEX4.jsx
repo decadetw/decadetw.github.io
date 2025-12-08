@@ -54,7 +54,7 @@ const StaticHTML = () => {
 
                             <iframe
                                 src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14449.701610014334!2d121.5010294!3d25.1213049!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe398fdb39ca95fe4!2z5bid5Yex5LqS5YuV56eR5oqA!5e0!3m2!1szh-TW!2stw!4v1631195282390!5m2!1szh-TW!2stw"
-                                width="500" height="300" allowFullScreen="" loading="lazy"></iframe>
+                                 height="300px" allowFullScreen="" loading="lazy"></iframe>
 
 
                     </Col>

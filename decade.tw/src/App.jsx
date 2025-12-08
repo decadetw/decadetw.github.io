@@ -6,10 +6,10 @@ import React from 'react';
 // import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import {
-    AlertFilled, DownOutlined, EllipsisOutlined, FacebookOutlined, FolderViewOutlined,
+    AlertFilled, DownOutlined, EllipsisOutlined, FacebookOutlined, FileTextOutlined, FolderViewOutlined,
     FormOutlined, FundViewOutlined, GithubOutlined,
     LeftOutlined, MailOutlined,
-    MenuUnfoldOutlined, PoweroffOutlined,
+    MenuUnfoldOutlined, MoreOutlined, PoweroffOutlined,
     SwapOutlined, SyncOutlined, TwitterOutlined,
     UserOutlined, YoutubeOutlined
 } from '@ant-design/icons'
@@ -17,7 +17,7 @@ import {
     AppOutline, StarFill,
     UnorderedListOutline,
 } from 'antd-mobile-icons'
-import {Button, Dropdown, Grid, Image, Layout, Menu, Space, theme} from 'antd';
+import {Button, Dropdown, Flex, FloatButton, Grid, Image, Layout, Menu, Space, theme} from 'antd';
 import PAGEX0 from "./view/PAGEX0.jsx";
 import PAGEX_BLOG from "./view/PAGEX_BLOG.jsx";
 import PAGE_WORKS from "./view/PAGE_WORKS.jsx";
@@ -109,13 +109,43 @@ function App() {
         console.log('click ', e);
         setInitPageID(e.key);
     };
+    function isMobileUserAgent2() {
+        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        return /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent);
+
+    }
+    function isMobileUserAgent() {
+        return /Mobi|Android|iPhone|iPad|Windows Phone/i.test(navigator.userAgent);
+    }
+    function hasTouchSupport() {
+        return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    }
+    function hasTouchScreen2() {
+        if ('maxTouchPoints' in navigator) {
+            return navigator.maxTouchPoints > 0;
+        }
+        return false; // Fallback for older browsers
+    }
+    function isTouchEnabled() {
+        return 'ontouchstart' in document.documentElement;
+    }
+    function hasTouchScreen() {
+        return navigator.maxTouchPoints > 0;
+    }
+    function isMobileScreen() {
+        return window.innerWidth < 1280; // Example threshold for mobile width
+    }
+    function detectMobRatio() {
+        return ( ( window.innerWidth < window.innerHeight   ) );
+    }
     const checkWindowSize = () => {
-        if (window.innerWidth > 599) {
-            setMenuMode("horizontal");
-            setisMobile(false)
-        } else {
+        if (detectMobRatio()) {
             setMenuMode("inline");
             setisMobile(true)
+        } else {
+            setMenuMode("horizontal");
+            setisMobile(false)
+
         }
     };
     useEffect(() => {
@@ -124,30 +154,42 @@ function App() {
         return () => window.removeEventListener("resize", checkWindowSize);
     }, [checkWindowSize]);
     return (
+
         <Layout>
-            <Header style={{width:'100%',backgroundColor: "red"}}>
+            {/*<FloatButton*/}
+            {/*    icon={<FileTextOutlined />}*/}
+            {/*    content="MENU"*/}
+            {/*    shape="square"*/}
+            {/*    type="primary"*/}
+            {/*    badge={{ dot: true }}*/}
+            {/*    style={{ right: `60px`, top: 4 ,height:'50px' }}*/}
+            {/*/>*/}
+            <FloatButton.BackTop visibilityHeight={0} onClick={()=>{window.scrollTo(0,0)}}/>
+            <Header style={{width:'100%',backgroundColor: "black"}}>
+                <Flex align={'center'} justify={isMobile?'center':'flex-start'}>
+
                 <Image style={{display: 'flex',
                     // justifyContent: 'left',
                     // alignItems: 'left',
                     height: '50px'}} src={`logo/decade_logo.png`}/>
-                {/*<Dropdown style={{ }} menu={{ tabs }} placement="bottomRight" arrow>*/}
-                {/*    <a onClick={e => e.preventDefault()}>*/}
-                {/*        <Space>*/}
 
-                {/*            <EllipsisOutlined style={{fontSize:'2em'}}/>*/}
-                {/*        </Space>*/}
-                {/*    </a>*/}
-                {/*</Dropdown>*/}
-                {/*<Menu*/}
-                {/*    mode={menuMode}*/}
-                {/*    // mode="horizontal"*/}
-                {/*    // mode={isMobile ? "inline" : "horizontal"}*/}
-                {/*    theme="dark"*/}
-                {/*    defaultSelectedKeys={[InitPageID]}*/}
-                {/*    items={tabs}*/}
-                {/*    style={{float: 'right', flex: 1, minWidth: 0}}*/}
-                {/*    onClick={onClickMenu}*/}
-                {/*/>*/}
+                <div style={{width: isMobile?'50px':'100%'}} >
+
+                <Menu
+                    // mode={menuMode}
+                    mode="horizontal"
+                    // mode={isMobile ? "inline" : "horizontal"}
+                    theme="dark"
+                    defaultSelectedKeys={[InitPageID]}
+                    items={tabs}
+                    style={{ float: isMobile?'':'right',flex: 'auto', minWidth: 0,backgroundColor:"black"}}
+                    onClick={onClickMenu}
+
+                />
+
+                </div>
+                </Flex>
+
             </Header>
             <Content style={{padding: '0 0px'}}>
                 {/*<Breadcrumb*/}

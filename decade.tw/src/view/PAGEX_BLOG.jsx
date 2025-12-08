@@ -20,7 +20,7 @@ const StaticHTML = () => {
                 style={{
                     background: colorBgContainer,
                     minHeight: 280,
-                    padding: 24,
+                    padding: 0,
                     borderRadius: borderRadiusLG,
                 }}
             >

@@ -10,11 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "antd": "^6.0.1",
     "@ant-design/icons": "^6.0.1",
+    "antd": "^6.0.1",
     "antd-mobile-icons": "^0.3.0",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "typing-effect-reactjs": "^1.4.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",

@@ -1,5 +1,6 @@
 import React, {useEffect, memo} from "react";
 import {Button, Card, Carousel, Divider, Space, Image, Flex, theme, Typography, Masonry} from 'antd';
+import { Typing, TypingStep } from "typing-effect-reactjs";
 
 const {Meta} = Card;
 const contentStyle = {
@@ -48,16 +49,29 @@ const justifyOptions = [
     'space-evenly',
 ];
 const alignOptions = ['Space-start', 'center', 'Space-end'];
+const diverStyle={
+    width:'10%',
+    fontSize: '2em', fontStyle: 'italic', fontWeight: 'bold',
+    borderColor: '#000000'
+}
 const StaticHTML = (prop) => {
     const {token: {colorBgContainer, borderRadiusLG},
     } = theme.useToken();
     const [justify, setJustify] = React.useState(justifyOptions[3]);
     const [alignItems, setAlignItems] = React.useState(alignOptions[0]);
     return (<>
-            <Divider style={{
-                fontSize: '1em', fontStyle: 'italic', fontWeight: 'bold',
-                borderColor: '#ffffff'
-            }}> ＤＥＣＡＤＥ.TW since 2008 (possesses {new Date().getFullYear()-2008}years experience as a interactive artisan.)</Divider>
+            <Typing style={{display: 'flex',alignSelf: 'center'}}
+                text={[
+                    `ＤＥＣＡＤＥ since 2008 (possesses ${new Date().getFullYear()-2008}years experience as a interactive artisan.)`,
+                    `ＤＥＣＡＤＥ.TW since 2008 (possesses ${new Date().getFullYear()-2008}years experience as a interactive artisan.)`,
+                ]}
+                smartBackspace
+            />
+            {/*<p style={{*/}
+            {/*    textAlign:'center',*/}
+            {/*    fontSize: '1em', fontStyle: 'italic', fontWeight: 'bold',*/}
+            {/*    borderColor: '#ffffff'*/}
+            {/*}}> ＤＥＣＡＤＥ.TW since 2008 (possesses {new Date().getFullYear()-2008}years experience as a interactive artisan.)</p>*/}
             <Carousel autoplay arrows>
                 {Array.from({length: 21}, (value, index) => index).map((e) => {
                     return <div>
@@ -82,10 +96,7 @@ const StaticHTML = (prop) => {
                     borderRadius: borderRadiusLG,
                 }}
             >
-                <Divider style={{
-                    fontSize: '3em', fontStyle: 'italic', fontWeight: 'bold',
-                    borderColor: '#000000'
-                }}>互動科技解決方案</Divider>
+                <Divider style={diverStyle}>互動科技解決方案</Divider>
                 <Divider style={{
                     fontSize: '1em', fontStyle: 'italic', fontWeight: 'bold',
                     borderColor: '#ffffff'
@@ -135,10 +146,7 @@ const StaticHTML = (prop) => {
                 {/*        </Card>*/}
                 {/*    ))}*/}
                 {/*</Space>*/}
-                <Divider style={{
-                    fontSize: '3em', fontStyle: 'italic', fontWeight: 'bold',
-                    borderColor: '#000000'
-                }}>聲/光/機/神控制</Divider>
+                <Divider style={diverStyle}>聲/光/機/神控制</Divider>
                 <Divider style={{
                     fontSize: '1em', fontStyle: 'italic', fontWeight: 'bold',
                     borderColor: '#ffffff'
@@ -188,10 +196,7 @@ const StaticHTML = (prop) => {
                 {/*    ))}*/}
                 {/*</Space>*/}
 
-                <Divider style={{
-                    fontSize: '3em', fontStyle: 'italic', fontWeight: 'bold',
-                    borderColor: '#000000'
-                }}>電路PCB設計/伺服馬達/機械手臂規劃部署</Divider>
+                <Divider style={diverStyle}>RF電路/伺服馬達/機械手臂</Divider>
                 <Divider style={{
                     fontSize: '1em', fontStyle: 'italic', fontWeight: 'bold',
                     borderColor: '#ffffff'
@@ -226,10 +231,7 @@ const StaticHTML = (prop) => {
                 {/*        </Card>*/}
                 {/*    })}*/}
                 {/*</Space>*/}
-                <Divider style={{
-                    fontSize: '3em', fontStyle: 'italic', fontWeight: 'bold',
-                    borderColor: '#000000'
-                }}>ML/AI/軟體演算法設計</Divider>
+                <Divider style={diverStyle}>ML/AI/軟體演算法設計</Divider>
                 <Divider style={{
                     fontSize: '1em', fontStyle: 'italic', fontWeight: 'bold',
                     borderColor: '#ffffff'
