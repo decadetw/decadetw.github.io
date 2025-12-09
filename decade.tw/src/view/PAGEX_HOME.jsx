@@ -81,7 +81,7 @@ const StaticHTML = (prop) => {
                             <Image
                                 width={`100%`}
                                 alt="basic image"
-                                src={`slide/${e}.png`}
+                                src={`images/slide/${e}.png`}
                                 preview={{
                                     src: `slide/${e}.png`,
                                 }}
@@ -208,7 +208,7 @@ const StaticHTML = (prop) => {
                     gutter={16}
                     items={Array.from({length: 20}, (value, index) => index).map((img, index) => ({
                         key: `item-${index}`,
-                        data: `slide/${img}.png`,
+                        data: `images/slide/${img}.png`,
                     }))}
                     itemRender={({ data }) => (
                         <Image src={`${data}`} alt="sample" style={{ width: '100%' }} />
@@ -243,7 +243,7 @@ const StaticHTML = (prop) => {
                     gutter={8}
                     items={Array.from({length: 9}, (value, index) => index).map((img, index) => ({
                         key: `item-${index}`,
-                        data: `algorithmPic/${img}.png`,
+                        data: `images/algorithmPic/${img}.png`,
                     }))}
                     itemRender={({ data }) => (
                         <Image src={`${data}`} alt="sample" style={{ width: '100%' }} />

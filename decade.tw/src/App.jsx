@@ -181,7 +181,7 @@ function App() {
             <Header style={{width: '100%', backgroundColor: "black"}}>
                 <Flex align={'center'} justify={'space-between'}>
                     <div style={{ display: 'flex', alignItems: 'right' ,justifyContent: 'center' }}>
-                        <Image style={{height: '50px'}} src={`logo/decade_logo.png`} />
+                        <Image style={{height: '50px'}} src={`images/logo/decade_logo.png`} />
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
                     <Menu

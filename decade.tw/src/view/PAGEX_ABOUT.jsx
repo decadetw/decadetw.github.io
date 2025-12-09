@@ -80,7 +80,7 @@ const StaticHTML = () => {
                             踏進互動科技世界－使用Arduino，Massimo Banzi著，林義翔譯，旗標出版社，2009年</Card>
                     </Col>
                     <Col span={LRpercent} pull={24-LRpercent}>
-                        <Image style={{marginTop:'20vh'}} src={'logo/decade_logo.png'}></Image>
+                        <Image style={{marginTop:'20vh'}} src={'images/logo/decade_logo.png'}></Image>
                     </Col>
                 </Row>
             </div>

@@ -118,9 +118,9 @@ const StaticHTML = () => {
                                         <Image
                                             width={`100%`}
                                             alt="basic image"
-                                            src={`slide/${e}.png`}
+                                            src={`images/slide/${e}.png`}
                                             preview={{
-                                                src: `slide/${e}.png`,
+                                                src: `images/slide/${e}.png`,
                                             }}
                                         /></div>
                                 </div>

@@ -23,5 +23,5 @@ export default defineConfig({
             }
         }
     },
-    base: 'https://www.decade.tw/decade.tw/dist/',
+    basexxx: 'https://www.decade.tw/decade.tw/dist/',
 })

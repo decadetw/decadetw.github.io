@@ -59,7 +59,7 @@ const StaticHTML = () => {
 
                     </Col>
                     <Col span={9} pull={15}>
-                        <Image width={`100%`} src={`map/decade_map.jpg`}></Image>
+                        <Image width={`100%`} src={`images/map/decade_map.jpg`}></Image>
                     </Col>
                 </Row>
                 <Divider/>
