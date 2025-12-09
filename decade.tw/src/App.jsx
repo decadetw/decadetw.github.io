@@ -6,7 +6,8 @@ import React from 'react';
 // import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import {
-    AlertFilled, DownOutlined, EllipsisOutlined, FacebookOutlined, FileTextOutlined, FolderViewOutlined,
+    AlertFilled,
+    AppstoreOutlined, DownOutlined, EllipsisOutlined, FacebookOutlined, FileTextOutlined, FolderViewOutlined,
     FormOutlined, FundViewOutlined, GithubOutlined,
     LeftOutlined, MailOutlined,
     MenuUnfoldOutlined, MoreOutlined, PoweroffOutlined,
@@ -28,23 +29,23 @@ const {Header, Content, Footer} = Layout;
 const tabs = [{
     key: 'home',
     label: `首頁|Home`,
-    iconx: <AppOutline/>
+    icon: <AppOutline/>
 }, {
     key: 'blog',
     label: `部落格|News`,
-    iconx: <MenuUnfoldOutlined/>
+    icon: <StarFill/>
 }, {
     key: 'works',
     label: `案例|Works`,
-    iconx: <StarFill/>
+    icon: <AppstoreOutlined />
 }, {
     key: 'about',
     label: `關於|About`,
-    iconx: <MenuUnfoldOutlined/>
+    icon: <MenuUnfoldOutlined/>
 }, {
     key: 'contacts',
     label: `聯繫|Contacts`,
-    iconx: < MailOutlined/>
+    icon: < MailOutlined/>
 }];
 
 function BoardX(prop) {
