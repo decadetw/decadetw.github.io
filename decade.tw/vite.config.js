@@ -14,5 +14,14 @@ export default defineConfig({
         host: "0.0.0.0",
         allowedHosts:['xmax.local','localhost','xmax'],
     },
+    build: {
+        rollupOptions: {
+            output: {
+                entryFileNames: `assets/[name].js`, // For entry points
+                chunkFileNames: `assets/[name].js`, // For code-split chunks
+                assetFileNames: `assets/[name].[ext]` // For assets like CSS, images, etc.
+            }
+        }
+    },
     base: 'https://www.decade.tw/decade.tw/dist/',
 })
