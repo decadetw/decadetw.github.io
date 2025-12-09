@@ -14,5 +14,5 @@ export default defineConfig({
         host: "0.0.0.0",
         allowedHosts:['xmax.local','localhost','xmax'],
     },
-    basex: 'https://www.decade.tw/decade.tw/dist/',
+    base: 'https://www.decade.tw/decade.tw/dist/',
 })
