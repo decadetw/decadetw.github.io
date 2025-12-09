@@ -181,7 +181,7 @@ function App() {
             <Header style={{width: '100%', backgroundColor: "black"}}>
                 <Flex align={'center'} justify={'space-between'}>
                     <div style={{ display: 'flex', alignItems: 'right' ,justifyContent: 'center' }}>
-                        <Image style={{height: '50px'}} src={`images/logo/decade_logo.png`} />
+                        <Image onClick={()=>window.location.href = '/'} style={{height: '50px'}} src={`images/logo/decade_logo.png`} />
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
                     <Menu
@@ -190,7 +190,7 @@ function App() {
                         defaultSelectedKeys={[InitPageID]}
                         items={tabs}
                         style={{
-                            float: isMobile ? 'right' : 'right',
+                            float:  'right',
                             width: isMobile ? '1%' : '100%',
                         }}
                         onClick={onClickMenu}

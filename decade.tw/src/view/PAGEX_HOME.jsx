@@ -104,7 +104,7 @@ const StaticHTML = (prop) => {
                     borderColor: '#ffffff'
                 }}>提供展場軟硬體整合設計規劃；舞台燈光控制</Divider>
                 <Masonry
-                    columns={prop.isMobile?1:4}
+                    columns={prop.isMobile?2:4}
                     gutter={4}
                     items={list_content_youtube.map((img, index) => ({
                         key: `item-${index}`,
@@ -154,7 +154,7 @@ const StaticHTML = (prop) => {
                     borderColor: '#ffffff'
                 }}>軟/體/硬/電子電路/多媒體</Divider>
                 <Masonry
-                    columns={prop.isMobile?1:3}
+                    columns={prop.isMobile?2:3}
                     gutter={4}
                     items={list_content_algorithm_youtube.map((img, index) => ({
                         key: `item-${index}`,
@@ -204,7 +204,7 @@ const StaticHTML = (prop) => {
                     borderColor: '#ffffff'
                 }}>常設／半永久性裝置</Divider>
                 <Masonry
-                    columns={prop.isMobile?1:4}
+                    columns={prop.isMobile?2:4}
                     gutter={16}
                     items={Array.from({length: 20}, (value, index) => index).map((img, index) => ({
                         key: `item-${index}`,
@@ -239,7 +239,7 @@ const StaticHTML = (prop) => {
                     borderColor: '#ffffff'
                 }}>effect algorithm / model training / fineTune</Divider>
                 <Masonry
-                    columns={prop.isMobile?1:4}
+                    columns={prop.isMobile?2:4}
                     gutter={8}
                     items={Array.from({length: 9}, (value, index) => index).map((img, index) => ({
                         key: `item-${index}`,
