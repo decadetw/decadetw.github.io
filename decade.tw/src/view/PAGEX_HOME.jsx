@@ -1,6 +1,6 @@
 import React, {useEffect, memo} from "react";
 import {Button, Card, Carousel, Divider, Space, Image, Flex, theme, Typography, Masonry} from 'antd';
-import { Typing, TypingStep } from "typing-effect-reactjs";
+// import { Typing, TypingStep } from "typing-effect-reactjs";
 
 const {Meta} = Card;
 const contentStyle = {
@@ -61,13 +61,13 @@ const StaticHTML = (prop) => {
     const [alignItems, setAlignItems] = React.useState(alignOptions[0]);
     return (<>
             <div style={{height:'2em',margin:'0px',backgroundColor:'whitesmoke'}}>
-                <Typing element="h4" styleClass='typing_style'
-                    text={[
-                        `ＤＥＣＡＤＥ since 2008 (possesses ${new Date().getFullYear()-2008}years experience as a interactive artisan.)`,
-                        `ＤＥＣＡＤＥ.TW since 2008 (possesses ${new Date().getFullYear()-2008}years experience as a interactive artisan.)`,
-                    ]}
-                    smartBackspace
-                />
+                {/*<Typing element="h4" styleClass='typing_style'*/}
+                {/*    text={[*/}
+                {/*        `ＤＥＣＡＤＥ since 2008 (possesses ${new Date().getFullYear()-2008}years experience as a interactive artisan.)`,*/}
+                {/*        `ＤＥＣＡＤＥ.TW since 2008 (possesses ${new Date().getFullYear()-2008}years experience as a interactive artisan.)`,*/}
+                {/*    ]}*/}
+                {/*    smartBackspace*/}
+                {/*/>*/}
             </div>
             {/*<p style={{*/}
             {/*    textAlign:'center',*/}
