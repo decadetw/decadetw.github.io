@@ -42,6 +42,6 @@ export default defineConfig(({ command, mode }) =>{
                 },
             }
         },
-        base: isDev?'':'https://www.decade.tw/decade.tw/dist/',
+        basex: isDev?'':'https://www.decade.tw/decade.tw/dist/',
     };
 })
