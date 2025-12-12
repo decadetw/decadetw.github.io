@@ -8,6 +8,7 @@ export default defineConfig(({ command, mode }) =>{
 
     return {
         plugins: [react()],
+
         resolve: {
             preserveSymlinks: true,
         },
@@ -19,6 +20,7 @@ export default defineConfig(({ command, mode }) =>{
             allowedHosts:['xmax.local','localhost','xmax'],
         },
         build: {
+            outDir: '../docs',
             rollupOptions: {
                 output: {
                     entryFileNames: `assets/[name].js`, // For entry points

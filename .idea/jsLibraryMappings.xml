@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JavaScriptLibraryMappings">
+    <excludedPredefinedLibrary name="decadetw.github.io/serverWS/node_modules" />
+    <excludedPredefinedLibrary name="decadetw.github.io/vApp/node_modules" />
+  </component>
+</project>
