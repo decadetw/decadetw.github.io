@@ -10,7 +10,7 @@ import {
     AppstoreOutlined, DownOutlined, EllipsisOutlined, FacebookOutlined, FileTextOutlined, FolderViewOutlined,
     FormOutlined, FundViewOutlined, GithubOutlined,
     LeftOutlined, MailOutlined,
-    MenuUnfoldOutlined, MoreOutlined, PoweroffOutlined,
+    MenuUnfoldOutlined, MoreOutlined, PoweroffOutlined, ShoppingCartOutlined,
     SwapOutlined, SyncOutlined, TwitterOutlined,
     UserOutlined, YoutubeOutlined
 } from '@ant-design/icons'
@@ -18,51 +18,72 @@ import {
     AppOutline, StarFill,
     UnorderedListOutline,
 } from 'antd-mobile-icons'
-import {Button, Dropdown, Flex, FloatButton, Grid, Image, Layout, Menu, Space, theme} from 'antd';
+import {Button, ConfigProvider, Dropdown, Flex, FloatButton, Grid, Image, Layout, Menu, Space, theme} from 'antd';
 import PAGEX_HOME from "./view/PAGEX_HOME.jsx";
 import PAGEX_BLOG from "./view/PAGEX_BLOG.jsx";
 import PAGE_WORKS from "./view/PAGE_WORKS.jsx";
 import PAGEX_ABOUT from "./view/PAGEX_ABOUT.jsx";
 import PAGEX_CONTACT from "./view/PAGEX_CONTACT.jsx";
+import PAGEX_CART from "./view/PAGEX_CART.jsx";
 
 const {Header, Content, Footer} = Layout;
 const tabs = [{
     key: 'home',
     label: `首頁|Home`,
-    icon: <AppOutline/>
+    icon: <AppOutline/>,
+    danger:true,
+    disable:true,
+    p:<PAGEX_HOME isMobile={false}/>
 }, {
     key: 'blog',
     label: `部落格|News`,
-    icon: <StarFill/>
+    icon: <StarFill/>,
+    PAGE:<PAGEX_BLOG isMobile={false}/>
 }, {
     key: 'works',
     label: `案例|Works`,
-    icon: <AppstoreOutlined />
+    icon: <AppstoreOutlined />,
+    p:<PAGE_WORKS isMobile={false}/>
 }, {
     key: 'about',
     label: `關於|About`,
-    icon: <MenuUnfoldOutlined/>
-}, {
+    icon: <MenuUnfoldOutlined/>,
+    p:<PAGEX_ABOUT isMobile={false}/>
+},{
+    key: 'cart',
+    label: `購物車|Cart`,
+    icon: <ShoppingCartOutlined />,
+    p:<PAGEX_CART isMobile={false}/>
+},  {
     key: 'contacts',
     label: `聯繫|Contacts`,
-    icon: < MailOutlined/>
+    icon: < MailOutlined/>,
+    p:<PAGEX_CONTACT isMobile={false}/>
 }];
 
 function BoardX(prop) {
     // console.log("[App][BoardX][useStoreX.getState()]",InitPageID);
     // const pageID = useStoreX((state) => state.pageID);
+
     switch (prop.whichid) {
-        case tabs[0].key:
-            return (<PAGEX_HOME isMobile={prop.isMobile}/>)
-        case tabs[1].key:
-            return (<PAGEX_BLOG isMobile={prop.isMobile}/>)
-        case tabs[2].key:
-            return (<PAGE_WORKS isMobile={prop.isMobile}/>)
-        case tabs[3].key:
-            return (<PAGEX_ABOUT isMobile={prop.isMobile}/>)
-        case tabs[4].key:
-            return (<PAGEX_CONTACT isMobile={prop.isMobile}/>)
+        // case tabs[0].key:
+        //     return (<PAGEX_HOME isMobile={prop.isMobile}/>)
+        // case tabs[1].key:
+        //     return (<PAGEX_BLOG isMobile={prop.isMobile}/>)
+        // case tabs[2].key:
+        //     return (<PAGE_WORKS isMobile={prop.isMobile}/>)
+        // case tabs[3].key:
+        //     return (<PAGEX_ABOUT isMobile={prop.isMobile}/>)
+        // case tabs[4].key:
+        //     return (<PAGEX_CART isMobile={prop.isMobile}/>)
+        // case tabs[5].key:
+        //     return (<PAGEX_CONTACT isMobile={prop.isMobile}/>)
     }
+    let whichArr=[tabs[0]]
+    const r=tabs.filter((e)=>e.key===prop.whichid)
+    whichArr=r.length===1?r:whichArr
+    console.log('whichwhich=',whichArr)
+    return (whichArr[0].p)
 }
 
 let initTab = 'tab1'
@@ -98,7 +119,7 @@ function App() {
     console.log(`[DECADE.TW][][params]: ${params}`);
 
     for (const [key, value] of params.entries()) {
-        console.log(`[DECADE.TW][][]${key}: ${value}`);
+        console.log(`[DECADE.TW][][params.entries]${key}: ${value}`);
     }
     const initTab = params.entries()['tab'] === undefined ? 'home' : params.entries()['tab']
     const r = tabs.filter((e) => initTab === e.key)
@@ -182,20 +203,42 @@ function App() {
             <Header style={{width: '100%', backgroundColor: "black"}}>
                 <Flex align={'center'} justify={'space-between'}>
                     <div style={{ display: 'flex', alignItems: 'right' ,justifyContent: 'center' }}>
-                        <Image onClick={()=>window.location.href = '/'} style={{height: '50px'}} src={`images/logo/decade_logo.png`} />
+                        <Image onClick={()=>window.location.href = '/'}
+                               style={{height: '50px'}}
+                               src={`images/logo/decade_logo.png`} />
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                    <Menu
-                        mode="horizontal"
-                        theme="dark"
-                        defaultSelectedKeys={[InitPageID]}
-                        items={tabs}
-                        style={{
-                            float:  'right',
-                            width: isMobile ? '1%' : '100%',
-                        }}
-                        onClick={onClickMenu}
-                    />
+                        <ConfigProvider
+                            theme={{
+
+                                components: {
+                                    Menu: {
+                                        algorithm: theme.defaultAlgorithm,
+                                        collapsedIconSize:2222,
+                                        collapsedWidth:2222,
+                                        darkItemBg:'#aa0000',
+                                        colorPrimary: '#00b96b',
+                                        activeBarBorderWidth:11
+                                    },
+                                },
+                            }}
+                        >
+                            <Menu
+                                mode="horizontal"
+                                inlineCollapsed={false}
+                                inlineIndent={1}
+                                theme="dark"
+                                defaultSelectedKeys={[InitPageID]}
+                                items={tabs}
+                                style={{
+                                    // rootStyle: {width:'1011px'},
+                                    float:  'right',
+                                    width: isMobile ? '1%' : '100%',
+                                }}
+                                onClick={onClickMenu}
+                            />
+                        </ConfigProvider>
+
                     </div>
                 </Flex>
 

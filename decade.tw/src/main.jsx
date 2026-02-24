@@ -7,11 +7,12 @@ import {BrowserRouter, Routes, Route} from 'react-router';
 createRoot(document.getElementById('root')).render(
     <StrictMode>
         {/*<App key={`${new Date().toISOString()}`} initTab={initTab}/>*/}
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<App/>}/>
-                <Route path="*" element={<App/>}/>
-            </Routes>
-        </BrowserRouter>
+        <App/>
+        {/*<BrowserRouter>*/}
+        {/*    <Routes>*/}
+        {/*        <Route path="/" element={<App/>}/>*/}
+        {/*        <Route path="*" element={<App/>}/>*/}
+        {/*    </Routes>*/}
+        {/*</BrowserRouter>*/}
     </StrictMode>
 )
