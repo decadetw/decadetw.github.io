@@ -1,14 +1,27 @@
 import {defineConfig} from 'vite'
+import Sitemap from 'vite-plugin-sitemap'
+
 import react from '@vitejs/plugin-react'
 const INVALID_CHAR_REGEX = /[\u0000-\u001F"#$&*+,:;<=>?[\]^`{|}\u007F]/g;
 const DRIVE_LETTER_REGEX = /^[a-z]:/i;
 // https://vite.dev/config/
+const names = [
+    'home',
+    'blog',
+    'works',
+    'about','contacts'
+]
+const dynamicRoutes = names.map(name => `/${name}`)
 export default defineConfig(({ command, mode }) =>{
     const isDev = mode === 'development';
 
     return {
-        plugins: [react()],
+        plugins: [
+            react(),
+            Sitemap({ hostname:'https://decade.tw',dynamicRoutes:dynamicRoutes }),
+            // Sitemap({ hostname: 'https://decade.tw' }),
 
+        ],
         resolve: {
             preserveSymlinks: true,
         },
@@ -17,11 +30,11 @@ export default defineConfig(({ command, mode }) =>{
             port: 8888,
             open: false,
             host: "0.0.0.0",
-            allowedHosts:['xmax.local','localhost','xmax'],
+            allowedHosts:['decade.tw','localhost','www.decade.tw'],
         },
         build: {
-            outDir: '../docs',
-            rollupOptions: {
+        outDir: '../docs',
+        rollupOptions: {
                 output: {
                     entryFileNames: `assets/[name].js`, // For entry points
                     chunkFileNames: `assets/[name].js`, // For code-split chunks
