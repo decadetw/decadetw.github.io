@@ -3,16 +3,6 @@ import {Button, Card, Carousel, Divider, Space, Image, Flex, theme, Typography, 
 // import { Typing, TypingStep } from "typing-effect-reactjs";
 
 const {Meta} = Card;
-const contentStyle = {
-    margin: 0,
-    padding: 0,
-    // height: '660px',
-    width: '100%',
-    color: '#fff',
-    lineHeight: '160px',
-    textAlign: 'center',
-    background: '#000',
-};
 
 const list_content_youtube = [
     {t: '基隆山海鳴光', d: '', url: 'https://www.youtube.com/embed/GGZHxkKLopg?feature=oembed&showinfo=0&controls=0'},
@@ -74,19 +64,29 @@ const StaticHTML = (prop) => {
             {/*    fontSize: '1em', fontStyle: 'italic', fontWeight: 'bold',*/}
             {/*    borderColor: '#ffffff'*/}
             {/*}}> ＤＥＣＡＤＥ.TW since 2008 (possesses {new Date().getFullYear()-2008}years experience as a interactive artisan.)</p>*/}
-            <Carousel autoplay arrows>
-                {Array.from({length: 21}, (value, index) => index).map((e) => {
-                    return <div>
-                        <div style={contentStyle}>
+            <Carousel dotPlacement={'bottom'} autoplay arrows style={{height: '100%', width: '100%'}}>
+                {[31,32,33,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20].map((e) => {
+                    return <>
+                        <div style={{
+                            // margin: 0,
+                            // padding: 0,
+                            // height: '99%',
+                            // width: '100%',
+                            color: '#f00',
+                            // lineHeight: '160px',
+                            // textAlign: 'center',
+                            background: '#000',
+                        }}>
                             <Image
-                                width={`100%`}
-                                alt="basic image"
+                                width={`100vw`}
+                                height={`80vh`}
+                                // alt="basic image"
                                 src={`images/slide/${e}.png`}
                                 preview={{
-                                    src: `slide/${e}.png`,
+                                    src: `images/slide/${e}.png`,
                                 }}
                             /></div>
-                    </div>
+                    </>
                 })}
 
             </Carousel>
