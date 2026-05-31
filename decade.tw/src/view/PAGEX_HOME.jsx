@@ -2,6 +2,7 @@ import React, {useEffect, memo} from "react";
 import {Button, Card, Carousel, Divider, Space, Image, Flex, theme, Typography, Masonry} from 'antd';
 // import { Typing, TypingStep } from "typing-effect-reactjs";
 
+
 const {Meta} = Card;
 
 const list_content_youtube = [
@@ -50,37 +51,41 @@ const StaticHTML = (prop) => {
     const [justify, setJustify] = React.useState(justifyOptions[3]);
     const [alignItems, setAlignItems] = React.useState(alignOptions[0]);
     return (<>
+
             <div style={{height:'2em',margin:'0px',backgroundColor:'whitesmoke'}}>
-                {/*<Typing element="h4" styleClass='typing_style'*/}
-                {/*    text={[*/}
-                {/*        `ＤＥＣＡＤＥ since 2008 (possesses ${new Date().getFullYear()-2008}years experience as a interactive artisan.)`,*/}
-                {/*        `ＤＥＣＡＤＥ.TW since 2008 (possesses ${new Date().getFullYear()-2008}years experience as a interactive artisan.)`,*/}
-                {/*    ]}*/}
-                {/*    smartBackspace*/}
-                {/*/>*/}
+            {/*    <Typing element="h4" styleClass='typing_style'*/}
+            {/*        text={[*/}
+            {/*            `ＤＥＣＡＤＥ since 2008 (possesses ${new Date().getFullYear()-2008}years experience as a interactive artisan.)`,*/}
+            {/*            `ＤＥＣＡＤＥ.TW since 2008 (possesses ${new Date().getFullYear()-2008}years experience as a interactive artisan.)`,*/}
+            {/*        ]}*/}
+            {/*        smartBackspace*/}
+            {/*    />*/}
+
             </div>
             {/*<p style={{*/}
             {/*    textAlign:'center',*/}
             {/*    fontSize: '1em', fontStyle: 'italic', fontWeight: 'bold',*/}
             {/*    borderColor: '#ffffff'*/}
             {/*}}> ＤＥＣＡＤＥ.TW since 2008 (possesses {new Date().getFullYear()-2008}years experience as a interactive artisan.)</p>*/}
-            <Carousel dotPlacement={'bottom'} autoplay arrows style={{height: '100%', width: '100%'}}>
+            <Carousel dotPlacement={'bottom'} autoplay arrows style={{background: '#000',height: '100%', width: '100%'}}>
                 {[31,32,33,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20].map((e) => {
                     return <>
                         <div style={{
                             // margin: 0,
                             // padding: 0,
-                            // height: '99%',
-                            // width: '100%',
+
+                            // height: '50vh',
+                            // width: '100vw',
                             color: '#f00',
                             // lineHeight: '160px',
                             // textAlign: 'center',
                             background: '#000',
                         }}>
                             <Image
-                                width={`100vw`}
-                                height={`80vh`}
+                                // width={`100vw`}
+                                // height={`80vh`}
                                 // alt="basic image"
+                                style={{width: '100vw', height: 'auto',alignSelf:'center'}}
                                 src={`images/slide/${e}.png`}
                                 preview={{
                                     src: `images/slide/${e}.png`,
@@ -98,19 +103,21 @@ const StaticHTML = (prop) => {
                     borderRadius: borderRadiusLG,
                 }}
             >
+                
+                {`isMobile=${prop.isMobile}`}
                 <Divider style={diverStyle}>互動科技解決方案</Divider>
                 <Divider style={{
                     fontSize: '1em', fontStyle: 'italic', fontWeight: 'bold',
                     borderColor: '#ffffff'
                 }}>提供展場軟硬體整合設計規劃；舞台燈光控制</Divider>
                 <Masonry
-                    columns={prop.isMobile?2:4}
+                    columns={prop.isMobile ? 2 : 4}
                     gutter={4}
                     items={list_content_youtube.map((img, index) => ({
                         key: `item-${index}`,
                         data: img,
                     }))}
-                    itemRender={({ data }) => (
+                    itemRender={({data}) => (
                         <Card hoverable
                             // style={{width: `${100/3.2}vw`,}}
                               cover={<div className="wrapper">
@@ -154,27 +161,29 @@ const StaticHTML = (prop) => {
                     borderColor: '#ffffff'
                 }}>軟/體/硬/電子電路/多媒體</Divider>
                 <Masonry
-                    columns={prop.isMobile?2:3}
+                    columns={prop.isMobile ? 2 : 3}
                     gutter={4}
                     items={list_content_algorithm_youtube.map((img, index) => ({
                         key: `item-${index}`,
                         data: img,
                     }))}
-                    itemRender={({ data }) => (
-                                <Card hoverable
-                                  // style={{width: `${100/3.2}vw`,}}
-                                  cover={<div className="wrapper">
-                                      <div className="frame-container">
-                                          <iframe height="315"
-                                                  src={data.url}
-                                                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                  referrerPolicy="strict-origin-when-cross-origin"
-                                                  allowFullScreen></iframe>
-                                      </div>
+                    itemRender={({data}) => (
+                        <Card hoverable
+                            // style={{width: `${100/3.2}vw`,}}
+                              cover={<div className="wrapper">
+                                  <div className="frame-container">
+
+                                      <iframe className="aspect-video "
+                                          // height="315"
+                                              src={data.url}
+                                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                              referrerPolicy="strict-origin-when-cross-origin"
+                                              allowFullScreen></iframe>
                                   </div>
-                                  }>
-                                <Meta title={data.t} description={data.d}/>
-                            </Card>
+                              </div>
+                              }>
+                            <Meta title={data.t} description={data.d}/>
+                        </Card>
                     )}
                 />
                 {/*<Space wrap gap="small" justify={justify} align={alignItems}>*/}
@@ -204,14 +213,14 @@ const StaticHTML = (prop) => {
                     borderColor: '#ffffff'
                 }}>常設／半永久性裝置</Divider>
                 <Masonry
-                    columns={prop.isMobile?2:4}
+                    columns={prop.isMobile ? 2 : 4}
                     gutter={16}
                     items={Array.from({length: 20}, (value, index) => index).map((img, index) => ({
                         key: `item-${index}`,
                         data: `images/slide/${img}.png`,
                     }))}
-                    itemRender={({ data }) => (
-                        <Image src={`${data}`} alt="sample" style={{ width: '100%' }} />
+                    itemRender={({data}) => (
+                        <Image src={`${data}`} alt="sample" style={{width: '100%'}}/>
                     )}
                 />
                 {/*<Space wrap gap="small" justify={justify} align={alignItems}>*/}
@@ -239,14 +248,14 @@ const StaticHTML = (prop) => {
                     borderColor: '#ffffff'
                 }}>effect algorithm / model training / fineTune</Divider>
                 <Masonry
-                    columns={prop.isMobile?2:4}
+                    columns={prop.isMobile ? 2 : 4}
                     gutter={8}
                     items={Array.from({length: 9}, (value, index) => index).map((img, index) => ({
                         key: `item-${index}`,
                         data: `images/algorithmPic/${img}.png`,
                     }))}
-                    itemRender={({ data }) => (
-                        <Image src={`${data}`} alt="sample" style={{ width: '100%' }} />
+                    itemRender={({data}) => (
+                        <Image src={`${data}`} alt="sample" style={{width: '100%'}}/>
                     )}
                 />
                 {/*<Space wrap gap="small" justify={justify} align={alignItems}>*/}

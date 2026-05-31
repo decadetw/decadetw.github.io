@@ -1,6 +1,6 @@
 import {defineConfig} from 'vite'
 import Sitemap from 'vite-plugin-sitemap'
-
+import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
 const INVALID_CHAR_REGEX = /[\u0000-\u001F"#$&*+,:;<=>?[\]^`{|}\u007F]/g;
 const DRIVE_LETTER_REGEX = /^[a-z]:/i;
@@ -18,6 +18,8 @@ export default defineConfig(({ command, mode }) =>{
     return {
         plugins: [
             react(),
+            tailwindcss(),
+
             Sitemap({ hostname:'https://decade.tw',dynamicRoutes:dynamicRoutes }),
             // Sitemap({ hostname: 'https://decade.tw' }),
 
