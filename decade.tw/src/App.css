@@ -54,6 +54,7 @@ body{
     position: relative;
     padding-bottom: 56.25%; /* 16:9 */
     padding-top: 25px;
+
     width: 120%; /* enlarge beyond browser width */
     left: -15%; /* center */
 }
@@ -63,10 +64,11 @@ body{
     top: -45px;
     left: 0;
     width: 100%;
+    height: 120%;
 }
 .wrapper {
     overflow: hidden;
-    max-width: 100%;
+    /*max-width: 100%;*/
 }
 .ant-header  {
     background-color: black;

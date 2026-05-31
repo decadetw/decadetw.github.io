@@ -103,8 +103,8 @@ const StaticHTML = (prop) => {
                     borderRadius: borderRadiusLG,
                 }}
             >
-                
-                {`isMobile=${prop.isMobile}`}
+
+
                 <Divider style={diverStyle}>互動科技解決方案</Divider>
                 <Divider style={{
                     fontSize: '1em', fontStyle: 'italic', fontWeight: 'bold',
@@ -120,17 +120,18 @@ const StaticHTML = (prop) => {
                     itemRender={({data}) => (
                         <Card hoverable
                             // style={{width: `${100/3.2}vw`,}}
-                              cover={<div className="wrapper">
-                                  <div className="frame-container">
-                                      <iframe height="315"
-                                              src={data.url}
-                                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                              referrerPolicy="strict-origin-when-cross-origin"
-                                              allowFullScreen></iframe>
-                                  </div>
-                              </div>
-                              }>
-                            <Meta title={data.t} description={data.d}/>
+                            title={data.t}
+                              >
+                            <div className="wrapper">
+                                <div className="frame-container">
+                                    <iframe
+                                            src={data.url}
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                            referrerPolicy="strict-origin-when-cross-origin"
+                                            allowFullScreen></iframe>
+                                </div>
+                            </div>
+                            {/*<Meta title={data.t} description={data.d}/>*/}
                         </Card>
                     )}
                 />
@@ -170,6 +171,7 @@ const StaticHTML = (prop) => {
                     itemRender={({data}) => (
                         <Card hoverable
                             // style={{width: `${100/3.2}vw`,}}
+                            title={data.t}
                               cover={<div className="wrapper">
                                   <div className="frame-container">
 
