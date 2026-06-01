@@ -35,7 +35,9 @@ export default defineConfig(({ command, mode }) =>{
             allowedHosts:['decade.tw','localhost','www.decade.tw'],
         },
         build: {
-        outDir: '../docs',
+        outDir2: '../docs',
+            outDir: 'build',
+
         rollupOptions: {
                 output: {
                     entryFileNames: `assets/[name].js`, // For entry points
