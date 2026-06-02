@@ -116,14 +116,17 @@ function App() {
     );
 
     useEffect(() => {
-        // const callback=() => {
-            // console.log(`New Orientation: ${screen.orientation.type}`);
-            setisMobile(screen.orientation.angle ===0)
-            console.log(`isMobile: ${isMobile} ${screen.orientation.angle} ${screen.orientation.type}`);
-        // }
-        // screen.orientation.addEventListener("change", callback);
-        // return () => screen.orientation?.removeEventListener('change', callback);
-    }, [screen.orientation.angle]);
+        setisMobile(window.innerWidth<1280)
+    }, [window.innerWidth]);
+    // useEffect(() => {
+    //     // const callback=() => {
+    //         // console.log(`New Orientation: ${screen.orientation.type}`);
+    //         setisMobile(screen.orientation.angle ===0)
+    //         console.log(`isMobile: ${isMobile} ${screen.orientation.angle} ${screen.orientation.type}`);
+    //     // }
+    //     // screen.orientation.addEventListener("change", callback);
+    //     // return () => screen.orientation?.removeEventListener('change', callback);
+    // }, [screen.orientation.angle]);
 
 
     return (

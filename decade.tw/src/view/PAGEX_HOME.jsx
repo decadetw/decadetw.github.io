@@ -118,10 +118,10 @@ const StaticHTML = (prop) => {
                         data: img,
                     }))}
                     itemRender={({data}) => (
-                        <Card hoverable
-                            // style={{width: `${100/3.2}vw`,}}
-                            title={data.t}
-                              >
+                        // <Card hoverable
+                        //     // style={{width: `${100/3.2}vw`,}}
+                        //     title={data.t}
+                        //       >
                             <div className="wrapper">
                                 <div className="frame-container">
                                     <iframe
@@ -130,9 +130,10 @@ const StaticHTML = (prop) => {
                                             referrerPolicy="strict-origin-when-cross-origin"
                                             allowFullScreen></iframe>
                                 </div>
+                                <Meta title={data.t} description={data.d}/>
                             </div>
-                            {/*<Meta title={data.t} description={data.d}/>*/}
-                        </Card>
+
+                        // </Card>
                     )}
                 />
                 {/*<Space wrap gap="small" justify={justify} align={alignItems}>*/}
@@ -169,12 +170,12 @@ const StaticHTML = (prop) => {
                         data: img,
                     }))}
                     itemRender={({data}) => (
-                        <Card hoverable
-                            // style={{width: `${100/3.2}vw`,}}
-                            title={data.t}
-                              cover={<div className="wrapper">
+                        // <Card hoverable
+                        //     // style={{width: `${100/3.2}vw`,}}
+                        //     title={data.t}
+                        //       cover={
+                                <div className="wrapper">
                                   <div className="frame-container">
-
                                       <iframe className="aspect-video "
                                           // height="315"
                                               src={data.url}
@@ -182,10 +183,10 @@ const StaticHTML = (prop) => {
                                               referrerPolicy="strict-origin-when-cross-origin"
                                               allowFullScreen></iframe>
                                   </div>
+                                    <Meta title={data.t} description={data.d}/>
                               </div>
-                              }>
-                            <Meta title={data.t} description={data.d}/>
-                        </Card>
+                        //       }>
+                        // </Card>
                     )}
                 />
                 {/*<Space wrap gap="small" justify={justify} align={alignItems}>*/}
