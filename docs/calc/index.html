@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/calc/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CALC - decade.tw</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0f;
+            color: #e8e8ef;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 48px 24px;
+        }
+
+        header { text-align: center; margin-bottom: 48px; }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #6ee7b7, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header p { margin-top: 8px; color: #9ca3af; font-size: 1.05rem; }
+
+        .card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+        }
+
+        .input-group { display: flex; align-items: center; gap: 16px; margin-bottom: 20px; }
+
+        label { font-size: 0.9rem; color: #9ca3af; min-width: 80px; }
+
+        input[type="number"] {
+            flex: 1;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 14px 18px;
+            font-size: 1.3rem;
+            color: #e8e8ef;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        input[type="number"]:focus {
+            border-color: rgba(99,179,230,0.5);
+            box-shadow: 0 0 0 3px rgba(99,179,230,0.15);
+        }
+
+        input[type="number"]::-webkit-inner-spin-button { opacity: 0.6; }
+
+        .rate-selector { display: flex; gap: 8px; margin-bottom: 24px; }
+
+        .rate-btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.04);
+            color: #9ca3af;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .rate-btn.active {
+            background: rgba(99,179,230,0.12);
+            border-color: rgba(99,179,230,0.4);
+            color: #63b3e6;
+        }
+
+        .rate-btn:hover { border-color: rgba(255,255,255,0.2); }
+
+        .result-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .result-row:last-child { border-bottom: none; }
+
+        .result-label { color: #9ca3af; font-size: 0.95rem; }
+
+        .result-value {
+            font-size: 1.2rem;
+            font-weight: 600;
+            font-variant-numeric: tabular-nums;
+        }
+
+        .result-value.total { color: #6ee7b7; font-size: 1.5rem; }
+        .result-value.tax { color: #f472b6; }
+
+        .total-row { margin-top: 8px; padding-top: 16px; border-top: 2px solid rgba(99,179,230,0.2); }
+
+        .info-row { opacity: 0.75; font-size: 0.85rem; }
+        .info-row .result-label { font-size: 0.8rem; }
+        .info-row .result-value { font-size: 1rem; color: #63b3e6; }
+
+        .section-title {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #63b3e6;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .dual-section { display: flex; gap: 24px; margin-top: 24px; }
+        .dual-col { flex: 1; background: rgba(255,255,255,0.03); border-radius: 12px; padding: 20px; }
+        .dual-col h3 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color: #63b3e6; margin-bottom: 14px; font-weight: 600; }
+        .dual-col .result-row { padding: 10px 0; }
+
+        .quick-presets { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 24px; }
+
+        .preset-btn {
+            padding: 10px 18px;
+            border-radius: 999px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: transparent;
+            color: #d1d5db;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .preset-btn:hover { background: rgba(99,179,230,0.1); border-color: rgba(99,179,230,0.3); }
+
+        footer { text-align: center; margin-top: 48px; color: #6b7280; font-size: 0.85rem; }
+        footer a { color: #63b3e6; text-decoration: none; }
+    </style>
+</head>
+<body>
+<div id="root">
+    <div class="container">
+        <header>
+            <h1>CALC - decade.tw</h1>
+            <p>零、壹、貳、參、肆、伍、陸、柒、捌、玖</p>
+        </header>
+
+        <div class="card">
+            <label for="amount-input">Amount</label>
+            <input id="amount-input" type="number" value="1000" />
+
+            <div class="rate-selector" id="rate-selector"></div>
+
+            <div class="section-title">Breakdown</div>
+            <div class="result-row"><span class="result-label" id="subtotal-label">Subtotal</span><span class="result-value" id="subtotal-val">$0.00</span></div>
+            <div class="result-row"><span class="result-label" id="tax-label">Tax (5%)</span><span class="result-value tax" id="tax-val">$0.00</span></div>
+            <div class="result-row total-row"><span class="result-label">Total </span><span class="result-value total" id="total-val">$0.00</span></div>
+            零、壹、貳、參、肆、伍、陸、柒、捌、玖
+        </div>
+
+        <div class="dual-section">
+            <div class="dual-col">
+                <h3>含稅價 (Include 5%)</h3>
+                <div class="result-row"><span class="result-label" id="inc-ut-label">未稅價</span><span class="result-value" id="inc-ut-val">$0.00</span></div>
+                <div class="result-row"><span class="result-label" id="inc-tax-label">稅額 (5%)</span><span class="result-value tax" id="inc-tax-val">$0.00</span></div>
+                <div class="result-row total-row"><span class="result-label">含稅價</span><span class="result-value total" id="inc-total-val">$0.00</span></div>
+            </div>
+            <div class="dual-col">
+                <h3>未稅價 (Exclude 5%)</h3>
+                <div class="result-row"><span class="result-label">未稅價</span><span class="result-value" id="exc-ut-val">$0.00</span></div>
+                <div class="result-row"><span class="result-label" id="exc-tax-label">稅額 (5%)</span><span class="result-value tax" id="exc-tax-val">$0.00</span></div>
+                <div class="result-row total-row"><span class="result-label">含稅價</span><span class="result-value total" id="exc-total-val">$0.00</span></div>
+            </div>
+        </div>
+
+        <div class="quick-presets" id="presets"></div>
+
+        <footer><a href="/">← decade.tw</a></footer>
+    </div>
+</div>
+
+<script>
+const TAX_RATES = [5, 7, 10, 13, 15, 20];
+let taxRateIdx = 0;
+let amount = 1000;
+
+function fmt(n) { return '$' + n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
+
+function render() {
+    const rate = TAX_RATES[taxRateIdx] / 100;
+    const tax = amount * rate;
+    const total = amount + tax;
+    const net = amount / (1 + rate);
+
+    document.getElementById('tax-label').textContent = 'Tax (' + TAX_RATES[taxRateIdx] + '%)';
+    document.getElementById('subtotal-val').textContent = fmt(Math.round(net));
+    document.getElementById('tax-val').textContent = fmt(Math.round(tax));
+    document.getElementById('total-val').textContent = fmt(total);
+
+    // Include 5%: amount is the final price (含稅價), back-calculate pre-tax
+    const incTaxRate = TAX_RATES[taxRateIdx] / 100;
+    const incUt = Math.round(amount / (1 + incTaxRate));
+    const incTax = amount - incUt;
+
+    // Exclude 5%: amount is the pre-tax price (未稅價), add tax on top
+    const excUt = amount;
+    const excTax = Math.round(amount * incTaxRate);
+    const excTotal = amount + excTax;
+
+    document.getElementById('inc-ut-val').textContent = fmt(incUt);
+    document.getElementById('inc-tax-val').textContent = fmt(incTax);
+    document.getElementById('inc-total-val').textContent = fmt(amount);
+
+    document.getElementById('exc-ut-val').textContent = fmt(excUt);
+    document.getElementById('exc-tax-val').textContent = fmt(excTax);
+    document.getElementById('exc-total-val').textContent = fmt(excTotal);
+
+    document.querySelectorAll('.rate-btn').forEach((btn, i) => {
+        btn.classList.toggle('active', i === taxRateIdx);
+    });
+}
+
+document.getElementById('amount-input').addEventListener('input', e => {
+    amount = Math.max(0, Number(e.target.value) || 0);
+    render();
+});
+
+const rateSelector = document.getElementById('rate-selector');
+TAX_RATES.forEach((r, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'rate-btn';
+    btn.textContent = r + '%';
+    btn.addEventListener('click', () => { taxRateIdx = i; render(); });
+    rateSelector.appendChild(btn);
+});
+
+const presets = [ 100,1000,10000,100000,1000000];
+const presetsEl = document.getElementById('presets');
+presets.forEach(p => {
+    const btn = document.createElement('button');
+    btn.className = 'preset-btn';
+    btn.textContent = '$' + p.toLocaleString();
+    btn.addEventListener('click', () => { amount = p; document.getElementById('amount-input').value = p; render(); });
+    presetsEl.appendChild(btn);
+});
+
+render();
+</script>
+</body>
+</html>
