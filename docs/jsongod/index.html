@@ -92,12 +92,17 @@
   .slice-preview .match { color: #3fb950; font-weight: 600; }
 
   .kbd { background: #21262d; border: 1px solid #30363d; padding: 1px 5px; border-radius: 4px; font-size: 11px; color: #8b949e; }
+
+  .inline-panel { background: #161b22; border-bottom: 1px solid #30363d; flex-shrink: 0; overflow: hidden; transition: max-height 0.2s ease; max-height: 0; }
+  .inline-panel.open { max-height: 400px; }
+  .panel-header { padding: 8px 20px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid #21262d; font-size: 11px; color: #8b949e; text-transform: uppercase; letter-spacing: 0.5px; }
+  .panel-body { padding: 12px 20px; display: flex; flex-direction: column; gap: 8px; }
 </style>
 </head>
 <body>
 
 <header>
-  <h1>JSON God JSON/JSONL Trainer Data Manager</h1>
+  <h1>2 JSON/JSONL Trainer Data Manager</h1>
   <div class="stats" id="stats">No file loaded</div>
 </header>
 
@@ -106,11 +111,118 @@
   <button onclick="newFile()">New</button>
   <button class="blue" onclick="saveFile()">Save</button>
   <button onclick="exportAs()">Export As...</button>
-  <button class="orange" onclick="openSlice()">Slice Export</button>
-  <button class="orange" onclick="openFilterModal()">Filter View</button>
+  <button class="orange" id="filterToggle" onclick="togglePanel('filter')">Filter</button>
+  <button class="orange" id="sliceToggle" onclick="togglePanel('slice')">Slice Export</button>
   <input type="text" id="search" placeholder="Search entries... (Ctrl+F)" oninput="filterEntries()">
   <div style="margin-left:auto; display:flex; gap:8px;">
     <button onclick="addEntry()">+ Add Entry</button>
+  </div>
+</div>
+
+<div class="inline-panel" id="filterPanel">
+  <div class="panel-header">
+    <span>Filter Entries (real-time)</span>
+    <button class="danger" onclick="clearFilter()" style="font-size:10px;padding:2px 8px;">Clear</button>
+  </div>
+  <div class="slice-tabs" id="filterTabs">
+    <button class="slice-tab active" data-tab="field" onclick="switchFilterTab('field')">By Field Value</button>
+    <button class="slice-tab" data-tab="index" onclick="switchFilterTab('index')">By Array Index</button>
+    <button class="slice-tab" data-tab="line" onclick="switchFilterTab('line')">By Line Number</button>
+  </div>
+  <div class="panel-body">
+    <div class="slice-panel active" id="filterField">
+      <div class="slice-row">
+        <label>Field</label>
+        <input type="text" id="filterFieldName" placeholder="e.g. FRAME_NOW" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;" oninput="applyFilter()">
+      </div>
+      <div class="slice-row">
+        <label>Greater &ge;</label>
+        <input type="number" id="filterFieldGte" placeholder="min value" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;" oninput="applyFilter()">
+      </div>
+      <div class="slice-row">
+        <label>Less &le;</label>
+        <input type="number" id="filterFieldLte" placeholder="max value" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;" oninput="applyFilter()">
+      </div>
+    </div>
+    <div class="slice-panel" id="filterIndex">
+      <div class="slice-row">
+        <label>Greater &ge;</label>
+        <input type="number" id="filterIdxGte" placeholder="0" min="0" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;" oninput="applyFilter()">
+      </div>
+      <div class="slice-row">
+        <label>Less &le;</label>
+        <input type="number" id="filterIdxLte" placeholder="last" min="0" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;" oninput="applyFilter()">
+      </div>
+      <div style="font-size:11px;color:#484f58;">0-indexed array position. Leave less ≤ empty for all remaining.</div>
+    </div>
+    <div class="slice-panel" id="filterLine">
+      <div class="slice-row">
+        <label>Greater &ge;</label>
+        <input type="number" id="filterLineGte" placeholder="1" min="1" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;" oninput="applyFilter()">
+      </div>
+      <div class="slice-row">
+        <label>Less &le;</label>
+        <input type="number" id="filterLineLte" placeholder="last" min="1" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;" oninput="applyFilter()">
+      </div>
+      <div style="font-size:11px;color:#484f58;">1-indexed line numbers. Leave less ≤ empty for all remaining.</div>
+    </div>
+  </div>
+</div>
+
+<div class="inline-panel" id="slicePanel">
+  <div class="panel-header">
+    <span>Slice &amp; Export Subset</span>
+  </div>
+  <div class="slice-tabs" id="sliceTabs">
+    <button class="slice-tab active" data-tab="field" onclick="switchSliceTab('field')">By Field Value</button>
+    <button class="slice-tab" data-tab="index" onclick="switchSliceTab('index')">By Array Index</button>
+    <button class="slice-tab" data-tab="line" onclick="switchSliceTab('line')">By Line Number</button>
+  </div>
+  <div class="panel-body">
+    <div class="slice-panel active" id="sliceField">
+      <div class="slice-row">
+        <label>Field</label>
+        <input type="text" id="sliceFieldName" placeholder="e.g. FRAME_NOW" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;" oninput="updateSlicePreview()">
+      </div>
+      <div class="slice-row">
+        <label>Greater &ge;</label>
+        <input type="number" id="sliceFieldGte" placeholder="min value" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;" oninput="updateSlicePreview()">
+      </div>
+      <div class="slice-row">
+        <label>Less &le;</label>
+        <input type="number" id="sliceFieldLte" placeholder="max value" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;" oninput="updateSlicePreview()">
+      </div>
+    </div>
+    <div class="slice-panel" id="sliceIndex">
+      <div class="slice-row">
+        <label>Greater &ge;</label>
+        <input type="number" id="sliceIdxGte" placeholder="0" min="0" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;" oninput="updateSlicePreview()">
+      </div>
+      <div class="slice-row">
+        <label>Less &le;</label>
+        <input type="number" id="sliceIdxLte" placeholder="last" min="0" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;" oninput="updateSlicePreview()">
+      </div>
+      <div style="font-size:11px;color:#484f58;">0-indexed array position. Leave less ≤ empty for all remaining.</div>
+    </div>
+    <div class="slice-panel" id="sliceLine">
+      <div class="slice-row">
+        <label>Greater &ge;</label>
+        <input type="number" id="sliceLineGte" placeholder="1" min="1" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;" oninput="updateSlicePreview()">
+      </div>
+      <div class="slice-row">
+        <label>Less &le;</label>
+        <input type="number" id="sliceLineLte" placeholder="last" min="1" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;" oninput="updateSlicePreview()">
+      </div>
+      <div style="font-size:11px;color:#484f58;">1-indexed line numbers. Leave less ≤ empty for all remaining.</div>
+    </div>
+    <div class="slice-preview" id="slicePreview">Enter criteria to see match count</div>
+    <div style="display:flex;gap:8px;align-items:center;margin-top:4px;">
+      <select id="sliceFormat" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;">
+        <option value="jsonl">JSON Lines (.jsonl)</option>
+        <option value="json">JSON Array (.json)</option>
+      </select>
+      <button class="primary" onclick="doSlice()">Export Slice</button>
+    </div>
   </div>
 </div>
 
@@ -192,128 +304,6 @@
     <div class="modal-actions">
       <button onclick="closeModal('addFieldModal')">Cancel</button>
       <button class="primary" onclick="confirmAddField()">Add</button>
-    </div>
-  </div>
-</div>
-
-<div class="modal-bg" id="filterModal">
-  <div class="modal" style="width:560px;">
-    <h2>Filter Entries (View)</h2>
-    <p style="font-size:11px;color:#8b949e;">Hide entries that don't match. Does not modify data.</p>
-    <div class="slice-tabs" id="filterTabs">
-      <button class="slice-tab active" data-tab="field" onclick="switchFilterTab('field')">By Field Value</button>
-      <button class="slice-tab" data-tab="index" onclick="switchFilterTab('index')">By Array Index</button>
-      <button class="slice-tab" data-tab="line" onclick="switchFilterTab('line')">By Line Number</button>
-    </div>
-
-    <div class="slice-panel active" id="filterField">
-      <div class="slice-row">
-        <label>Field</label>
-        <input type="text" id="filterFieldName" placeholder="e.g. FRAME_NOW" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;">
-      </div>
-      <div class="slice-row">
-        <label>Greater &ge;</label>
-        <input type="number" id="filterFieldGte" placeholder="min value" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;">
-      </div>
-      <div class="slice-row">
-        <label>Less &le;</label>
-        <input type="number" id="filterFieldLte" placeholder="max value" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;">
-      </div>
-    </div>
-
-    <div class="slice-panel" id="filterIndex">
-      <div class="slice-row">
-        <label>Greater &ge;</label>
-        <input type="number" id="filterIdxGte" placeholder="0" min="0" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;">
-      </div>
-      <div class="slice-row">
-        <label>Less &le;</label>
-        <input type="number" id="filterIdxLte" placeholder="last" min="0" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;">
-      </div>
-      <div style="font-size:11px;color:#484f58;">0-indexed array position. Leave less ≤ empty for all remaining.</div>
-    </div>
-
-    <div class="slice-panel" id="filterLine">
-      <div class="slice-row">
-        <label>Greater &ge;</label>
-        <input type="number" id="filterLineGte" placeholder="1" min="1" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;">
-      </div>
-      <div class="slice-row">
-        <label>Less &le;</label>
-        <input type="number" id="filterLineLte" placeholder="last" min="1" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;">
-      </div>
-      <div style="font-size:11px;color:#484f58;">1-indexed line numbers. Leave less ≤ empty for all remaining.</div>
-    </div>
-
-    <div class="modal-actions">
-      <button onclick="clearFilter()" class="danger">Clear Filter</button>
-      <button onclick="closeModal('filterModal')">Cancel</button>
-      <button class="primary" onclick="applyFilter()">Apply Filter</button>
-    </div>
-  </div>
-</div>
-
-<div class="modal-bg" id="sliceModal">
-  <div class="modal" style="width:560px;">
-    <h2>Slice &amp; Export Subset</h2>
-    <div class="slice-tabs" id="sliceTabs">
-      <button class="slice-tab active" data-tab="field" onclick="switchSliceTab('field')">By Field Value</button>
-      <button class="slice-tab" data-tab="index" onclick="switchSliceTab('index')">By Array Index</button>
-      <button class="slice-tab" data-tab="line" onclick="switchSliceTab('line')">By Line Number</button>
-    </div>
-
-    <div class="slice-panel active" id="sliceField">
-      <div class="slice-row">
-        <label>Field</label>
-        <input type="text" id="sliceFieldName" placeholder="e.g. FRAME_NOW" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;" oninput="updateSlicePreview()">
-      </div>
-      <div class="slice-row">
-        <label>Greater &ge;</label>
-        <input type="number" id="sliceFieldGte" placeholder="min value" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;" oninput="updateSlicePreview()">
-      </div>
-      <div class="slice-row">
-        <label>Less &le;</label>
-        <input type="number" id="sliceFieldLte" placeholder="max value" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;" oninput="updateSlicePreview()">
-      </div>
-    </div>
-
-    <div class="slice-panel" id="sliceIndex">
-      <div class="slice-row">
-        <label>Greater &ge;</label>
-        <input type="number" id="sliceIdxGte" placeholder="0" min="0" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;" oninput="updateSlicePreview()">
-      </div>
-      <div class="slice-row">
-        <label>Less &le;</label>
-        <input type="number" id="sliceIdxLte" placeholder="last" min="0" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;" oninput="updateSlicePreview()">
-      </div>
-      <div style="font-size:11px;color:#484f58;">0-indexed array position. Leave less ≤ empty for all remaining.</div>
-    </div>
-
-    <div class="slice-panel" id="sliceLine">
-      <div class="slice-row">
-        <label>Greater &ge;</label>
-        <input type="number" id="sliceLineGte" placeholder="1" min="1" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;" oninput="updateSlicePreview()">
-      </div>
-      <div class="slice-row">
-        <label>Less &le;</label>
-        <input type="number" id="sliceLineLte" placeholder="last" min="1" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;" oninput="updateSlicePreview()">
-      </div>
-      <div style="font-size:11px;color:#484f58;">1-indexed line numbers. Leave less ≤ empty for all remaining.</div>
-    </div>
-
-    <div class="slice-preview" id="slicePreview">Enter criteria to see match count</div>
-
-    <div class="field-group">
-      <label>Output Format</label>
-      <select id="sliceFormat">
-        <option value="jsonl">JSON Lines (.jsonl)</option>
-        <option value="json">JSON Array (.json)</option>
-      </select>
-    </div>
-
-    <div class="modal-actions">
-      <button onclick="closeModal('sliceModal')">Cancel</button>
-      <button class="primary" onclick="doSlice()">Export Slice</button>
     </div>
   </div>
 </div>
@@ -510,53 +500,21 @@ function onRawEdit() {
     dirty = true;
     setStatus('Valid JSON', true);
     renderList();
-const mockEntries = [
-  {"instruction": "What is the capital of France?", "input": "", "output": "The capital of France is Paris.", "id": 1},
-  {"instruction": "Explain photosynthesis in simple terms.", "input": "", "output": "Photosynthesis is how plants use sunlight to make food from carbon dioxide and water.", "id": 2},
-  {"instruction": "Write a haiku about rain.", "input": "", "output": "Soft drops fall gently,\nWashing dust from weary streets,\nEarth breathes in the calm.", "id": 3},
-  {"instruction": "What is 2 + 2?", "input": "", "output": "4", "id": 4},
-  {"instruction": "List three primary colors.", "input": "", "output": "Red, blue, and yellow are the three primary colors.", "id": 5},
-  {"instruction": "Define machine learning.", "input": "", "output": "Machine learning is a subset of AI where systems learn from data without being explicitly programmed.", "id": 6},
-  {"instruction": "Translate 'hello' to Spanish.", "input": "", "output": "'Hello' in Spanish is 'hola'.", "id": 7},
-  {"instruction": "What planet is closest to the Sun?", "input": "", "output": "Mercury is the planet closest to the Sun.", "id": 8},
-  {"instruction": "Write a Python function to reverse a string.", "input": "", "output": "def reverse_string(s):\n    return s[::-1]", "id": 9},
-  {"instruction": "What is the boiling point of water?", "input": "", "output": "Water boils at 100 degrees Celsius (212 degrees Fahrenheit) at sea level.", "id": 10}
-];
-
-entries = mockEntries;
-fileName = 'mock_data.json';
-activeIdx = 0;
-renderList();
-renderEditor();
-updateStats();
+    updateStats();
   } catch(e) {
     setStatus('Invalid JSON: ' + e.message, false);
   }
 }
 
-// Filter (view)
-
-function openFilterModal() {
-  if (entries.length === 0) { setStatus('No data loaded', false); return; }
-  document.getElementById('filterFieldName').value = filterField.field || '';
-  document.getElementById('filterFieldGte').value = filterField.gte !== null ? filterField.gte : '';
-  document.getElementById('filterFieldLte').value = filterField.lte !== null ? filterField.lte : '';
-  document.getElementById('filterIdxGte').value = filterIndex.gte !== null ? filterIndex.gte : '';
-  document.getElementById('filterIdxLte').value = filterIndex.lte !== null ? filterIndex.lte : '';
-  document.getElementById('filterLineGte').value = filterLine.gte !== null ? filterLine.gte : '';
-  document.getElementById('filterLineLte').value = filterLine.lte !== null ? filterLine.lte : '';
-  document.getElementById('filterModal').classList.add('active');
-  switchFilterTab(filterMode || 'field');
+// Inline panel toggle
+function togglePanel(name) {
+  const panel = document.getElementById(name + 'Panel');
+  const btn = document.getElementById(name + 'Toggle');
+  panel.classList.toggle('open');
+  btn.style.background = panel.classList.contains('open') ? '#d29922' : '';
 }
 
-function clearFilter() {
-  filterMode = null;
-  renderList();
-  updateStats();
-  setStatus('Filter cleared — showing all entries');
-  closeModal('filterModal');
-}
-
+// Filter (real-time)
 let _filterTab = 'field';
 
 function switchFilterTab(tab) {
@@ -565,6 +523,22 @@ function switchFilterTab(tab) {
   document.getElementById('filterField').classList.toggle('active', tab === 'field');
   document.getElementById('filterIndex').classList.toggle('active', tab === 'index');
   document.getElementById('filterLine').classList.toggle('active', tab === 'line');
+  applyFilter();
+}
+
+function clearFilter() {
+  filterMode = null;
+  _filterTab = 'field';
+  switchFilterTab('field');
+  document.getElementById('filterFieldName').value = '';
+  document.getElementById('filterFieldGte').value = '';
+  document.getElementById('filterFieldLte').value = '';
+  document.getElementById('filterIdxGte').value = '';
+  document.getElementById('filterIdxLte').value = '';
+  document.getElementById('filterLineGte').value = '';
+  document.getElementById('filterLineLte').value = '';
+  renderList();
+  updateStats();
 }
 
 function applyFilter() {
@@ -591,21 +565,14 @@ function applyFilter() {
   }
   renderList();
   updateStats();
-  closeModal('filterModal');
 }
 
 // Slice (export)
 let sliceTab = 'field';
 
-function openSlice() {
-  if (entries.length === 0) { setStatus('No data loaded', false); return; }
-  document.getElementById('sliceModal').classList.add('active');
-  switchSliceTab(sliceTab);
-}
-
 function switchSliceTab(tab) {
   sliceTab = tab;
-  document.querySelectorAll('.slice-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
+  document.querySelectorAll('#sliceTabs .slice-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
   document.getElementById('sliceField').classList.toggle('active', tab === 'field');
   document.getElementById('sliceIndex').classList.toggle('active', tab === 'index');
   document.getElementById('sliceLine').classList.toggle('active', tab === 'line');
@@ -681,10 +648,7 @@ function doSlice() {
   }
   const base = fileName ? fileName.replace(/\.[^.]+$/, '') : 'data';
   download(text, `${base}_slice_${indices.length}${ext}`, mime);
-  closeModal('sliceModal');
   setStatus(`Exported ${indices.length} entries as sliced ${fmt.toUpperCase()}`);
-
-
 }
 
 function removeField(key) {
@@ -817,11 +781,13 @@ function newFile() {
 }
 
 function saveFile() {
-  const text = JSON.stringify(entries, null, 2);
+  const indices = getFilteredIndices();
+  const subset = indices.map(i => entries[i]);
+  const text = JSON.stringify(subset, null, 2);
   download(text, fileName || 'data.json', 'application/json');
   dirty = false;
   updateStats();
-  setStatus(`Saved ${entries.length} entries`);
+  setStatus(`Saved ${subset.length} entries`);
 }
 
 function exportAs() {
@@ -829,21 +795,23 @@ function exportAs() {
 }
 
 function doExport() {
+  const indices = getFilteredIndices();
+  const subset = indices.map(i => entries[i]);
   const fmt = document.getElementById('exportFormat').value;
   let text, ext, mime;
   if (fmt === 'jsonl') {
-    text = entries.map(e => JSON.stringify(e)).join('\n');
+    text = subset.map(e => JSON.stringify(e)).join('\n');
     ext = '.jsonl';
     mime = 'application/jsonl';
   } else {
-    text = JSON.stringify(entries, null, 2);
+    text = JSON.stringify(subset, null, 2);
     ext = '.json';
     mime = 'application/json';
   }
   const base = fileName ? fileName.replace(/\.[^.]+$/, '') : 'data';
   download(text, base + ext, mime);
   closeModal('exportModal');
-  setStatus(`Exported as ${fmt.toUpperCase()}`);
+  setStatus(`Exported ${subset.length} entries as ${fmt.toUpperCase()}`);
 }
 
 function download(text, name, mime) {
@@ -893,6 +861,21 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Delete' && activeIdx >= 0) { deleteCurrent(); }
 });
 
+// Mock data
+const mockEntries = [
+  {"instruction": "instruction", "input": "input", "output": "output", "FRAME_NOW": 1},
+  {"instruction": "instruction", "input": "input", "output": "output", "FRAME_NOW": 2},
+  {"instruction": "instruction", "input": "input", "output": "output", "FRAME_NOW": 3},
+  {"instruction": "instruction", "input": "input", "output": "output", "FRAME_NOW": 4},
+  {"instruction": "instruction", "input": "input", "output": "output", "FRAME_NOW": 5},
+  {"instruction": "instruction", "input": "input", "output": "output", "FRAME_NOW": 6}
+];
+
+entries = mockEntries;
+fileName = 'mock_data.json';
+activeIdx = 0;
+renderList();
+renderEditor();
 updateStats();
 </script>
 </body>
