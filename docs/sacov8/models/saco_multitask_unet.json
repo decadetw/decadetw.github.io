@@ -1,0 +1,35 @@
+{
+  "name": "saco_multitask_unet",
+  "version": "0.1.0",
+  "onnxPath": "saco_multitask_unet.onnx",
+  "onnxSha256": "ad709ce133138264c5b73b6cb5cb298917194b3deb70650a0cd3cee61391c9fa",
+  "image_size": 512,
+  "base_ch": 16,
+  "input": {
+    "name": "input",
+    "shape": [
+      1,
+      3,
+      512,
+      512
+    ],
+    "dtype": "float32"
+  },
+  "output": {
+    "name": "output",
+    "shape": [
+      1,
+      2,
+      512,
+      512
+    ],
+    "dtype": "float32",
+    "channels": [
+      "red_ridge_heatmap",
+      "blue_core_mask"
+    ]
+  },
+  "checkpoint": "saco_unet_best.pt",
+  "val_loss": 1.2783709168434143,
+  "val_iou": 0.1599096804857254
+}

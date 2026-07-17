@@ -1,0 +1,38 @@
+{
+  "name": "saco_red",
+  "version": "0.2.0",
+  "task": "red_ridge_heatmap",
+  "onnxPath": "saco_red.onnx",
+  "onnxSha256": "0a433780eadb8c76bbe45eac29773e7d31b4973b8ef65edcf5232069a5e989c6",
+  "image_size": 512,
+  "base_ch": 16,
+  "in_ch": 3,
+  "residual": false,
+  "input": {
+    "name": "input",
+    "shape": [
+      1,
+      3,
+      512,
+      512
+    ],
+    "dtype": "float32"
+  },
+  "output": {
+    "name": "output",
+    "shape": [
+      1,
+      1,
+      512,
+      512
+    ],
+    "dtype": "float32",
+    "channels": [
+      "red_ridge_heatmap"
+    ]
+  },
+  "checkpoint": "saco_red_best.pt",
+  "val_loss": 0.9275773167610168,
+  "val_iou": 0.0983374019463857,
+  "val_interval_mae_px": null
+}
