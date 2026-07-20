@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JSON/JSONL Training Data Manager</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace; background: #0d1117; color: #c9d1d9; height: 100vh; display: flex; flex-direction: column; }
+
+    header { background: #161b22; border-bottom: 1px solid #30363d; padding: 12px 20px; display: flex; align-items: center; gap: 16px; flex-shrink: 0; }
+    header h1 { font-size: 14px; color: #58a6ff; font-weight: 600; white-space: nowrap; }
+    header .stats { font-size: 12px; color: #8b949e; margin-left: auto; }
+
+    .toolbar { background: #161b22; border-bottom: 1px solid #30363d; padding: 10px 20px; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; flex-shrink: 0; }
+    .toolbar input[type="text"] { background: #0d1117; border: 1px solid #30363d; color: #c9d1d9; padding: 6px 10px; border-radius: 6px; font-size: 12px; font-family: inherit; width: 260px; }
+    .toolbar input[type="text"]:focus { border-color: #58a6ff; outline: none; }
+
+    button { background: #21262d; color: #c9d1d9; border: 1px solid #30363d; padding: 6px 14px; border-radius: 6px; font-size: 12px; font-family: inherit; cursor: pointer; white-space: nowrap; transition: background 0.15s; }
+    button:hover { background: #30363d; }
+    button.primary { background: #238636; border-color: #2ea043; color: #fff; }
+    button.primary:hover { background: #2ea043; }
+    button.danger { background: #da3633; border-color: #f85149; color: #fff; }
+    button.danger:hover { background: #f85149; }
+    button.blue { background: #1f6feb; border-color: #388bfd; color: #fff; }
+    button.blue:hover { background: #388bfd; }
+
+    .main { display: flex; flex: 1; overflow: hidden; }
+
+    .list-panel { width: 340px; border-right: 1px solid #30363d; display: flex; flex-direction: column; flex-shrink: 0; }
+    .list-panel .list-header { padding: 10px 14px; font-size: 11px; color: #8b949e; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid #21262d; display: flex; justify-content: space-between; align-items: center; }
+    .entry-list { flex: 1; overflow-y: auto; }
+    .entry-item { padding: 6px 14px; border-bottom: 1px solid #21262d; cursor: pointer; transition: background 0.1s; position: relative; }
+    .entry-item:hover { background: #161b22; }
+    .entry-item.active { background: #1f6feb22; border-left: 3px solid #58a6ff; }
+    .entry-item .idx { font-size: 10px; color: #484f58; position: absolute; top: 8px; right: 10px; }
+    .entry-item .preview { font-size: 11px; color: #8b949e; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-top: 2px; }
+    .entry-item .label { font-size: 12px; color: #c9d1d9; font-weight: 500; }
+    .entry-item .delete-btn { position: absolute; top: 8px; right: 40px; background: none; border: none; color: #484f58; cursor: pointer; font-size: 14px; padding: 2px 6px; border-radius: 4px; opacity: 0; transition: opacity 0.15s; }
+    .entry-item:hover .delete-btn { opacity: 1; }
+    .entry-item .delete-btn:hover { color: #f85149; background: #da363322; }
+
+    .editor-panel { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+    .editor-header { padding: 6px 12px; border-bottom: 1px solid #21262d; display: flex; gap: 8px; align-items: center; flex-shrink: 0; }
+    .editor-header span { font-size: 12px; color: #8b949e; }
+
+    .editor-area { flex: 1; padding: 8px 12px; overflow: auto; display: flex; flex-direction: column; gap: 4px; }
+    .editor-area textarea { flex: 1; min-height: 120px; background: #0d1117; border: 1px solid #30363d; color: #c9d1d9; padding: 8px; border-radius: 6px; font-size: 12px; font-family: inherit; resize: none; line-height: 1.4; tab-size: 2; }
+    .editor-area textarea:focus { border-color: #58a6ff; outline: none; }
+
+    .field-group { display: flex; flex-direction: column; gap: 1px; }
+    .field-group label { font-size: 10px; color: #8b949e; text-transform: uppercase; letter-spacing: 0.3px; display: flex; align-items: center; gap: 6px; }
+    .field-group input, .field-group textarea.field-input { background: #161b22; border: 1px solid #30363d; color: #c9d1d9; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-family: inherit; }
+    .field-group input:focus, .field-group textarea.field-input:focus { border-color: #58a6ff; outline: none; }
+    textarea.field-input { min-height: 40px; resize: vertical; line-height: 1.4; }
+
+    .add-field-bar { display: flex; align-items: center; gap: 6px; padding: 4px 0; flex-shrink: 0; border-bottom: 1px solid #21262d; margin-bottom: 4px; }
+
+    .status-bar { background: #161b22; border-top: 1px solid #30363d; padding: 6px 20px; font-size: 11px; color: #8b949e; display: flex; gap: 16px; flex-shrink: 0; }
+    .status-bar .ok { color: #3fb950; }
+    .status-bar .err { color: #f85149; }
+
+    .drop-overlay { display: none; position: fixed; inset: 0; background: #0d1117e8; z-index: 100; justify-content: center; align-items: center; flex-direction: column; gap: 12px; border: 3px dashed #58a6ff; margin: 8px; border-radius: 16px; }
+    .drop-overlay.active { display: flex; }
+    .drop-overlay .icon { font-size: 48px; }
+    .drop-overlay .text { font-size: 16px; color: #58a6ff; }
+
+    .empty-state { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: #484f58; gap: 12px; }
+    .empty-state .icon { font-size: 40px; }
+    .empty-state p { font-size: 13px; }
+
+    .modal-bg { display: none; position: fixed; inset: 0; background: #0d1117cc; z-index: 50; justify-content: center; align-items: center; }
+    .modal-bg.active { display: flex; }
+    .modal { background: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 24px; width: 500px; max-width: 90vw; display: flex; flex-direction: column; gap: 16px; }
+    .modal h2 { font-size: 14px; color: #c9d1d9; }
+    .modal .modal-actions { display: flex; gap: 8px; justify-content: flex-end; }
+    .modal select { background: #0d1117; border: 1px solid #30363d; color: #c9d1d9; padding: 8px 10px; border-radius: 6px; font-size: 13px; font-family: inherit; }
+
+    button.orange { background: #bd5814; border-color: #d29922; color: #fff; }
+    button.orange:hover { background: #d29922; }
+
+    .slice-row { display: flex; gap: 8px; align-items: center; }
+    .slice-row label { font-size: 11px; color: #8b949e; min-width: 60px; text-align: right; }
+    .slice-row input { flex: 1; }
+    .slice-tabs { display: flex; gap: 0; border-bottom: 1px solid #30363d; }
+    .slice-tab { padding: 8px 16px; font-size: 12px; cursor: pointer; border: none; background: none; color: #8b949e; border-bottom: 2px solid transparent; border-radius: 0; }
+    .slice-tab:hover { color: #c9d1d9; background: none; }
+    .slice-tab.active { color: #58a6ff; border-bottom-color: #58a6ff; background: none; }
+    .slice-panel { display: none; padding: 12px 0; }
+    .slice-panel.active { display: flex; flex-direction: column; gap: 8px; }
+    .slice-preview { font-size: 11px; color: #8b949e; padding: 8px 0 0; border-top: 1px solid #21262d; }
+    .slice-preview .match { color: #3fb950; font-weight: 600; }
+
+    .kbd { background: #21262d; border: 1px solid #30363d; padding: 1px 5px; border-radius: 4px; font-size: 11px; color: #8b949e; }
+
+    .inline-panel { background: #161b22; border-bottom: 1px solid #30363d; flex-shrink: 0; overflow: hidden; transition: max-height 0.2s ease; max-height: 0; }
+    .inline-panel.open { max-height: 400px; }
+    .panel-header { padding: 8px 20px; display: flex; align-items: center; gap: 12px; border-bottom: 1px solid #21262d; font-size: 11px; color: #8b949e; text-transform: uppercase; letter-spacing: 0.5px; }
+    .panel-body { padding: 12px 20px; display: flex; flex-direction: column; gap: 8px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Json God - http://decade.tw/jsongod</h1>
+  <h1 style="color: green; text-decoration: none;">URDF God - <a href="https://urdf.decade.tw/" style="color: green; text-decoration: none;">http://urdf.decade.tw/</a></h1>
+  <div class="stats" id="stats">No file loaded</div>
+</header>
+
+<div class="toolbar">
+  <button class="primary" onclick="openFile()">Open File</button>
+  <button onclick="newFile()">New</button>
+  <button class="blue" onclick="saveFile()">Save</button>
+  <button onclick="exportAs()">Export As...</button>
+  <button class="orange" id="filterToggle" onclick="togglePanel('filter')">Filter</button>
+  <button class="orange" id="sliceToggle" onclick="togglePanel('slice')">Slice Export</button>
+  <button class="orange" id="concatToggle" onclick="togglePanel('concat')">Concat</button>
+  <input type="text" id="search" placeholder="Search entries... (Ctrl+F)" oninput="filterEntries()">
+  <div style="margin-left:auto; display:flex; gap:8px;">
+    <button onclick="addEntry()">+ Add Entry</button>
+  </div>
+</div>
+
+<div class="inline-panel" id="filterPanel">
+  <div class="panel-header">
+    <span>Filter Entries (real-time)</span>
+    <button class="danger" onclick="clearFilter()" style="font-size:10px;padding:2px 8px;">Clear</button>
+  </div>
+  <div class="slice-tabs" id="filterTabs">
+    <button class="slice-tab active" data-tab="field" onclick="switchFilterTab('field')">By Field Value</button>
+    <button class="slice-tab" data-tab="index" onclick="switchFilterTab('index')">By Array Index</button>
+    <button class="slice-tab" data-tab="line" onclick="switchFilterTab('line')">By Line Number</button>
+  </div>
+  <div class="panel-body">
+    <div class="slice-panel active" id="filterField">
+      <div class="slice-row">
+        <label>Field</label>
+        <input type="text" id="filterFieldName" placeholder="e.g. FRAME_NOW" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;" oninput="applyFilter()">
+      </div>
+      <div class="slice-row">
+        <label>Greater &ge;</label>
+        <input type="number" id="filterFieldGte" placeholder="min value" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;" oninput="applyFilter()">
+      </div>
+      <div class="slice-row">
+        <label>Less &le;</label>
+        <input type="number" id="filterFieldLte" placeholder="max value" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;" oninput="applyFilter()">
+      </div>
+    </div>
+    <div class="slice-panel" id="filterIndex">
+      <div class="slice-row">
+        <label>Greater &ge;</label>
+        <input type="number" id="filterIdxGte" placeholder="0" min="0" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;" oninput="applyFilter()">
+      </div>
+      <div class="slice-row">
+        <label>Less &le;</label>
+        <input type="number" id="filterIdxLte" placeholder="last" min="0" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;" oninput="applyFilter()">
+      </div>
+      <div style="font-size:11px;color:#484f58;">0-indexed array position. Leave less ≤ empty for all remaining.</div>
+    </div>
+    <div class="slice-panel" id="filterLine">
+      <div class="slice-row">
+        <label>Greater &ge;</label>
+        <input type="number" id="filterLineGte" placeholder="1" min="1" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;" oninput="applyFilter()">
+      </div>
+      <div class="slice-row">
+        <label>Less &le;</label>
+        <input type="number" id="filterLineLte" placeholder="last" min="1" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;" oninput="applyFilter()">
+      </div>
+      <div style="font-size:11px;color:#484f58;">1-indexed line numbers. Leave less ≤ empty for all remaining.</div>
+    </div>
+  </div>
+</div>
+
+<div class="inline-panel" id="slicePanel">
+  <div class="panel-header">
+    <span>Slice &amp; Export Subset</span>
+  </div>
+  <div class="slice-tabs" id="sliceTabs">
+    <button class="slice-tab active" data-tab="field" onclick="switchSliceTab('field')">By Field Value</button>
+    <button class="slice-tab" data-tab="index" onclick="switchSliceTab('index')">By Array Index</button>
+    <button class="slice-tab" data-tab="line" onclick="switchSliceTab('line')">By Line Number</button>
+  </div>
+  <div class="panel-body">
+    <div class="slice-panel active" id="sliceField">
+      <div class="slice-row">
+        <label>Field</label>
+        <input type="text" id="sliceFieldName" placeholder="e.g. FRAME_NOW" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;" oninput="updateSlicePreview()">
+      </div>
+      <div class="slice-row">
+        <label>Greater &ge;</label>
+        <input type="number" id="sliceFieldGte" placeholder="min value" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;" oninput="updateSlicePreview()">
+      </div>
+      <div class="slice-row">
+        <label>Less &le;</label>
+        <input type="number" id="sliceFieldLte" placeholder="max value" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;" oninput="updateSlicePreview()">
+      </div>
+    </div>
+    <div class="slice-panel" id="sliceIndex">
+      <div class="slice-row">
+        <label>Greater &ge;</label>
+        <input type="number" id="sliceIdxGte" placeholder="0" min="0" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;" oninput="updateSlicePreview()">
+      </div>
+      <div class="slice-row">
+        <label>Less &le;</label>
+        <input type="number" id="sliceIdxLte" placeholder="last" min="0" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;" oninput="updateSlicePreview()">
+      </div>
+      <div style="font-size:11px;color:#484f58;">0-indexed array position. Leave less ≤ empty for all remaining.</div>
+    </div>
+    <div class="slice-panel" id="sliceLine">
+      <div class="slice-row">
+        <label>Greater &ge;</label>
+        <input type="number" id="sliceLineGte" placeholder="1" min="1" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;" oninput="updateSlicePreview()">
+      </div>
+      <div class="slice-row">
+        <label>Less &le;</label>
+        <input type="number" id="sliceLineLte" placeholder="last" min="1" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;" oninput="updateSlicePreview()">
+      </div>
+      <div style="font-size:11px;color:#484f58;">1-indexed line numbers. Leave less ≤ empty for all remaining.</div>
+    </div>
+    <div class="slice-preview" id="slicePreview">Enter criteria to see match count</div>
+    <div style="display:flex;gap:8px;align-items:center;margin-top:4px;">
+      <select id="sliceFormat" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;">
+        <option value="jsonl">JSON Lines (.jsonl)</option>
+        <option value="json">JSON Array (.json)</option>
+      </select>
+      <button class="primary" onclick="doSlice()">Export Slice</button>
+    </div>
+  </div>
+</div>
+
+<div class="inline-panel" id="concatPanel">
+  <div class="panel-header"><span>Concatenate JSON Files</span></div>
+  <div class="panel-body">
+    <p style="font-size:11px;color:#8b949e;">Select multiple .json or .jsonl files to merge into one output file.</p>
+    <input type="file" id="concatFiles" multiple accept=".json,.jsonl,.ndjson" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:8px 10px;border-radius:6px;font-size:12px;" onchange="updateConcatPreview()">
+    <div class="slice-preview" id="concatPreview">Select files to see preview</div>
+    <select id="concatFormat" style="background:#0d1117;border:1px solid #30363d;color:#c9d1d9;padding:6px 10px;border-radius:6px;font-size:12px;font-family:inherit;">
+      <option value="jsonl">JSON Lines (.jsonl)</option>
+      <option value="json">JSON Array (.json)</option>
+    </select>
+    <button class="primary" onclick="doConcat()">Concat &amp; Download</button>
+  </div>
+</div>
+
+<div class="main">
+  <div class="list-panel">
+    <div class="list-header">
+      <span>Entries</span>
+      <span id="count">0</span>
+    </div>
+    <div class="entry-list" id="entryList">
+      <div class="empty-state">
+        <div class="icon">{ }</div>
+        <p>Drop a .json or .jsonl file here<br>or click Open File</p>
+      </div>
+    </div>
+  </div>
+  <div class="editor-panel">
+    <div class="editor-header" id="editorHeader" style="display:none;">
+      <span id="editorLabel"></span>
+      <div style="margin-left:auto; display:flex; gap:8px;">
+        <button onclick="duplicateEntry()">Duplicate</button>
+        <button class="danger" onclick="deleteCurrent()">Delete</button>
+      </div>
+    </div>
+    <div class="editor-area" id="editorArea">
+      <div class="empty-state" id="editorEmpty">
+        <div class="icon">&#9998;</div>
+        <p>Select an entry to edit</p>
+        <p style="font-size:11px; margin-top:8px;">
+          <span class="kbd">Ctrl</span>+<span class="kbd">N</span> new &nbsp;
+          <span class="kbd">Ctrl</span>+<span class="kbd">S</span> save &nbsp;
+          <span class="kbd">Ctrl</span>+<span class="kbd">D</span> duplicate
+        </p>
+      </div>
+      <div id="fieldEditor" style="display:none;"></div>
+      <textarea id="rawEditor" style="display:none;" spellcheck="false" oninput="onRawEdit()"></textarea>
+    </div>
+  </div>
+</div>
+
+<div class="status-bar">
+  <span id="statusLeft">Ready</span>
+  <span id="statusRight" style="margin-left:auto;"></span>
+</div>
+
+<div class="drop-overlay" id="dropOverlay">
+  <div class="icon">&#128194;</div>
+  <div class="text">Drop JSON or JSONL file</div>
+</div>
+
+<div class="modal-bg" id="exportModal">
+  <div class="modal">
+    <h2>Export As</h2>
+    <div class="field-group">
+      <label>Format</label>
+      <select id="exportFormat">
+        <option value="json">JSON Array (.json)</option>
+        <option value="jsonl">JSON Lines (.jsonl)</option>
+      </select>
+    </div>
+    <div class="modal-actions">
+      <button onclick="closeModal('exportModal')">Cancel</button>
+      <button class="primary" onclick="doExport()">Export</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-bg" id="addFieldModal">
+  <div class="modal">
+    <h2>Add New Field</h2>
+    <div class="field-group">
+      <label>Key</label>
+      <input type="text" id="newFieldKey" placeholder="e.g. instruction, input, output">
+    </div>
+    <div class="field-group">
+      <label>Value</label>
+      <textarea class="field-input" id="newFieldValue" placeholder="Field value"></textarea>
+    </div>
+    <div class="modal-actions">
+      <button onclick="closeModal('addFieldModal')">Cancel</button>
+      <button class="primary" onclick="confirmAddField()">Add</button>
+    </div>
+  </div>
+</div>
+
+<input type="file" id="fileInput" accept=".json,.jsonl,.ndjson" style="display:none" onchange="handleFileSelect(event)">
+
+<script>
+  let entries = [];
+  let activeIdx = -1;
+  let fileName = '';
+  let dirty = false;
+  let filterTerm = '';
+
+  // Filter state
+  let filterMode = null; // 'field', 'index', 'line' or null
+  let filterField = { field: '', gte: null, lte: null };
+  let filterIndex = { gte: null, lte: null };
+  let filterLine = { gte: null, lte: null };
+
+  function setStatus(msg, ok = true) {
+    document.getElementById('statusLeft').innerHTML = `<span class="${ok ? 'ok' : 'err'}">${msg}</span>`;
+  }
+
+  function updateStats() {
+    const s = fileName ? `${fileName} — ` : '';
+    document.getElementById('stats').textContent = `${s}${entries.length} entries${dirty ? ' (unsaved)' : ''}`;
+    document.getElementById('count').textContent = entries.length;
+    document.title = fileName ? `${fileName} — JSON Manager` : 'JSON/JSONL Training Data Manager';
+  }
+
+  function renderList() {
+    const list = document.getElementById('entryList');
+    const filtered = getFilteredIndices();
+    if (filtered.length === 0 && entries.length === 0) {
+      list.innerHTML = '<div class="empty-state"><div class="icon">{ }</div><p>Drop a .json or .jsonl file here<br>or click Open File</p></div>';
+      return;
+    }
+    if (filtered.length === 0) {
+      list.innerHTML = '<div class="empty-state"><p>No matching entries</p></div>';
+      return;
+    }
+    list.innerHTML = filtered.map(i => {
+      const e = entries[i];
+      const label = getEntryLabel(e, i);
+      const preview = getEntryPreview(e);
+      const active = i === activeIdx ? ' active' : '';
+      return `<div class="entry-item${active}" onclick="selectEntry(${i})" data-idx="${i}">
+      <span class="idx">#${i}</span>
+      <button class="delete-btn" onclick="event.stopPropagation();removeEntry(${i})" title="Delete">&times;</button>
+      <div class="label">${escHtml(label)}</div>
+      <div class="preview">${escHtml(preview)}</div>
+    </div>`;
+    }).join('');
+  }
+
+  function getEntryLabel(e, i) {
+    if (typeof e !== 'object' || e === null) return String(e).slice(0, 60);
+    for (const k of ['instruction', 'prompt', 'question', 'input', 'text', 'role', 'name', 'id', 'title']) {
+      if (e[k] !== undefined) return String(e[k]).slice(0, 60);
+    }
+    const keys = Object.keys(e);
+    if (keys.length > 0) return `${keys[0]}: ${String(e[keys[0]]).slice(0, 50)}`;
+    return `{ }`;
+  }
+
+  function getEntryPreview(e) {
+    if (typeof e !== 'object' || e === null) return '';
+    const keys = Object.keys(e);
+    return keys.slice(0, 4).map(k => `${k}: ${typeof e[k] === 'object' ? JSON.stringify(e[k]).slice(0, 30) : String(e[k]).slice(0, 30)}`).join(' | ');
+  }
+
+  function getFilteredIndices() {
+    let indices = entries.map((_, i) => i);
+
+    // Apply text search filter
+    if (filterTerm) {
+      const term = filterTerm.toLowerCase();
+      indices = indices.filter(i => JSON.stringify(entries[i]).toLowerCase().includes(term));
+    }
+
+    // Apply view filter
+    if (!filterMode) return indices;
+
+    if (filterMode === 'field') {
+      if (!filterField.field) return indices;
+      const gte = filterField.gte;
+      const lte = filterField.lte;
+      return indices.filter(i => {
+        const e = entries[i];
+        if (e === null || typeof e !== 'object' || Array.isArray(e)) return false;
+        let v = e[filterField.field];
+        if (v === undefined) return false;
+        if (typeof v === 'string') v = Number(v);
+        if (typeof v !== 'number' || isNaN(v)) return false;
+        if (gte !== null && v < gte) return false;
+        if (lte !== null && v > lte) return false;
+        return true;
+      });
+    }
+
+    if (filterMode === 'index') {
+      const gte = filterIndex.gte;
+      const lte = filterIndex.lte;
+      return indices.filter(i => {
+        if (gte !== null && i < gte) return false;
+        if (lte !== null && i > lte) return false;
+        return true;
+      });
+    }
+
+    if (filterMode === 'line') {
+      const gte = filterLine.gte;
+      const lte = filterLine.lte;
+      return indices.filter(i => {
+        const lineNum = i + 1;
+        if (gte !== null && lineNum < gte) return false;
+        if (lte !== null && lineNum > lte) return false;
+        return true;
+      });
+    }
+
+    return indices;
+  }
+
+  function filterEntries() {
+    filterTerm = document.getElementById('search').value;
+    renderList();
+  }
+
+  function escHtml(s) {
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  function selectEntry(i) {
+    activeIdx = i;
+    renderList();
+    renderEditor();
+    document.getElementById('entryList').children[0]?.scrollIntoView?.({ block: 'nearest' });
+  }
+
+  function renderEditor() {
+    const e = entries[activeIdx];
+    if (e === undefined) {
+      document.getElementById('editorHeader').style.display = 'none';
+      document.getElementById('fieldEditor').style.display = 'none';
+      document.getElementById('rawEditor').style.display = 'none';
+      document.getElementById('editorEmpty').style.display = 'flex';
+      return;
+    }
+    document.getElementById('editorHeader').style.display = 'flex';
+    document.getElementById('editorLabel').textContent = `Editing entry #${activeIdx}`;
+    document.getElementById('editorEmpty').style.display = 'none';
+
+    if (typeof e === 'object' && e !== null && !Array.isArray(e)) {
+      document.getElementById('rawEditor').style.display = 'none';
+      const fe = document.getElementById('fieldEditor');
+      fe.style.display = 'flex';
+      fe.style.flexDirection = 'column';
+      fe.style.gap = '8px';
+      const keys = Object.keys(e);
+      let html = '<div class="add-field-bar"><button onclick="showAddField()" style="font-size:11px;padding:3px 10px;">+ Add Field (all entries)</button></div>';
+      for (const k of keys) {
+        const val = typeof e[k] === 'object' ? JSON.stringify(e[k], null, 2) : String(e[k]);
+        const lines = (val.match(/\n/g) || []).length + 1;
+        const rows = Math.max(1, Math.min(6, lines));
+        html += `<div class="field-group">
+        <label>${escHtml(k)} <button onclick="removeField('${escHtml(k)}')" style="font-size:9px;padding:0 4px;color:#f85149;">&times;</button></label>
+        <textarea class="field-input" rows="${rows}" data-key="${escHtml(k)}" oninput="onFieldEdit(this)">${escHtml(val)}</textarea>
+      </div>`;
+      }
+      fe.innerHTML = html;
+    } else {
+      document.getElementById('fieldEditor').style.display = 'none';
+      const ta = document.getElementById('rawEditor');
+      ta.style.display = 'block';
+      ta.value = JSON.stringify(e, null, 2);
+    }
+  }
+
+  function onFieldEdit(el) {
+    const key = el.dataset.key;
+    let val = el.value;
+    try { val = JSON.parse(val); } catch(_) {}
+    entries[activeIdx][key] = val;
+    dirty = true;
+    updateStats();
+    renderList();
+  }
+
+  function onRawEdit() {
+    const ta = document.getElementById('rawEditor');
+    try {
+      entries[activeIdx] = JSON.parse(ta.value);
+      dirty = true;
+      setStatus('Valid JSON', true);
+      renderList();
+      updateStats();
+    } catch(e) {
+      setStatus('Invalid JSON: ' + e.message, false);
+    }
+  }
+
+  // Inline panel toggle
+  function togglePanel(name) {
+    const panel = document.getElementById(name + 'Panel');
+    const btn = document.getElementById(name + 'Toggle');
+    panel.classList.toggle('open');
+    btn.style.background = panel.classList.contains('open') ? '#d29922' : '';
+  }
+
+  // Filter (real-time)
+  let _filterTab = 'field';
+
+  function switchFilterTab(tab) {
+    _filterTab = tab;
+    document.querySelectorAll('#filterTabs .slice-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
+    document.getElementById('filterField').classList.toggle('active', tab === 'field');
+    document.getElementById('filterIndex').classList.toggle('active', tab === 'index');
+    document.getElementById('filterLine').classList.toggle('active', tab === 'line');
+    applyFilter();
+  }
+
+  function clearFilter() {
+    filterMode = null;
+    _filterTab = 'field';
+    switchFilterTab('field');
+    document.getElementById('filterFieldName').value = '';
+    document.getElementById('filterFieldGte').value = '';
+    document.getElementById('filterFieldLte').value = '';
+    document.getElementById('filterIdxGte').value = '';
+    document.getElementById('filterIdxLte').value = '';
+    document.getElementById('filterLineGte').value = '';
+    document.getElementById('filterLineLte').value = '';
+    renderList();
+    updateStats();
+  }
+
+  // Concat (merge multiple files)
+  let _concatFiles = [];
+  let _concatCount = 0;
+
+  function extractEntries(text, fname) {
+    text = text.trim();
+    if (!text) return [];
+    try {
+      const parsed = JSON.parse(text);
+      if (Array.isArray(parsed)) return parsed;
+      if (typeof parsed === 'object') return [parsed];
+    } catch(_) {}
+    // Try as JSONL
+    const lines = text.split('\n').filter(l => l.trim());
+    const entries = [];
+    for (const line of lines) {
+      try { entries.push(JSON.parse(line)); } catch(_) {}
+    }
+    return entries;
+  }
+
+  function updateConcatPreview() {
+    const filesInput = document.getElementById('concatFiles');
+    _concatFiles = Array.from(filesInput.files);
+    let count = 0;
+    for (const f of _concatFiles) {
+      try {
+        const text = f.text?.();
+        if (!text) continue;
+        const entries = extractEntries(text, f.name);
+        count += entries.length;
+      } catch(_) {}
+    }
+    _concatCount = count;
+    const el = document.getElementById('concatPreview');
+    if (_concatFiles.length === 0) {
+      el.innerHTML = 'Select files to see preview';
+    } else {
+      el.innerHTML = `<span class="match">${count}</span> total entries from <strong>${_concatFiles.length}</strong> file(s)`;
+    }
+  }
+
+  async function doConcat() {
+    if (_concatFiles.length === 0) { setStatus('No files selected', false); return; }
+    const fmt = document.getElementById('concatFormat').value;
+    const allEntries = [];
+    for (const f of _concatFiles) {
+      try {
+        const text = await new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result);
+          reader.onerror = () => reject(reader.error);
+          reader.readAsText(f);
+        });
+        const entries = extractEntries(text, f.name);
+        allEntries.push(...entries);
+      } catch(e) { setStatus('Error reading file: ' + e.message, false); return; }
+    }
+    let text, ext, mime;
+    if (fmt === 'jsonl') {
+      text = allEntries.map(e => JSON.stringify(e)).join('\n');
+      ext = '.jsonl';
+      mime = 'application/jsonl';
+    } else {
+      text = JSON.stringify(allEntries, null, 2);
+      ext = '.json';
+      mime = 'application/json';
+    }
+    download(text, `concat_${allEntries.length}${ext}`, mime);
+    setStatus(`Concatenated ${_concatFiles.length} files → ${allEntries.length} entries`);
+  }
+
+  function applyFilter() {
+    const n = entries.length;
+    if (_filterTab === 'field') {
+      filterMode = 'field';
+      filterField = {
+        field: document.getElementById('filterFieldName').value.trim(),
+        gte: document.getElementById('filterFieldGte').value !== '' ? Number(document.getElementById('filterFieldGte').value) : null,
+        lte: document.getElementById('filterFieldLte').value !== '' ? Number(document.getElementById('filterFieldLte').value) : null,
+      };
+    } else if (_filterTab === 'index') {
+      filterMode = 'index';
+      filterIndex = {
+        gte: document.getElementById('filterIdxGte').value !== '' ? Math.max(0, parseInt(document.getElementById('filterIdxGte').value) || 0) : null,
+        lte: document.getElementById('filterIdxLte').value !== '' ? Math.min(n - 1, parseInt(document.getElementById('filterIdxLte').value) || n - 1) : null,
+      };
+    } else {
+      filterMode = 'line';
+      filterLine = {
+        gte: document.getElementById('filterLineGte').value !== '' ? Math.max(1, parseInt(document.getElementById('filterLineGte').value) || 1) : null,
+        lte: document.getElementById('filterLineLte').value !== '' ? (parseInt(document.getElementById('filterLineLte').value) || n) : null,
+      };
+    }
+    renderList();
+    updateStats();
+  }
+
+  // Slice (export)
+  let sliceTab = 'field';
+
+  function switchSliceTab(tab) {
+    sliceTab = tab;
+    document.querySelectorAll('#sliceTabs .slice-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
+    document.getElementById('sliceField').classList.toggle('active', tab === 'field');
+    document.getElementById('sliceIndex').classList.toggle('active', tab === 'index');
+    document.getElementById('sliceLine').classList.toggle('active', tab === 'line');
+    updateSlicePreview();
+  }
+
+  function getSliceIndices() {
+    if (entries.length === 0) return [];
+    const n = entries.length;
+    if (sliceTab === 'field') {
+      const field = document.getElementById('sliceFieldName').value.trim();
+      const gteStr = document.getElementById('sliceFieldGte').value;
+      const lteStr = document.getElementById('sliceFieldLte').value;
+      if (!field) return [];
+      const gte = gteStr !== '' ? Number(gteStr) : null;
+      const lte = lteStr !== '' ? Number(lteStr) : null;
+      return entries.map((e, i) => {
+        if (e === null || typeof e !== 'object') return -1;
+        let v = e[field];
+        if (v === undefined) return -1;
+        if (typeof v === 'string') v = Number(v);
+        if (typeof v !== 'number' || isNaN(v)) return -1;
+        if (gte !== null && v < gte) return -1;
+        if (lte !== null && v > lte) return -1;
+        return i;
+      }).filter(i => i >= 0);
+    }
+    if (sliceTab === 'index') {
+      const gteStr = document.getElementById('sliceIdxGte').value;
+      const lteStr = document.getElementById('sliceIdxLte').value;
+      const gte = gteStr !== '' ? Math.max(0, parseInt(gteStr) || 0) : 0;
+      const lte = lteStr !== '' ? Math.min(n - 1, parseInt(lteStr) || n - 1) : n - 1;
+      const indices = [];
+      for (let i = gte; i <= lte && i < n; i++) indices.push(i);
+      return indices;
+    }
+    if (sliceTab === 'line') {
+      const gteStr = document.getElementById('sliceLineGte').value;
+      const lteStr = document.getElementById('sliceLineLte').value;
+      const gte = gteStr !== '' ? Math.max(1, parseInt(gteStr) || 1) : 1;
+      const lte = lteStr !== '' ? (parseInt(lteStr) || n) : n;
+      const indices = [];
+      for (let i = gte - 1; i < lte && i < n; i++) indices.push(i);
+      return indices;
+    }
+    return [];
+  }
+
+  function updateSlicePreview() {
+    const indices = getSliceIndices();
+    const el = document.getElementById('slicePreview');
+    if (indices.length === 0) {
+      el.innerHTML = '<span style="color:#d29922;">0 matches</span> — adjust criteria';
+    } else {
+      el.innerHTML = `<span class="match">${indices.length}</span> of ${entries.length} entries will be exported`;
+    }
+  }
+
+  function doSlice() {
+    const indices = getSliceIndices();
+    if (indices.length === 0) { setStatus('No entries match slice criteria', false); return; }
+    const subset = indices.map(i => entries[i]);
+    const fmt = document.getElementById('sliceFormat').value;
+    let text, ext, mime;
+    if (fmt === 'jsonl') {
+      text = subset.map(e => JSON.stringify(e)).join('\n');
+      ext = '.jsonl';
+      mime = 'application/jsonl';
+    } else {
+      text = JSON.stringify(subset, null, 2);
+      ext = '.json';
+      mime = 'application/json';
+    }
+    const base = fileName ? fileName.replace(/\.[^.]+$/, '') : 'data';
+    download(text, `${base}_slice_${indices.length}${ext}`, mime);
+    setStatus(`Exported ${indices.length} entries as sliced ${fmt.toUpperCase()}`);
+  }
+
+  function removeField(key) {
+    delete entries[activeIdx][key];
+    dirty = true;
+    renderEditor();
+    renderList();
+    updateStats();
+  }
+
+  function showAddField() {
+    document.getElementById('newFieldKey').value = '';
+    document.getElementById('newFieldValue').value = '';
+    document.getElementById('addFieldModal').classList.add('active');
+    document.getElementById('newFieldKey').focus();
+  }
+
+  function confirmAddField() {
+    const k = document.getElementById('newFieldKey').value.trim();
+    if (!k) return;
+    let v = document.getElementById('newFieldValue').value;
+    try { v = JSON.parse(v); } catch(_) {}
+    for (let i = 0; i < entries.length; i++) {
+      if (typeof entries[i] === 'object' && entries[i] !== null && !Array.isArray(entries[i])) {
+        entries[i][k] = v;
+      }
+    }
+    dirty = true;
+    closeModal('addFieldModal');
+    renderEditor();
+    renderList();
+    updateStats();
+  }
+
+  function addEntry() {
+    const obj = {};
+    if (entries.length > 0 && typeof entries[0] === 'object' && entries[0] !== null && !Array.isArray(entries[0])) {
+      for (const k of Object.keys(entries[0])) obj[k] = '';
+    }
+    entries.push(obj);
+    dirty = true;
+    selectEntry(entries.length - 1);
+    updateStats();
+    renderList();
+  }
+
+  function removeEntry(i) {
+    entries.splice(i, 1);
+    if (activeIdx >= entries.length) activeIdx = entries.length - 1;
+    if (activeIdx === i) activeIdx = Math.min(i, entries.length - 1);
+    dirty = true;
+    renderEditor();
+    renderList();
+    updateStats();
+  }
+
+  function deleteCurrent() {
+    if (activeIdx >= 0) removeEntry(activeIdx);
+  }
+
+  function duplicateEntry() {
+    if (activeIdx < 0) return;
+    const copy = JSON.parse(JSON.stringify(entries[activeIdx]));
+    entries.splice(activeIdx + 1, 0, copy);
+    dirty = true;
+    selectEntry(activeIdx + 1);
+    updateStats();
+  }
+
+  function openFile() {
+    document.getElementById('fileInput').click();
+  }
+
+  function handleFileSelect(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    fileName = file.name;
+    const reader = new FileReader();
+    reader.onload = (ev) => parseAndLoad(ev.target.result, file.name);
+    reader.readAsText(file);
+    e.target.value = '';
+  }
+
+  function parseAndLoad(text, name) {
+    text = text.trim();
+    try {
+      const parsed = JSON.parse(text);
+      if (Array.isArray(parsed)) {
+        entries = parsed;
+      } else {
+        entries = [parsed];
+      }
+      setStatus(`Loaded ${entries.length} entries from ${name}`, true);
+    } catch(_) {
+      const lines = text.split('\n').filter(l => l.trim());
+      entries = [];
+      let errors = 0;
+      for (const line of lines) {
+        try { entries.push(JSON.parse(line)); } catch(_) { errors++; }
+      }
+      if (entries.length > 0) {
+        setStatus(`Loaded ${entries.length} entries (JSONL)${errors ? `, ${errors} invalid lines` : ''}`, true);
+      } else {
+        setStatus('Failed to parse file as JSON or JSONL', false);
+        return;
+      }
+    }
+    dirty = false;
+    activeIdx = entries.length > 0 ? 0 : -1;
+    fileName = name || fileName;
+    document.getElementById('search').value = '';
+    filterTerm = '';
+    renderList();
+    renderEditor();
+    updateStats();
+  }
+
+  function newFile() {
+    if (dirty && !confirm('Discard unsaved changes?')) return;
+    entries = [];
+    activeIdx = -1;
+    fileName = '';
+    dirty = false;
+    document.getElementById('search').value = '';
+    filterTerm = '';
+    renderList();
+    renderEditor();
+    updateStats();
+    setStatus('New file created');
+  }
+
+  function saveFile() {
+    const indices = getFilteredIndices();
+    const subset = indices.map(i => entries[i]);
+    const text = JSON.stringify(subset, null, 2);
+    download(text, fileName || 'data.json', 'application/json');
+    dirty = false;
+    updateStats();
+    setStatus(`Saved ${subset.length} entries`);
+  }
+
+  function exportAs() {
+    document.getElementById('exportModal').classList.add('active');
+  }
+
+  function doExport() {
+    const indices = getFilteredIndices();
+    const subset = indices.map(i => entries[i]);
+    const fmt = document.getElementById('exportFormat').value;
+    let text, ext, mime;
+    if (fmt === 'jsonl') {
+      text = subset.map(e => JSON.stringify(e)).join('\n');
+      ext = '.jsonl';
+      mime = 'application/jsonl';
+    } else {
+      text = JSON.stringify(subset, null, 2);
+      ext = '.json';
+      mime = 'application/json';
+    }
+    const base = fileName ? fileName.replace(/\.[^.]+$/, '') : 'data';
+    download(text, base + ext, mime);
+    closeModal('exportModal');
+    setStatus(`Exported ${subset.length} entries as ${fmt.toUpperCase()}`);
+  }
+
+  function download(text, name, mime) {
+    const blob = new Blob([text], { type: mime });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = name;
+    document.body.appendChild(a); a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+
+  function closeModal(id) {
+    document.getElementById(id).classList.remove('active');
+  }
+
+  // Drag and drop
+  let dragCounter = 0;
+  document.addEventListener('dragenter', e => { e.preventDefault(); dragCounter++; document.getElementById('dropOverlay').classList.add('active'); });
+  document.addEventListener('dragleave', e => { e.preventDefault(); dragCounter--; if (dragCounter <= 0) { dragCounter = 0; document.getElementById('dropOverlay').classList.remove('active'); } });
+  document.addEventListener('dragover', e => e.preventDefault());
+  document.addEventListener('drop', e => {
+    e.preventDefault();
+    dragCounter = 0;
+    document.getElementById('dropOverlay').classList.remove('active');
+    const file = e.dataTransfer.files[0];
+    if (file) {
+      fileName = file.name;
+      const reader = new FileReader();
+      reader.onload = (ev) => parseAndLoad(ev.target.result, file.name);
+      reader.readAsText(file);
+    }
+  });
+
+  // Keyboard shortcuts
+  document.addEventListener('keydown', e => {
+    if (e.target.tagName === 'TEXTAREA' || e.target.tagName === 'INPUT') {
+      if (e.key === 'Escape') e.target.blur();
+      return;
+    }
+    if ((e.ctrlKey || e.metaKey) && e.key === 'n') { e.preventDefault(); addEntry(); }
+    if ((e.ctrlKey || e.metaKey) && e.key === 's') { e.preventDefault(); saveFile(); }
+    if ((e.ctrlKey || e.metaKey) && e.key === 'd') { e.preventDefault(); duplicateEntry(); }
+    if ((e.ctrlKey || e.metaKey) && e.key === 'f') { e.preventDefault(); document.getElementById('search').focus(); }
+    if (e.key === 'ArrowDown' && activeIdx < entries.length - 1) { selectEntry(activeIdx + 1); }
+    if (e.key === 'ArrowUp' && activeIdx > 0) { selectEntry(activeIdx - 1); }
+    if (e.key === 'Delete' && activeIdx >= 0) { deleteCurrent(); }
+  });
+
+  // Mock data
+  const mockEntries = [
+    {"right":{"JOINTS":{"11":0,"12":0,"13":0,"14":0,"21":0,"22":0,"23":0,"24":0,"25":0,"26":0,"31":0,"32":0,"33":0,"34":0,"35":0,"41":0,"42":0,"43":0,"44":0,"51":0,"52":0,"53":0,"54":0,"55":0,"J1":0,"J2":0,"J3":0}},"left":{"11":0,"12":0,"13":0,"14":0,"21":0,"22":0,"23":0,"24":0,"25":0,"26":0,"31":0,"32":0,"33":0,"34":0,"35":0,"41":0,"42":0,"43":0,"44":0,"51":0,"52":0,"53":0,"54":0,"55":0,"J1":0,"J2":0,"J3":0},"FRAME_NOW":1,"TS":1781157772.929879},
+    {"right":{"JOINTS":{"11":0,"12":0,"13":0,"14":0,"21":0,"22":0,"23":0,"24":0,"25":0,"26":0,"31":0,"32":0,"33":0,"34":0,"35":0,"41":0,"42":0,"43":0,"44":0,"51":0,"52":0,"53":0,"54":0,"55":0,"J1":0,"J2":0,"J3":0}},"left":{"11":0,"12":0,"13":0,"14":0,"21":0,"22":0,"23":0,"24":0,"25":0,"26":0,"31":0,"32":0,"33":0,"34":0,"35":0,"41":0,"42":0,"43":0,"44":0,"51":0,"52":0,"53":0,"54":0,"55":0,"J1":0,"J2":0,"J3":0},"FRAME_NOW":2,"TS":1781157772.929879},
+    {"right":{"JOINTS":{"11":0,"12":0,"13":0,"14":0,"21":0,"22":0,"23":0,"24":0,"25":0,"26":0,"31":0,"32":0,"33":0,"34":0,"35":0,"41":0,"42":0,"43":0,"44":0,"51":0,"52":0,"53":0,"54":0,"55":0,"J1":0,"J2":0,"J3":0}},"left":{"11":0,"12":0,"13":0,"14":0,"21":0,"22":0,"23":0,"24":0,"25":0,"26":0,"31":0,"32":0,"33":0,"34":0,"35":0,"41":0,"42":0,"43":0,"44":0,"51":0,"52":0,"53":0,"54":0,"55":0,"J1":0,"J2":0,"J3":0},"FRAME_NOW":3,"TS":1781157772.929879},
+    {"right":{"JOINTS":{"11":0,"12":0,"13":0,"14":0,"21":0,"22":0,"23":0,"24":0,"25":0,"26":0,"31":0,"32":0,"33":0,"34":0,"35":0,"41":0,"42":0,"43":0,"44":0,"51":0,"52":0,"53":0,"54":0,"55":0,"J1":0,"J2":0,"J3":0}},"left":{"11":0,"12":0,"13":0,"14":0,"21":0,"22":0,"23":0,"24":0,"25":0,"26":0,"31":0,"32":0,"33":0,"34":0,"35":0,"41":0,"42":0,"43":0,"44":0,"51":0,"52":0,"53":0,"54":0,"55":0,"J1":0,"J2":0,"J3":0},"FRAME_NOW":4,"TS":1781157772.929879},
+    {"right":{"JOINTS":{"11":0,"12":0,"13":0,"14":0,"21":0,"22":0,"23":0,"24":0,"25":0,"26":0,"31":0,"32":0,"33":0,"34":0,"35":0,"41":0,"42":0,"43":0,"44":0,"51":0,"52":0,"53":0,"54":0,"55":0,"J1":0,"J2":0,"J3":0}},"left":{"11":0,"12":0,"13":0,"14":0,"21":0,"22":0,"23":0,"24":0,"25":0,"26":0,"31":0,"32":0,"33":0,"34":0,"35":0,"41":0,"42":0,"43":0,"44":0,"51":0,"52":0,"53":0,"54":0,"55":0,"J1":0,"J2":0,"J3":0},"FRAME_NOW":5,"TS":1781157772.929879},
+    {"right":{"JOINTS":{"11":0,"12":0,"13":0,"14":0,"21":0,"22":0,"23":0,"24":0,"25":0,"26":0,"31":0,"32":0,"33":0,"34":0,"35":0,"41":0,"42":0,"43":0,"44":0,"51":0,"52":0,"53":0,"54":0,"55":0,"J1":0,"J2":0,"J3":0}},"left":{"11":0,"12":0,"13":0,"14":0,"21":0,"22":0,"23":0,"24":0,"25":0,"26":0,"31":0,"32":0,"33":0,"34":0,"35":0,"41":0,"42":0,"43":0,"44":0,"51":0,"52":0,"53":0,"54":0,"55":0,"J1":0,"J2":0,"J3":0},"FRAME_NOW":6,"TS":1781157772.929879},
+  ];
+
+  entries = mockEntries;
+  fileName = 'mock_data.json';
+  activeIdx = 0;
+  renderList();
+  renderEditor();
+  updateStats();
+</script>
+</body>
+</html>
