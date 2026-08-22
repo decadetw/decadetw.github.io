@@ -14,6 +14,22 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            accent: "var(--accent)",
+            surface: "var(--surface)",
+            ink: "var(--text)",
+            dim: "var(--text-dim)"
+          }
+        }
+      }
+    };
+  </script>
+  <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
   <style>
 /* === themes.css === */
 :root {
@@ -71,6 +87,19 @@ html[data-theme="brand"] {
 
 /* === style.css === */
 * { box-sizing: border-box; margin: 0; padding: 0; }
+
+.bg-fur {
+  position: fixed; inset: 0; z-index: 1;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+/* hero content must sit above the fur overlay */
+.hero-inner, .nav { position: relative; z-index: 2; }
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-fur { display: none; }
+}
 
 html { scroll-behavior: smooth; }
 
@@ -187,7 +216,7 @@ a:hover { text-decoration: underline; }
 /* ---------- Stats ---------- */
 .stats { padding: 48px 0; }
 .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; text-align: center; }
-.stat-value { font-size: clamp(1.6rem, 3.5vw, 2.6rem); font-weight: 800; color: var(--accent); text-shadow: var(--accent-glow); }
+.stat-value { font-size: clamp(1.6rem, 3.5vw, 2.6rem); font-weight: 800; color: var(--accent); text-shadow: var(--accent-glow); font-variant-numeric: tabular-nums; }
 .stat-label { margin-top: 4px; color: var(--text-dim); font-size: 0.95rem; }
 
 /* ---------- Section headers ---------- */
@@ -207,7 +236,8 @@ a:hover { text-decoration: underline; }
   transition: all var(--transition);
 }
 .service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--accent); }
-.service-icon { font-size: 2rem; margin-bottom: 12px; filter: drop-shadow(var(--accent-glow)); }
+.service-icon { color: var(--accent); margin-bottom: 12px; filter: drop-shadow(0 0 10px var(--accent-soft)); }
+.service-icon iconify-icon { display: block; }
 .service-card h3 { font-size: 1.08rem; margin-bottom: 6px; }
 .service-card p { color: var(--text-dim); font-size: 0.92rem; }
 
@@ -310,7 +340,8 @@ a:hover { text-decoration: underline; }
 .back-top {
   position: fixed; right: 22px; bottom: 22px; z-index: 90;
   width: 46px; height: 46px; border-radius: 50%; border: none; cursor: pointer;
-  background: var(--accent); color: var(--bg); font-size: 1.15rem;
+  background: var(--accent); color: var(--bg);
+  display: grid; place-items: center;
   box-shadow: var(--shadow), var(--accent-glow); opacity: 0; pointer-events: none;
   transition: opacity var(--transition), transform var(--transition);
 }
@@ -346,6 +377,7 @@ a:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
+  <canvas class="bg-fur" aria-hidden="true"></canvas>
   <header class="nav">
     <div class="nav-inner">
       <a class="nav-logo" href="#top" aria-label="DECADE.TW home">
@@ -360,12 +392,12 @@ a:hover { text-decoration: underline; }
       </ul>
       <div class="nav-tools">
         <div class="theme-picker" role="group" aria-label="Theme">
-          <button type="button" data-theme-opt="dark" aria-pressed="true" aria-label="Dark theme">🌑</button>
-          <button type="button" data-theme-opt="light" aria-pressed="false" aria-label="Light theme">☀️</button>
-          <button type="button" data-theme-opt="brand" aria-pressed="false" aria-label="Red brand theme">🔴</button>
+          <button type="button" data-theme-opt="dark" aria-pressed="true" aria-label="Dark theme"><iconify-icon icon="mdi:weather-night" width="14"></iconify-icon></button>
+          <button type="button" data-theme-opt="light" aria-pressed="false" aria-label="Light theme"><iconify-icon icon="mdi:white-balance-sunny" width="14"></iconify-icon></button>
+          <button type="button" data-theme-opt="brand" aria-pressed="false" aria-label="Red brand theme"><iconify-icon icon="mdi:fire" width="14"></iconify-icon></button>
         </div>
         <button type="button" class="lang-toggle" aria-label="Switch language">EN</button>
-        <button type="button" class="nav-burger" aria-label="Menu">☰</button>
+        <button type="button" class="nav-burger" aria-label="Menu"><iconify-icon icon="mdi:menu" width="20"></iconify-icon></button>
       </div>
     </div>
   </header>
@@ -457,10 +489,10 @@ a:hover { text-decoration: underline; }
           <div id="contact-info"></div>
           <div class="social-wrap">
             <div class="social-row" id="social-row">
-              <a href="https://www.facebook.com/DECADE.TW" target="_blank" rel="noopener noreferrer" aria-label="Facebook">📘</a>
-              <a href="https://www.youtube.com/@decadetw" target="_blank" rel="noopener noreferrer" aria-label="YouTube">▶️</a>
-              <a href="https://github.com/xlinx/sd-webui-decadetw-auto-prompt-llm" target="_blank" rel="noopener noreferrer" aria-label="GitHub">🐙</a>
-              <a href="mailto:victoria@decade.tw" aria-label="E-mail">✉️</a>
+              <a href="https://www.facebook.com/DECADE.TW" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><iconify-icon icon="mdi:facebook" width="24"></iconify-icon></a>
+              <a href="https://www.youtube.com/@decadetw" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><iconify-icon icon="mdi:youtube" width="26"></iconify-icon></a>
+              <a href="https://github.com/xlinx/sd-webui-decadetw-auto-prompt-llm" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><iconify-icon icon="mdi:github" width="24"></iconify-icon></a>
+              <a href="mailto:victoria@decade.tw" aria-label="E-mail"><iconify-icon icon="mdi:email" width="24"></iconify-icon></a>
             </div>
             <div class="map-wrap" id="map-wrap"></div>
           </div>
@@ -476,7 +508,7 @@ a:hover { text-decoration: underline; }
     </div>
   </footer>
 
-  <button type="button" class="back-top" aria-label="Back to top">▲</button>
+  <button type="button" class="back-top" aria-label="Back to top"><iconify-icon icon="mdi:arrow-up" width="22"></iconify-icon></button>
 
   <script>
 /* === data.js === */
@@ -505,12 +537,12 @@ a:hover { text-decoration: underline; }
     ],
 
     services: [
-      { icon: "🏛️", zh: "智慧型展場導覽系統建置與規劃", en: "Smart exhibition guide systems" },
-      { icon: "💡", zh: "互動科技裝置設計與製作", en: "Interactive installation design & build" },
-      { icon: "🛠️", zh: "產品原型設計與製作", en: "Product prototyping" },
-      { icon: "🖥️", zh: "軟體程式設計", en: "Software engineering" },
-      { icon: "⚡", zh: "電子電路設計與開發", en: "Electronic circuit design" },
-      { icon: "🎓", zh: "互動裝置諮詢・演講・Arduino.TW", en: "Consulting, talks & Arduino.TW community" }
+      { icon: "mdi:domain", zh: "智慧型展場導覽系統建置與規劃", en: "Smart exhibition guide systems" },
+      { icon: "mdi:lightbulb-on-outline", zh: "互動科技裝置設計與製作", en: "Interactive installation design & build" },
+      { icon: "mdi:tools", zh: "產品原型設計與製作", en: "Product prototyping" },
+      { icon: "mdi:code-brackets", zh: "軟體程式設計", en: "Software engineering" },
+      { icon: "mdi:chip", zh: "電子電路設計與開發", en: "Electronic circuit design" },
+      { icon: "mdi:school-outline", zh: "互動裝置諮詢・演講・Arduino.TW", en: "Consulting, talks & Arduino.TW community" }
     ],
 
     filters: [
@@ -816,9 +848,245 @@ a:hover { text-decoration: underline; }
     var wrap = document.getElementById("stats-grid");
     if (!wrap) return;
     wrap.innerHTML = D.stats.map(function (s) {
-      return '<div class="stat reveal"><div class="stat-value">' + esc(s.value) +
+      var num = parseInt(String(s.value).replace(/[^0-9]/g, ""), 10) || 0;
+      var suffix = String(s.value).replace(/^[^0-9]*[0-9]+/, "");
+      var prefix = String(s.value).slice(0, String(s.value).indexOf(suffix) - String(num).length + (suffix ? 0 : String(num).length));
+      prefix = num === 0 ? "" : String(s.value).slice(0, String(s.value).indexOf(String(num)));
+      return '<div class="stat reveal" data-target="' + num + '" data-prefix="' + esc(prefix) + '" data-suffix="' + esc(suffix) + '"><div class="stat-value">' + esc(prefix) + "0" + esc(suffix) +
         '</div><div class="stat-label">' + esc(t(s.labelKey)) + "</div></div>";
     }).join("");
+  }
+
+  /* ---------- stat count-up on scroll ---------- */
+  var counted = new WeakSet();
+  function animateCount(el) {
+    if (counted.has(el)) return;
+    counted.add(el);
+    var target = parseInt(el.dataset.target, 10) || 0;
+    var prefix = el.getAttribute("data-prefix") || "";
+    var suffix = el.getAttribute("data-suffix") || "";
+    var valEl = el.querySelector(".stat-value");
+    var dur = 1600, start = null;
+    function easeOutCubic(p) { return 1 - Math.pow(1 - p, 3); }
+    function frame(ts) {
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      valEl.textContent = prefix + Math.round(easeOutCubic(p) * target) + suffix;
+      if (p < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+  function initCountUp() {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting && e.intersectionRatio >= 0.4) {
+          animateCount(e.target);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: [0.4] });
+    document.querySelectorAll(".stat[data-target]").forEach(function (el) {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        el.querySelector(".stat-value").textContent =
+          (el.getAttribute("data-prefix") || "") + el.dataset.target + (el.getAttribute("data-suffix") || "");
+      } else {
+        io.observe(el);
+      }
+    });
+  }
+
+  /* ---------- furry background: flowing strands ---------- */
+  function initFur() {
+    var canvas = document.querySelector(".bg-fur");
+    if (!canvas) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    var ctx = canvas.getContext("2d");
+    var W = 0, H = 0, dpr = 1;
+    var strands = [];
+    var mouse = { x: -9999, y: -9999 };
+    var running = true;
+    var STRAND_COUNT = 120, SEGMENTS = 64, SEG_LEN = 7;
+
+    /* ---------- moving spotlights ---------- */
+    function makeSpot() {
+      return {
+        x: Math.random(), y: Math.random() * 0.35,
+        vx: (Math.random() - 0.5) * 0.0009,
+        vy: (Math.random() - 0.5) * 0.0006,
+        angle: Math.random() * Math.PI * 2,
+        va: (Math.random() - 0.5) * 0.0035,
+        len: 0.55 + Math.random() * 0.45,
+        spread: 0.10 + Math.random() * 0.14,
+        intensity: 0.55 + Math.random() * 0.4
+      };
+    }
+    var spots = [];
+    function populateSpots() {
+      spots = [];
+      for (var i = 0; i < 4; i++) spots.push(makeSpot());
+    }
+    function drawSpots(t) {
+      ctx.save();
+      ctx.globalCompositeOperation = "lighter";
+      for (var i = 0; i < spots.length; i++) {
+        var sp = spots[i];
+        sp.x += sp.vx; sp.y += sp.vy;
+        if (sp.x < -0.1 || sp.x > 1.1) sp.vx *= -1;
+        if (sp.y < -0.05 || sp.y > 0.4) sp.vy *= -1;
+        sp.angle += sp.va + Math.sin(t * 0.0004 + i) * 0.0012;
+
+        var ox = sp.x * W, oy = sp.y * H;
+        var beamLen = Math.hypot(W, H) * sp.len;
+        var halfSpread = sp.spread;
+
+        /* cone gradient from origin outward */
+        var g = ctx.createRadialGradient(ox, oy, 0, ox, oy, beamLen);
+        var c = "rgba(" + rgb[0] + "," + rgb[1] + "," + rgb[2] + ",";
+        g.addColorStop(0, c + (0.30 * sp.intensity).toFixed(3) + ")");
+        g.addColorStop(0.25, c + (0.13 * sp.intensity).toFixed(3) + ")");
+        g.addColorStop(0.6, c + (0.05 * sp.intensity).toFixed(3) + ")");
+        g.addColorStop(1, c + "0)");
+
+        ctx.beginPath();
+        ctx.moveTo(ox, oy);
+        ctx.arc(ox, oy, beamLen, sp.angle - halfSpread, sp.angle + halfSpread);
+        ctx.closePath();
+        ctx.fillStyle = g;
+        ctx.fill();
+
+        /* hot core near the source */
+        var core = ctx.createRadialGradient(ox, oy, 0, ox, oy, 90);
+        core.addColorStop(0, "rgba(255,255,255," + (0.22 * sp.intensity).toFixed(3) + ")");
+        core.addColorStop(0.4, c + (0.12 * sp.intensity).toFixed(3) + ")");
+        core.addColorStop(1, c + "0)");
+        ctx.beginPath();
+        ctx.arc(ox, oy, 90, 0, Math.PI * 2);
+        ctx.fillStyle = core;
+        ctx.fill();
+      }
+      ctx.restore();
+    }
+
+    function resize() {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = window.innerWidth; H = window.innerHeight;
+      canvas.width = W * dpr; canvas.height = H * dpr;
+      canvas.style.width = W + "px"; canvas.style.height = H + "px";
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    function accentRGB() {
+      var cs = getComputedStyle(document.documentElement);
+      var hex = (cs.getPropertyValue("--accent") || "#00e5a0").trim().replace("#", "");
+      if (hex.length === 3) hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
+      var n = parseInt(hex || "00e5a0", 16);
+      return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+    }
+    function makeStrand() {
+      return {
+        x: Math.random() * W,
+        y: Math.random() * H,
+        angle: Math.random() * Math.PI * 2,
+        speed: 0.35 + Math.random() * 0.75,
+        curl: (Math.random() - 0.5) * 0.14,
+        width: 1.1 + Math.random() * 2.2,
+        alpha: 0.18 + Math.random() * 0.34,
+        pts: []
+      };
+    }
+    function populate() {
+      strands = [];
+      for (var i = 0; i < STRAND_COUNT; i++) strands.push(makeStrand());
+    }
+    var rgb = [0, 229, 160];
+    function step(t) {
+      if (!running) return;
+      ctx.clearRect(0, 0, W, H);
+      drawSpots(t);
+      var timeScale = 0.00018;
+      for (var i = 0; i < strands.length; i++) {
+        var s = strands[i];
+        /* flow field angle: layered sines + slow drift */
+        var field =
+          Math.sin(s.x * 0.0022 + t * timeScale * 2.1) +
+          Math.cos(s.y * 0.0019 - t * timeScale * 1.7) +
+          Math.sin((s.x + s.y) * 0.0011 + t * timeScale);
+        var targetAngle = field * 1.35;
+        /* mouse repulsion bends nearby strands away */
+        var dx = s.x - mouse.x, dy = s.y - mouse.y;
+        var distSq = dx * dx + dy * dy;
+        var influence = 160 * 160;
+        if (distSq < influence) {
+          var away = Math.atan2(dy, dx);
+          var wgt = 1 - Math.sqrt(distSq) / 160;
+          targetAngle = away + (targetAngle - away) * (1 - wgt * 0.8);
+        }
+        /* steer toward field with smoothing + individual curl */
+        var diff = ((targetAngle - s.angle + Math.PI * 3) % (Math.PI * 2)) - Math.PI;
+        s.angle += diff * 0.055 + Math.sin(t * 0.001 + i) * s.curl * 0.08;
+
+        s.x += Math.cos(s.angle) * s.speed;
+        s.y += Math.sin(s.angle) * s.speed;
+
+        /* trail of segment points = the "hair" */
+        s.pts.unshift({ x: s.x, y: s.y });
+        if (s.pts.length > SEGMENTS) s.pts.pop();
+
+        ctx.beginPath();
+        ctx.moveTo(s.pts[0].x, s.pts[0].y);
+        /* quadratic smoothing through midpoints = silky hair curves */
+        for (var j = 1; j < s.pts.length - 1; j++) {
+          var prev = s.pts[j], next = s.pts[j + 1];
+          ctx.quadraticCurveTo(prev.x, prev.y, (prev.x + next.x) / 2, (prev.y + next.y) / 2);
+        }
+        var colStr = "rgba(" + rgb[0] + "," + rgb[1] + "," + rgb[2] + ",";
+        /* taper: draw the trail in 3 passes, thicker+dimmer at the tail */
+        ctx.lineCap = "round";
+        ctx.strokeStyle = colStr + (s.alpha * 0.30).toFixed(3) + ")";
+        ctx.lineWidth = s.width * 3.4;
+        ctx.stroke();
+        ctx.strokeStyle = colStr + (s.alpha * 0.7).toFixed(3) + ")";
+        ctx.lineWidth = s.width * 1.8;
+        ctx.stroke();
+        ctx.strokeStyle = colStr + Math.min(1, s.alpha * 2).toFixed(3);
+        ctx.lineWidth = Math.max(0.5, s.width * 0.7);
+        ctx.stroke();
+
+        /* respawn when off-screen */
+        if (s.x < -40 || s.x > W + 40 || s.y < -40 || s.y > H + 40) {
+          strands[i] = makeStrand();
+          if (Math.random() < 0.5) {
+            var edge = Math.floor(Math.random() * 4);
+            if (edge === 0) { strands[i].x = Math.random() * W; strands[i].y = -20; }
+            else if (edge === 1) { strands[i].x = W + 20; strands[i].y = Math.random() * H; }
+            else if (edge === 2) { strands[i].x = Math.random() * W; strands[i].y = H + 20; }
+            else { strands[i].x = -20; strands[i].y = Math.random() * H; }
+          }
+        }
+      }
+      requestAnimationFrame(step);
+    }
+
+    document.addEventListener("mousemove", function (e) { mouse.x = e.clientX; mouse.y = e.clientY; }, { passive: true });
+    document.addEventListener("mouseleave", function () { mouse.x = -9999; mouse.y = -9999; });
+    window.addEventListener("resize", function () { resize(); populateSpots(); }, { passive: true });
+
+    /* pause when tab hidden */
+    document.addEventListener("visibilitychange", function () {
+      var wasRunning = running;
+      running = !document.hidden;
+      if (running && !wasRunning) requestAnimationFrame(step);
+    });
+
+    /* follow theme accent color changes */
+    var themeObserver = new MutationObserver(function () { rgb = accentRGB(); });
+    themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+
+    resize();
+    rgb = accentRGB();
+    populate();
+    populateSpots();
+    requestAnimationFrame(step);
   }
 
   /* ---------- services ---------- */
@@ -826,9 +1094,7 @@ a:hover { text-decoration: underline; }
     var wrap = document.getElementById("services-grid");
     if (!wrap) return;
     wrap.innerHTML = D.services.map(function (s) {
-      return '<div class="service-card reveal"><div class="service-icon">' + s.icon +
-        "</div><h3>" + esc(s.zh) + "</h3><p>" + esc(pick({ zh: "", en: "" }) || "") +
-        "</p></div>";
+      return '<div class="service-card reveal"><div class="service-icon"><iconify-icon icon="' + s.icon + '" width="40"></iconify-icon></div><h3>' + esc(s.zh) + "</h3></div>";
     }).join("");
   }
 
@@ -837,7 +1103,7 @@ a:hover { text-decoration: underline; }
     return '<div class="video-card reveal" data-tags="' + v.tags.join(",") + '" data-ytid="' + esc(v.id) + '" role="button" tabindex="0" aria-label="' + esc(pick(v)) + '">' +
       '<div class="video-thumb">' +
       '<img loading="lazy" alt="' + esc(pick(v)) + '" src="https://i.ytimg.com/vi/' + esc(v.id) + '/hqdefault.jpg" onerror="this.style.display=\'none\'">' +
-      '<span class="play-badge">▶</span>' +
+      '<span class="play-badge"><iconify-icon icon="mdi:play" width="26"></iconify-icon></span>' +
       "</div>" +
       '<div class="video-title">' + esc(pick(v)) + "</div>" +
       "</div>";
@@ -928,6 +1194,7 @@ a:hover { text-decoration: underline; }
   /* dynamic sections re-rendered when language/filter changes */
   function renderDynamic() {
     renderStats();
+    initCountUp();
     renderServices();
     renderFilters();
     renderVideos();
@@ -1029,6 +1296,7 @@ a:hover { text-decoration: underline; }
     bindEvents();
     applyLang(storeGet("decade-lang") || "zh");
     initHero();
+    initFur();
     initMap();
   }
 
