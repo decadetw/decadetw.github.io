@@ -668,7 +668,7 @@ a:hover { text-decoration: underline; }
     ],
 
     books: [
-      "《建置無線感測網路》Robert Faludi著，林義翔、劉士達譯，O'Reilly台灣，2012",
+      "《建置無線感測網路》Robert Faludi著，林義翔譯，O'Reilly台灣，2012",
       "《踏進互動科技世界－使用Arduino》Massimo Banzi著，林義翔譯，旗標出版社，2009"
     ],
 
@@ -908,63 +908,38 @@ a:hover { text-decoration: underline; }
     var running = true;
     var STRAND_COUNT = 120, SEGMENTS = 64, SEG_LEN = 7;
 
-    /* ---------- moving spotlights ---------- */
-    function makeSpot() {
-      return {
-        x: Math.random(), y: Math.random() * 0.35,
-        vx: (Math.random() - 0.5) * 0.0009,
-        vy: (Math.random() - 0.5) * 0.0006,
-        angle: Math.random() * Math.PI * 2,
-        va: (Math.random() - 0.5) * 0.0035,
-        len: 0.55 + Math.random() * 0.45,
-        spread: 0.10 + Math.random() * 0.14,
-        intensity: 0.55 + Math.random() * 0.4
-      };
-    }
-    var spots = [];
-    function populateSpots() {
-      spots = [];
-      for (var i = 0; i < 4; i++) spots.push(makeSpot());
-    }
-    function drawSpots(t) {
+    /* ---------- cursor-following spotlight ---------- */
+    var spot = { x: W / 2, y: H / 2, alpha: 0 };
+    function drawSpot() {
+      var active = mouse.x !== -9999;
+      if (active) {
+        spot.x += (mouse.x - spot.x) * 0.09;
+        spot.y += (mouse.y - spot.y) * 0.09;
+      }
+      spot.alpha += ((active ? 1 : 0) - spot.alpha) * 0.05;
+      if (spot.alpha < 0.01) return;
+
+      var radius = Math.min(W, H) * 0.38;
+      var c = "rgba(" + rgb[0] + "," + rgb[1] + "," + rgb[2] + ",";
       ctx.save();
       ctx.globalCompositeOperation = "lighter";
-      for (var i = 0; i < spots.length; i++) {
-        var sp = spots[i];
-        sp.x += sp.vx; sp.y += sp.vy;
-        if (sp.x < -0.1 || sp.x > 1.1) sp.vx *= -1;
-        if (sp.y < -0.05 || sp.y > 0.4) sp.vy *= -1;
-        sp.angle += sp.va + Math.sin(t * 0.0004 + i) * 0.0012;
 
-        var ox = sp.x * W, oy = sp.y * H;
-        var beamLen = Math.hypot(W, H) * sp.len;
-        var halfSpread = sp.spread;
+      var g = ctx.createRadialGradient(spot.x, spot.y, 0, spot.x, spot.y, radius);
+      g.addColorStop(0, c + (0.32 * spot.alpha).toFixed(3) + ")");
+      g.addColorStop(0.35, c + (0.16 * spot.alpha).toFixed(3) + ")");
+      g.addColorStop(0.7, c + (0.06 * spot.alpha).toFixed(3) + ")");
+      g.addColorStop(1, c + "0)");
+      ctx.fillStyle = g;
+      ctx.fillRect(spot.x - radius, spot.y - radius, radius * 2, radius * 2);
 
-        /* cone gradient from origin outward */
-        var g = ctx.createRadialGradient(ox, oy, 0, ox, oy, beamLen);
-        var c = "rgba(" + rgb[0] + "," + rgb[1] + "," + rgb[2] + ",";
-        g.addColorStop(0, c + (0.30 * sp.intensity).toFixed(3) + ")");
-        g.addColorStop(0.25, c + (0.13 * sp.intensity).toFixed(3) + ")");
-        g.addColorStop(0.6, c + (0.05 * sp.intensity).toFixed(3) + ")");
-        g.addColorStop(1, c + "0)");
+      /* small bright core */
+      var coreR = 110;
+      var core = ctx.createRadialGradient(spot.x, spot.y, 0, spot.x, spot.y, coreR);
+      core.addColorStop(0, "rgba(255,255,255," + (0.20 * spot.alpha).toFixed(3) + ")");
+      core.addColorStop(1, c + "0)");
+      ctx.fillStyle = core;
+      ctx.fillRect(spot.x - coreR, spot.y - coreR, coreR * 2, coreR * 2);
 
-        ctx.beginPath();
-        ctx.moveTo(ox, oy);
-        ctx.arc(ox, oy, beamLen, sp.angle - halfSpread, sp.angle + halfSpread);
-        ctx.closePath();
-        ctx.fillStyle = g;
-        ctx.fill();
-
-        /* hot core near the source */
-        var core = ctx.createRadialGradient(ox, oy, 0, ox, oy, 90);
-        core.addColorStop(0, "rgba(255,255,255," + (0.22 * sp.intensity).toFixed(3) + ")");
-        core.addColorStop(0.4, c + (0.12 * sp.intensity).toFixed(3) + ")");
-        core.addColorStop(1, c + "0)");
-        ctx.beginPath();
-        ctx.arc(ox, oy, 90, 0, Math.PI * 2);
-        ctx.fillStyle = core;
-        ctx.fill();
-      }
       ctx.restore();
     }
 
@@ -1002,7 +977,7 @@ a:hover { text-decoration: underline; }
     function step(t) {
       if (!running) return;
       ctx.clearRect(0, 0, W, H);
-      drawSpots(t);
+      drawSpot();
       var timeScale = 0.00018;
       for (var i = 0; i < strands.length; i++) {
         var s = strands[i];
@@ -1068,8 +1043,11 @@ a:hover { text-decoration: underline; }
     }
 
     document.addEventListener("mousemove", function (e) { mouse.x = e.clientX; mouse.y = e.clientY; }, { passive: true });
+    document.addEventListener("touchmove", function (e) {
+      if (e.touches.length > 0) { mouse.x = e.touches[0].clientX; mouse.y = e.touches[0].clientY; }
+    }, { passive: true });
     document.addEventListener("mouseleave", function () { mouse.x = -9999; mouse.y = -9999; });
-    window.addEventListener("resize", function () { resize(); populateSpots(); }, { passive: true });
+    window.addEventListener("resize", function () { resize(); }, { passive: true });
 
     /* pause when tab hidden */
     document.addEventListener("visibilitychange", function () {
@@ -1085,7 +1063,6 @@ a:hover { text-decoration: underline; }
     resize();
     rgb = accentRGB();
     populate();
-    populateSpots();
     requestAnimationFrame(step);
   }
 
