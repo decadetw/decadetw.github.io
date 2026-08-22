@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="zh-TW" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>帝凱互動科技 DECADE.TW — 互動科技解決方案</title>
+  <meta name="description" content="帝凱互動科技 DECADE.TW — 互動科技解決方案：展場軟硬體整合、舞台燈光控制、聲光機神控制。Interactive technology solutions since 2008: exhibition integration, show control, sound/light/motion." />
+  <meta property="og:title" content="DECADE.TW 帝凱互動科技 — Interactive Technology Solutions" />
+  <meta property="og:description" content="展場軟硬體整合設計規劃；舞台燈光控制。Exhibition integration & show control since 2008." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://decade.tw/" />
+  <link rel="canonical" href="https://decade.tw/" />
+  <link rel="icon" type="image/png" href="https://decade.tw/images/logo/decade_logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/themes.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="nav-logo" href="#top" aria-label="DECADE.TW home">
+        <img src="https://decade.tw/images/logo/decade_logo.png" alt="DECADE.TW logo"
+             onerror="this.style.display='none'" />
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#services" data-i18n="nav.services">服務</a></li>
+        <li><a href="#works" data-i18n="nav.works">案例</a></li>
+        <li><a href="#about" data-i18n="nav.about">關於</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">聯繫</a></li>
+      </ul>
+      <div class="nav-tools">
+        <div class="theme-picker" role="group" aria-label="Theme">
+          <button type="button" data-theme-opt="dark" aria-pressed="true" aria-label="Dark theme">🌑</button>
+          <button type="button" data-theme-opt="light" aria-pressed="false" aria-label="Light theme">☀️</button>
+          <button type="button" data-theme-opt="brand" aria-pressed="false" aria-label="Red brand theme">🔴</button>
+        </div>
+        <button type="button" class="lang-toggle" aria-label="Switch language">EN</button>
+        <button type="button" class="nav-burger" aria-label="Menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero" id="top">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-inner container">
+        <h1><span data-i18n="hero.title">互動科技解決方案</span>
+          <span class="en-line">DECADE.TW · Interactive Technology Solutions</span>
+        </h1>
+        <p class="hero-tagline" data-i18n="hero.tagline">自2008年起 · 聲／光／機／神控制 · 軟硬體整合設計</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#works" data-i18n="hero.cta.works">看案例</a>
+          <a class="btn btn-ghost" href="#contact" data-i18n="hero.cta.contact">聯繫我們</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats" aria-label="Stats">
+      <div class="container">
+        <div class="stats-grid" id="stats-grid"></div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 data-i18n="services.title">服務項目</h2>
+          <p data-i18n="services.sub"></p>
+        </div>
+        <div class="services-grid" id="services-grid"></div>
+      </div>
+    </section>
+
+    <!-- Featured works -->
+    <section class="section" id="works">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 data-i18n="works.title">精選案例</h2>
+          <p data-i18n="works.sub"></p>
+        </div>
+        <div class="filter-row reveal" id="filter-row"></div>
+        <div class="videos-grid" id="videos-grid"></div>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="section" id="timeline-section">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 data-i18n="timeline.title">歷年實績</h2>
+          <p data-i18n="timeline.sub"></p>
+        </div>
+        <div class="timeline reveal" id="timeline"></div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 data-i18n="about.title">關於帝凱</h2>
+        </div>
+        <div class="about-grid reveal">
+          <div class="about-text" id="about-text"></div>
+          <aside class="about-side">
+            <div class="about-logo"><img src="https://decade.tw/images/logo/decade_logo.png" alt=""
+                 onerror="this.parentElement.style.display='none'" /></div>
+            <h3 data-i18n="about.side.media">媒體報導</h3>
+            <ul id="about-media"></ul>
+            <h3 data-i18n="about.side.books">出版品</h3>
+            <ul id="about-books"></ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2 data-i18n="contact.title">聯繫我們</h2>
+        </div>
+        <div class="contact-grid reveal">
+          <div id="contact-info"></div>
+          <div class="social-wrap">
+            <div class="social-row" id="social-row">
+              <a href="https://www.facebook.com/DECADE.TW" target="_blank" rel="noopener noreferrer" aria-label="Facebook">📘</a>
+              <a href="https://www.youtube.com/@decadetw" target="_blank" rel="noopener noreferrer" aria-label="YouTube">▶️</a>
+              <a href="https://github.com/xlinx/sd-webui-decadetw-auto-prompt-llm" target="_blank" rel="noopener noreferrer" aria-label="GitHub">🐙</a>
+              <a href="mailto:victoria@decade.tw" aria-label="E-mail">✉️</a>
+            </div>
+            <div class="map-wrap" id="map-wrap"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p id="footer-copy"></p>
+      <p><span data-i18n="footer.privacy">隱私權政策</span> · decade.tw</p>
+    </div>
+  </footer>
+
+  <button type="button" class="back-top" aria-label="Back to top">▲</button>
+
+  <script src="js/data.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

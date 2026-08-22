@@ -1,0 +1,52 @@
+:root {
+  --font-sans: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+  --nav-height: 64px;
+  --max-width: 1200px;
+  --radius: 14px;
+  --transition: 0.25s ease;
+}
+
+html[data-theme="dark"] {
+  --bg: #000000;
+  --bg-gradient: radial-gradient(ellipse at 50% -10%, #10231d 0%, #000000 60%);
+  --surface: #111111;
+  --surface-2: #181818;
+  --text: #eeeeee;
+  --text-dim: #9a9a9a;
+  --accent: #00e5a0;
+  --accent-soft: rgba(0, 229, 160, 0.12);
+  --accent-glow: 0 0 18px rgba(0, 229, 160, 0.45);
+  --border: rgba(255, 255, 255, 0.12);
+  --shadow: 0 8px 30px rgba(0, 0, 0, 0.55);
+  --hero-overlay: linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.75) 70%, #000 100%);
+}
+
+html[data-theme="light"] {
+  --bg: #ffffff;
+  --bg-gradient: radial-gradient(ellipse at 50% -10%, #eef7f3 0%, #ffffff 60%);
+  --surface: #f7f7f7;
+  --surface-2: #efefef;
+  --text: #111111;
+  --text-dim: #666666;
+  --accent: #00875a;
+  --accent-soft: rgba(0, 135, 90, 0.10);
+  --accent-glow: none;
+  --border: rgba(0, 0, 0, 0.10);
+  --shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  --hero-overlay: linear-gradient(180deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.65) 70%, #fff 100%);
+}
+
+html[data-theme="brand"] {
+  --bg: #0a0a0a;
+  --bg-gradient: radial-gradient(ellipse at 50% -10%, #2a0505 0%, #0a0a0a 60%);
+  --surface: #141414;
+  --surface-2: #1c1111;
+  --text: #eeeeee;
+  --text-dim: #b08a8a;
+  --accent: #ff2d2d;
+  --accent-soft: rgba(255, 45, 45, 0.12);
+  --accent-glow: 0 0 20px rgba(255, 45, 45, 0.55);
+  --border: rgba(255, 80, 80, 0.25);
+  --shadow: 0 8px 30px rgba(60, 0, 0, 0.6);
+  --hero-overlay: linear-gradient(180deg, rgba(10,0,0,0.4) 0%, rgba(10,0,0,0.78) 70%, #0a0a0a 100%);
+}
