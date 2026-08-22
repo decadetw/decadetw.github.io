@@ -14,8 +14,336 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/themes.css" />
-  <link rel="stylesheet" href="css/style.css" />
+  <style>
+/* === themes.css === */
+:root {
+  --font-sans: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+  --nav-height: 64px;
+  --max-width: 1200px;
+  --radius: 14px;
+  --transition: 0.25s ease;
+}
+
+html[data-theme="dark"] {
+  --bg: #000000;
+  --bg-gradient: radial-gradient(ellipse at 50% -10%, #10231d 0%, #000000 60%);
+  --surface: #111111;
+  --surface-2: #181818;
+  --text: #eeeeee;
+  --text-dim: #9a9a9a;
+  --accent: #00e5a0;
+  --accent-soft: rgba(0, 229, 160, 0.12);
+  --accent-glow: 0 0 18px rgba(0, 229, 160, 0.45);
+  --border: rgba(255, 255, 255, 0.12);
+  --shadow: 0 8px 30px rgba(0, 0, 0, 0.55);
+  --hero-overlay: linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.75) 70%, #000 100%);
+}
+
+html[data-theme="light"] {
+  --bg: #ffffff;
+  --bg-gradient: radial-gradient(ellipse at 50% -10%, #eef7f3 0%, #ffffff 60%);
+  --surface: #f7f7f7;
+  --surface-2: #efefef;
+  --text: #111111;
+  --text-dim: #666666;
+  --accent: #00875a;
+  --accent-soft: rgba(0, 135, 90, 0.10);
+  --accent-glow: none;
+  --border: rgba(0, 0, 0, 0.10);
+  --shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  --hero-overlay: linear-gradient(180deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.65) 70%, #fff 100%);
+}
+
+html[data-theme="brand"] {
+  --bg: #0a0a0a;
+  --bg-gradient: radial-gradient(ellipse at 50% -10%, #2a0505 0%, #0a0a0a 60%);
+  --surface: #141414;
+  --surface-2: #1c1111;
+  --text: #eeeeee;
+  --text-dim: #b08a8a;
+  --accent: #ff2d2d;
+  --accent-soft: rgba(255, 45, 45, 0.12);
+  --accent-glow: 0 0 20px rgba(255, 45, 45, 0.55);
+  --border: rgba(255, 80, 80, 0.25);
+  --shadow: 0 8px 30px rgba(60, 0, 0, 0.6);
+  --hero-overlay: linear-gradient(180deg, rgba(10,0,0,0.4) 0%, rgba(10,0,0,0.78) 70%, #0a0a0a 100%);
+}
+
+/* === style.css === */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal { opacity: 1 !important; transform: none !important; }
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  background-image: var(--bg-gradient);
+  color: var(--text);
+  line-height: 1.6;
+  transition: background-color var(--transition), color var(--transition);
+}
+
+section[id] { scroll-margin-top: calc(var(--nav-height) + 12px); }
+
+.container { max-width: var(--max-width); margin: 0 auto; padding: 0 20px; }
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* ---------- Navbar ---------- */
+.nav {
+  position: sticky; top: 0; z-index: 100;
+  height: var(--nav-height);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: color-mix(in srgb, var(--bg) 78%, transparent);
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  max-width: var(--max-width); margin: 0 auto; padding: 0 20px;
+  height: 100%; display: flex; align-items: center; gap: 16px;
+}
+.nav-logo img { height: 36px; display: block; }
+.nav-links { display: flex; gap: 4px; list-style: none; flex: 1; justify-content: center; }
+.nav-links a {
+  display: block; padding: 8px 14px; border-radius: 8px;
+  color: var(--text); font-weight: 500;
+}
+.nav-links a:hover { background: var(--accent-soft); text-decoration: none; color: var(--accent); }
+.nav-tools { display: flex; align-items: center; gap: 10px; }
+
+.lang-toggle, .theme-picker button {
+  background: none; border: 1px solid var(--border); color: var(--text);
+  cursor: pointer; border-radius: 999px; font-family: inherit;
+  transition: all var(--transition);
+}
+.lang-toggle { padding: 6px 14px; font-size: 13px; font-weight: 600; min-width: 56px; }
+.lang-toggle:hover { border-color: var(--accent); color: var(--accent); }
+
+.theme-picker { display: flex; gap: 6px; padding: 3px; border-radius: 999px; }
+.theme-picker button {
+  width: 26px; height: 26px; border-radius: 50%; padding: 0;
+  display: grid; place-items: center; font-size: 12px;
+}
+.theme-picker button[data-theme-opt="dark"] { background: #000; }
+.theme-picker button[data-theme-opt="light"] { background: #fff; }
+.theme-picker button[data-theme-opt="brand"] { background: radial-gradient(circle at 35% 35%, #ff5b5b, #b30000); }
+.theme-picker button[aria-pressed="true"] { box-shadow: 0 0 0 2px var(--accent), var(--accent-glow); }
+
+.nav-burger {
+  display: none; background: none; border: 1px solid var(--border);
+  color: var(--text); border-radius: 8px; padding: 6px 10px; font-size: 18px; cursor: pointer;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  min-height: calc(100vh - var(--nav-height));
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden; text-align: center;
+}
+.hero-bg { position: absolute; inset: 0; z-index: -1; }
+.hero-bg .slide {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  opacity: 0; transition: opacity 2.5s ease;
+}
+.hero-bg .slide.active { opacity: 1; }
+.hero-bg::after {
+  content: ""; position: absolute; inset: 0; background: var(--hero-overlay);
+}
+.hero-inner { padding: 60px 20px; }
+.hero h1 {
+  font-size: clamp(2rem, 5.5vw, 3.6rem);
+  font-weight: 800; letter-spacing: 0.04em;
+  text-shadow: 0 2px 24px rgba(0,0,0,0.6);
+}
+.hero h1 .en-line { display: block; font-size: 0.55em; font-weight: 500; color: var(--text-dim); margin-top: 10px; letter-spacing: 0.02em; }
+.hero-tagline {
+  margin-top: 18px; font-size: clamp(1rem, 2vw, 1.25rem); color: var(--text-dim);
+}
+.hero-tagline strong { color: var(--accent); text-shadow: var(--accent-glow); font-style: normal; }
+.hero-ctas { margin-top: 34px; display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.btn {
+  display: inline-block; padding: 12px 30px; border-radius: 999px;
+  font-weight: 700; font-size: 1rem; cursor: pointer; border: 1px solid transparent;
+  transition: all var(--transition); font-family: inherit;
+}
+.btn-primary { background: var(--accent); color: var(--bg); box-shadow: var(--accent-glow); }
+.btn-primary:hover { transform: translateY(-2px); text-decoration: none; filter: brightness(1.08); }
+.btn-ghost { border-color: var(--border); color: var(--text); background: transparent; }
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+/* ---------- Stats ---------- */
+.stats { padding: 48px 0; }
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; text-align: center; }
+.stat-value { font-size: clamp(1.6rem, 3.5vw, 2.6rem); font-weight: 800; color: var(--accent); text-shadow: var(--accent-glow); }
+.stat-label { margin-top: 4px; color: var(--text-dim); font-size: 0.95rem; }
+
+/* ---------- Section headers ---------- */
+.section { padding: 72px 0; }
+.section-head { text-align: center; margin-bottom: 44px; }
+.section-head h2 {
+  display: inline-block; font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 800;
+  padding-bottom: 10px; border-bottom: 3px solid var(--accent);
+}
+.section-head p { margin-top: 12px; color: var(--text-dim); }
+
+/* ---------- Services ---------- */
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.service-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 28px 22px;
+  transition: all var(--transition);
+}
+.service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--accent); }
+.service-icon { font-size: 2rem; margin-bottom: 12px; filter: drop-shadow(var(--accent-glow)); }
+.service-card h3 { font-size: 1.08rem; margin-bottom: 6px; }
+.service-card p { color: var(--text-dim); font-size: 0.92rem; }
+
+/* ---------- Works ---------- */
+.filter-row { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-bottom: 30px; }
+.filter-chip {
+  padding: 7px 18px; border-radius: 999px; border: 1px solid var(--border);
+  background: transparent; color: var(--text); cursor: pointer; font-family: inherit;
+  font-size: 0.9rem; transition: all var(--transition);
+}
+.filter-chip[aria-pressed="true"], .filter-chip:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
+.videos-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.video-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); overflow: hidden; cursor: pointer;
+  transition: all var(--transition); position: relative;
+}
+.video-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: var(--accent); }
+.video-thumb { position: relative; aspect-ratio: 16 / 9; background: var(--surface-2); }
+.video-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.play-badge {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 54px; height: 54px; border-radius: 50%;
+  background: rgba(0,0,0,0.65); border: 2px solid var(--accent);
+  display: grid; place-items: center; color: var(--accent); font-size: 1.3rem;
+  transition: all var(--transition); pointer-events: none;
+}
+.video-card:hover .play-badge { background: var(--accent); color: var(--bg); transform: translate(-50%, -50%) scale(1.08); }
+.video-title { padding: 12px 14px; font-size: 0.92rem; font-weight: 600; line-height: 1.4; }
+.video-frame { width: 100%; aspect-ratio: 16 / 9; border: 0; display: block; }
+.video-empty { color: var(--text-dim); text-align: center; padding: 40px 0; grid-column: 1 / -1; }
+
+/* ---------- Timeline ---------- */
+.timeline { position: relative; max-width: 860px; margin: 0 auto; padding-left: 26px; }
+.timeline::before {
+  content: ""; position: absolute; left: 8px; top: 6px; bottom: 6px;
+  width: 2px; background: linear-gradient(180deg, var(--accent), var(--border));
+}
+.year-block { position: relative; margin-bottom: 14px; }
+.year-block::before {
+  content: ""; position: absolute; left: -25px; top: 20px;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--accent); box-shadow: var(--accent-glow);
+}
+.year-toggle {
+  width: 100%; display: flex; align-items: center; justify-content: space-between;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 14px 20px; cursor: pointer; font-family: inherit;
+  color: var(--text); font-size: 1.15rem; font-weight: 700;
+  transition: all var(--transition);
+}
+.year-toggle:hover { border-color: var(--accent); }
+.year-toggle .chev { transition: transform var(--transition); color: var(--accent); }
+.year-block.open .year-toggle { border-color: var(--accent); background: var(--surface-2); }
+.year-block.open .year-toggle .chev { transform: rotate(90deg); }
+.year-list { display: none; padding: 14px 20px 8px; }
+.year-block.open .year-list { display: block; }
+.year-list li {
+  list-style: none; padding: 7px 0 7px 20px; position: relative;
+  color: var(--text); font-size: 0.95rem; border-bottom: 1px dashed var(--border);
+}
+.year-list li:last-child { border-bottom: none; }
+.year-list li::before { content: "▸"; position: absolute; left: 0; color: var(--accent); }
+.year-count { font-size: 0.8rem; color: var(--text-dim); font-weight: 500; margin-left: 10px; }
+
+/* ---------- About ---------- */
+.about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: start; }
+.about-text p { margin-bottom: 14px; color: var(--text); opacity: 0.9; }
+.about-side h3 { font-size: 1.05rem; margin: 18px 0 10px; color: var(--accent); }
+.about-side ul li {
+  list-style: none; padding: 6px 0 6px 18px; position: relative;
+  color: var(--text-dim); font-size: 0.9rem;
+}
+.about-side ul li::before { content: "·"; position: absolute; left: 4px; color: var(--accent); font-weight: 900; }
+.about-logo { text-align: center; margin-bottom: 8px; }
+.about-logo img { height: 64px; }
+
+/* ---------- Contact ---------- */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+.contact-info dt { font-weight: 700; color: var(--accent); margin-top: 16px; font-size: 0.9rem; }
+.contact-info dd { margin-top: 4px; }
+.social-row { display: flex; gap: 14px; margin-top: 22px; }
+.social-row a {
+  width: 46px; height: 46px; border-radius: 50%;
+  border: 1px solid var(--border); display: grid; place-items: center;
+  font-size: 1.25rem; transition: all var(--transition);
+}
+.social-row a:hover { border-color: var(--accent); box-shadow: var(--accent-glow); transform: translateY(-2px); text-decoration: none; }
+.line-btn { margin-top: 20px; display: inline-block; }
+.map-wrap {
+  border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border);
+  min-height: 300px; background: var(--surface-2);
+}
+.map-wrap iframe { width: 100%; height: 340px; border: 0; display: block; }
+
+/* ---------- Footer ---------- */
+.site-footer { border-top: 1px solid var(--border); padding: 28px 0; text-align: center; color: var(--text-dim); font-size: 0.88rem; }
+
+/* ---------- Back to top ---------- */
+.back-top {
+  position: fixed; right: 22px; bottom: 22px; z-index: 90;
+  width: 46px; height: 46px; border-radius: 50%; border: none; cursor: pointer;
+  background: var(--accent); color: var(--bg); font-size: 1.15rem;
+  box-shadow: var(--shadow), var(--accent-glow); opacity: 0; pointer-events: none;
+  transition: opacity var(--transition), transform var(--transition);
+}
+.back-top.visible { opacity: 1; pointer-events: auto; }
+.back-top:hover { transform: translateY(-3px); }
+
+/* ---------- Reveal animation ---------- */
+.reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.in { opacity: 1; transform: none; }
+
+/* ---------- Mobile ---------- */
+@media (max-width: 1024px) {
+  .videos-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 900px) {
+  .nav-links {
+    display: none; position: absolute; top: var(--nav-height); left: 0; right: 0;
+    flex-direction: column; background: var(--bg); border-bottom: 1px solid var(--border);
+    padding: 10px 20px 16px; gap: 2px;
+  }
+  .nav-links.open { display: flex; }
+  .nav-burger { display: block; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .videos-grid { grid-template-columns: repeat(2, 1fr); }
+  .about-grid, .contact-grid { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); row-gap: 26px; }
+}
+@media (max-width: 600px) {
+  .videos-grid { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: 1fr; }
+  .lang-toggle { min-width: auto; }
+}
+</style>
 </head>
 <body>
   <header class="nav">
@@ -150,8 +478,565 @@
 
   <button type="button" class="back-top" aria-label="Back to top">▲</button>
 
-  <script src="js/data.js"></script>
-  <script src="js/i18n.js"></script>
-  <script src="js/app.js"></script>
+  <script>
+/* === data.js === */
+/* decade.tw landing content — single source of truth.
+   Extracted from the existing React site (PAGEX_HOME / PAGE_WORKS / PAGEX_ABOUT / PAGEX_CONTACT). */
+(function () {
+  "use strict";
+
+  var BASE = "https://decade.tw";
+
+  window.DECADE_DATA = {
+    base: BASE,
+
+    heroSlides: [
+      BASE + "/images/slide/31.png",
+      BASE + "/images/slide/33.png",
+      BASE + "/images/slide/0.png",
+      BASE + "/images/slide/5.png"
+    ],
+
+    stats: [
+      { value: "2009", labelKey: "stat.founded" },
+      { value: "18+", labelKey: "stat.years" },
+      { value: "100+", labelKey: "stat.projects" },
+      { value: "1000+", labelKey: "stat.devices" }
+    ],
+
+    services: [
+      { icon: "🏛️", zh: "智慧型展場導覽系統建置與規劃", en: "Smart exhibition guide systems" },
+      { icon: "💡", zh: "互動科技裝置設計與製作", en: "Interactive installation design & build" },
+      { icon: "🛠️", zh: "產品原型設計與製作", en: "Product prototyping" },
+      { icon: "🖥️", zh: "軟體程式設計", en: "Software engineering" },
+      { icon: "⚡", zh: "電子電路設計與開發", en: "Electronic circuit design" },
+      { icon: "🎓", zh: "互動裝置諮詢・演講・Arduino.TW", en: "Consulting, talks & Arduino.TW community" }
+    ],
+
+    filters: [
+      { id: "all", zh: "全部", en: "All" },
+      { id: "lantern", zh: "燈節主燈", en: "Lantern Festival" },
+      { id: "control", zh: "中控系統", en: "Central Control" },
+      { id: "arm", zh: "機械手臂", en: "Robotic Arm" },
+      { id: "art", zh: "公共藝術", en: "Public Art" }
+    ],
+
+    videos: [
+      { id: "GGZHxkKLopg", zh: "基隆山海鳴光", en: "Keelung Shan-Ming Glow", tags: ["control"] },
+      { id: "et_1mErdoKY", zh: "台北燈節主燈偶控系統", en: "Taipei Lantern Festival main lantern control", tags: ["lantern", "control"] },
+      { id: "RtN9LXy0nSY", zh: "台灣燈會新竹主燈控制系統", en: "Taiwan Lantern Festival Hsinchu main lantern", tags: ["lantern", "control"] },
+      { id: "9_RAmF9dAQo", zh: "高雄流行音樂中心", en: "Kaohsiung Music Center", tags: ["control"] },
+      { id: "AMcD4XxWp9Y", zh: "豪華朗機工 聆聽花開的聲音", en: "Luxy Boyz — Listening to the Flowers Bloom", tags: ["art"] },
+      { id: "uDib2sl9EQ4", zh: "誠品30週年機械手臂控制", en: "Eslite 30th anniversary robotic arm", tags: ["arm"] },
+      { id: "zv084TmAvKo", zh: "台中世界花卉博覽會", en: "Taichung World Flora Expo", tags: ["control", "art"] },
+      { id: "mnyQ6473jj0", zh: "世大運開幕式", en: "Universiade Opening Ceremony", tags: ["control"] },
+      { id: "blTlSpL5gPA", zh: "誠品30週年機械手臂控制", en: "Eslite 30th robotic arm (show control)", tags: ["arm"] },
+      { id: "G21wHvVLtVY", zh: "法國IRCAM 中央控制", en: "IRCAM France central control", tags: ["control"] },
+      { id: "dF1C0cCYdGA", zh: "台北流行音樂中心控制系統", en: "Taipei Music Center control system", tags: ["control"] },
+      { id: "7wjWHlk9EHU", zh: "台南奇美博物館", en: "Chimei Museum Tainan", tags: ["art"] }
+    ],
+
+    works: [
+      { year: 2027, items: ["「故宮南院 X 豪華朗機工」－中央控制軟體技術總監"] },
+      {
+        year: 2026,
+        items: [
+          "Visual Model Training（SacoMeasure AI Model）",
+          "Gxxgle Home-Connection calc algorithm",
+          "「臺中國家歌劇院－最後一問 X 豪華朗機工」－中央控制軟體技術總監"
+        ]
+      },
+      {
+        year: 2025,
+        items: [
+          "「兩廳院－國家交響樂團」III資策會 X NSO X AI",
+          "「豪華朗機工」宇宙寫生／日光域／手識／四合／很難很難",
+          "「IONIC」SacoMeasure",
+          "「桃園會展中心」入口裝置藝術〈匯聚流〉丁建中",
+          "「信義區微風顯示器」「台中都會公園」「北區資安中心」「北區球場」顯示控制中心",
+          "「特拉維夫」裝置藝術 丁建中",
+          "「IRCAM 法國龐畢度美術館」失眠寫生簿 豪華朗機工",
+          "「兩廳院 舞鈴劇團」5G手環無線點控 資策會",
+          "「密室逃脫」超高頻RFID",
+          "「ITRI」震動演算法分析",
+          "「台北流行音樂中心－幻流行光」「高雄流行音樂中心－波光之翼」「基隆火車站－山海鳴光」X 豪華朗機工－中控建置與技術總監"
+        ]
+      },
+      { year: 2020, items: ["「台灣燈會－新竹主燈 X 豪華朗機工」「台北燈會－萬華主燈 X AKIBO老師」－中央控制軟體技術總監"] },
+      {
+        year: 2019,
+        items: [
+          "「信義誠品30週年」一起幻想 X 豪華朗機工－機械手臂中控技術總監",
+          "「臺南奇美博物館」影子特展 X 豪華朗機工－中控技術總監",
+          "「台北當代藝術館」查無此人小花展 X 豪華朗機工－中控技術總監",
+          "「永豐餘元太科技 EINK」電子紙控制計劃案"
+        ]
+      },
+      {
+        year: 2018,
+        items: [
+          "「臺中世界花卉博覽會」聆聽花開的聲音 X 豪華朗機工－中控系統建置",
+          "「GoGoRo新車發表會」硬體控制系統建置",
+          "「宜蘭傳藝中心」互動介面多點控制設計",
+          "「臺北小巨蛋CTC世界盃國標舞公開賽」RF無線控制設計"
+        ]
+      },
+      {
+        year: 2017,
+        items: [
+          "「松山文創園區讀衣II」時尚X藝術跨界展 X JUST IN XX 周裕穎－驅動控制建置",
+          "「台北世大運」群控光電顧問",
+          "「白晝之夜」X 江惠菁 X 步里赫森－電路技術支援；台電大樓公共藝術遠端控制",
+          "「元太科技 EINK 電子紙」驅動控制系統規劃執行",
+          "「Fashion Tech JustInCase」科技服裝 X JUST IN XX－驅動控制建置",
+          "「農業溫室與政府公開資訊」「臺中機器學習」研究計劃",
+          "「國家歌劇院 UltraCombo 群控無人機」通訊協定顧問"
+        ]
+      },
+      {
+        year: 2016,
+        items: [
+          "「台電公共藝術」日光域／河飄風／太陽之詩 X 華麗邏輯－電控技術設計與製作"
+        ]
+      },
+      {
+        year: 2015,
+        items: [
+          "「解密國家寶藏 X 奇想樂園互動科技館」X 工研院－採用 Centurion Pro V2.0/V1.5 系統",
+          "「智慧型IMU壓力感測藍芽柺杖」X 台大ivLab X 資策會－共同研發",
+          "「桃園機場第二航廈公共藝術」歐基理德的飛行 X 豪華朗機工",
+          "「英國曼徹斯特」日光域 X 豪華朗機工",
+          "「鹽水月津港燈節主燈」日光域 X 豪華朗機工",
+          "「文建會旗艦計畫」無人劇場 Timecode 系統研發－採用 Centurion Pro V1.0",
+          "「汐止台灣科學園區」見為知著／時中光 X 豪華朗機工",
+          "「Computex Taipei」雲端3D印表機 X 威盛電子－合作研發",
+          "2008 SIGGRAPH 發表 Many-to-One WSN 多人控制系統；2007 中油S3加油機控制卡行銷40+加油站；2006 創辦 Arduino.TW 社群"
+        ]
+      }
+    ],
+
+    about: {
+      zh: [
+        "帝凱互動科技成立於2009年，是一間科技藝術的技術整合公司。擅長將硬體伺服馬達、機械手臂、電腦燈光等媒材，利用演算法巧妙地展現活靈活現的作品。",
+        "近年來中大型展覽互動需求越來越多，每件作品的中央控制系統皆搭配雲端，讓數千個媒材裝置可以輕鬆以手機管理，遠端監控與調閱歷程、隨時排查。",
+        "2009年起透過開放硬體計畫自行研發互動控制系統 Centurion，已運行於各大展場：工研院奇想樂園與解密國家寶藏、Computex Taipei、世界設計大展、北美館、關渡美術館、香港藝術中心、澳洲、新加坡等地。DECADE.TW 期待在更多作品背後驅動更多繽紛，步步求精朝向下一個十年邁進。"
+      ],
+      en: [
+        "Founded in 2009, DECADE Interactive Technology is an art-tech integration company specializing in servo motors, robotic arms and stage lighting, choreographed by custom algorithms.",
+        "Each central control system is cloud-connected, letting thousands of media devices be managed from a phone, monitored remotely, with full history for troubleshooting.",
+        "Since 2009 our self-developed Centurion interactive control system has powered major venues including ITRI exhibitions, Computex Taipei, World Design Expo, Taipei Fine Arts Museum, Hong Kong Arts Center, Australia and Singapore. DECADE.TW drives color behind more works — step by step toward the next decade."
+      ]
+    },
+
+    media: [
+      "2012 CTimes 8月號 封面故事／3D印表機 催生下一波製造革命",
+      "2012 CTimes 4月號 封面故事／Arduino的電路板互動藝術",
+      "2011 CTimes 11月號 封面故事／開放硬體這條路",
+      "2011 文化創意精品專輯 Charming Taiwan（文建會）"
+    ],
+
+    books: [
+      "《建置無線感測網路》Robert Faludi著，林義翔、劉士達譯，O'Reilly台灣，2012",
+      "《踏進互動科技世界－使用Arduino》Massimo Banzi著，林義翔譯，旗標出版社，2009"
+    ],
+
+    contact: {
+      nameZh: "帝凱科技有限公司 DECADE Co., Ltd.",
+      addrZh: "台北市北投路一段9-C號",
+      addrEn: "No. 9-C, Sec. 1, Beitou Rd., Beitou Dist., Taipei City, Taiwan",
+      vat: "29133824",
+      email: "victoria@decade.tw",
+      line: "@ecz7450a",
+      fb: "https://www.facebook.com/DECADE.TW",
+      youtube: "https://www.youtube.com/@decadetw",
+      github: "https://github.com/xlinx/sd-webui-decadetw-auto-prompt-llm",
+      mapUrl: "https://www.google.com/maps?q=%E5%B8%9D%E5%87%B1%E7%A7%91%E6%8A%80%E6%9C%89%E9%99%90%E5%85%AC%E5%8F%B8&output=embed",
+      mapLink: "https://goo.gl/maps/6UJAAUuYaViwRyBKA",
+      lineBtn: "https://lin.ee/RcQIUgM",
+      copyrightZh: "©{year} DECADE.TW － 帝凱科技有限公司",
+      copyrightEn: "©{year} DECADE.TW — DECADE Co., Ltd."
+    }
+  };
+})();
+</script>
+<script>
+/* === i18n.js === */
+/* zh-TW / EN dictionary for static chrome. Data-driven content carries {zh, en} in data.js. */
+(function () {
+  "use strict";
+
+  window.DECADE_I18N = {
+    en: {
+      "nav.services": "Services",
+      "nav.works": "Works",
+      "nav.about": "About",
+      "nav.contact": "Contact",
+      "hero.title": "Interactive Technology Solutions",
+      "hero.tagline": "Since 2008 · <strong>Sound / Light / Motion</strong> · Software & Hardware Integration",
+      "hero.cta.works": "View Works",
+      "hero.cta.contact": "Contact Us",
+      "stat.founded": "Founded",
+      "stat.years": "Years of Experience",
+      "stat.projects": "Projects Delivered",
+      "stat.devices": "Devices Under Central Control",
+      "services.title": "Services",
+      "services.sub": "From concept to showtime — one team",
+      "works.title": "Featured Works",
+      "works.sub": "Selected projects — click a card to play",
+      "timeline.title": "Project Timeline",
+      "timeline.sub": "2027 → 2006 · nearly two decades of shows",
+      "about.title": "About DECADE.TW",
+      "about.side.media": "Media Coverage",
+      "about.side.books": "Publications",
+      "contact.title": "Contact",
+      "contact.company": "Company",
+      "contact.address": "Address",
+      "contact.vat": "VAT No.",
+      "contact.email": "E-mail",
+      "contact.line": "LINE",
+      "contact.follow": "Follow us on LINE",
+      "footer.privacy": "Privacy Policy"
+    },
+    zh: {
+      "nav.services": "服務",
+      "nav.works": "案例",
+      "nav.about": "關於",
+      "nav.contact": "聯繫",
+      "hero.title": "互動科技解決方案",
+      "hero.tagline": "自2008年起 · <strong>聲／光／機／神控制</strong> · 軟硬體整合設計",
+      "hero.cta.works": "看案例",
+      "hero.cta.contact": "聯繫我們",
+      "stat.founded": "成立於",
+      "stat.years": "年產業經驗",
+      "stat.projects": "專案實績",
+      "stat.devices": "裝置中控管理",
+      "services.title": "服務項目",
+      "services.sub": "從構想到演出，一站式整合",
+      "works.title": "精選案例",
+      "works.sub": "點擊卡片即時播放",
+      "timeline.title": "歷年實績",
+      "timeline.sub": "2027 → 2006 · 將近二十年的展演足跡",
+      "about.title": "關於帝凱",
+      "about.side.media": "媒體報導",
+      "about.side.books": "出版品",
+      "contact.title": "聯繫我們",
+      "contact.company": "公司",
+      "contact.address": "地址",
+      "contact.vat": "統一編號",
+      "contact.email": "電子郵件",
+      "contact.line": "LINE 官方帳號",
+      "contact.follow": "加入 LINE 好友",
+      "footer.privacy": "隱私權政策"
+    }
+  };
+})();
+</script>
+<script>
+/* === app.js === */
+(function () {
+  "use strict";
+
+  var D = window.DECADE_DATA;
+  var I = window.DECADE_I18N;
+
+  var state = {
+    lang: "zh",
+    theme: "dark",
+    filter: "all"
+  };
+
+  /* ---------- storage helpers (Safari private mode safe) ---------- */
+  function storeGet(key) {
+    try { return localStorage.getItem(key); } catch (e) { return null; }
+  }
+  function storeSet(key, val) {
+    try { localStorage.setItem(key, val); } catch (e) { /* ignore */ }
+  }
+
+  function t(key) {
+    return (I[state.lang] && I[state.lang][key]) || I.zh[key] || key;
+  }
+  function pick(obj) {
+    if (!obj) return "";
+    if (typeof obj === "string") return obj;
+    return obj[state.lang] || obj.zh || "";
+  }
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  /* ---------- theme & language ---------- */
+  function applyTheme(theme) {
+    state.theme = theme;
+    document.documentElement.setAttribute("data-theme", theme);
+    document.querySelectorAll(".theme-picker button").forEach(function (b) {
+      b.setAttribute("aria-pressed", String(b.dataset.themeOpt === theme));
+    });
+    storeSet("decade-theme", theme);
+  }
+  function applyLang(lang) {
+    state.lang = lang;
+    document.documentElement.lang = lang === "zh" ? "zh-TW" : "en";
+    document.querySelectorAll("[data-i18n]").forEach(function (el) {
+      el.innerHTML = t(el.getAttribute("data-i18n"));
+    });
+    var btn = document.querySelector(".lang-toggle");
+    if (btn) btn.textContent = lang === "zh" ? "EN" : "中";
+    renderDynamic();
+    storeSet("decade-lang", lang);
+  }
+
+  /* ---------- hero slides ---------- */
+  function initHero() {
+    var bg = document.querySelector(".hero-bg");
+    if (!bg) return;
+    D.heroSlides.forEach(function (src, i) {
+      var div = document.createElement("div");
+      div.className = "slide" + (i === 0 ? " active" : "");
+      div.style.backgroundImage = "url('" + src + "')";
+      div.onerror = function () { div.style.display = "none"; };
+      bg.appendChild(div);
+    });
+    var slides = bg.querySelectorAll(".slide");
+    if (slides.length < 2) return;
+    var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion) return;
+    var idx = 0;
+    setInterval(function () {
+      slides[idx].classList.remove("active");
+      idx = (idx + 1) % slides.length;
+      slides[idx].classList.add("active");
+    }, 5000);
+  }
+
+  /* ---------- stats ---------- */
+  function renderStats() {
+    var wrap = document.getElementById("stats-grid");
+    if (!wrap) return;
+    wrap.innerHTML = D.stats.map(function (s) {
+      return '<div class="stat reveal"><div class="stat-value">' + esc(s.value) +
+        '</div><div class="stat-label">' + esc(t(s.labelKey)) + "</div></div>";
+    }).join("");
+  }
+
+  /* ---------- services ---------- */
+  function renderServices() {
+    var wrap = document.getElementById("services-grid");
+    if (!wrap) return;
+    wrap.innerHTML = D.services.map(function (s) {
+      return '<div class="service-card reveal"><div class="service-icon">' + s.icon +
+        "</div><h3>" + esc(s.zh) + "</h3><p>" + esc(pick({ zh: "", en: "" }) || "") +
+        "</p></div>";
+    }).join("");
+  }
+
+  /* ---------- videos ---------- */
+  function videoCard(v) {
+    return '<div class="video-card reveal" data-tags="' + v.tags.join(",") + '" data-ytid="' + esc(v.id) + '" role="button" tabindex="0" aria-label="' + esc(pick(v)) + '">' +
+      '<div class="video-thumb">' +
+      '<img loading="lazy" alt="' + esc(pick(v)) + '" src="https://i.ytimg.com/vi/' + esc(v.id) + '/hqdefault.jpg" onerror="this.style.display=\'none\'">' +
+      '<span class="play-badge">▶</span>' +
+      "</div>" +
+      '<div class="video-title">' + esc(pick(v)) + "</div>" +
+      "</div>";
+  }
+  function renderVideos() {
+    var wrap = document.getElementById("videos-grid");
+    if (!wrap) return;
+    var list = state.filter === "all" ? D.videos : D.videos.filter(function (v) {
+      return v.tags.indexOf(state.filter) !== -1;
+    });
+    if (!list.length) {
+      wrap.innerHTML = '<p class="video-empty">' + (state.lang === "zh" ? "此分類暫無影片" : "No videos in this category") + "</p>";
+      return;
+    }
+    wrap.innerHTML = list.map(videoCard).join("");
+  }
+  function activateVideo(card) {
+    if (card.dataset.loaded) return;
+    card.dataset.loaded = "1";
+    var id = card.getAttribute("data-ytid");
+    var thumb = card.querySelector(".video-thumb");
+    thumb.outerHTML =
+      '<iframe class="video-frame" src="https://www.youtube.com/embed/' + encodeURIComponent(id) +
+      '?autoplay=1&rel=0" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+  }
+  function renderFilters() {
+    var row = document.getElementById("filter-row");
+    if (!row) return;
+    row.innerHTML = D.filters.map(function (f) {
+      return '<button class="filter-chip" aria-pressed="' + String(f.id === state.filter) +
+        '" data-filter="' + esc(f.id) + '">' + esc(pick(f)) + "</button>";
+    }).join("");
+  }
+
+  /* ---------- timeline ---------- */
+  function renderTimeline() {
+    var wrap = document.getElementById("timeline");
+    if (!wrap) return;
+    wrap.innerHTML = D.works.map(function (w, i) {
+      return '<div class="year-block' + (i === 0 ? " open" : "") + ' reveal">' +
+        '<button class="year-toggle" aria-expanded="' + String(i === 0) + '">' +
+        "<span>" + w.year + '<span class="year-count">' + w.items.length +
+        (state.lang === "zh" ? " 項" : (w.items.length === 1 ? " project" : " projects")) + "</span></span>" +
+        '<span class="chev">▸</span>' +
+        "</button>" +
+        '<ul class="year-list">' + w.items.map(function (it) { return "<li>" + esc(it) + "</li>"; }).join("") + "</ul>" +
+        "</div>";
+    }).join("");
+  }
+
+  /* ---------- about ---------- */
+  function renderAbout() {
+    var text = document.getElementById("about-text");
+    if (text) text.innerHTML = D.about[state.lang === "zh" ? "zh" : "en"].map(function (p) { return "<p>" + esc(p) + "</p>"; }).join("");
+    var media = document.getElementById("about-media");
+    if (media) media.innerHTML = D.media.map(function (m) { return "<li>" + esc(m) + "</li>"; }).join("");
+    var books = document.getElementById("about-books");
+    if (books) books.innerHTML = D.books.map(function (b) { return "<li>" + esc(b) + "</li>"; }).join("");
+  }
+
+  /* ---------- contact ---------- */
+  function renderContact() {
+    var c = D.contact;
+    var info = document.getElementById("contact-info");
+    if (!info) return;
+    var addr = state.lang === "zh" ? c.addrZh : c.addrEn;
+    info.innerHTML =
+      "<dl class=\"contact-info\">" +
+      "<dt>" + esc(t("contact.company")) + "</dt><dd>" + esc(c.nameZh) + "</dd>" +
+      "<dt>" + esc(t("contact.address")) + "</dt><dd>" + esc(addr) + ' · <a href="' + esc(c.mapLink) + '" target="_blank" rel="noopener noreferrer">Google Map</a></dd>' +
+      "<dt>" + esc(t("contact.vat")) + "</dt><dd>" + esc(c.vat) + "</dd>" +
+      '<dt>' + esc(t("contact.email")) + '</dt><dd><a href="mailto:' + esc(c.email) + '">' + esc(c.email) + "</a></dd>" +
+      "<dt>" + esc(t("contact.line")) + "</dt><dd>" + esc(c.line) + '</dd>' +
+      "</dl>" +
+      '<a class="line-btn" href="' + esc(c.lineBtn) + '" target="_blank" rel="noopener noreferrer"><img height="36" decoding="async" alt="LINE" src="https://scdn.line-apps.com/n/line_add_friends/btn/zh-Hant.png"></a>';
+    document.title = state.lang === "zh"
+      ? "帝凱互動科技 DECADE.TW — 互動科技解決方案"
+      : "DECADE.TW — Interactive Technology Solutions";
+  }
+
+  function renderFooter() {
+    var el = document.getElementById("footer-copy");
+    if (!el) return;
+    var tpl = state.lang === "zh" ? D.contact.copyrightZh : D.contact.copyrightEn;
+    el.textContent = tpl.replace("{year}", String(new Date().getFullYear()));
+  }
+
+  /* dynamic sections re-rendered when language/filter changes */
+  function renderDynamic() {
+    renderStats();
+    renderServices();
+    renderFilters();
+    renderVideos();
+    renderTimeline();
+    renderAbout();
+    renderContact();
+    renderFooter();
+    observeReveals();
+  }
+
+  /* ---------- scroll reveal ---------- */
+  var observer = null;
+  function observeReveals() {
+    if (observer) observer.disconnect();
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("in"); });
+      return;
+    }
+    observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("in"); observer.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll(".reveal:not(.in)").forEach(function (el) { observer.observe(el); });
+  }
+
+  /* ---------- lazy map ---------- */
+  function initMap() {
+    var wrap = document.getElementById("map-wrap");
+    if (!wrap || wrap.dataset.mounted) return;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        var f = document.createElement("iframe");
+        f.src = D.contact.mapUrl;
+        f.loading = "lazy";
+        f.title = "Google Map";
+        f.allowFullscreen = true;
+        wrap.appendChild(f);
+        wrap.dataset.mounted = "1";
+        io.disconnect();
+      });
+    }, { rootMargin: "200px" });
+    io.observe(wrap);
+  }
+
+  /* ---------- events ---------- */
+  function bindEvents() {
+    document.querySelector(".lang-toggle").addEventListener("click", function () {
+      applyLang(state.lang === "zh" ? "en" : "zh");
+    });
+    document.querySelectorAll(".theme-picker button").forEach(function (b) {
+      b.addEventListener("click", function () { applyTheme(b.dataset.themeOpt); });
+    });
+    var burger = document.querySelector(".nav-burger");
+    var links = document.getElementById("nav-links");
+    burger.addEventListener("click", function () { links.classList.toggle("open"); });
+    links.addEventListener("click", function (e) {
+      if (e.target.tagName === "A") links.classList.remove("open");
+    });
+
+    var main = document.getElementById("main");
+    main.addEventListener("click", function (e) {
+      var chip = e.target.closest(".filter-chip");
+      if (chip) {
+        state.filter = chip.dataset.filter;
+        renderFilters();
+        renderVideos();
+        observeReveals();
+        return;
+      }
+      var yearBtn = e.target.closest(".year-toggle");
+      if (yearBtn) {
+        var block = yearBtn.parentElement;
+        block.classList.toggle("open");
+        yearBtn.setAttribute("aria-expanded", String(block.classList.contains("open")));
+        return;
+      }
+      var card = e.target.closest(".video-card");
+      if (card) activateVideo(card);
+    });
+    main.addEventListener("keydown", function (e) {
+      if ((e.key === "Enter" || e.key === " ") && e.target.classList && e.target.classList.contains("video-card")) {
+        e.preventDefault();
+        activateVideo(e.target);
+      }
+    });
+
+    var backTop = document.querySelector(".back-top");
+    window.addEventListener("scroll", function () {
+      backTop.classList.toggle("visible", window.scrollY > 400);
+    }, { passive: true });
+    backTop.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: "smooth" }); });
+  }
+
+  /* ---------- boot ---------- */
+  function boot() {
+    applyTheme(storeGet("decade-theme") || "dark");
+    bindEvents();
+    applyLang(storeGet("decade-lang") || "zh");
+    initHero();
+    initMap();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", boot);
+  } else {
+    boot();
+  }
+})();</script>
 </body>
 </html>
