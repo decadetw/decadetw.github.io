@@ -198,6 +198,14 @@ a:hover { text-decoration: underline; }
   text-shadow: 0 2px 24px rgba(0,0,0,0.6);
 }
 .hero h1 .en-line { display: block; font-size: 0.55em; font-weight: 500; color: var(--text-dim); margin-top: 10px; letter-spacing: 0.02em; }
+/* per-character rise-in for the hero title */
+.hero h1 .ch {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.7em);
+  animation: chIn 0.55s cubic-bezier(0.2, 0.7, 0.3, 1) forwards;
+}
+@keyframes chIn { to { opacity: 1; transform: none; } }
 .hero-tagline {
   margin-top: 18px; font-size: clamp(1rem, 2vw, 1.25rem); color: var(--text-dim);
 }
@@ -818,6 +826,35 @@ a:hover { text-decoration: underline; }
     if (btn) btn.textContent = lang === "zh" ? "EN" : "中";
     renderDynamic();
     storeSet("decade-lang", lang);
+    splitChars();
+  }
+
+  /* ---------- hero title: per-character rise-in ---------- */
+  function splitChars() {
+    var h1 = document.querySelector(".hero h1");
+    if (!h1) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    /* rebuild from plain text each call so repeated language switches stay correct */
+    var zh = h1.querySelector('[data-i18n="hero.title"]');
+    var en = h1.querySelector(".en-line");
+    var zhText = zh ? zh.textContent : "";
+    var enText = en ? en.textContent : "";
+    var fillChars = function (el, text) {
+      el.innerHTML = "";
+      Array.prototype.forEach.call(text, function (ch) {
+        if (ch === " ") { el.appendChild(document.createTextNode(" ")); return; }
+        var span = document.createElement("span");
+        span.className = "ch";
+        span.textContent = ch;
+        el.appendChild(span);
+      });
+    };
+    if (zh) fillChars(zh, zhText);
+    if (en) fillChars(en, enText);
+    var i = 0;
+    h1.querySelectorAll(".ch").forEach(function (sp) {
+      sp.style.animationDelay = (i++ * 0.035) + "s";
+    });
   }
 
   /* ---------- hero slides ---------- */
@@ -895,7 +932,7 @@ a:hover { text-decoration: underline; }
     });
   }
 
-  /* ---------- furry background: flowing strands ---------- */
+  /* ---------- cursor-following spotlight background ---------- */
   function initFur() {
     var canvas = document.querySelector(".bg-fur");
     if (!canvas) return;
@@ -903,12 +940,9 @@ a:hover { text-decoration: underline; }
 
     var ctx = canvas.getContext("2d");
     var W = 0, H = 0, dpr = 1;
-    var strands = [];
     var mouse = { x: -9999, y: -9999 };
     var running = true;
-    var STRAND_COUNT = 120, SEGMENTS = 64, SEG_LEN = 7;
 
-    /* ---------- cursor-following spotlight ---------- */
     var spot = { x: W / 2, y: H / 2, alpha: 0 };
     function drawSpot() {
       var active = mouse.x !== -9999;
@@ -957,88 +991,11 @@ a:hover { text-decoration: underline; }
       var n = parseInt(hex || "00e5a0", 16);
       return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
     }
-    function makeStrand() {
-      return {
-        x: Math.random() * W,
-        y: Math.random() * H,
-        angle: Math.random() * Math.PI * 2,
-        speed: 0.35 + Math.random() * 0.75,
-        curl: (Math.random() - 0.5) * 0.14,
-        width: 1.1 + Math.random() * 2.2,
-        alpha: 0.18 + Math.random() * 0.34,
-        pts: []
-      };
-    }
-    function populate() {
-      strands = [];
-      for (var i = 0; i < STRAND_COUNT; i++) strands.push(makeStrand());
-    }
     var rgb = [0, 229, 160];
-    function step(t) {
+    function step() {
       if (!running) return;
       ctx.clearRect(0, 0, W, H);
       drawSpot();
-      var timeScale = 0.00018;
-      for (var i = 0; i < strands.length; i++) {
-        var s = strands[i];
-        /* flow field angle: layered sines + slow drift */
-        var field =
-          Math.sin(s.x * 0.0022 + t * timeScale * 2.1) +
-          Math.cos(s.y * 0.0019 - t * timeScale * 1.7) +
-          Math.sin((s.x + s.y) * 0.0011 + t * timeScale);
-        var targetAngle = field * 1.35;
-        /* mouse repulsion bends nearby strands away */
-        var dx = s.x - mouse.x, dy = s.y - mouse.y;
-        var distSq = dx * dx + dy * dy;
-        var influence = 160 * 160;
-        if (distSq < influence) {
-          var away = Math.atan2(dy, dx);
-          var wgt = 1 - Math.sqrt(distSq) / 160;
-          targetAngle = away + (targetAngle - away) * (1 - wgt * 0.8);
-        }
-        /* steer toward field with smoothing + individual curl */
-        var diff = ((targetAngle - s.angle + Math.PI * 3) % (Math.PI * 2)) - Math.PI;
-        s.angle += diff * 0.055 + Math.sin(t * 0.001 + i) * s.curl * 0.08;
-
-        s.x += Math.cos(s.angle) * s.speed;
-        s.y += Math.sin(s.angle) * s.speed;
-
-        /* trail of segment points = the "hair" */
-        s.pts.unshift({ x: s.x, y: s.y });
-        if (s.pts.length > SEGMENTS) s.pts.pop();
-
-        ctx.beginPath();
-        ctx.moveTo(s.pts[0].x, s.pts[0].y);
-        /* quadratic smoothing through midpoints = silky hair curves */
-        for (var j = 1; j < s.pts.length - 1; j++) {
-          var prev = s.pts[j], next = s.pts[j + 1];
-          ctx.quadraticCurveTo(prev.x, prev.y, (prev.x + next.x) / 2, (prev.y + next.y) / 2);
-        }
-        var colStr = "rgba(" + rgb[0] + "," + rgb[1] + "," + rgb[2] + ",";
-        /* taper: draw the trail in 3 passes, thicker+dimmer at the tail */
-        ctx.lineCap = "round";
-        ctx.strokeStyle = colStr + (s.alpha * 0.30).toFixed(3) + ")";
-        ctx.lineWidth = s.width * 3.4;
-        ctx.stroke();
-        ctx.strokeStyle = colStr + (s.alpha * 0.7).toFixed(3) + ")";
-        ctx.lineWidth = s.width * 1.8;
-        ctx.stroke();
-        ctx.strokeStyle = colStr + Math.min(1, s.alpha * 2).toFixed(3);
-        ctx.lineWidth = Math.max(0.5, s.width * 0.7);
-        ctx.stroke();
-
-        /* respawn when off-screen */
-        if (s.x < -40 || s.x > W + 40 || s.y < -40 || s.y > H + 40) {
-          strands[i] = makeStrand();
-          if (Math.random() < 0.5) {
-            var edge = Math.floor(Math.random() * 4);
-            if (edge === 0) { strands[i].x = Math.random() * W; strands[i].y = -20; }
-            else if (edge === 1) { strands[i].x = W + 20; strands[i].y = Math.random() * H; }
-            else if (edge === 2) { strands[i].x = Math.random() * W; strands[i].y = H + 20; }
-            else { strands[i].x = -20; strands[i].y = Math.random() * H; }
-          }
-        }
-      }
       requestAnimationFrame(step);
     }
 
@@ -1062,7 +1019,6 @@ a:hover { text-decoration: underline; }
 
     resize();
     rgb = accentRGB();
-    populate();
     requestAnimationFrame(step);
   }
 
