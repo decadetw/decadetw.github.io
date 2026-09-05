@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Do Re Mi — Web Piano</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #0b1020;
+      color: #f5f7ff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background:
+        radial-gradient(circle at 20% 15%, #2b1f63 0, transparent 36rem),
+        radial-gradient(circle at 85% 82%, #043d48 0, transparent 33rem),
+        #0b1020;
+    }
+
+    main { width: min(100%, 880px); }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: #9eafff;
+      font-weight: 750;
+      font-size: .75rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    h1 { margin: 0; font-size: clamp(2rem, 7vw, 4.5rem); letter-spacing: -.065em; }
+    .subtitle { max-width: 38rem; margin: 14px 0 30px; color: #c0c8e7; font-size: clamp(1rem, 2.5vw, 1.2rem); line-height: 1.55; }
+
+    .piano-shell {
+      padding: clamp(12px, 3vw, 24px);
+      border: 1px solid rgba(255, 255, 255, .14);
+      border-radius: 24px;
+      background: linear-gradient(145deg, rgba(255,255,255,.14), rgba(255,255,255,.035));
+      box-shadow: 0 28px 80px rgba(0, 0, 0, .35);
+      backdrop-filter: blur(12px);
+    }
+
+    .octave-controls {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 0 0 15px;
+    }
+
+    .octave-button {
+      min-width: 88px;
+      min-height: 42px;
+      border: 1px solid rgba(255, 255, 255, .28);
+      border-radius: 999px;
+      background: rgba(10, 15, 34, .5);
+      color: #dce2fb;
+      cursor: pointer;
+      font: 750 .84rem inherit;
+      touch-action: manipulation;
+    }
+
+    .octave-button:hover, .octave-button.selected { background: #9eafff; border-color: #c7d0ff; color: #111a38; }
+    .octave-button:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+
+    .piano {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: clamp(4px, 1vw, 10px);
+      min-height: clamp(240px, 47vw, 390px);
+    }
+
+    .key {
+      min-width: 0;
+      min-height: inherit;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 5px;
+      padding: 16px 5px;
+      border: 0;
+      border-radius: 0 0 13px 13px;
+      background: linear-gradient(110deg, #d9e1ec, #fff 32%, #e7edf5 85%);
+      color: #182039;
+      box-shadow: inset 0 -7px 0 #c2ccda, 0 6px 0 rgba(0, 0, 0, .28);
+      cursor: pointer;
+      touch-action: manipulation;
+      transition: transform 70ms ease, box-shadow 70ms ease, background 70ms ease;
+    }
+
+    .key:hover { background: linear-gradient(110deg, #e6ecff, #fff 32%, #e0e8ff 85%); }
+    .key:focus-visible { outline: 4px solid #85a0ff; outline-offset: 3px; z-index: 1; }
+    .key.active, .key:active {
+      transform: translateY(7px);
+      background: linear-gradient(110deg, #a4b7ff, #dce4ff 48%, #9caff8);
+      box-shadow: inset 0 -2px 0 #7388d8, 0 1px 0 rgba(0, 0, 0, .25);
+    }
+
+    .note { font-size: clamp(.75rem, 2.1vw, 1.15rem); font-weight: 800; }
+    kbd {
+      min-width: 1.65rem;
+      padding: .16rem .38rem;
+      border: 1px solid #aab4c5;
+      border-bottom-width: 3px;
+      border-radius: 5px;
+      background: #f5f7fb;
+      color: #364158;
+      font: 700 .74rem ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+
+    .help {
+      margin: 22px 2px 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      color: #c0c8e7;
+      font-size: .92rem;
+    }
+
+    .help strong { color: #fff; }
+    #audio-status { min-height: 1.3em; margin: 15px 2px 0; color: #ffbec9; font-size: .9rem; }
+
+    .mapping-panel {
+      margin-top: 28px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255, 255, 255, .14);
+    }
+
+    .mapping-heading { margin: 0; font-size: 1rem; }
+    .mapping-copy { margin: 5px 0 14px; color: #c0c8e7; font-size: .88rem; line-height: 1.45; }
+    .mapping-list { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px; }
+
+    .mapping-button, .reset-button {
+      border: 1px solid rgba(255, 255, 255, .22);
+      border-radius: 10px;
+      background: rgba(9, 14, 31, .45);
+      color: #f5f7ff;
+      cursor: pointer;
+      font: inherit;
+    }
+
+    .mapping-button { min-height: 68px; padding: 8px 4px; }
+    .mapping-button:hover, .mapping-button.capturing { border-color: #9eafff; background: rgba(110, 133, 255, .25); }
+    .mapping-button:focus-visible, .reset-button:focus-visible { outline: 3px solid #85a0ff; outline-offset: 2px; }
+    .mapping-note { display: block; color: #c0c8e7; font-size: .72rem; font-weight: 700; }
+    .mapping-key { display: block; margin-top: 5px; font: 800 .82rem ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .mapping-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 14px; }
+    .reset-button { padding: 8px 11px; font-size: .84rem; }
+    .reset-button:hover { background: rgba(255, 255, 255, .12); }
+    #mapping-status { min-height: 1.3em; margin: 0; color: #b9c5ff; font-size: .86rem; }
+
+    @media (max-width: 420px) {
+      body { padding: 16px; }
+      .piano-shell { border-radius: 17px; }
+      .key { padding-bottom: 11px; border-radius: 0 0 8px 8px; }
+      .note { font-size: .68rem; }
+      kbd { min-width: 1.35rem; padding: .1rem .22rem; font-size: .65rem; }
+      .mapping-list { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <p class="eyebrow">Keyboard instrument</p>
+    <h1>Do Re Mi</h1>
+    <p class="subtitle">Play with your number row or tap a key. Every note is synthesized in your browser.</p>
+
+    <section class="piano-shell" aria-label="Web piano">
+      <div class="octave-controls" role="group" aria-label="Touch octave controls">
+        <button class="octave-button" type="button" data-touch-octave="high" aria-pressed="false">High</button>
+        <button class="octave-button" type="button" data-touch-octave="low" aria-pressed="false">Low</button>
+      </div>
+      <div class="piano" role="group" aria-label="Piano keys">
+        <button class="key" type="button" data-note="do" aria-label="Do, keyboard 1"><span class="note">Do</span><kbd>1</kbd></button>
+        <button class="key" type="button" data-note="re" aria-label="Re, keyboard 2"><span class="note">Re</span><kbd>2</kbd></button>
+        <button class="key" type="button" data-note="mi" aria-label="Mi, keyboard 3"><span class="note">Mi</span><kbd>3</kbd></button>
+        <button class="key" type="button" data-note="fa" aria-label="Fa, keyboard 4"><span class="note">Fa</span><kbd>4</kbd></button>
+        <button class="key" type="button" data-note="so" aria-label="So, keyboard 5"><span class="note">So</span><kbd>5</kbd></button>
+        <button class="key" type="button" data-note="la" aria-label="La, keyboard 6"><span class="note">La</span><kbd>6</kbd></button>
+        <button class="key" type="button" data-note="si" aria-label="Si, keyboard 7"><span class="note">Si</span><kbd>7</kbd></button>
+      </div>
+      <div class="help" aria-label="Keyboard shortcuts">
+        <span><strong>1–7</strong> middle octave</span>
+        <span><strong>Shift + 1–7</strong> high octave</span>
+        <span><strong>Ctrl + 1–7</strong> low octave</span>
+      </div>
+      <p id="audio-status" role="status" aria-live="polite"></p>
+
+      <section class="mapping-panel" aria-labelledby="mapping-title">
+        <h2 class="mapping-heading" id="mapping-title">Remap keyboard keys</h2>
+        <p class="mapping-copy">Choose a note, then press its new key. Shift and Ctrl still select high and low octaves.</p>
+        <div class="mapping-list" role="group" aria-label="Custom keyboard mappings">
+          <button class="mapping-button" type="button" data-remap-note="do"><span class="mapping-note">Do</span><span class="mapping-key"></span></button>
+          <button class="mapping-button" type="button" data-remap-note="re"><span class="mapping-note">Re</span><span class="mapping-key"></span></button>
+          <button class="mapping-button" type="button" data-remap-note="mi"><span class="mapping-note">Mi</span><span class="mapping-key"></span></button>
+          <button class="mapping-button" type="button" data-remap-note="fa"><span class="mapping-note">Fa</span><span class="mapping-key"></span></button>
+          <button class="mapping-button" type="button" data-remap-note="so"><span class="mapping-note">So</span><span class="mapping-key"></span></button>
+          <button class="mapping-button" type="button" data-remap-note="la"><span class="mapping-note">La</span><span class="mapping-key"></span></button>
+          <button class="mapping-button" type="button" data-remap-note="si"><span class="mapping-note">Si</span><span class="mapping-key"></span></button>
+        </div>
+        <div class="mapping-actions">
+          <button class="reset-button" type="button" id="reset-bindings">Reset defaults</button>
+          <p id="mapping-status" role="status" aria-live="polite"></p>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script>
+    (() => {
+      const notes = {
+        do: 261.63,
+        re: 293.66,
+        mi: 329.63,
+        fa: 349.23,
+        so: 392.00,
+        la: 440.00,
+        si: 493.88,
+        highDo: 523.25,
+        highRe: 587.33,
+        highMi: 659.25,
+        highFa: 698.46,
+        highSo: 783.99,
+        highLa: 880.00,
+        highSi: 987.77,
+        lowDo: 130.81,
+        lowRe: 146.83,
+        lowMi: 164.81,
+        lowFa: 174.61,
+        lowSo: 196.00,
+        lowLa: 220.00,
+        lowSi: 246.94
+      };
+      const numberToNote = ['do', 're', 'mi', 'fa', 'so', 'la', 'si'];
+      const noteSuffixes = ['Do', 'Re', 'Mi', 'Fa', 'So', 'La', 'Si'];
+      const noteLabels = { do: 'Do', re: 'Re', mi: 'Mi', fa: 'Fa', so: 'So', la: 'La', si: 'Si' };
+      const storageKey = 'do-re-mi-custom-bindings';
+      const defaultBindings = Object.fromEntries(numberToNote.map((noteName, index) => [noteName, {
+        code: `Digit${index + 1}`,
+        label: String(index + 1)
+      }]));
+      const keyElements = new Map([...document.querySelectorAll('[data-note]')].map(key => [key.dataset.note, key]));
+      const octaveButtons = new Map([...document.querySelectorAll('[data-touch-octave]')].map(button => [button.dataset.touchOctave, button]));
+      const mappingButtons = new Map([...document.querySelectorAll('[data-remap-note]')].map(button => [button.dataset.remapNote, button]));
+      const status = document.querySelector('#audio-status');
+      const mappingStatus = document.querySelector('#mapping-status');
+      const heldKeys = new Set();
+      let audioContext;
+      let audioUnavailable = false;
+      let capturingNote = null;
+      let touchOctave = 'middle';
+      let bindings = loadBindings();
+
+      function isValidBindings(candidate) {
+        if (!candidate || typeof candidate !== 'object') return false;
+        const values = numberToNote.map(noteName => candidate[noteName]);
+        return values.every(binding => binding && typeof binding.code === 'string' && typeof binding.label === 'string')
+          && new Set(values.map(binding => binding.code)).size === numberToNote.length;
+      }
+
+      function loadBindings() {
+        try {
+          const saved = JSON.parse(localStorage.getItem(storageKey));
+          if (isValidBindings(saved)) return saved;
+        } catch (_) {
+          // Invalid or unavailable storage falls back to the default keys.
+        }
+        return structuredClone(defaultBindings);
+      }
+
+      function saveBindings() {
+        try {
+          localStorage.setItem(storageKey, JSON.stringify(bindings));
+        } catch (_) {
+          mappingStatus.textContent = 'Your browser could not save these bindings.';
+        }
+      }
+
+      function renderBindings() {
+        mappingButtons.forEach((button, noteName) => {
+          button.querySelector('.mapping-key').textContent = bindings[noteName].label;
+          button.classList.toggle('capturing', noteName === capturingNote);
+          button.setAttribute('aria-label', `${noteLabels[noteName]}, currently ${bindings[noteName].label}. Press to remap.`);
+        });
+      }
+
+      function getAudioContext() {
+        if (audioUnavailable) return null;
+        if (audioContext) return audioContext;
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContextClass) {
+          audioUnavailable = true;
+          status.textContent = 'Web Audio is not supported by this browser.';
+          return null;
+        }
+        audioContext = new AudioContextClass();
+        return audioContext;
+      }
+
+      function setKeyActive(noteName, active) {
+        const visibleName = noteName.replace(/^(high|low)/, '').toLowerCase();
+        keyElements.get(visibleName)?.classList.toggle('active', active);
+      }
+
+      function noteForTouch(noteName) {
+        if (touchOctave === 'middle') return noteName;
+        const index = numberToNote.indexOf(noteName);
+        return `${touchOctave}${noteSuffixes[index]}`;
+      }
+
+      function renderTouchOctave() {
+        octaveButtons.forEach((button, octave) => {
+          const selected = touchOctave === octave;
+          button.classList.toggle('selected', selected);
+          button.setAttribute('aria-pressed', String(selected));
+        });
+      }
+
+      function playNote(noteName) {
+        const context = getAudioContext();
+        if (!context) return;
+        if (context.state === 'suspended') context.resume();
+
+        const now = context.currentTime;
+        const master = context.createGain();
+        const oscillator = context.createOscillator();
+        const shimmer = context.createOscillator();
+        const shimmerGain = context.createGain();
+
+        oscillator.type = 'triangle';
+        oscillator.frequency.setValueAtTime(notes[noteName], now);
+        shimmer.type = 'sine';
+        shimmer.frequency.setValueAtTime(notes[noteName] * 2, now);
+        shimmerGain.gain.setValueAtTime(0.12, now);
+
+        master.gain.setValueAtTime(0.0001, now);
+        master.gain.exponentialRampToValueAtTime(0.3, now + 0.012);
+        master.gain.exponentialRampToValueAtTime(0.0001, now + 1.25);
+
+        oscillator.connect(master);
+        shimmer.connect(shimmerGain).connect(master);
+        master.connect(context.destination);
+        oscillator.start(now);
+        shimmer.start(now);
+        oscillator.stop(now + 1.3);
+        shimmer.stop(now + 1.3);
+        oscillator.addEventListener('ended', () => {
+          oscillator.disconnect();
+          shimmer.disconnect();
+          shimmerGain.disconnect();
+          master.disconnect();
+        }, { once: true });
+      }
+
+      function trigger(noteName) {
+        playNote(noteName);
+        setKeyActive(noteName, true);
+        window.setTimeout(() => setKeyActive(noteName, false), 140);
+      }
+
+      function noteFromKeyboard(event) {
+        const index = numberToNote.findIndex(noteName => bindings[noteName].code === event.code);
+        if (index === -1) return null;
+        if (event.ctrlKey) return `low${noteSuffixes[index]}`;
+        if (event.shiftKey) return `high${noteSuffixes[index]}`;
+        return numberToNote[index];
+      }
+
+      function startCapture(noteName) {
+        capturingNote = noteName;
+        mappingStatus.textContent = `Press a new key for ${noteLabels[noteName]}, or Escape to cancel.`;
+        renderBindings();
+      }
+
+      function captureBinding(event) {
+        if (!capturingNote || event.repeat) return false;
+        event.preventDefault();
+        if (event.code === 'Escape') {
+          capturingNote = null;
+          mappingStatus.textContent = 'Remapping cancelled.';
+          renderBindings();
+          return true;
+        }
+        if (['ShiftLeft', 'ShiftRight', 'ControlLeft', 'ControlRight', 'AltLeft', 'AltRight', 'MetaLeft', 'MetaRight'].includes(event.code)) {
+          mappingStatus.textContent = 'Choose a non-modifier key.';
+          return true;
+        }
+        const duplicate = numberToNote.find(noteName => noteName !== capturingNote && bindings[noteName].code === event.code);
+        if (duplicate) {
+          mappingStatus.textContent = `${event.key} is already assigned to ${noteLabels[duplicate]}.`;
+          return true;
+        }
+        bindings[capturingNote] = { code: event.code, label: event.key === ' ' ? 'Space' : event.key.toUpperCase() };
+        mappingStatus.textContent = `${noteLabels[capturingNote]} is now ${bindings[capturingNote].label}.`;
+        capturingNote = null;
+        saveBindings();
+        renderBindings();
+        return true;
+      }
+
+      document.addEventListener('keydown', event => {
+        if (captureBinding(event)) return;
+        if (event.target instanceof Element && event.target.matches('input, textarea, select, [contenteditable="true"]')) return;
+        const noteName = noteFromKeyboard(event);
+        if (!noteName || event.repeat || heldKeys.has(event.code)) return;
+        event.preventDefault();
+        heldKeys.add(event.code);
+        trigger(noteName);
+      });
+
+      document.addEventListener('keyup', event => heldKeys.delete(event.code));
+      window.addEventListener('blur', () => heldKeys.clear());
+
+      keyElements.forEach((key, noteName) => {
+        key.addEventListener('pointerdown', event => {
+          event.preventDefault();
+          trigger(noteForTouch(noteName));
+        });
+      });
+
+      octaveButtons.forEach((button, octave) => button.addEventListener('click', () => {
+        touchOctave = touchOctave === octave ? 'middle' : octave;
+        renderTouchOctave();
+      }));
+
+      mappingButtons.forEach((button, noteName) => button.addEventListener('click', () => startCapture(noteName)));
+      document.querySelector('#reset-bindings').addEventListener('click', () => {
+        bindings = structuredClone(defaultBindings);
+        capturingNote = null;
+        saveBindings();
+        mappingStatus.textContent = 'Default bindings restored.';
+        renderBindings();
+      });
+      renderBindings();
+      renderTouchOctave();
+    })();
+  </script>
+</body>
+</html>
