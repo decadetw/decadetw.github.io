@@ -1,0 +1,1024 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DECADE.TW 帝凱互動科技 — 互動科技解決方案</title>
+<meta name="description" content="帝凱互動科技成立於2009年，是ㄧ間科技藝術的技術整合公司。擅長將硬體伺服馬達、機械手臂、電腦燈光等媒材利用演算法巧妙地展現活靈活現的作品。提供展場軟硬體整合設計規劃；舞台燈光控制。">
+<meta property="og:title" content="DECADE.TW 帝凱互動科技">
+<meta property="og:description" content="互動科技解決方案 — 提供展場軟硬體整合設計規劃；舞台規劃；舞台燈光控制。聲/光/機/神控制，RF電路/伺服馬達/機械手臂，ML/AI/軟體演算法設計。">
+<meta property="og:image" content="images/logo/decade_logo.png">
+<link rel="icon" type="image/png" href="images/logo/decade_logo.png">
+<style>
+:root{
+  --bg:#05060d;
+  --panel:rgba(10,13,24,.66);
+  --line:rgba(255,255,255,.09);
+  --txt:#e8ecf4;
+  --dim:#9aa3b5;
+  --acc1:#22d3ee;
+  --acc2:#a78bfa;
+  --acc3:#f472b6;
+  --grad:linear-gradient(90deg,var(--acc1),var(--acc2),var(--acc3));
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{
+  margin:0;background:var(--bg);color:var(--txt);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue","PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif;
+  font-size:17px;line-height:1.6;overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;
+}
+/* ---------- background layers ---------- */
+#bg{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;display:block}
+#fallback-bg{
+  display:none;position:fixed;inset:-20%;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(40% 35% at 20% 25%, rgba(34,211,238,.22), transparent 70%),
+    radial-gradient(45% 40% at 80% 30%, rgba(167,139,250,.20), transparent 70%),
+    radial-gradient(50% 45% at 55% 85%, rgba(244,114,182,.16), transparent 70%);
+  filter:blur(30px);
+}
+body.no-webgl #fallback-bg{display:block;animation:drift 26s ease-in-out infinite alternate}
+@keyframes drift{
+  0%{transform:translate(-3%,-2%) scale(1)}
+  50%{transform:translate(3%,2%) scale(1.06)}
+  100%{transform:translate(-2%,3%) scale(1.02)}
+}
+body.fx-off #fallback-bg{display:none}
+/* ---------- nav ---------- */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:60;height:52px;
+  background:rgba(8,9,14,.75);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.nav-in{max-width:1180px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;padding:0 18px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--txt)}
+.brand img{height:38px;width:auto}
+.brand b{font-size:.95rem;letter-spacing:.08em;color:var(--dim);font-weight:600}
+.nav-links{display:flex;gap:6px}
+.nav-links a{
+  color:#cdd5e3;text-decoration:none;font-size:.95rem;padding:8px 14px;border-radius:10px;
+  transition:.2s;border:1px solid transparent;
+}
+.nav-links a:hover{color:#fff;border-color:var(--line);background:rgba(255,255,255,.05)}
+@media(max-width:720px){.brand b{display:none}.nav-links a{padding:8px 9px;font-size:.88rem}}
+/* ---------- layout ---------- */
+main{position:relative;z-index:1;padding-top:52px}
+.wrap{width:min(1180px,calc(100% - 36px));margin:0 auto}
+section{scroll-margin-top:66px}
+.glass{
+  background:var(--panel);
+  backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);
+  border:1px solid var(--line);border-radius:22px;
+  padding:clamp(22px,4vw,46px);
+  box-shadow:0 24px 70px rgba(0,0,0,.45);
+}
+.sec-gap{margin-top:26px}
+/* paired divider headings (mirrors original site) */
+.dv-main{
+  font-size:clamp(2rem,4.6vw,3.1rem);font-weight:700;letter-spacing:-.025em;line-height:1.12;text-align:center;margin:0;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.dv-sub{text-align:center;color:var(--dim);margin:12px 0 34px;font-size:clamp(1rem,1.8vw,1.15rem);letter-spacing:.005em}
+h2.sec-h{font-size:1.55rem;font-weight:600;letter-spacing:-.015em;line-height:1.25;margin:46px 0 18px;color:#f5f5f7}
+h2.sec-h:first-child{margin-top:0}
+/* ---------- hero text ---------- */
+.hero .kicker{color:var(--acc1);letter-spacing:.42em;font-size:.8rem;font-weight:600;text-transform:uppercase;margin-bottom:16px;text-shadow:0 2px 12px rgba(0,0,0,.8)}
+.hero h1{
+  margin:0;font-size:clamp(3rem,9vw,6rem);font-weight:700;letter-spacing:-.035em;line-height:1.05;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 6px 30px rgba(34,211,238,.18));
+}
+.hero .zh-name{font-size:clamp(1.15rem,3vw,1.65rem);font-weight:600;color:#f5f5f7;margin-top:14px;letter-spacing:.26em}
+.hero p.tagline{color:#e6ebf5;font-size:clamp(1rem,2vw,1.2rem);font-weight:400;letter-spacing:-.005em;margin:20px auto 28px;max-width:640px;text-shadow:0 1px 10px rgba(0,0,0,.7)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:30px}
+.chip{border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:6px 16px;background:rgba(8,11,20,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-size:.88rem;color:#eef2f9}
+.cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-block;padding:12px 30px;border-radius:980px;text-decoration:none;font-weight:500;font-size:1rem;letter-spacing:-.01em;transition:.25s}
+.btn.primary{background:var(--grad);color:#071018;box-shadow:0 8px 28px rgba(167,139,250,.35)}
+.btn.primary:hover{transform:translateY(-1px);filter:brightness(1.08)}
+.btn.ghost{border:1px solid rgba(255,255,255,.35);color:#fff;background:rgba(8,11,20,.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.btn.ghost:hover{background:rgba(255,255,255,.12);transform:translateY(-1px)}
+.scroll-cue{margin-top:44px;color:var(--dim);font-size:1.3rem;animation:bounce 2s infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(9px)}}
+/* ---------- hero : image-slider title background ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  min-height:calc(100vh - 52px);min-height:calc(100svh - 52px);
+  display:grid;place-items:center;text-align:center;padding:72px 0 60px;
+}
+.hero-media{position:absolute;inset:0;z-index:0}
+#heroSlider{position:absolute;inset:0}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.1s ease}
+.hero-slide.on{opacity:1}
+.hero-slide img{width:100%;height:100%;object-fit:cover;transform-origin:52% 42%}
+.hero-slide.on img{animation:kenburns 9s ease-out forwards}
+@keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.08)}}
+.hero-shade{
+  position:absolute;inset:0;z-index:2;
+  background:
+    linear-gradient(180deg,rgba(5,6,13,.62) 0%,rgba(5,6,13,.38) 40%,rgba(5,6,13,.55) 78%,var(--bg) 100%),
+    radial-gradient(90% 70% at 50% 45%, rgba(5,6,13,.18), rgba(5,6,13,.62));
+}
+.hero-content{position:relative;z-index:3;width:min(1180px,calc(100% - 36px));margin:0 auto;text-shadow:0 2px 18px rgba(0,0,0,.55)}
+.hero-dots{position:absolute;bottom:20px;left:0;right:0;z-index:4;display:flex;gap:8px;justify-content:center}
+.hero-dots button{
+  width:26px;height:6px;border-radius:99px;border:0;padding:0;cursor:pointer;
+  background:rgba(255,255,255,.35);transition:.25s;
+}
+.hero-dots button:hover{background:rgba(255,255,255,.7)}
+.hero-dots button.on{background:var(--acc1);width:38px;box-shadow:0 0 10px rgba(34,211,238,.6)}
+/* ---------- youtube facades ---------- */
+.yt-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(272px,1fr))}
+.yt-card{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:rgba(255,255,255,.03);transition:.25s}
+.yt-card:hover{transform:translateY(-3px);border-color:rgba(34,211,238,.45);box-shadow:0 14px 34px rgba(0,0,0,.4)}
+.yt-thumb{position:relative;aspect-ratio:16/9;background:#000 center/cover;cursor:pointer;border:0;padding:0;width:100%;display:block}
+.yt-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.yt-thumb.noimg{background:linear-gradient(135deg,#101b33,#301048 55%,#480f2e)}
+.yt-play{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:56px;height:56px;border-radius:50%;
+  background:linear-gradient(135deg,rgba(34,211,238,.92),rgba(167,139,250,.92));
+  display:grid;place-items:center;transition:.2s;pointer-events:none;
+}
+.yt-play::after{content:"";border-style:solid;border-width:11px 0 11px 19px;border-color:transparent transparent transparent #071018;margin-left:4px}
+.yt-card:hover .yt-play{transform:translate(-50%,-50%) scale(1.12)}
+.yt-frame{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt-title{padding:11px 14px;font-size:.95rem;font-weight:500;letter-spacing:-.005em;color:#f5f5f7;line-height:1.45}
+/* ---------- masonry galleries ---------- */
+.masonry{columns:4 230px;column-gap:14px}
+.masonry figure{margin:0 0 14px;break-inside:avoid;-webkit-column-break-inside:avoid}
+.masonry img{
+  width:100%;display:block;border-radius:12px;border:1px solid var(--line);cursor:zoom-in;
+  transition:transform .25s, box-shadow .25s;background:#111;
+}
+.masonry img:hover{transform:scale(1.02);box-shadow:0 12px 32px rgba(0,0,0,.5)}
+/* ---------- lightbox ---------- */
+#lightbox{position:fixed;inset:0;z-index:90;background:rgba(3,4,9,.92);display:none;align-items:center;justify-content:center;backdrop-filter:blur(6px)}
+#lightbox.open{display:flex}
+#lightbox img{max-width:92vw;max-height:86vh;border-radius:10px;box-shadow:0 30px 90px rgba(0,0,0,.7)}
+.lb-btn{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.5);color:#fff;font-size:1.4rem;cursor:pointer}
+.lb-prev{left:16px}.lb-next{right:16px}
+.lb-close{position:absolute;top:14px;right:16px;width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.5);color:#fff;font-size:1.2rem;cursor:pointer}
+.lb-cap{position:absolute;bottom:16px;left:0;right:0;text-align:center;color:#aab;font-size:.9rem}
+/* ---------- works ---------- */
+.works-wrap{display:grid;grid-template-columns:1fr 132px;gap:26px}
+.year-nav{position:sticky;top:74px;align-self:start;display:flex;flex-direction:column;gap:6px}
+@media(max-width:860px){.works-wrap{grid-template-columns:1fr}.year-nav{position:static;flex-direction:row;flex-wrap:wrap}}
+.year-nav a{
+  color:#b9c2d4;text-decoration:none;font-size:.9rem;padding:6px 10px;border-radius:9px;border:1px solid transparent;text-align:center;transition:.2s;
+}
+.year-nav a:hover{color:#fff;border-color:var(--line);background:rgba(255,255,255,.05)}
+.yr{margin-bottom:30px;background:rgba(148,163,184,.055);border:1px solid var(--line);border-radius:16px;padding:18px 20px}
+.yr-head{
+  display:inline-block;background:rgba(255,255,255,.06);border:1px solid var(--line);padding:5px 22px;border-radius:980px;
+  font-weight:600;font-size:1.05rem;color:#f5f5f7;letter-spacing:.03em;
+}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.tag{
+  font-size:.855rem;background:rgba(148,163,184,.12);border:1px solid rgba(148,163,184,.26);
+  color:#cbd5e1;padding:5px 12px;border-radius:8px;line-height:1.55;
+}
+.tag::before{content:"▸ ";color:var(--acc1)}
+/* ---------- about / contact ---------- */
+.about-grid{display:grid;grid-template-columns:1fr 250px;gap:28px}
+@media(max-width:860px){.about-grid{grid-template-columns:1fr}}
+.about-card{background:rgba(255,255,255,.035);border:1px solid var(--line);border-radius:16px;padding:20px 24px;line-height:1.7;letter-spacing:-.003em;color:#e8ebf1}
+.about-card p{margin:0 0 14px}
+.about-card p:last-child{margin-bottom:0}
+.side-logo{align-self:center;text-align:center}
+.side-logo img{width:100%;max-width:230px;opacity:.92}
+.svc-list{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
+.svc-list li{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:.95rem}
+.svc-list li::before{content:"✦ ";color:var(--acc2)}
+.press-card p{margin:0 0 12px;color:#cfd7e4}
+.contact-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:30px;align-items:start}
+@media(max-width:860px){.contact-grid{grid-template-columns:1fr}}
+ul.info{margin:8px 0 0;padding:0;list-style:none}
+ul.info li{padding:8px 0;border-bottom:1px dashed rgba(255,255,255,.08);line-height:1.7;font-size:.97rem}
+ul.info li:last-child{border-bottom:0}
+a{color:var(--acc1)}
+a:hover{filter:brightness(1.2)}
+.map-img{width:100%;border-radius:14px;border:1px solid var(--line);display:block}
+.map-frame{width:100%;height:300px;border:0;border-radius:14px;border:1px solid var(--line);margin-top:16px;display:block}
+.line-btn{display:inline-block;margin-top:14px}
+.line-btn img{height:36px;border-radius:4px}
+/* ---------- footer ---------- */
+footer{position:relative;z-index:1;margin-top:34px;padding:44px 0 110px;text-align:center;background:linear-gradient(rgba(5,6,13,0),rgba(5,6,13,.85));border-top:1px solid var(--line)}
+.socials{display:flex;gap:22px;justify-content:center;margin-bottom:18px}
+.socials a{color:#aab4c8;transition:.2s}
+.socials a:hover{color:#fff;transform:translateY(-2px)}
+.socials svg{width:24px;height:24px;fill:currentColor}
+.copy{color:#86868b;font-size:.82rem;letter-spacing:.005em}
+.copy a{color:var(--dim)}
+/* ---------- fx dock (shader switcher) ---------- */
+.fx-dock{
+  position:fixed;right:16px;bottom:16px;z-index:70;display:flex;align-items:center;gap:6px;
+  padding:8px 10px;border-radius:18px;
+  background:rgba(8,11,20,.78);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border:1px solid var(--line);box-shadow:0 14px 40px rgba(0,0,0,.5);
+}
+.fx-label{font-size:.68rem;color:var(--dim);writing-mode:vertical-rl;letter-spacing:.18em;margin-right:2px}
+.fxb{
+  width:40px;height:40px;border-radius:12px;border:1px solid transparent;background:rgba(255,255,255,.05);
+  color:#c3cbdb;font-size:.72rem;font-weight:800;display:grid;place-items:center;cursor:pointer;transition:.2s;
+  line-height:1.15;text-align:center;padding:0;
+}
+.fxb:hover{color:#fff;background:rgba(255,255,255,.12)}
+.fxb.active{
+  background:linear-gradient(135deg,rgba(34,211,238,.28),rgba(167,139,250,.28));
+  border-color:rgba(34,211,238,.65);color:#fff;box-shadow:0 0 16px rgba(34,211,238,.35);
+}
+.fxb.icon{font-size:1rem}
+.fx-sep{width:1px;height:26px;background:var(--line);margin:0 3px}
+@media(max-width:640px){.fx-dock{right:10px;bottom:10px;gap:4px;padding:6px 8px}.fxb{width:36px;height:36px}}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .scroll-cue{animation:none}
+  .hero-slide{transition:none}
+  .hero-slide.on img{animation:none}
+}
+/* ---------- apple-style reveal effect for text/content blocks ---------- */
+.js [data-rv]{
+  opacity:0;transform:translateY(22px);filter:blur(6px);
+  transition:opacity .8s cubic-bezier(.28,.11,.32,1),transform .8s cubic-bezier(.28,.11,.32,1),filter .8s cubic-bezier(.28,.11,.32,1);
+  transition-delay:var(--rvd,0ms);
+}
+.js [data-rv].in{opacity:1;transform:none;filter:none}
+@media (prefers-reduced-motion: reduce){
+  .js [data-rv]{opacity:1;transform:none;filter:none;transition:none}
+}
+noscript div{padding:14px;text-align:center;background:#3b1020;color:#ffd9e6}
+</style>
+</head>
+<body>
+<canvas id="bg" aria-hidden="true"></canvas>
+<div id="fallback-bg" aria-hidden="true"></div>
+<noscript><div>本頁面需要啟用 JavaScript 以顯示完整內容（背景特效、作品牆與影片）。This page needs JavaScript for the full experience.</div></noscript>
+
+<nav>
+  <div class="nav-in">
+    <a class="brand" href="#home">
+      <img src="images/logo/decade_logo.png" alt="DECADE.TW 帝凱互動科技 logo">
+      <b>帝凱互動科技</b>
+    </a>
+    <div class="nav-links">
+      <a href="#home">首頁</a>
+      <a href="#works">案例</a>
+      <a href="#about">關於</a>
+      <a href="#contacts">聯繫</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <!-- HERO : image slider as title background -->
+  <section id="home" class="hero">
+    <div class="hero-media" aria-hidden="true">
+      <div id="heroSlider"></div>
+      <div class="hero-shade"></div>
+    </div>
+    <div class="hero-content">
+      <div class="kicker">Interactive Art &amp; Technology</div>
+      <h1>DECADE.TW</h1>
+      <div class="zh-name">帝凱互動科技</div>
+      <p class="tagline">互動科技解決方案 — 提供展場軟硬體整合設計規劃；舞台燈光控制。<br>成立於 2009 年，科技藝術的技術整合公司。</p>
+      <div class="chips">
+        <span class="chip">成立於 2009</span>
+        <span class="chip">科技藝術技術整合</span>
+        <span class="chip">中央控制系統 × 雲端</span>
+        <span class="chip">RF電路 / 伺服馬達 / 機械手臂</span>
+        <span class="chip">ML/AI/軟體演算法設計</span>
+      </div>
+      <div class="cta">
+        <a class="btn primary" href="#works">歷年實績</a>
+        <a class="btn ghost" href="#contacts">聯絡我們</a>
+      </div>
+      <div class="scroll-cue">▾</div>
+    </div>
+    <div class="hero-dots" id="heroDots" role="tablist" aria-label="背景輪播控制"></div>
+  </section>
+
+  <!-- 互動科技解決方案 -->
+  <section id="solutions" class="wrap sec-gap">
+    <div class="glass">
+      <h2 class="dv-main">互動科技解決方案</h2>
+      <p class="dv-sub">提供展場軟硬體整合設計規劃；舞台燈光控制</p>
+      <div class="yt-grid" id="ytSolutions"></div>
+    </div>
+  </section>
+
+  <!-- 聲光機神控制 -->
+  <section id="control" class="wrap sec-gap">
+    <div class="glass">
+      <h2 class="dv-main">聲/光/機/神控制</h2>
+      <p class="dv-sub">軟/體/硬/電子電路/多媒體</p>
+      <div class="yt-grid" id="ytAlgorithm"></div>
+    </div>
+  </section>
+
+  <!-- 常設裝置 gallery -->
+  <section id="installations" class="wrap sec-gap">
+    <div class="glass">
+      <h2 class="dv-main">RF電路/伺服馬達/機械手臂</h2>
+      <p class="dv-sub">常設／半永久性裝置</p>
+      <div class="masonry" id="masonryInstall"></div>
+    </div>
+  </section>
+
+  <!-- ML/AI gallery -->
+  <section id="mlai" class="wrap sec-gap">
+    <div class="glass">
+      <h2 class="dv-main">ML/AI/軟體演算法設計</h2>
+      <p class="dv-sub">effect algorithm / model training / fineTune</p>
+      <div class="masonry" id="masonryAlgo"></div>
+    </div>
+  </section>
+
+  <!-- WORKS -->
+  <section id="works" class="wrap sec-gap">
+    <div class="glass">
+      <h2 class="dv-main">歷年實績｜Works</h2>
+      <p class="dv-sub">Every installation behind the scenes · 2006 – 2027</p>
+      <div class="works-wrap">
+        <div id="worksList"></div>
+        <nav class="year-nav" id="yearNav" aria-label="年份索引"></nav>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="wrap sec-gap">
+    <div class="glass">
+      <div class="about-grid">
+        <div>
+          <h2 class="sec-h">公司簡介</h2>
+          <div class="about-card">
+            <p>帝凱互動科技成立於2009年，是ㄧ間科技藝術的技術整合公司。擅長將硬體伺服馬達、機械手臂、電腦燈光等媒材利用演算法巧妙地展現活靈活現的作品；近年來中大型展覽互動需求越來越多，每件作品中央控制系統都搭配雲端，讓數千個媒材裝置可以輕鬆控制於手機進行管理、遠端作品可以監控與調閱歷程隨時排查。DECADE.TW期待未來十年在更多作品背後驅動更多繽紛，並步步求精朝向下一個十年邁進。</p>
+            <p>帝凱科技早年鑽研於嵌入式系統建置領域，透過自行研發中國石油S3軟體與加油機台通訊協定(Current Loop)的控制卡，行銷超過台灣四十間民營加油站，並透過多年累積的嵌入式系統設計，擁有豐富的規劃建置經驗，在互動技術領域穩定的導入系統，帶給觀眾更多互動想像體驗，及體現全新型態讓人耳目一新的聽覺、視覺感受。</p>
+            <p>2009年起，台灣的互動科技熱潮興起，帝凱科技考量公司長期成長與發展策略，率先透過開放硬體計劃，自行研發互動控制系統－Centurion。其利用CPLD為電路基礎，加上經過數年不斷的改良與擴充軟體功能，已運行於各大展場，如2014年、2015年工研院舉辦的奇想樂園與解密國家寶藏，2012年 Computex Taipei、2011年世界設計大展、台北市立美術館、關渡美術館、鳳甲美術館、MOT藝廊、香港藝術中心、澳洲、新加坡等地。多年以來也與國內知名藝術團隊 合作設計各種極具美感的聽覺、視覺互動藝術裝置，已將互動科技跨域成功的帶給觀眾前所未有的嶄新體驗。</p>
+            <p>帝凱科技（DECADE.TW）－ 期待未來十年，帝凱將創造更多元、新型態形式的科技藝術產業契機，把藝術與科技融合日常生活，提供每一場更完美的視覺、聽覺饗宴，步步求精朝向下一個十年邁進。</p>
+          </div>
+
+          <h2 class="sec-h">About</h2>
+          <div class="about-card">
+            <p>Founded in 2009, DECADE Interactive Technology is an art and technology integration company. DECADE.TW specializes in the use of hardware servo motors, robotic arms, computer lighting and other media using algorithms to cleverly show the living works; in recent years the demand for medium and large-scale interactive exhibitions is increasing, the central control system for each piece of artwork with the cloud, so that thousands of media devices can be easily controlled by cell phone management, remote works can be monitored and access to the history of the check at any time. DECADE.TW is looking forward to the next ten years to drive more color behind more works and to move forward to the next ten years step by step.</p>
+            <p>DECADE.TW has been drilling in the field of embedded system construction for many years. Through the self-development of CPC S3 software and the control card of the communication protocol (Current Loop) of the refueling station, DECADE.TW has marketed more than 40 privately-owned refueling stations in Taiwan, and through years of accumulated embedded system design, DECADE.TW has a wealth of planning and construction experience, and has been able to steadily introduce the system in the field of interactive technology, which has brought the audience a more interactive and imaginative experience. In the field of interactive technology, the stable navigation system brings audiences more interactive imaginative experience, and realizes the new form of refreshing auditory and visual experience.</p>
+            <p>In 2009, Taiwan&rsquo;s interactive technology boom began, and considering the company&rsquo;s long-term growth and development strategy, DecaTech took the lead in developing its own interactive control system, Centurion, through the Open Hardware Program, which utilizes CPLDs as the circuitry base, and after several years of continuous improvement and expansion of software functions, has been running in major exhibitions, such as in 2014, In 2015, ITRI organized the Wonderland and Decoding National Treasures, 2012 Computex Taipei, 2011 World Design Expo, Taipei Fine Arts Museum, Kuandu Museum of Fine Arts, Fengjia Museum of Fine Arts, MOT Gallery, Hong Kong Arts Center, Australia, Singapore, and so on. Over the years, DECADE has also cooperated with the famous art team in Taiwan, HOLLAND, to design a variety of aesthetically pleasing auditory and visual interactive art installations, which have successfully brought unprecedented experiences to audiences across the spectrum of interactive technology.</p>
+            <p>DECADE Technology (DECADE.TW) &ndash; Looking forward to the next decade, DECADE will create more diversified and new forms of technology and art industry opportunities, integrating art and technology in daily life, providing each more perfect visual and auditory feast, and step by step, we will strive to move forward to the next decade.</p>
+          </div>
+
+          <h2 class="sec-h">服務項目</h2>
+          <ul class="svc-list">
+            <li>智慧型展場導覽系統建置與規劃</li>
+            <li>互動科技裝置設計與製作</li>
+            <li>產品原型設計與製作</li>
+            <li>智慧型櫥窗</li>
+            <li>軟體程式設計</li>
+            <li>電子電路設計與開發</li>
+            <li>互動裝置設計諮詢與規劃</li>
+            <li>學術演講、書籍、台灣Arduino.TW</li>
+          </ul>
+
+          <h2 class="sec-h">媒體報導</h2>
+          <div class="about-card press-card">
+            <p>2012年8月號 CTimes – 封面故事 / 3D印表機 催生下一波製造革命</p>
+            <p>2012年7月號 CTimes – 專欄 / 跨界整合 互動世界新體驗</p>
+            <p>2012年6月號 CTimes – 科技藝廊 / 豪華朗機工 代言跨界整合新美學</p>
+            <p>2012年5月號 CTimes – 專欄 / 新媒體下的跨界演出</p>
+            <p>2012年4月號 CTimes -封面故事 / Arduino的電路板互動藝術，專欄 / 開放硬體潮流下的新媒體</p>
+            <p>2011年文化創意精品專輯(2011 Charming Taiwan)，文建會</p>
+            <p>2011年第四季 新北市政府文化專刊 / 科技藝術的理性與感性 － 跨界整合新美學</p>
+            <p>2011年11月號 CTimes － 封面故事 / 開放硬體這條路</p>
+          </div>
+
+          <h2 class="sec-h">出版品</h2>
+          <div class="about-card press-card">
+            <p>建置無線感測網路，Robert Faludi著，林義翔、劉士達譯，O&rsquo;Rellay台灣，2012年</p>
+            <p>踏進互動科技世界－使用Arduino，Massimo Banzi著，林義翔譯，旗標出版社，2009年</p>
+          </div>
+        </div>
+        <div class="side-logo">
+          <img src="images/logo/decade_logo.png" alt="DECADE.TW 帝凱互動科技 logo">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contacts" class="wrap sec-gap">
+    <div class="glass">
+      <h2 class="dv-main">聯繫我們</h2>
+      <p class="dv-sub">Contact DECADE.TW</p>
+      <div class="contact-grid">
+        <div>
+          <h2 class="sec-h">公司資訊</h2>
+          <h3 style="margin:6px 0 4px;font-size:1.08rem">帝凱科技有限公司 DECADE Co., Ltd.</h3>
+          <ul class="info">
+            <li>台北市北投路一段9-C號。地圖：<a href="https://goo.gl/maps/6UJAAUuYaViwRyBKA" target="_blank" rel="noreferrer noopener">GoogleMAP</a></li>
+            <li>No.9-C, Sec. 1, Beitou Rd., Beitou Dist. Taipei City, Taiwan.</li>
+            <li>統一編號：29133824</li>
+            <li>e-Mail: <a href="mailto:victoria@decade.tw">victoria@decade.tw</a></li>
+            <li>LINE: @ecz7450a</li>
+            <li>FB: <a href="https://www.facebook.com/DECADE.TW" target="_blank" rel="noreferrer noopener">DECADE.TW</a></li>
+          </ul>
+          <a class="line-btn" href="https://lin.ee/RcQIUgM" target="_blank" rel="noreferrer noopener">
+            <img src="https://scdn.line-apps.com/n/line_add_friends/btn/zh-Hant.png" alt="加入好友" height="36" border="0">
+          </a>
+
+          <h2 class="sec-h">帳務資訊</h2>
+          <ul class="info">
+            <li>銀行：中國信託商業銀行－板新分行(822)</li>
+            <li>戶名：帝凱科技有限公司</li>
+            <li>帳號：4175-4026-6515</li>
+          </ul>
+
+          <h2 class="sec-h">其他連結</h2>
+          <iframe class="map-frame" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14449.701610014334!2d121.5010294!3d25.1213049!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe398fdb39ca95fe4!2z5bid5Yex5LqS5YuV56eR5oqA!5e0!3m2!1szh-TW!2stw!4v1631195282390!5m2!1szh-TW!2stw" allowfullscreen="" loading="lazy" title="帝凱互動科技地圖"></iframe>
+        </div>
+        <div>
+          <img class="map-img" src="images/map/decade_map.jpg" alt="帝凱互動科技位置地圖">
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="socials">
+    <a href="https://www.facebook.com/decade.tw" target="_blank" rel="noreferrer noopener" aria-label="Facebook" title="Facebook">
+      <svg viewBox="0 0 24 24"><path d="M13.5 21v-8.2h2.76l.41-3.2H13.5V7.55c0-.93.26-1.56 1.58-1.56h1.69V3.13c-.29-.04-1.29-.13-2.46-.13-2.43 0-4.1 1.49-4.1 4.22v2.38H7.44v3.2h2.77V21h3.29z"/></svg>
+    </a>
+    <a href="https://www.facebook.com/decade.tw" target="_blank" rel="noreferrer noopener" aria-label="YouTube" title="YouTube">
+      <svg viewBox="0 0 24 24"><path d="M23 12s0-3.85-.49-5.69a2.9 2.9 0 0 0-2.05-2.05C18.62 3.77 12 3.77 12 3.77s-6.62 0-8.46.49A2.9 2.9 0 0 0 1.49 6.3C1 8.15 1 12 1 12s0 3.85.49 5.69a2.9 2.9 0 0 0 2.05 2.05c1.84.49 8.46.49 8.46.49s6.62 0 8.46-.49a2.9 2.9 0 0 0 2.05-2.05C23 15.85 23 12 23 12zM9.75 15.57V8.43L15.82 12l-6.07 3.57z"/></svg>
+    </a>
+    <a href="https://twitter.com/" target="_blank" rel="noreferrer noopener" aria-label="Twitter" title="Twitter">
+      <svg viewBox="0 0 24 24"><path d="M23 4.94a9 9 0 0 1-2.59.71 4.52 4.52 0 0 0 1.98-2.5 9.03 9.03 0 0 1-2.86 1.1 4.51 4.51 0 0 0-7.68 4.1A12.8 12.8 0 0 1 2.53 3.6a4.51 4.51 0 0 0 1.4 6.02 4.49 4.49 0 0 1-2.05-.57v.06a4.51 4.51 0 0 0 3.62 4.42 4.52 4.52 0 0 1-2.04.08 4.51 4.51 0 0 0 4.21 3.13A9.05 9.05 0 0 1 1 18.6a12.77 12.77 0 0 0 6.92 2.03c8.3 0 12.85-6.88 12.85-12.85l-.01-.58A9.2 9.2 0 0 0 23 4.94z"/></svg>
+    </a>
+    <a href="https://github.com/xlinx/sd-webui-decadetw-auto-prompt-llm" target="_blank" rel="noreferrer noopener" aria-label="GitHub" title="GitHub">
+      <svg viewBox="0 0 24 24"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.93c.58.1.79-.25.79-.56v-2c-3.2.7-3.87-1.54-3.87-1.54-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.09 1.77 1.19 1.77 1.19 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.16-1.18 3.16-1.18.63 1.59.24 2.76.12 3.05.74.81 1.18 1.83 1.18 3.09 0 4.42-2.69 5.39-5.25 5.67.41.36.78 1.06.78 2.14v3.17c0 .31.2.67.8.56A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg>
+    </a>
+    <a href="mailto:victoria@decade.tw" aria-label="Email" title="Email">
+      <svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4.24-8 5.02-8-5.02V6.29l8 5.02 8-5.02v1.95z"/></svg>
+    </a>
+  </div>
+  <p class="copy">©<span id="year">2025</span> DECADE.TW - 帝凱科技有限公司 - 台北市北投路一段9-C號 | 隱私權政策</p>
+</footer>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="圖片預覽">
+  <button class="lb-btn lb-prev" type="button" aria-label="上一張">‹</button>
+  <img id="lbImg" src="" alt="">
+  <button class="lb-btn lb-next" type="button" aria-label="下一張">›</button>
+  <button class="lb-close" type="button" aria-label="關閉">✕</button>
+  <div class="lb-cap" id="lbCap"></div>
+</div>
+
+<!-- FX DOCK : shader switcher -->
+<div class="fx-dock" role="toolbar" aria-label="背景特效切換 Background effect switcher" title="背景特效">
+  <span class="fx-label" aria-hidden="true">背景</span>
+  <button class="fxb" type="button" data-fx="aurora" title="極光 Aurora — 流動光帶">極光</button>
+  <button class="fxb" type="button" data-fx="nebula" title="星雲 Nebula — 粒子星塵">星雲</button>
+  <button class="fxb" type="button" data-fx="plasma" title="電漿 Plasma — 迷幻色場">電漿</button>
+  <button class="fxb" type="button" data-fx="ripple" title="漣漪 Ripple — 隨滑鼠波動">漣漪</button>
+  <span class="fx-sep" aria-hidden="true"></span>
+  <button class="fxb icon" type="button" id="fxPause" title="暫停 / 播放 Pause / Play">⏸</button>
+  <button class="fxb icon" type="button" id="fxPower" title="關閉背景特效 Turn off">⏻</button>
+</div>
+
+<script>
+document.documentElement.classList.add('js');
+/* ================================================================
+   CONTENT DATA — extracted verbatim from decade.tw source
+   ================================================================ */
+const SLIDE_ORDER=[31,32,33,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
+const INSTALL_IMAGES=Array.from({length:20},(_,i)=>i);
+
+const YT_SOLUTIONS=[
+  {t:'基隆山海鳴光',id:'GGZHxkKLopg'},
+  {t:'台北燈節主燈偶控系統',id:'et_1mErdoKY'},
+  {t:'台灣燈會新竹主燈控制系統',id:'RtN9LXy0nSY'},
+  {t:'高雄流行音樂中心',id:'9_RAmF9dAQo'},
+  {t:'豪華朗機工聆聽花開的聲音',id:'AMcD4XxWp9Y'},
+  {t:'誠品30週年機械手臂控制',id:'uDib2sl9EQ4'},
+  {t:'台電大樓馬達控制系統',id:'YPILezM36Mk'},
+  {t:'台中世界花卉博覽會',id:'zv084TmAvKo'},
+  {t:'台電大樓風動電路設計',id:'Xkbk8A6MBmI'},
+  {t:'世大運開幕式',id:'mnyQ6473jj0'},
+  {t:'台灣科技園區裝置控制',id:'XWcwRYwDcVs'},
+  {t:'台南燈會中央控制系統',id:'uWbwuabvpgY'}
+];
+const YT_ALGORITHM=[
+  {t:'誠品３０週年機械手臂控制',id:'blTlSpL5gPA'},
+  {t:'法國IRCAM 中央控制',id:'G21wHvVLtVY'},
+  {t:'台北流行音樂中心控制系統',id:'dF1C0cCYdGA'},
+  {t:'台北燈節主燈牛偶控制系統',id:'iLRVEH9zFao'},
+  {t:'基隆車站控制系統',id:'yNvj24m-KbA'},
+  {t:'台南奇美博物館',id:'7wjWHlk9EHU'},
+  {t:'台灣電力公司日光域系統',id:'0wHT3ey_Dkc'},
+  {t:'新竹台灣燈會主燈控制系統',id:'RPPHKiupq58'},
+  {t:'Arduino教父',id:'b9wYHVMWJ10'}
+];
+
+const WORKS=[
+ {year:'2027',list:`「故宮南院 X 豪華朗機工」－中央控制軟體技術總監`},
+ {year:'2026',list:`Visual Model Training(SacoMesure AI Model),Gxxgle Home-Connection calc algorithm, 「臺中國家歌劇院 - 最後一問 X 豪華朗機工」－中央控制軟體技術總監`},
+ {year:'2025',list:`「兩廳院 - 國家交響樂團」－ III資策會 X NSO X AI,「豪華朗機工」－ 宇宙寫生,「豪華朗機工」－ 日光域,「豪華朗機工」－ 手識,「豪華朗機工」－ 四合,「豪華朗機工」－ 很難很難,「ＩＯＮＩＣ」－ SacoMeasure`+
+ `「桃園會展中心」－ 入口裝置藝術 匯聚流 丁建中 ,「信義區微風顯示器」－ 視訊控制中心 ,「台中都會公園」－ 顯示控制中心 ,「特拉維夫」－ 裝置藝術 丁建中 ,「IRCAM 法國龐畢度美術館」－ 失眠寫生簿 豪華朗機工 ,「兩廳院 舞鈴劇團」－ 兩廳院 5G手環無線點控 資策會 ,「密室逃脫」－ 超高頻ＲＦＩＤ ,「北區資安中心」－ 顯示控制中心 ,「北區球場」－ 顯示控制中心 ,「ＩＴＲＩ」－ 震動演算法分析 ,「台北流行音樂中心－幻流行光 Ｘ 豪華朗機工」－中央控制軟體建置與技術總監 ,「高雄流行音樂中心 波光之翼 Ｘ 豪華朗機工」－中央控制軟體建置與技術總監,「基隆火車站 山海鳴光 Ｘ 豪華朗機工」－中央控制軟體建置與技術總監`},
+ {year:'2020',list:`「台灣燈會－新竹主燈 Ｘ 豪華朗機工」－中央控制軟體技術總監,「台北燈會－台北萬華主燈 Ｘ ＡＫＩＢＯ老師」－中央控制軟體技術總監`},
+ {year:'2019',list:`「信義誠品30週年」 一起幻想 Ｘ 豪華朗機工－機械手臂中央控制技術總監 ,「臺南奇美博物館」 影子特展 Ｘ 豪華朗機工－中央控制技術總監 ,「台北當代藝術館 」查無此人小花展 Ｘ 豪華朗機工 －中央控制技術總監,「永豐餘元太科技EINK 」電子紙控制計劃案`},
+ {year:'2018',list:`「臺中世界花卉博覽會」聆聽花開的聲音 Ｘ 豪華朗機工－中央控制系統建置 ,「GoGoRo新⾞發表會」硬體控制系統建置 ,「宜蘭蘭傳藝中心 」互動介⾯多點控制設計,「臺北小巨蛋CTC世界盃國際標準舞公開賽」RF無線控制設計`},
+ {year:'2017',list:`「松山文創園區讀衣II 」時尚 X 藝術跨界展 Ｘ JUST IN XX 周裕穎－驅動控制系統建置 ,「台北世大運」群控光電顧問 ,「白晝之夜」藝術活動 Ｘ 藝術家江惠菁 Ｘ 步里赫森－電路技術支援 ,「白晝之夜－台電大樓公共藝術」Ｘ 柯市長點燈－遠端控制系統 ,「元太科技EINK 電子紙」驅動控制系統規劃執行 ,「Fashion Tech JustInCase 」科技服裝設計 Ｘ JUST IN XX 周裕穎－驅動控制系統規劃建置 ,「農業溫室與政府公開資訊」研究計劃 ,「臺中機器學習MachineLearning」資料研究計劃,「國家歌劇院 UltraCombo群控無人機」通訊協定顧問`},
+ {year:'2016',list:`「台灣電力公司公共藝術」日光域 Ｘ 華麗邏輯－電控技術設計與製作 ,「台灣電力公司公共藝術」河飄風 Ｘ 華麗邏輯－電路設計與製作,「台灣電力公司公共藝術」太陽之詩 Ｘ 華麗邏輯－馬達電控技術與製作`},
+ {year:'2008–2015',anchor:'2015',list:
+ `「2015解密國家寶藏 Ｘ 奇想樂園互動科技館」X 工研院 X 華麗邏輯 X 光洋波斯特 『奇想樂園互動導覽技術與互動機台』採用本公司研發Centurion ProV2.0系統 ,`+
+ `「智慧型IMU壓力感測藍芽通訊柺杖」Ｘ 國立台灣大學 ivLab Ｘ 資策會創新所－共同研發 ,`+
+ `「智慧型震動馬達感測藍芽通訊鞋墊』Ｘ 資策會創新所 ,`+
+ `「敦煌擴增實境導覽裝置」小沙彌 Ｘ 台灣大學ivLab 2014年 ,`+
+ `「2014解密國家寶藏－奇想樂園互動科技館」X 工研院 X 華麗邏輯 『奇想樂園互動導覽技術與互動機台』採用本公司研發Centurion ProV1.5系統 ,`+
+ `「桃園機場第二航廈公共藝術裝置 」歐基理德的飛行 X 豪華朗機工 ,`+
+ `「英國曼側斯特」日光域 X 豪華朗機工 ,`+
+ `「臺南鹽水月津港燈節主燈」日光域 X 豪華朗機工 2013年 ,`+
+ `「文建會科技與表演藝術結合旗艦計畫」王俊傑 X 豪華朗機工 X 台北藝術大學科技藝術中心 『無人劇場Timecode系統研發』採用本公司研發Centurion ProV1.0系統 ,`+
+ `「汐止台灣科學園區大廳公共藝術」見為知著 X 豪華朗機工 ,`+
+ `「汐止台灣科學園區戶外公共藝術」時中光 X 豪華朗機工 2012年 ,`+
+ `「文建會科技與表演藝術結合旗艦計畫」M Project X 豪華朗機工 X 周先生 －共同創作 ,`+
+ `「足部壓力無線傳輸感測模組」X 國立台灣大學 X 資策會－共同創作 ,`+
+ `「文建會科技與表演藝術結合旗艦計畫 」線上演出『名導濾鏡』之雲端冒險演出之一 X 廣藝基金會 X 台北藝術大學 ,`+
+ `「Computex Taipei 」雲端個人3D印表機 X 威盛電子股份有限公司－合作研發 ,`+
+ `「Facebook互動式數位藝術櫥窗」X 台北教育大學 X 藝術家張博智 －合作研發 ,`+
+ `業界演講 CTimes Android Days －『踏進Arduino互動科技世界－使用Android』（參與人數達200人次）,`+
+ `「藝術裝置」福 X 豪華朗機工－互動設計 ,`+
+ `「ZigBee無線傳輸」X 德明財經科技大學－距離感測模組研發 ,`+
+ `研發 LED幻彩無線傳輸控制器 2011年 ,`+
+ `「Facebook互動式音樂」Tender Blackmail黑信 X 音樂家陳建騏 X 藝術家張博智 X 人力飛行劇團 －互動設計 ,`+
+ `「台北世界設計大會」聲音互動式展場 X 亞洲大學－聲音互動設計製作 ,`+
+ `「研發Centurion多點互動控制系統」 ,`+
+ `「藝術裝置」一日 X 豪華朗機工－電子控制設計 ,`+
+ `「藝術裝置」日光域 X 豪華朗機工－電子控制設計 ,`+
+ `「藝術裝置」游泳 X 豪華朗機工－電子控制設計 2010年 ,`+
+ `於台灣大學研發智慧感測手環 ,`+
+ `「藝術裝置」浪2 X 豪華朗機工－電子控制設計 ,`+
+ `「藝術裝置」無線音樂控制器 X 藝術家張博智－電子控制設計 ,`+
+ `「互動影像裝置」水立方時尚館 籠中鳥－藝術裝置電子控制設計 帝凱科技有限公司正式成立 2009年 ,`+
+ `於台灣大學研發智慧壓力感測鞋、智慧呼吸感測衣 ,`+
+ `「藝術裝置」浪1 X 豪華朗機工－電子控制設計 ,`+
+ `帝凱科技有限公司成立籌備處 ,`+
+ `申請國立台北藝術大學育成中心進駐廠商，獲99年度U-START教育部大專畢業生創業服務計畫30萬創業補助 2008年 ,`+
+ `美國洛杉磯與新加坡SIGGRAPH會議發表教室多人控制系統『Many to One PC by WSN System』 ,`+
+ `「藝術裝置」時間流產 X 朗機工－電子控制設計 ,`+
+ `「藝術裝置」南方樂浪 X 朗機工－電子控制設計 2007年 ,`+
+ `研發與生產－台灣中國石油S3加油機控制介面卡 2006年,`+
+ `創辦Arduino.TW－台灣Arduino使用者社群`}
+];
+
+/* ================================================================
+   POPULATE GALLERIES
+   ================================================================ */
+// hero background slider (title sits on top)
+(function(){
+  const slider=document.getElementById('heroSlider');
+  const dotsBox=document.getElementById('heroDots');
+  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  SLIDE_ORDER.forEach((n,i)=>{
+    const d=document.createElement('div');
+    d.className='hero-slide'+(i===0?' on':'');
+    const img=document.createElement('img');
+    img.src=`images/slide/${n}.png`;
+    img.alt='';
+    img.loading=i<3?'eager':'lazy';
+    img.decoding='async';
+    img.draggable=false;
+    d.appendChild(img);
+    slider.appendChild(d);
+    const dot=document.createElement('button');
+    dot.type='button';
+    if(i===0)dot.className='on';
+    dot.setAttribute('aria-label',`切換背景圖 ${i+1}`);
+    dot.addEventListener('click',()=>go(i));
+    dotsBox.appendChild(dot);
+  });
+  const slides=[...slider.children];
+  const dotEls=[...dotsBox.children];
+  let cur=0,timer=null;
+  function show(i){
+    slides[cur].classList.remove('on');dotEls[cur].classList.remove('on');
+    cur=(i+slides.length)%slides.length;
+    slides[cur].classList.add('on');dotEls[cur].classList.add('on');
+  }
+  function go(i){show(i);restart();}
+  function restart(){
+    clearInterval(timer);
+    if(!reduced)timer=setInterval(()=>show(cur+1),5000);
+  }
+  document.addEventListener('visibilitychange',()=>{
+    if(document.hidden)clearInterval(timer);
+    else restart();
+  });
+  restart();
+})();
+
+// youtube facades
+function buildYT(list,containerId){
+  const box=document.getElementById(containerId);
+  list.forEach(v=>{
+    const card=document.createElement('div');card.className='yt-card';
+    const btn=document.createElement('button');btn.className='yt-thumb';btn.type='button';
+    btn.setAttribute('aria-label','播放影片：'+v.t);
+    const img=document.createElement('img');
+    img.src=`https://i.ytimg.com/vi/${v.id}/hqdefault.jpg`;img.alt='';img.loading='lazy';img.decoding='async';
+    img.addEventListener('error',()=>btn.classList.add('noimg'));
+    const play=document.createElement('span');play.className='yt-play';
+    btn.append(img,play);
+    btn.addEventListener('click',()=>{
+      const f=document.createElement('iframe');
+      f.className='yt-frame';
+      f.src=`https://www.youtube.com/embed/${v.id}?autoplay=1&rel=0&feature=oembed`;
+      f.title=v.t;
+      f.allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      f.referrerPolicy='strict-origin-when-cross-origin';
+      f.allowFullScreen=true;
+      btn.replaceWith(f);
+    });
+    const t=document.createElement('div');t.className='yt-title';t.textContent=v.t;t.title=v.t;
+    card.append(btn,t);box.appendChild(card);
+  });
+}
+buildYT(YT_SOLUTIONS,'ytSolutions');
+buildYT(YT_ALGORITHM,'ytAlgorithm');
+
+// masonry galleries
+let lightboxItems=[];
+function buildMasonry(containerId,paths,prefix){
+  const box=document.getElementById(containerId);
+  paths.forEach((src,i)=>{
+    const fig=document.createElement('figure');
+    const img=document.createElement('img');
+    img.src=src;img.alt=`${prefix} ${i+1}`;img.loading='lazy';img.decoding='async';
+    const idx=lightboxItems.length;
+    lightboxItems.push({src,alt:img.alt});
+    img.addEventListener('click',()=>openLB(idx));
+    fig.appendChild(img);box.appendChild(fig);
+  });
+}
+buildMasonry('masonryInstall',INSTALL_IMAGES.map(n=>`images/slide/${n}.png`),'常設裝置作品');
+buildMasonry('masonryAlgo',
+  Array.from({length:9},(_,i)=>`images/algorithmPic/${i}.png`)
+    .concat([2,3,4,5,7,8,9].map(n=>`images/rectangle/${n}.png`)),
+  '視覺演算作品');
+
+// lightbox
+(function(){
+  const lb=document.getElementById('lightbox'),im=document.getElementById('lbImg'),cap=document.getElementById('lbCap');
+  let cur=0;
+  window.openLB=function(i){
+    cur=(i+lightboxItems.length)%lightboxItems.length;
+    im.src=lightboxItems[cur].src;im.alt=lightboxItems[cur].alt;
+    cap.textContent=`${lightboxItems[cur].alt} (${cur+1}/${lightboxItems.length})`;
+    lb.classList.add('open');document.body.style.overflow='hidden';
+  };
+  function close(){lb.classList.remove('open');document.body.style.overflow='';}
+  lb.querySelector('.lb-close').addEventListener('click',close);
+  lb.querySelector('.lb-prev').addEventListener('click',e=>{e.stopPropagation();window.openLB(cur-1);});
+  lb.querySelector('.lb-next').addEventListener('click',e=>{e.stopPropagation();window.openLB(cur+1);});
+  lb.addEventListener('click',e=>{if(e.target===lb)close();});
+  document.addEventListener('keydown',e=>{
+    if(!lb.classList.contains('open'))return;
+    if(e.key==='Escape')close();
+    else if(e.key==='ArrowLeft')window.openLB(cur-1);
+    else if(e.key==='ArrowRight')window.openLB(cur+1);
+  });
+})();
+
+// works timeline
+(function(){
+  const list=document.getElementById('worksList'),nav=document.getElementById('yearNav');
+  WORKS.forEach(w=>{
+    const block=document.createElement('div');
+    block.className='yr';block.id=w.anchor||w.year;
+    const head=document.createElement('div');head.className='yr-head';head.textContent='-----'+w.year+'-----';
+    const tags=document.createElement('div');tags.className='tags';
+    w.list.split(',').forEach(item=>{
+      const s=item.trim();if(!s)return;
+      const tag=document.createElement('span');tag.className='tag';tag.textContent=s;
+      tags.appendChild(tag);
+    });
+    block.append(head,tags);list.appendChild(block);
+    const a=document.createElement('a');a.href='#'+block.id;a.textContent=w.anchor?'2008-2015':w.year;
+    nav.appendChild(a);
+  });
+})();
+
+document.getElementById('year').textContent=new Date().getFullYear();
+
+/* ================================================================
+   APPLE-STYLE REVEAL — soft focus-in on every text/content block
+   ================================================================ */
+(function(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  const targets=new Set();
+  document.querySelectorAll('.hero-content > *').forEach(el=>targets.add(el));
+  document.querySelectorAll('footer .socials, footer .copy').forEach(el=>targets.add(el));
+  document.querySelectorAll('main section .glass').forEach(sec=>{
+    [...sec.children].forEach(child=>{
+      if(child.matches('.yt-grid')){[...child.children].forEach(c=>targets.add(c));}
+      else if(child.matches('.masonry')){[...child.children].forEach(c=>targets.add(c));}
+      else if(child.matches('.works-wrap')){
+        [...child.querySelector('#worksList').children].forEach(c=>targets.add(c));
+        const nav=child.querySelector('.year-nav');if(nav)targets.add(nav);
+      }
+      else if(child.matches('.about-grid')||child.matches('.contact-grid')){[...child.children].forEach(c=>targets.add(c));}
+      else targets.add(child);
+    });
+  });
+  // stagger per sibling group (wave delay, capped)
+  const groups=new Map();
+  targets.forEach(el=>{
+    el.setAttribute('data-rv','');
+    const p=el.parentElement;
+    if(!groups.has(p))groups.set(p,[]);
+    groups.get(p).push(el);
+  });
+  groups.forEach(list=>list.forEach((el,j)=>el.style.setProperty('--rvd',Math.min(j*70,420)+'ms')));
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+    });
+  },{rootMargin:'0px 0px -4% 0px',threshold:.06});
+  targets.forEach(el=>io.observe(el));
+  /* insurance sweep: anything at/near the viewport that IO somehow missed still reveals */
+  const sweep=setInterval(()=>{
+    let left=0;
+    document.querySelectorAll('[data-rv]:not(.in)').forEach(el=>{
+      const r=el.getBoundingClientRect();
+      if(r.top<innerHeight+140&&r.bottom>-140)el.classList.add('in');
+      else left++;
+    });
+    if(left===0)clearInterval(sweep);
+  },350);
+  setTimeout(()=>clearInterval(sweep),30000);
+})();
+
+/* ================================================================
+   WEBGL SHADER ENGINE — 4 switchable background effects
+   ================================================================ */
+(function(){
+  const VERT=`attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}`;
+
+  const COMMON_NOISE=`
+  float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453123);}
+  float noise(vec2 p){vec2 i=floor(p);vec2 f=fract(p);vec2 u=f*f*(3.-2.*f);
+    return mix(mix(hash(i),hash(i+vec2(1.,0.)),u.x),
+               mix(hash(i+vec2(0.,1.)),hash(i+vec2(1.,1.)),u.x),u.y);}
+  float fbm(vec2 p){float v=0.;float a=.5;
+    for(int i=0;i<5;i++){v+=a*noise(p);p=p*2.02+vec2(1.7,9.2);a*=.55;}return v;}`;
+
+  const FX_LIST=[
+  {id:'aurora',fs:`precision highp float;
+  uniform vec2 u_res;uniform float u_t;uniform vec2 u_m;
+  ${COMMON_NOISE}
+  void main(){
+    vec2 uv=(gl_FragCoord.xy-.5*u_res)/u_res.y;
+    float t=u_t*.055;
+    vec2 par=(u_m-.5)*vec2(.35,.25);
+    vec3 col=vec3(.015,.02,.045);
+    col+=vec3(.03,.05,.10)*(1.-length(uv-par*.6)*.9);
+    for(int i=0;i<4;i++){
+      float fi=float(i);
+      float ph=t*1.4+fi*1.9;
+      vec2 p=uv*vec2(1.35,.9);
+      p.x+=t*(.6+.25*fi);
+      float w=fbm(p+vec2(ph*.4,fi*3.1))-.5;
+      float curve=uv.y-(.30*sin(uv.x*1.7+t*2.2+fi*2.2)+.16*sin(uv.x*3.3-t*1.7+fi))*.55-w*.75-par.y*(.5-.12*fi);
+      float band=.0035/(abs(curve)+.010);
+      band*=smoothstep(1.25,.15,abs(uv.x+.08));
+      vec3 ca=mix(vec3(.05,.85,.62),vec3(.20,.45,1.),fract(fi*.33+.15));
+      vec3 cb=mix(vec3(.55,.15,.95),vec3(1.,.25,.65),fract(fi*.47+.6));
+      vec3 cc=mix(ca,cb,sin(fi*.8+t*.9)*.5+.5);
+      col+=cc*band*.14;
+    }
+    vec2 sp=uv*90.;
+    vec2 cell=floor(sp);
+    float h=hash(cell);
+    if(h>.997){
+      vec2 f2=fract(sp)-.5;
+      col+=vec3(.7,.8,1.)*smoothstep(.25,.0,length(f2))*(.5+.5*sin(u_t*3.+h*40.));
+    }
+    gl_FragColor=vec4(col,1.);
+  }`},
+  {id:'nebula',fs:`precision highp float;
+  uniform vec2 u_res;uniform float u_t;uniform vec2 u_m;
+  ${COMMON_NOISE}
+  float hash21(vec2 p){p=fract(p*vec2(233.34,851.73));p+=dot(p,p+23.45);return fract(p.x*p.y);}
+  float starlayer(vec2 uv,float scale,float t,float density){
+    vec2 g=uv*scale;
+    vec2 id=floor(g);vec2 f=fract(g)-.5;
+    float h=hash21(id);
+    float star=0.;
+    if(h>1.-density){
+      vec2 off=(vec2(hash21(id+7.1),hash21(id+3.7))-.5)*.8;
+      float d=length(f-off);
+      float tw=.6+.4*sin(t*(1.+h*3.)+h*40.);
+      star=smoothstep(.09+.05*h,.0,d)*tw;
+    }
+    return star;
+  }
+  void main(){
+    vec2 uv=(gl_FragCoord.xy-.5*u_res)/u_res.y;
+    vec2 par=(u_m-.5)*.12;
+    vec3 col=vec3(.012,.014,.03);
+    float n=fbm(uv*1.8+par*2.+vec2(u_t*.01,-u_t*.008));
+    col+=mix(vec3(.10,.05,.22),vec3(.02,.09,.16),n)*n*n*1.5;
+    float core=exp(-length(uv-par*1.5)*2.2);
+    col+=vec3(.16,.08,.28)*core*.8;
+    float s=0.;
+    s+=starlayer(uv+par*.4+vec2(u_t*.004,0.),14.,u_t,.06);
+    s+=starlayer(uv+par*.7+vec2(-u_t*.007,u_t*.002),26.,u_t*1.3,.05)*.8;
+    s+=starlayer(uv+par*1.2+vec2(u_t*.011,-u_t*.003),48.,u_t*.8,.045)*.6;
+    col+=vec3(.85,.9,1.)*s;
+    gl_FragColor=vec4(col,1.);
+  }`},
+  {id:'plasma',fs:`precision highp float;
+  uniform vec2 u_res;uniform float u_t;uniform vec2 u_m;
+  void main(){
+    vec2 uv=(gl_FragCoord.xy-.5*u_res)/u_res.y;
+    vec2 m=(u_m-.5);
+    float v=0.;
+    v+=sin((uv.x+m.x*.6)*3.+u_t*.9);
+    v+=sin((uv.y-m.y*.6)*2.6-u_t*.7);
+    v+=sin((uv.x+uv.y)*2.2+u_t*.6);
+    v+=sin(length(uv-m*.4)*7.-u_t*1.3);
+    v*=.25;
+    vec3 a=vec3(.05,.02,.16);
+    vec3 b=vec3(.95,.10,.45);
+    vec3 c=vec3(.10,.75,.95);
+    vec3 col=mix(a,b,smoothstep(-.6,.5,v));
+    col=mix(col,c,smoothstep(.35,.95,v)*.55);
+    float vig=smoothstep(1.25,.35,length(uv));
+    col*=.72*vig+.12;
+    col+=.03*sin(uv.y*180.+u_t*2.);
+    gl_FragColor=vec4(col,1.);
+  }`},
+  {id:'ripple',fs:`precision highp float;
+  uniform vec2 u_res;uniform float u_t;uniform vec2 u_m;
+  vec3 pal(float k){return .5+.5*cos(6.28318*(k+vec3(0.,.33,.67)));}
+  void main(){
+    vec2 uv=(gl_FragCoord.xy-.5*u_res)/u_res.y;
+    vec2 m=(u_m-.5)*vec2(u_res.x/u_res.y,1.);
+    float d=length(uv-m);
+    float tt=u_t*.9;
+    float rings=0.;
+    rings+=sin(d*34.-tt*5.)*exp(-d*2.6);
+    rings+=sin(d*22.-tt*3.4+1.7)*exp(-d*1.8)*.7;
+    float idle=sin(d*10.-tt*1.2)*exp(-d*1.1)*.35;
+    float w=rings+idle;
+    vec3 base=vec3(.02,.03,.07);
+    vec3 irid=pal(d*1.4-tt*.15+w*.25);
+    vec3 col=base+irid*w*.30;
+    col+=pal(w*.2+tt*.05)*max(w,0.)*w*w*.35;
+    float vig=smoothstep(1.35,.3,length(uv));
+    col*=vig*.9+.15;
+    gl_FragColor=vec4(col,1.);
+  }`}
+  ];
+
+  const canvas=document.getElementById('bg');
+  const dock=document.querySelector('.fx-dock');
+  const pauseBtn=document.getElementById('fxPause');
+  const powerBtn=document.getElementById('fxPower');
+  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  let gl=null;
+  try{gl=canvas.getContext('webgl',{antialias:false,alpha:true})||canvas.getContext('experimental-webgl');}catch(e){}
+  if(!gl){
+    document.body.classList.add('no-webgl');
+    dock.style.display='none';
+    return;
+  }
+
+  // fullscreen triangle
+  const buf=gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER,buf);
+  gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
+
+  function compile(type,src){
+    const s=gl.createShader(type);
+    gl.shaderSource(s,src);gl.compileShader(s);
+    if(!gl.getShaderParameter(s,gl.COMPILE_STATUS)){
+      console.error('shader error:',gl.getShaderInfoLog(s));
+      return null;
+    }
+    return s;
+  }
+  const programs={};
+  function getProgram(fx){
+    if(programs[fx.id])return programs[fx.id];
+    const vs=compile(gl.VERTEX_SHADER,VERT);
+    const fs=compile(gl.FRAGMENT_SHADER,fx.fs);
+    if(!vs||!fs)return null;
+    const pr=gl.createProgram();
+    gl.attachShader(pr,vs);gl.attachShader(pr,fs);gl.linkProgram(pr);
+    if(!gl.getProgramParameter(pr,gl.LINK_STATUS)){
+      console.error('link error:',gl.getProgramInfoLog(pr));return null;
+    }
+    programs[fx.id]={
+      pr,
+      pos:gl.getAttribLocation(pr,'p'),
+      res:gl.getUniformLocation(pr,'u_res'),
+      t:gl.getUniformLocation(pr,'u_t'),
+      m:gl.getUniformLocation(pr,'u_m')
+    };
+    return programs[fx.id];
+  }
+
+  let simT=0,lastNow=null,rafId=null;
+  const mouse={x:.5,y:.5,tx:.5,ty:.5};
+  addEventListener('pointermove',e=>{
+    mouse.tx=e.clientX/innerWidth;
+    mouse.ty=1-e.clientY/innerHeight;
+  },{passive:true});
+
+  function resize(){
+    const dpr=Math.min(devicePixelRatio||1,1.5);
+    canvas.width=Math.round(innerWidth*dpr);
+    canvas.height=Math.round(innerHeight*dpr);
+    gl.viewport(0,0,canvas.width,canvas.height);
+  }
+  addEventListener('resize',resize);
+  resize();
+
+  function render(now){
+    rafId=requestAnimationFrame(render);
+    if(lastNow===null)lastNow=now;
+    simT+=Math.min((now-lastNow)/1000,.05);
+    lastNow=now;
+    mouse.x+=(mouse.tx-mouse.x)*.06;
+    mouse.y+=(mouse.ty-mouse.y)*.06;
+    draw();
+  }
+  function draw(){
+    const fx=currentFX();
+    const P=getProgram(fx);
+    if(!P)return;
+    gl.useProgram(P.pr);
+    gl.bindBuffer(gl.ARRAY_BUFFER,buf);
+    gl.enableVertexAttribArray(P.pos);
+    gl.vertexAttribPointer(P.pos,2,gl.FLOAT,false,0,0);
+    gl.uniform2f(P.res,canvas.width,canvas.height);
+    gl.uniform1f(P.t,simT);
+    gl.uniform2f(P.m,mouse.x,mouse.y);
+    gl.drawArrays(gl.TRIANGLES,0,3);
+  }
+  function stopLoop(){if(rafId!==null){cancelAnimationFrame(rafId);rafId=null;}}
+
+  /* mode: 'run' | 'freeze' | 'off' ; persisted per session */
+  let fxId=localStorage.getItem('dsh_fx')||'aurora';
+  if(!FX_LIST.some(f=>f.id===fxId))fxId='aurora';
+  let mode=reduced?(localStorage.getItem('dsh_mode')||'freeze'):'run';
+
+  function currentFX(){return FX_LIST.find(f=>f.id===fxId);}
+
+  function applyMode(){
+    document.body.classList.toggle('fx-off',mode==='off');
+    pauseBtn.textContent=mode==='freeze'?'▶':'⏸';
+    pauseBtn.classList.toggle('active',mode==='freeze');
+    powerBtn.classList.toggle('active',mode==='off');
+    stopLoop();
+    if(mode==='off'){
+      gl.clearColor(0,0,0,0);gl.clear(gl.COLOR_BUFFER_BIT);
+    }else{
+      lastNow=null;
+      draw();               // paint current frame immediately
+      if(mode==='run')rafId=requestAnimationFrame(render);
+    }
+  }
+
+  function setFX(id){
+    fxId=id;localStorage.setItem('dsh_fx',id);
+    dock.querySelectorAll('[data-fx]').forEach(b=>b.classList.toggle('active',b.dataset.fx===id));
+    if(mode==='off'){mode='run';localStorage.setItem('dsh_mode',mode);}
+    applyMode();
+  }
+
+  dock.querySelectorAll('[data-fx]').forEach(b=>b.addEventListener('click',()=>setFX(b.dataset.fx)));
+  pauseBtn.addEventListener('click',()=>{
+    mode=(mode==='run')?'freeze':'run';
+    localStorage.setItem('dsh_mode',mode);
+    applyMode();
+  });
+  powerBtn.addEventListener('click',()=>{
+    mode=(mode==='off')?'run':'off';
+    localStorage.setItem('dsh_mode',mode);
+    applyMode();
+  });
+
+  document.addEventListener('visibilitychange',()=>{
+    if(document.hidden){stopLoop();}
+    else if(mode==='run'){lastNow=null;rafId=requestAnimationFrame(render);}
+  });
+
+  setFX(fxId);
+})();
+</script>
+</body>
+</html>

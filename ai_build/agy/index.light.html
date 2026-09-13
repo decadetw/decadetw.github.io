@@ -1,0 +1,2714 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DECADE.TW — 幾十有限公司 | 現代純白極簡版 (Modern Light Edition)</title>
+  <meta name="description" content="幾十有限公司 (DECADE CO., LTD.) 專注於展場軟硬體整合、舞台燈光與中央控制系統，將伺服馬達、機械手臂、電腦燈光等媒材以演算法呈現為活靈活現的互動藝術作品。" />
+  <meta name="keywords" content="幾十有限公司, 帝凱科技, DECADE.TW, 互動科技, 展場整合, 舞台燈光, 中央控制, 伺服馬達, 機械手臂, 演算法, 現代極簡, Light Style" />
+  <meta name="author" content="DECADE CO., LTD." />
+  
+  <!-- Robot Crawling & Indexing Directives -->
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1" />
+  <link rel="canonical" href="https://decade.tw/agy/index.light.html" />
+
+  <meta property="og:site_name" content="幾十有限公司 DECADE CO., LTD." />
+  <meta property="og:title" content="DECADE.TW — 幾十有限公司 | 現代純白極簡版 (Modern Light Edition)" />
+  <meta property="og:description" content="互動科技解決方案。提供展場軟硬體整合設計規劃；舞台燈光控制。" />
+  <meta property="og:image" content="https://www.decade.tw/images/logo/decade_logo.png" />
+  <meta property="og:url" content="https://decade.tw/agy/index.light.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="zh_TW" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="DECADE.TW — 幾十有限公司 | Modern Light Edition" />
+  <meta name="twitter:description" content="現代純白極簡美學、高對比俐落排版、4 滾輪無限影像牆、精細動態與完整作品年表。" />
+  <meta name="twitter:image" content="https://www.decade.tw/images/logo/decade_logo.png" />
+
+  <!-- Schema.org JSON-LD Structured Data for Web Robots -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "幾十有限公司",
+    "alternateName": ["帝凱科技有限公司", "DECADE CO., LTD.", "DECADE.TW"],
+    "url": "https://decade.tw",
+    "logo": "https://decade.tw/images/logo/decade_logo.png",
+    "image": "https://decade.tw/images/slide/0.png",
+    "description": "幾十有限公司專注於展場軟硬體整合、舞台燈光與中央控制系統，將伺服馬達、機械手臂、電腦燈光等媒材以演算法呈現為活靈活現的互動藝術作品。",
+    "taxID": "54332918",
+    "telephone": "+886-2-28982557",
+    "email": "xlinx@decade.tw",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "中央南路二段14-1號",
+      "addressLocality": "北投區",
+      "addressRegion": "台北市",
+      "postalCode": "112028",
+      "addressCountry": "TW"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 25.1278,
+      "longitude": 121.5015
+    },
+    "foundingDate": "2013"
+  }
+  </script>
+
+  <link rel="icon" type="image/png" href="https://www.decade.tw/images/logo/decade_logo.png" />
+
+  <!-- Google Fonts: Inter & Noto Sans TC -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ==========================================================================
+       Light Gallery Design System & Tokens
+       ========================================================================== */
+    :root {
+      --light-bg: #ffffff;
+      --light-bg-secondary: #f8fafc;
+      --light-bg-tertiary: #f1f5f9;
+      --light-card: #ffffff;
+      --light-card-elevated: #ffffff;
+      --light-card-border: rgba(0, 0, 0, 0.08);
+      --light-card-border-hover: rgba(0, 0, 0, 0.2);
+
+      --light-text-primary: #0f172a;
+      --light-text-secondary: #475569;
+      --light-text-tertiary: #64748b;
+      --light-text-link: #0284c7;
+
+      --light-accent: #0f172a;
+      --light-accent-hover: #1e293b;
+      --light-accent-light: #f1f5f9;
+
+      --light-nav-bg: rgba(255, 255, 255, 0.88);
+      --light-nav-border: rgba(0, 0, 0, 0.08);
+
+      --font-stack: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", "Noto Sans TC", "Helvetica Neue", sans-serif;
+      --font-mono: "JetBrains Mono", "SF Mono", Menlo, Monaco, Consolas, monospace;
+
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-pill: 9999px;
+
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+      --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.05), 0 2px 6px -1px rgba(0, 0, 0, 0.03);
+      --shadow-card-hover: 0 20px 35px -4px rgba(0, 0, 0, 0.08), 0 8px 16px -4px rgba(0, 0, 0, 0.04);
+      --shadow-modal: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
+
+      --transition-smooth: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-spring: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      background-color: var(--light-bg);
+      color: var(--light-text-primary);
+    }
+
+    body {
+      font-family: var(--font-stack);
+      background-color: var(--light-bg);
+      color: var(--light-text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: opacity var(--transition-smooth), color var(--transition-smooth);
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Monochrome vector icons utility */
+    .icon-mono {
+      stroke: currentColor;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* ==========================================================================
+       Navigation Bar (Frosted Glass Light)
+       ========================================================================== */
+    .light-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 64px;
+      background: var(--light-nav-bg);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--light-nav-border);
+      z-index: 900;
+      display: flex;
+      align-items: center;
+      transition: background-color var(--transition-smooth), border-color var(--transition-smooth);
+    }
+
+    .light-nav-container {
+      max-width: 1280px;
+      width: 100%;
+      margin-inline: auto;
+      padding-inline: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .light-nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .light-nav-logo {
+      height: 32px;
+      width: auto;
+      object-fit: contain;
+    }
+
+    .light-nav-brand-text {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--light-text-primary);
+    }
+
+    .light-nav-brand-tag {
+      font-size: 0.72rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-pill);
+      background: var(--light-bg-tertiary);
+      border: 1px solid var(--light-card-border);
+      color: var(--light-text-secondary);
+      font-family: var(--font-mono);
+      font-weight: 600;
+    }
+
+    .light-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.8rem;
+      list-style: none;
+    }
+
+    .light-nav-link {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--light-text-secondary);
+      transition: color var(--transition-smooth);
+      position: relative;
+      padding-block: 0.3rem;
+    }
+
+    .light-nav-link:hover {
+      color: var(--light-text-primary);
+    }
+
+    .light-nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .btn-switch-variant {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.4rem 0.85rem;
+      border-radius: var(--radius-pill);
+      background: var(--light-bg-tertiary);
+      border: 1px solid var(--light-card-border);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--light-text-primary);
+      transition: all var(--transition-smooth);
+    }
+
+    .btn-switch-variant:hover {
+      background: var(--light-text-primary);
+      color: #ffffff;
+    }
+
+    .btn-switch-variant svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+    }
+
+    .light-mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--light-text-primary);
+      padding: 0.4rem;
+    }
+
+    @media (max-width: 960px) {
+      .light-nav-links {
+        display: none;
+      }
+      .light-mobile-toggle {
+        display: block;
+      }
+    }
+
+    /* Mobile Drawer */
+    .light-mobile-drawer {
+      position: fixed;
+      top: 64px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(24px);
+      z-index: 850;
+      display: flex;
+      flex-direction: column;
+      padding: 2.5rem 2rem;
+      gap: 1.5rem;
+      transform: translateY(-100%);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+
+    .light-mobile-drawer.active {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .light-mobile-drawer a {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--light-text-primary);
+      border-bottom: 1px solid var(--light-card-border);
+      padding-bottom: 0.8rem;
+    }
+
+    /* ==========================================================================
+       Hero Section with 4-Row Continuous Infinite Roller Image Wall
+       ========================================================================== */
+    .light-hero-section {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 1.5rem 80px;
+      overflow: hidden;
+      background-color: var(--light-bg);
+      text-align: center;
+    }
+
+    /* 4-Row Continuous Infinite Roller Wall */
+    .light-roller-wall {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1.2rem;
+      opacity: 0.65;
+      pointer-events: none;
+      z-index: 1;
+      transform: scale(1.02);
+    }
+
+    .light-roller-track {
+      display: flex;
+      gap: 1.2rem;
+      width: max-content;
+      will-change: transform;
+    }
+
+    .light-roller-track-left {
+      animation: lightMarqueeLeft 75s linear infinite;
+    }
+    .light-roller-track-right {
+      animation: lightMarqueeRight 80s linear infinite;
+    }
+    .light-roller-track-left-fast {
+      animation: lightMarqueeLeft 65s linear infinite;
+    }
+    .light-roller-track-right-fast {
+      animation: lightMarqueeRight 70s linear infinite;
+    }
+
+    @keyframes lightMarqueeLeft {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    @keyframes lightMarqueeRight {
+      0% { transform: translateX(-50%); }
+      100% { transform: translateX(0); }
+    }
+
+    .light-roller-card {
+      width: 290px;
+      height: 170px;
+      flex-shrink: 0;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: #ffffff;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+      position: relative;
+    }
+
+    .light-roller-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(102%) contrast(100%);
+    }
+
+    @media (max-width: 768px) {
+      .light-roller-card {
+        width: 210px;
+        height: 125px;
+      }
+      .light-roller-wall {
+        gap: 0.85rem;
+      }
+      .light-roller-track {
+        gap: 0.85rem;
+      }
+    }
+
+    /* Light Frosted Vignette Overlay ensuring pure contrast */
+    .light-roller-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse at 50% 48%, rgba(255, 255, 255, 0.88) 0%, rgba(255, 255, 255, 0.96) 62%, #ffffff 100%),
+        linear-gradient(to bottom, #ffffff 0%, transparent 15%, transparent 85%, #ffffff 100%);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .light-roller-track-left,
+      .light-roller-track-right,
+      .light-roller-track-left-fast,
+      .light-roller-track-right-fast {
+        animation-play-state: paused !important;
+      }
+    }
+
+    .light-hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 880px;
+      margin-inline: auto;
+    }
+
+    .light-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1.1rem;
+      border-radius: var(--radius-pill);
+      background: var(--light-bg-tertiary);
+      border: 1px solid var(--light-card-border);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--light-text-secondary);
+      margin-bottom: 1.8rem;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+    }
+
+    .light-eyebrow svg {
+      width: 14px;
+      height: 14px;
+      stroke: var(--light-text-primary);
+    }
+
+    .light-hero-title {
+      font-size: clamp(2.8rem, 6.5vw, 5.2rem);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      line-height: 1.08;
+      margin-bottom: 1.2rem;
+      color: var(--light-text-primary);
+    }
+
+    .light-hero-slogan {
+      font-size: clamp(1.2rem, 2.3vw, 1.7rem);
+      font-weight: 500;
+      letter-spacing: -0.015em;
+      color: var(--light-text-secondary);
+      margin-bottom: 1.6rem;
+    }
+
+    .light-hero-desc {
+      font-size: clamp(1rem, 1.6vw, 1.18rem);
+      color: var(--light-text-secondary);
+      line-height: 1.65;
+      max-width: 760px;
+      margin-inline: auto;
+      margin-bottom: 2.8rem;
+    }
+
+    .light-hero-actions {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+      margin-bottom: 4rem;
+    }
+
+    /* Button Styles */
+    .btn-light-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background-color: var(--light-accent);
+      color: #ffffff;
+      padding: 0.9rem 2.2rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.98rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.2);
+      transition: transform var(--transition-smooth), background-color var(--transition-smooth), box-shadow var(--transition-smooth);
+    }
+
+    .btn-light-primary:hover {
+      background-color: var(--light-accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(15, 23, 42, 0.28);
+    }
+
+    .btn-light-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background-color: #ffffff;
+      color: var(--light-text-primary);
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      padding: 0.9rem 2.2rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.98rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      transition: transform var(--transition-smooth), border-color var(--transition-smooth), background-color var(--transition-smooth);
+    }
+
+    .btn-light-secondary:hover {
+      background-color: var(--light-bg-secondary);
+      border-color: var(--light-text-primary);
+      transform: translateY(-2px);
+    }
+
+    /* Stats Ribbon */
+    .light-stats-ribbon {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--light-card-border);
+      max-width: 860px;
+      margin-inline: auto;
+    }
+
+    .light-stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .light-stat-num {
+      font-size: clamp(2rem, 3.2vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--light-text-primary);
+      line-height: 1.1;
+    }
+
+    .light-stat-label {
+      font-size: 0.85rem;
+      color: var(--light-text-tertiary);
+      margin-top: 0.35rem;
+      font-weight: 500;
+    }
+
+    @media (max-width: 640px) {
+      .light-stats-ribbon {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+    }
+
+    /* ==========================================================================
+       Common Section Layouts
+       ========================================================================== */
+    .section-wrap {
+      max-width: 1280px;
+      margin-inline: auto;
+      padding: 100px 1.5rem;
+    }
+
+    .section-wrap-alt {
+      background-color: var(--light-bg-secondary);
+      border-block: 1px solid var(--light-card-border);
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 780px;
+      margin-inline: auto;
+      margin-bottom: 4rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.82rem;
+      font-family: var(--font-mono);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--light-text-tertiary);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: var(--light-text-primary);
+      margin-bottom: 1rem;
+    }
+
+    .section-desc {
+      font-size: 1.05rem;
+      color: var(--light-text-secondary);
+      line-height: 1.65;
+    }
+
+    /* ==========================================================================
+       Works Section (21 Videos Bento Grid + Filters + Search)
+       ========================================================================== */
+    .light-controls-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.2rem;
+      margin-bottom: 3rem;
+    }
+
+    .light-segmented-control {
+      display: inline-flex;
+      background-color: var(--light-bg-tertiary);
+      padding: 4px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--light-card-border);
+    }
+
+    .light-seg-btn {
+      padding: 0.45rem 1.2rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--light-text-secondary);
+      border: none;
+      background: none;
+      cursor: pointer;
+      transition: all var(--transition-smooth);
+    }
+
+    .light-seg-btn:hover {
+      color: var(--light-text-primary);
+    }
+
+    .light-seg-btn.active {
+      background-color: #ffffff;
+      color: var(--light-text-primary);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .light-search-box {
+      position: relative;
+      min-width: 270px;
+    }
+
+    .light-search-input {
+      background-color: #ffffff;
+      border: 1px solid var(--light-card-border);
+      border-radius: var(--radius-pill);
+      padding: 0.55rem 1.2rem 0.55rem 2.4rem;
+      color: var(--light-text-primary);
+      font-size: 0.88rem;
+      outline: none;
+      width: 100%;
+      box-shadow: var(--shadow-sm);
+      transition: border-color var(--transition-smooth), box-shadow var(--transition-smooth);
+    }
+
+    .light-search-input:focus {
+      border-color: var(--light-text-primary);
+      box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.1);
+    }
+
+    .light-search-icon {
+      position: absolute;
+      left: 0.95rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--light-text-tertiary);
+      width: 15px;
+      height: 15px;
+      pointer-events: none;
+    }
+
+    .light-video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+
+    @media (max-width: 480px) {
+      .light-video-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .light-video-card {
+      background-color: var(--light-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--light-card-border);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform var(--transition-smooth), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
+    }
+
+    .light-video-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--light-card-border-hover);
+      box-shadow: var(--shadow-card-hover);
+    }
+
+    .light-video-thumb {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background-color: #0f172a;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .light-video-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-spring);
+    }
+
+    .light-video-card:hover .light-video-thumb img {
+      transform: scale(1.05);
+    }
+
+    .light-play-pill {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.2);
+      transition: background var(--transition-smooth);
+    }
+
+    .light-video-thumb:hover .light-play-pill {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .light-play-icon-wrap {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform var(--transition-spring);
+    }
+
+    .light-video-thumb:hover .light-play-icon-wrap {
+      transform: scale(1.15);
+    }
+
+    .light-play-icon-wrap svg {
+      width: 20px;
+      height: 20px;
+      fill: #0f172a;
+      stroke: none;
+      margin-left: 2px;
+    }
+
+    .light-video-body {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
+    }
+
+    .light-video-title {
+      font-size: 1.18rem;
+      font-weight: 700;
+      line-height: 1.35;
+      color: var(--light-text-primary);
+      margin-bottom: 0.8rem;
+    }
+
+    .light-video-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .light-tag-pill {
+      font-size: 0.72rem;
+      font-family: var(--font-mono);
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-pill);
+      background-color: var(--light-bg-tertiary);
+      border: 1px solid var(--light-card-border);
+      color: var(--light-text-secondary);
+    }
+
+    .light-video-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--light-card-border);
+      padding-top: 1rem;
+      font-size: 0.84rem;
+      font-weight: 500;
+    }
+
+    .light-btn-watch {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--light-text-primary);
+      font-weight: 600;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      font-size: 0.85rem;
+    }
+
+    .light-btn-watch:hover {
+      text-decoration: underline;
+    }
+
+    .light-btn-watch svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+    }
+
+    .light-yt-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      color: var(--light-text-tertiary);
+      transition: color var(--transition-smooth);
+    }
+
+    .light-yt-link:hover {
+      color: var(--light-text-primary);
+    }
+
+    /* ==========================================================================
+       Gallery Section (21 Slides + 9 Algorithms)
+       ========================================================================== */
+    .light-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .light-gallery-item {
+      background-color: var(--light-card);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--light-card-border);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      aspect-ratio: 4 / 3;
+      transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), border-color var(--transition-smooth);
+    }
+
+    .light-gallery-item:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-card-hover);
+      border-color: var(--light-card-border-hover);
+    }
+
+    .light-gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-spring);
+    }
+
+    .light-gallery-item:hover img {
+      transform: scale(1.06);
+    }
+
+    .light-gallery-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1rem;
+      background: linear-gradient(to top, rgba(15, 23, 42, 0.85) 0%, transparent 100%);
+      color: #ffffff;
+      font-size: 0.82rem;
+      font-weight: 500;
+      transform: translateY(100%);
+      transition: transform var(--transition-smooth);
+    }
+
+    .light-gallery-item:hover .light-gallery-caption {
+      transform: translateY(0);
+    }
+
+    /* ==========================================================================
+       Interactive Works Timeline (2006-2027)
+       ========================================================================== */
+    .light-timeline {
+      position: relative;
+      max-width: 960px;
+      margin-inline: auto;
+      padding-left: 2rem;
+    }
+
+    .light-timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 7px;
+      width: 2px;
+      background: var(--light-card-border);
+    }
+
+    .light-timeline-year-group {
+      margin-bottom: 3.5rem;
+      position: relative;
+    }
+
+    .light-timeline-year-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.4rem 1.1rem;
+      border-radius: var(--radius-pill);
+      background-color: var(--light-accent);
+      color: #ffffff;
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 2;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.18);
+    }
+
+    .light-timeline-year-badge::before {
+      content: '';
+      position: absolute;
+      left: -28px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 3px solid var(--light-accent);
+    }
+
+    .light-timeline-items {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .light-timeline-item {
+      background-color: var(--light-card);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--light-card-border);
+      box-shadow: var(--shadow-card);
+      padding: 1.3rem 1.6rem;
+      transition: transform var(--transition-smooth), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
+    }
+
+    .light-timeline-item:hover {
+      transform: translateX(4px);
+      border-color: var(--light-card-border-hover);
+      box-shadow: var(--shadow-card-hover);
+    }
+
+    .light-timeline-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.6rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .light-timeline-item-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--light-text-primary);
+    }
+
+    .light-timeline-partner {
+      font-size: 0.76rem;
+      font-family: var(--font-mono);
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-pill);
+      background: var(--light-bg-tertiary);
+      border: 1px solid var(--light-card-border);
+      color: var(--light-text-secondary);
+    }
+
+    /* ==========================================================================
+       Services Section (8 Core Capabilities)
+       ========================================================================== */
+    .light-services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .light-service-card {
+      background-color: var(--light-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--light-card-border);
+      box-shadow: var(--shadow-card);
+      padding: 2.2rem 1.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      transition: transform var(--transition-smooth), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
+    }
+
+    .light-service-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--light-card-border-hover);
+      box-shadow: var(--shadow-card-hover);
+    }
+
+    .light-service-icon-box {
+      width: 52px;
+      height: 52px;
+      border-radius: var(--radius-md);
+      background: var(--light-bg-tertiary);
+      border: 1px solid var(--light-card-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--light-text-primary);
+    }
+
+    .light-service-icon-box svg {
+      width: 26px;
+      height: 26px;
+      stroke: currentColor;
+    }
+
+    .light-service-title {
+      font-size: 1.22rem;
+      font-weight: 700;
+      color: var(--light-text-primary);
+      line-height: 1.3;
+    }
+
+    .light-service-desc {
+      font-size: 0.92rem;
+      color: var(--light-text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ==========================================================================
+       About & Media Coverage
+       ========================================================================== */
+    .light-about-box {
+      background-color: var(--light-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--light-card-border);
+      box-shadow: var(--shadow-card);
+      padding: 3.5rem 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+    }
+
+    @media (max-width: 840px) {
+      .light-about-box {
+        grid-template-columns: 1fr;
+        padding: 2rem 1.5rem;
+        gap: 2rem;
+      }
+    }
+
+    .light-about-col h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      color: var(--light-text-primary);
+    }
+
+    .light-about-col p {
+      font-size: 1rem;
+      color: var(--light-text-secondary);
+      line-height: 1.75;
+      margin-bottom: 1.2rem;
+    }
+
+    .light-media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .light-media-card {
+      background-color: var(--light-card);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--light-card-border);
+      box-shadow: var(--shadow-card);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1rem;
+      text-decoration: none;
+      transition: transform var(--transition-smooth), border-color var(--transition-smooth), box-shadow var(--transition-smooth);
+    }
+
+    .light-media-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--light-card-border-hover);
+      box-shadow: var(--shadow-card-hover);
+    }
+
+    .light-media-badge {
+      display: inline-flex;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--light-text-tertiary);
+    }
+
+    .light-media-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--light-text-primary);
+      line-height: 1.4;
+    }
+
+    .light-media-action {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--light-text-primary);
+    }
+
+    .light-media-action svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+    }
+
+    /* ==========================================================================
+       Contact, Banking & Map Section
+       ========================================================================== */
+    .light-contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+
+    @media (max-width: 840px) {
+      .light-contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .light-info-card {
+      background-color: var(--light-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--light-card-border);
+      box-shadow: var(--shadow-card);
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+    }
+
+    .light-info-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .light-info-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-sm);
+      background: var(--light-bg-tertiary);
+      border: 1px solid var(--light-card-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--light-text-primary);
+    }
+
+    .light-info-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+    }
+
+    .light-info-title {
+      font-size: 0.82rem;
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      color: var(--light-text-tertiary);
+      margin-bottom: 0.2rem;
+    }
+
+    .light-info-val {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--light-text-primary);
+    }
+
+    /* Banking Box with 1-Click Copy */
+    .light-bank-box {
+      background-color: var(--light-bg-secondary);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--light-card-border);
+      padding: 1.5rem;
+    }
+
+    .light-bank-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+
+    .light-bank-label {
+      font-size: 0.82rem;
+      font-family: var(--font-mono);
+      font-weight: 600;
+      color: var(--light-text-secondary);
+    }
+
+    .btn-copy-bank {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.85rem;
+      border-radius: var(--radius-pill);
+      background: #ffffff;
+      border: 1px solid var(--light-card-border);
+      color: var(--light-text-primary);
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      transition: all var(--transition-smooth);
+    }
+
+    .btn-copy-bank:hover {
+      background: var(--light-accent);
+      color: #ffffff;
+    }
+
+    .btn-copy-bank svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+    }
+
+    .light-bank-details {
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--light-text-primary);
+    }
+
+    /* Map Frame */
+    .light-map-card {
+      background-color: var(--light-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--light-card-border);
+      box-shadow: var(--shadow-card);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 420px;
+    }
+
+    .light-map-card iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 380px;
+      border: none;
+    }
+
+    /* ==========================================================================
+       Modal Viewer (Video & Image Lightbox)
+       ========================================================================== */
+    .light-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background-color: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition-smooth);
+    }
+
+    .light-modal.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .light-modal-sheet {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--light-card-border);
+      box-shadow: var(--shadow-modal);
+      width: 100%;
+      max-width: 900px;
+      overflow: hidden;
+      transform: scale(0.96) translateY(20px);
+      transition: transform var(--transition-spring);
+    }
+
+    .light-modal.active .light-modal-sheet {
+      transform: scale(1) translateY(0);
+    }
+
+    .light-modal-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 1.6rem;
+      border-bottom: 1px solid var(--light-card-border);
+    }
+
+    .light-modal-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--light-text-primary);
+    }
+
+    .light-modal-close {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--light-bg-tertiary);
+      border: 1px solid var(--light-card-border);
+      color: var(--light-text-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background var(--transition-smooth);
+    }
+
+    .light-modal-close:hover {
+      background: var(--light-card-border);
+    }
+
+    .light-modal-close svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+    }
+
+    .light-modal-body {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background: #000000;
+    }
+
+    .light-modal-body iframe,
+    .light-modal-body img {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+      object-fit: contain;
+    }
+
+    /* Toast Notification */
+    .light-toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--light-accent);
+      color: #ffffff;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.88rem;
+      font-weight: 600;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      z-index: 1100;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .light-toast.active {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* Footer */
+    .light-footer {
+      background-color: var(--light-bg-secondary);
+      border-top: 1px solid var(--light-card-border);
+      padding: 4rem 1.5rem 3rem;
+      text-align: center;
+    }
+
+    .light-footer-content {
+      max-width: 1280px;
+      margin-inline: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .light-footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      justify-content: center;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--light-text-secondary);
+    }
+
+    .light-footer-links a:hover {
+      color: var(--light-text-primary);
+    }
+
+    .light-copyright {
+      font-size: 0.82rem;
+      font-family: var(--font-mono);
+      color: var(--light-text-tertiary);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       Navigation Bar
+       ========================================================================== -->
+  <nav class="light-nav" id="mainNav">
+    <div class="light-nav-container">
+      <a href="#home" class="light-nav-brand" aria-label="DECADE.TW 首頁">
+        <img src="https://www.decade.tw/images/logo/decade_logo.png" alt="幾十有限公司標誌" class="light-nav-logo" />
+        <span class="light-nav-brand-text">DECADE</span>
+        <span class="light-nav-brand-tag">LIGHT</span>
+      </a>
+
+      <ul class="light-nav-links">
+        <li><a href="#works" class="light-nav-link">作品紀錄</a></li>
+        <li><a href="#gallery" class="light-nav-link">實境圖庫</a></li>
+        <li><a href="#timeline" class="light-nav-link">年表歷程</a></li>
+        <li><a href="#services" class="light-nav-link">專業服務</a></li>
+        <li><a href="#about" class="light-nav-link">關於幾十</a></li>
+        <li><a href="#media" class="light-nav-link">媒體專訪</a></li>
+        <li><a href="#contact" class="light-nav-link">聯絡合作</a></li>
+      </ul>
+
+      <div class="light-nav-actions">
+        <a href="index.html" class="btn-switch-variant" title="隨機切換或返回首頁">
+          <!-- Monochrome SVG Shuffle / Random Icon -->
+          <svg viewBox="0 0 24 24" class="icon-mono">
+            <polyline points="16 3 21 3 21 8"></polyline>
+            <line x1="4" y1="20" x2="21" y2="3"></line>
+            <polyline points="21 16 21 21 16 21"></polyline>
+            <line x1="15" y1="15" x2="21" y2="21"></line>
+            <line x1="4" y1="4" x2="9" y2="9"></line>
+          </svg>
+          <span>切換風格</span>
+        </a>
+
+        <button class="light-mobile-toggle" id="mobileMenuBtn" aria-label="開啟選單">
+          <svg class="icon-mono" width="22" height="22" viewBox="0 0 24 24">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Drawer -->
+  <div class="light-mobile-drawer" id="mobileDrawer">
+    <a href="#works" onclick="closeMobileDrawer()">作品紀錄 (Works)</a>
+    <a href="#gallery" onclick="closeMobileDrawer()">實境圖庫 (Gallery)</a>
+    <a href="#timeline" onclick="closeMobileDrawer()">年表歷程 (Timeline)</a>
+    <a href="#services" onclick="closeMobileDrawer()">專業服務 (Services)</a>
+    <a href="#about" onclick="closeMobileDrawer()">關於幾十 (About)</a>
+    <a href="#media" onclick="closeMobileDrawer()">媒體專訪 (Media)</a>
+    <a href="#contact" onclick="closeMobileDrawer()">聯絡合作 (Contact)</a>
+    <a href="index.html" onclick="closeMobileDrawer()">隨機迎賓首頁 (Random)</a>
+  </div>
+
+  <!-- ==========================================================================
+       Hero Section with 4-Row Continuous Infinite Roller Image Wall
+       ========================================================================== -->
+  <header class="light-hero-section" id="home">
+    <!-- Continuous 4-Row Infinite Roller Wall -->
+    <div class="light-roller-wall" aria-hidden="true">
+      <!-- Row 1: Leftward Scrolling -->
+      <div class="light-roller-track light-roller-track-left">
+        <!-- Set 1 -->
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/slide/0.png" alt="花博聆聽花開的聲音" loading="eager" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/slide/1.png" alt="當代館查無此人" loading="eager" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/slide/2.png" alt="台電美好的下午" loading="eager" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/slide/3.png" alt="見微之著" loading="eager" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/algorithmPic/0.png" alt="演算法視覺0" loading="eager" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/slide/4.png" alt="信義誠品30週年" loading="eager" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/slide/5.png" alt="GMA金曲獎舞台" loading="eager" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/algorithmPic/1.png" alt="演算法視覺1" loading="eager" /></div>
+        <!-- Set 2 (Seamless Infinite Duplicate) -->
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/slide/0.png" alt="" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/slide/1.png" alt="" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/slide/2.png" alt="" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/slide/3.png" alt="" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/algorithmPic/0.png" alt="" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/slide/4.png" alt="" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/slide/5.png" alt="" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/algorithmPic/1.png" alt="" /></div>
+      </div>
+
+      <!-- Row 2: Rightward Scrolling -->
+      <div class="light-roller-track light-roller-track-right">
+        <!-- Set 1 -->
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/slide/6.png" alt="世大運開幕群控" loading="eager" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/slide/7.png" alt="國美館漫遊者" loading="eager" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/algorithmPic/2.png" alt="演算法視覺2" loading="eager" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/slide/8.png" alt="戶外科技藝術" loading="eager" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/slide/9.png" alt="台北燈節主燈" loading="eager" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/algorithmPic/3.png" alt="演算法視覺3" loading="eager" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/slide/10.png" alt="晶圓奇境" loading="eager" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/slide/11.png" alt="風動之舞" loading="eager" /></div>
+        <!-- Set 2 (Seamless Infinite Duplicate) -->
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/slide/6.png" alt="" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/slide/7.png" alt="" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/algorithmPic/2.png" alt="" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/slide/8.png" alt="" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/slide/9.png" alt="" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/algorithmPic/3.png" alt="" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/slide/10.png" alt="" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/slide/11.png" alt="" /></div>
+      </div>
+
+      <!-- Row 3: Leftward Fast Scrolling -->
+      <div class="light-roller-track light-roller-track-left-fast">
+        <!-- Set 1 -->
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/slide/12.png" alt="微風視訊中控" loading="eager" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/algorithmPic/4.png" alt="演算法視覺4" loading="eager" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/slide/13.png" alt="兩廳院5G手環" loading="eager" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/slide/14.png" alt="桃園機場歐基里德" loading="eager" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/algorithmPic/5.png" alt="演算法視覺5" loading="eager" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/slide/15.png" alt="英國曼徹斯特日光域" loading="eager" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/slide/16.png" alt="月津港日光域" loading="eager" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/algorithmPic/6.png" alt="演算法視覺6" loading="eager" /></div>
+        <!-- Set 2 (Seamless Infinite Duplicate) -->
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/slide/12.png" alt="" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/algorithmPic/4.png" alt="" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/slide/13.png" alt="" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/slide/14.png" alt="" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/algorithmPic/5.png" alt="" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/slide/15.png" alt="" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/slide/16.png" alt="" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/algorithmPic/6.png" alt="" /></div>
+      </div>
+
+      <!-- Row 4: Rightward Fast Scrolling -->
+      <div class="light-roller-track light-roller-track-right-fast">
+        <!-- Set 1 -->
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/slide/17.png" alt="高流波光之翼" loading="eager" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/slide/18.png" alt="基隆山海鳴光" loading="eager" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/algorithmPic/7.png" alt="演算法視覺7" loading="eager" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/slide/19.png" alt="奇美博物館影子特展" loading="eager" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/slide/20.png" alt="新竹燈會乘風逐光" loading="eager" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/algorithmPic/8.png" alt="演算法視覺8" loading="eager" /></div>
+        <!-- Set 2 (Seamless Infinite Duplicate) -->
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/slide/17.png" alt="" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/slide/18.png" alt="" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/algorithmPic/7.png" alt="" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/slide/19.png" alt="" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/slide/20.png" alt="" /></div>
+        <div class="light-roller-card"><img src="https://www.decade.tw/images/algorithmPic/8.png" alt="" /></div>
+      </div>
+    </div>
+
+    <!-- Frosted Vignette Overlay -->
+    <div class="light-roller-overlay"></div>
+
+    <!-- Hero Content -->
+    <div class="light-hero-content">
+      <div class="light-eyebrow">
+        <!-- Monochrome Code/Sparkle SVG -->
+        <svg viewBox="0 0 24 24" class="icon-mono">
+          <polyline points="16 18 22 12 16 6"></polyline>
+          <polyline points="8 6 2 12 8 18"></polyline>
+        </svg>
+        <span>DECADE CO., LTD. • 幾十有限公司</span>
+      </div>
+
+      <h1 class="light-hero-title">數位互動與科技裝置藝術</h1>
+      <p class="light-hero-slogan">將機械手臂、燈光矩陣與演算法化為活靈活現的當代藝術</p>
+
+      <p class="light-hero-desc">
+        專注於展場軟硬體整合規劃、大型舞台燈光控制、中央控制系統建置與視覺演算法開發。自 2006 年起跨界研發，為世大運開幕、世界花博「聆聽花開的聲音」、兩廳院以及多項國際美術館公共藝術提供核心技術。
+      </p>
+
+      <div class="light-hero-actions">
+        <a href="#works" class="btn-light-primary">
+          <span>探索 21 項大型展演</span>
+          <svg class="icon-mono" width="16" height="16" viewBox="0 0 24 24">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </a>
+
+        <a href="#timeline" class="btn-light-secondary">
+          <span>歷年年表 (2006 - 2027)</span>
+          <svg class="icon-mono" width="16" height="16" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+        </a>
+      </div>
+
+      <div class="light-stats-ribbon">
+        <div class="light-stat-item">
+          <div class="light-stat-num">20+</div>
+          <div class="light-stat-label">年跨界研發歷程</div>
+        </div>
+        <div class="light-stat-item">
+          <div class="light-stat-num">21+</div>
+          <div class="light-stat-label">大型影音展演記錄</div>
+        </div>
+        <div class="light-stat-item">
+          <div class="light-stat-num">8+</div>
+          <div class="light-stat-label">項全端專業服務</div>
+        </div>
+        <div class="light-stat-item">
+          <div class="light-stat-num">100%</div>
+          <div class="light-stat-label">自主軟硬體架構</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       Works Section (21 YouTube Videos Bento Grid)
+       ========================================================================== */
+  -->
+  <section class="section-wrap" id="works">
+    <div class="section-header">
+      <div class="section-eyebrow">PORTFOLIO & VIDEO ARCHIVES</div>
+      <h2 class="section-title">歷年代表性作品紀錄</h2>
+      <p class="section-desc">
+        完整收錄 21 部影音展演紀錄，展現伺服馬達、機械花、無線群控、偶控系統與中央排程系統的極致整合。
+      </p>
+    </div>
+
+    <!-- Controls Bar: Segmented Category Buttons + Search Bar -->
+    <div class="light-controls-bar">
+      <div class="light-segmented-control" id="videoFilters">
+        <button class="light-seg-btn active" data-filter="all">全部作品 (21)</button>
+        <button class="light-seg-btn" data-filter="燈會">燈會主燈</button>
+        <button class="light-seg-btn" data-filter="豪華朗機工">豪華朗機工合作</button>
+        <button class="light-seg-btn" data-filter="公共藝術">公共藝術</button>
+        <button class="light-seg-btn" data-filter="機械">機械與手臂</button>
+      </div>
+
+      <div class="light-search-box">
+        <svg class="light-search-icon icon-mono" viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" class="light-search-input" id="videoSearchInput" placeholder="搜尋作品名稱或關鍵字..." />
+      </div>
+    </div>
+
+    <!-- Video Bento Grid -->
+    <div class="light-video-grid" id="videoGrid">
+      <!-- Dynamically Rendered by JavaScript -->
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Gallery Section (21 Slides + 9 Algorithms)
+       ========================================================================== -->
+  <section class="section-wrap section-wrap-alt" id="gallery">
+    <div class="section-header">
+      <div class="section-eyebrow">HIGH-RES GALLERY & ALGORITHMS</div>
+      <h2 class="section-title">實境寫真與演算法模型</h2>
+      <p class="section-desc">
+        收錄 21 組展場實境高清寫真以及 9 組自研生成式演算法視覺模型。點擊可放大檢視細節。
+      </p>
+    </div>
+
+    <div class="light-controls-bar" style="justify-content: center; margin-bottom: 2.5rem;">
+      <div class="light-segmented-control" id="galleryFilters">
+        <button class="light-seg-btn active" data-gallery="all">全部寫真與演算法 (30)</button>
+        <button class="light-seg-btn" data-gallery="slides">現場實境寫真 (21)</button>
+        <button class="light-seg-btn" data-gallery="algo">視覺演算法模型 (9)</button>
+      </div>
+    </div>
+
+    <div class="light-gallery-grid" id="galleryGrid">
+      <!-- Dynamically Rendered by JavaScript -->
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Timeline Section (2006 - 2027)
+       ========================================================================== -->
+  <section class="section-wrap" id="timeline">
+    <div class="section-header">
+      <div class="section-eyebrow">CHRONOLOGICAL MILESTONES</div>
+      <h2 class="section-title">二十年跨界研發年表</h2>
+      <p class="section-desc">
+        自 2006 年創辦 Arduino.TW 社群、研發中油加油機控制卡，一路跨越至 2027 故宮南院大型公共藝術。
+      </p>
+    </div>
+
+    <div class="light-controls-bar" style="justify-content: center; margin-bottom: 3.5rem;">
+      <div class="light-segmented-control" id="timelineFilters">
+        <button class="light-seg-btn active" data-period="all">全部年段 (2006-2027)</button>
+        <button class="light-seg-btn" data-period="2025-2027">2025 - 2027</button>
+        <button class="light-seg-btn" data-period="2018-2020">2018 - 2020</button>
+        <button class="light-seg-btn" data-period="2015-2017">2015 - 2017</button>
+        <button class="light-seg-btn" data-period="2010-2014">2010 - 2014</button>
+        <button class="light-seg-btn" data-period="2006-2009">2006 - 2009</button>
+      </div>
+    </div>
+
+    <div class="light-timeline" id="timelineContainer">
+      <!-- Dynamically Rendered by JavaScript -->
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Services Section (8 Core Capabilities)
+       ========================================================================== -->
+  <section class="section-wrap section-wrap-alt" id="services">
+    <div class="section-header">
+      <div class="section-eyebrow">CORE CAPABILITIES</div>
+      <h2 class="section-title">八大核心技術服務</h2>
+      <p class="section-desc">
+        幾十有限公司提供跨領域的一站式軟硬體整合服務，從前端感知、機械運動、演算法運算到後端雲端監控。
+      </p>
+    </div>
+
+    <div class="light-services-grid">
+      <div class="light-service-card">
+        <div class="light-service-icon-box">
+          <!-- Monitor / Display SVG -->
+          <svg viewBox="0 0 24 24" class="icon-mono">
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+            <line x1="8" y1="21" x2="16" y2="21"></line>
+            <line x1="12" y1="17" x2="12" y2="21"></line>
+          </svg>
+        </div>
+        <h3 class="light-service-title">展場軟硬體整合設計規劃</h3>
+        <p class="light-service-desc">
+          提供博物館、大型展演館及公共藝術展區完整的互動系統架構規劃，無縫串接多媒體音訊、視訊矩陣與各類感測器。
+        </p>
+      </div>
+
+      <div class="light-service-card">
+        <div class="light-service-icon-box">
+          <!-- Lightbulb SVG -->
+          <svg viewBox="0 0 24 24" class="icon-mono">
+            <line x1="9" y1="18" x2="15" y2="18"></line>
+            <line x1="10" y1="22" x2="14" y2="22"></line>
+            <path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5.76.76 1.23 1.52 1.41 2.5h6.18z"></path>
+          </svg>
+        </div>
+        <h3 class="light-service-title">舞台燈光控制與電腦燈整合</h3>
+        <p class="light-service-desc">
+          專業 DMX512、Art-Net、sACN 協定轉換與排程控制，將成百上千盞電腦燈光與音軌節奏完美毫秒級同步。
+        </p>
+      </div>
+
+      <div class="light-service-card">
+        <div class="light-service-icon-box">
+          <!-- Sliders SVG -->
+          <svg viewBox="0 0 24 24" class="icon-mono">
+            <line x1="4" y1="21" x2="4" y2="14"></line>
+            <line x1="4" y1="10" x2="4" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12" y2="3"></line>
+            <line x1="20" y1="21" x2="20" y2="16"></line>
+            <line x1="20" y1="12" x2="20" y2="3"></line>
+            <line x1="1" y1="14" x2="7" y2="14"></line>
+            <line x1="9" y1="8" x2="15" y2="8"></line>
+            <line x1="17" y1="16" x2="23" y2="16"></line>
+          </svg>
+        </div>
+        <h3 class="light-service-title">中央控制系統軟體設計</h3>
+        <p class="light-service-desc">
+          自研 Centurion Pro 系統，具備高容錯分散式架構、定時自動排程、遠端監控日誌與一鍵全場開關機功能。
+        </p>
+      </div>
+
+      <div class="light-service-card">
+        <div class="light-service-icon-box">
+          <!-- CPU / Chip SVG -->
+          <svg viewBox="0 0 24 24" class="icon-mono">
+            <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+            <rect x="9" y="9" width="6" height="6"></rect>
+            <line x1="9" y1="1" x2="9" y2="4"></line>
+            <line x1="15" y1="1" x2="15" y2="4"></line>
+            <line x1="9" y1="20" x2="9" y2="23"></line>
+            <line x1="15" y1="20" x2="15" y2="23"></line>
+            <line x1="20" y1="9" x2="23" y2="9"></line>
+            <line x1="20" y1="14" x2="23" y2="14"></line>
+            <line x1="1" y1="9" x2="4" y2="9"></line>
+            <line x1="1" y1="14" x2="4" y2="14"></line>
+          </svg>
+        </div>
+        <h3 class="light-service-title">演算法視覺與動態生成</h3>
+        <p class="light-service-desc">
+          結合即時物理模擬、粒子力學、自然生長模型與 AI 視覺運算，打造獨一無二且隨環境變化的生成式視覺藝術。
+        </p>
+      </div>
+
+      <div class="light-service-card">
+        <div class="light-service-icon-box">
+          <!-- Robotic Arm / Activity SVG -->
+          <svg viewBox="0 0 24 24" class="icon-mono">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 14 14"></polyline>
+            <path d="M12 2a10 10 0 0 1 10 10"></path>
+          </svg>
+        </div>
+        <h3 class="light-service-title">伺服馬達與機械手臂自動化控制</h3>
+        <p class="light-service-desc">
+          精密工業級運動控制、多軸機械手臂軌跡規劃，曾建置台中花博 697 朵機械花同動開合與信義誠品 30 週年手臂控制。
+        </p>
+      </div>
+
+      <div class="light-service-card">
+        <div class="light-service-icon-box">
+          <!-- Radio / Wireless Waves SVG -->
+          <svg viewBox="0 0 24 24" class="icon-mono">
+            <path d="M4.93 4.93a10 10 0 0 1 14.14 0"></path>
+            <path d="M7.76 7.76a6 6 0 0 1 8.48 0"></path>
+            <circle cx="12" cy="12" r="2"></circle>
+            <path d="M16.24 16.24a6 6 0 0 1-8.48 0"></path>
+            <path d="M19.07 19.07a10 10 0 0 1-14.14 0"></path>
+          </svg>
+        </div>
+        <h3 class="light-service-title">互動多媒體裝置與嵌入式感測</h3>
+        <p class="light-service-desc">
+          專精超高頻 RFID、LiDAR 雷射雷達、深度攝影機、IMU 慣性感測手環與穿戴裝置研發，賦予空間敏銳的感知力。
+        </p>
+      </div>
+
+      <div class="light-service-card">
+        <div class="light-service-icon-box">
+          <!-- Globe / Network SVG -->
+          <svg viewBox="0 0 24 24" class="icon-mono">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="2" y1="12" x2="22" y2="12"></line>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+          </svg>
+        </div>
+        <h3 class="light-service-title">物聯網與無線遠端控制</h3>
+        <p class="light-service-desc">
+          支援 5G、LoRa、ZigBee、藍芽低功耗 BLE 與 WebSocket 雲端即時連線，實現戶外跨地景設備集中管控。
+        </p>
+      </div>
+
+      <div class="light-service-card">
+        <div class="light-service-icon-box">
+          <!-- Compass / Shield SVG -->
+          <svg viewBox="0 0 24 24" class="icon-mono">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+          </svg>
+        </div>
+        <h3 class="light-service-title">科技藝術顧問與跨界策劃</h3>
+        <p class="light-service-desc">
+          具備二十年頂尖藝術團隊共同創作經驗，提供藝術家與策展人最堅實的技術架構評估、結構安全計算與量產執行方案。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       About Section (Bilingual Description)
+       ========================================================================== -->
+  <section class="section-wrap" id="about">
+    <div class="section-header">
+      <div class="section-eyebrow">ABOUT DECADE</div>
+      <h2 class="section-title">關於幾十有限公司</h2>
+      <p class="section-desc">
+        幾十有限公司（DECADE CO., LTD.）創立於台灣台北，是一家走在藝術與科技交界處的前瞻工程團隊。
+      </p>
+    </div>
+
+    <div class="light-about-box">
+      <div class="light-about-col">
+        <h3>中文簡介</h3>
+        <p>
+          幾十有限公司（DECADE CO., LTD. / 帝凱科技有限公司）長期致力於展場軟硬體整合規劃、大型舞台燈光控制系統、中央控制軟體架構及伺服馬達自動化控制。
+        </p>
+        <p>
+          我們以嚴謹的工程演算法為基石，結合當代科技藝術的感性語言，將伺服馬達、機械手臂、電腦燈光、光電半導體等工業媒材轉化為充滿生命動能的互動藝術裝置。
+        </p>
+        <p>
+          團隊歷年來受邀擔任多項國家級與國際性大型公共藝術的技術總監與核心系統建置商，作品遍及台灣燈會、世大運、台中世界花博、台北當代美術館、法國 IRCAM 龐畢度中心及英國曼徹斯特。
+        </p>
+      </div>
+
+      <div class="light-about-col">
+        <h3>English Profile</h3>
+        <p>
+          DECADE CO., LTD. is a premier creative engineering and interactive technology consultancy based in Taipei, Taiwan. We specialize in software and hardware integration for world-class exhibitions, dynamic stage lighting control, and custom central control infrastructures.
+        </p>
+        <p>
+          By bridging computational algorithms with physical kinetic installations, we transform industrial servo motors, robotic arms, and lighting networks into expressive living artworks.
+        </p>
+        <p>
+          Our technical directorship spans landmark events including the 2018 Taichung World Flora Expo ("The Sound of Blooming"), Taipei Summer Universiade, National Taiwan Museum of Fine Arts, and international showcases at IRCAM Centre Pompidou in Paris and Manchester, UK.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Media & Publications Section
+       ========================================================================== -->
+  <section class="section-wrap section-wrap-alt" id="media">
+    <div class="section-header">
+      <div class="section-eyebrow">PRESS & RESEARCH</div>
+      <h2 class="section-title">媒體報導與出版文獻</h2>
+      <p class="section-desc">
+        歷年受各大主流媒體深度專訪與學術研討會發表之科技藝術文獻。
+      </p>
+    </div>
+
+    <div class="light-media-grid">
+      <a href="https://anntw.com/articles/20181014-Kq1M" target="_blank" rel="noopener noreferrer" class="light-media-card">
+        <div>
+          <span class="light-media-badge">台灣醒報 • 專題報導</span>
+          <h3 class="light-media-title">地表最大機械花 聆聽花開聲音</h3>
+        </div>
+        <div class="light-media-action">
+          <span>閱讀全文</span>
+          <svg viewBox="0 0 24 24" class="icon-mono"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        </div>
+      </a>
+
+      <a href="https://www.youtube.com/watch?v=5rAwtlH2hI0" target="_blank" rel="noopener noreferrer" class="light-media-card">
+        <div>
+          <span class="light-media-badge">天下雜誌 • 影音記錄</span>
+          <h3 class="light-media-title">「聆聽花開的聲音」背後的科技大腦與控制工程</h3>
+        </div>
+        <div class="light-media-action">
+          <span>觀看影片</span>
+          <svg viewBox="0 0 24 24" class="icon-mono"><polygon points="5 3 19 12 5 21 5 3" fill="currentColor"></polygon></svg>
+        </div>
+      </a>
+
+      <a href="https://www.chinatimes.com/realtimenews/20181105003445-260405" target="_blank" rel="noopener noreferrer" class="light-media-card">
+        <div>
+          <span class="light-media-badge">中時電子報 • 展演焦點</span>
+          <h3 class="light-media-title">花博巨型裝置藝術 697朵機械花隨陽光音樂起舞</h3>
+        </div>
+        <div class="light-media-action">
+          <span>閱讀全文</span>
+          <svg viewBox="0 0 24 24" class="icon-mono"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        </div>
+      </a>
+
+      <a href="https://www.mottotimes.com/cht/article_detail.php?type=1&serial=272" target="_blank" rel="noopener noreferrer" class="light-media-card">
+        <div>
+          <span class="light-media-badge">MOT TIMES 明日誌</span>
+          <h3 class="light-media-title">走進當代科技藝術的背後：專訪幾十有限公司軟體總監</h3>
+        </div>
+        <div class="light-media-action">
+          <span>閱讀專訪</span>
+          <svg viewBox="0 0 24 24" class="icon-mono"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        </div>
+      </a>
+
+      <a href="https://meet.bnext.com.tw/articles/view/37731" target="_blank" rel="noopener noreferrer" class="light-media-card">
+        <div>
+          <span class="light-media-badge">數位時代 • MEET 創業小聚</span>
+          <h3 class="light-media-title">互動藝術硬體創新：從創辦 Arduino.TW 到國家級展演</h3>
+        </div>
+        <div class="light-media-action">
+          <span>閱讀全文</span>
+          <svg viewBox="0 0 24 24" class="icon-mono"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        </div>
+      </a>
+
+      <a href="https://www.biosmonthly.com/article/10123" target="_blank" rel="noopener noreferrer" class="light-media-card">
+        <div>
+          <span class="light-media-badge">BIOS MONTHLY • 文化專題</span>
+          <h3 class="light-media-title">在光與機械的節奏中呼吸：幾十科技藝術的跨界實踐</h3>
+        </div>
+        <div class="light-media-action">
+          <span>閱讀全文</span>
+          <svg viewBox="0 0 24 24" class="icon-mono"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        </div>
+      </a>
+
+      <a href="https://www.siggraph.org/" target="_blank" rel="noopener noreferrer" class="light-media-card">
+        <div>
+          <span class="light-media-badge">學術文獻 • ACM SIGGRAPH</span>
+          <h3 class="light-media-title">Many to One PC by WSN System (Los Angeles & Singapore)</h3>
+        </div>
+        <div class="light-media-action">
+          <span>學術記錄</span>
+          <svg viewBox="0 0 24 24" class="icon-mono"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        </div>
+      </a>
+
+      <a href="http://www.ctimes.com.tw/" target="_blank" rel="noopener noreferrer" class="light-media-card">
+        <div>
+          <span class="light-media-badge">業界出版 • CTimes Android Days</span>
+          <h3 class="light-media-title">《踏進 Arduino 互動科技世界 — 使用 Android 平台整合》</h3>
+        </div>
+        <div class="light-media-action">
+          <span>文獻查閱</span>
+          <svg viewBox="0 0 24 24" class="icon-mono"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Contact & Banking Information Section
+       ========================================================================== -->
+  <section class="section-wrap" id="contact">
+    <div class="section-header">
+      <div class="section-eyebrow">GET IN TOUCH</div>
+      <h2 class="section-title">聯絡合作與匯款資訊</h2>
+      <p class="section-desc">
+        歡迎各界藝術家、策展人、建築規劃師及政府機關接洽大型專案合作與軟硬體委託建置。
+      </p>
+    </div>
+
+    <div class="light-contact-grid">
+      <!-- Left Column: Company Contact & Bank Info -->
+      <div class="light-info-card">
+        <div class="light-info-row">
+          <div class="light-info-icon">
+            <svg viewBox="0 0 24 24" class="icon-mono"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          </div>
+          <div>
+            <div class="light-info-title">公司名稱 / 統一編號</div>
+            <div class="light-info-val">幾十有限公司 (DECADE CO., LTD.) • 54332918</div>
+          </div>
+        </div>
+
+        <div class="light-info-row">
+          <div class="light-info-icon">
+            <svg viewBox="0 0 24 24" class="icon-mono"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          </div>
+          <div>
+            <div class="light-info-title">公司登記與工作地址</div>
+            <div class="light-info-val">台北市北投區中央南路二段14-1號</div>
+          </div>
+        </div>
+
+        <div class="light-info-row">
+          <div class="light-info-icon">
+            <svg viewBox="0 0 24 24" class="icon-mono"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          </div>
+          <div>
+            <div class="light-info-title">電話 / 手機聯絡</div>
+            <div class="light-info-val">02-28982557 / 0916-289-423</div>
+          </div>
+        </div>
+
+        <div class="light-info-row">
+          <div class="light-info-icon">
+            <svg viewBox="0 0 24 24" class="icon-mono"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          </div>
+          <div>
+            <div class="light-info-title">官方電子信箱</div>
+            <div class="light-info-val"><a href="mailto:xlinx@decade.tw" style="color: var(--light-text-link);">xlinx@decade.tw</a></div>
+          </div>
+        </div>
+
+        <!-- Banking Information with 1-Click Copy -->
+        <div class="light-bank-box">
+          <div class="light-bank-head">
+            <span class="light-bank-label">銀行匯款專戶資訊</span>
+            <button class="btn-copy-bank" id="btnCopyBank" type="button" title="點擊複製匯款帳號">
+              <svg viewBox="0 0 24 24" class="icon-mono"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <span>複製帳號</span>
+            </button>
+          </div>
+          <div class="light-bank-details">
+            <div>銀行名稱：第一銀行 (銀行代碼 007)</div>
+            <div>分行名稱：北投分行 (分行代碼 1914)</div>
+            <div>帳戶號碼：<strong style="color: var(--light-text-primary);" id="bankAccountNumber">111-10-101188</strong></div>
+            <div>戶名：幾十有限公司</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Studio Map -->
+      <div class="light-map-card">
+        <iframe
+          src="https://maps.google.com/maps?q=25.1278,121.5015&hl=zh-TW&z=16&output=embed"
+          title="幾十有限公司工作室位置圖"
+          loading="lazy"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Footer
+       ========================================================================== -->
+  <footer class="light-footer">
+    <div class="light-footer-content">
+      <div class="light-nav-brand">
+        <img src="https://www.decade.tw/images/logo/decade_logo.png" alt="幾十有限公司" style="height: 28px; width: auto;" />
+        <span style="font-weight: 700; font-size: 1.1rem;">DECADE CO., LTD.</span>
+      </div>
+
+      <div class="light-footer-links">
+        <a href="#home">回到頂端</a>
+        <a href="#works">作品影音</a>
+        <a href="#gallery">實境寫真</a>
+        <a href="#timeline">歷史年表</a>
+        <a href="#services">核心服務</a>
+        <a href="#about">關於我們</a>
+        <a href="#contact">聯絡我們</a>
+        <a href="index.html">風格隨機入口</a>
+      </div>
+
+      <div class="light-copyright">
+        © 2006 - 2027 幾十有限公司 (DECADE CO., LTD.) • 統一編號 54332918 • 台北市北投區中央南路二段14-1號 • 版權所有
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       Interactive Modal Viewer (YouTube / High-Res Image)
+       ========================================================================== -->
+  <div class="light-modal" id="mediaModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="light-modal-sheet">
+      <div class="light-modal-head">
+        <h3 class="light-modal-title" id="modalTitle">媒體檢視</h3>
+        <button class="light-modal-close" id="modalCloseBtn" aria-label="關閉視窗">
+          <svg viewBox="0 0 24 24" class="icon-mono">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="light-modal-body" id="modalBody">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="light-toast" id="toastMessage">已複製到剪貼簿</div>
+
+  <!-- ==========================================================================
+       Vanilla JavaScript Implementation (Zero External Dependencies)
+       ========================================================================== -->
+  <script>
+    (function() {
+      /* --- 1. Data Definitions (Source of Truth: decade.tw.md) --- */
+      const videosData = [
+        { id: "GGZHxkKLopg", title: "基隆山海鳴光", watchUrl: "https://www.youtube.com/watch?v=GGZHxkKLopg", tags: ["基隆火車站", "公共藝術", "豪華朗機工", "控制"] },
+        { id: "et_1mErdoKY", title: "台北燈節主燈偶控系統", watchUrl: "https://www.youtube.com/watch?v=et_1mErdoKY", tags: ["台北燈會", "燈節", "偶控", "控制"] },
+        { id: "RtN9LXy0nSY", title: "台灣燈會新竹主燈中央控制系統", watchUrl: "https://www.youtube.com/watch?v=RtN9LXy0nSY", tags: ["台灣燈會", "新竹主燈", "豪華朗機工", "控制"] },
+        { id: "9_RAmF9dAQo", title: "高雄流行音樂中心", watchUrl: "https://www.youtube.com/watch?v=9_RAmF9dAQo", tags: ["高雄流行音樂中心", "波光之翼", "音樂中心", "豪華朗機工"] },
+        { id: "AMcD4XxWp9Y", title: "豪華朗機工「聆聽花開的聲音」", watchUrl: "https://www.youtube.com/watch?v=AMcD4XxWp9Y", tags: ["台中花博", "豪華朗機工", "機械花", "中央控制"] },
+        { id: "uDib2sl9EQ4", title: "誠品30週年機械手臂控制", watchUrl: "https://www.youtube.com/watch?v=uDib2sl9EQ4", tags: ["信義誠品", "機械手臂", "一起幻想", "豪華朗機工"] },
+        { id: "YPILezM36Mk", title: "台電大樓馬達控制系統", watchUrl: "https://www.youtube.com/watch?v=YPILezM36Mk", tags: ["台電大樓", "日光域", "馬達控制", "公共藝術"] },
+        { id: "zv084TmAvKo", title: "台中世界花卉博覽會", watchUrl: "https://www.youtube.com/watch?v=zv084TmAvKo", tags: ["台中花博", "花博", "中央控制", "燈會"] },
+        { id: "Xkbk8A6MBmI", title: "台電大樓風動電路設計", watchUrl: "https://www.youtube.com/watch?v=Xkbk8A6MBmI", tags: ["台電大樓", "風動電路", "電路設計", "河飄風"] },
+        { id: "mnyQ6473jj0", title: "世大運開幕式", watchUrl: "https://www.youtube.com/watch?v=mnyQ6473jj0", tags: ["世大運", "群控光電", "開幕式", "大型展演"] },
+        { id: "XWcwRYwDcVs", title: "台灣科技園區裝置控制", watchUrl: "https://www.youtube.com/watch?v=XWcwRYwDcVs", tags: ["汐止科技園區", "公共藝術", "見為知著", "裝置控制"] },
+        { id: "uWbwuabvpgY", title: "台南燈會中央控制系統", watchUrl: "https://www.youtube.com/watch?v=uWbwuabvpgY", tags: ["台南燈會", "月津港", "燈會", "控制"] },
+        { id: "blTlSpL5gPA", title: "誠品３０週年機械手臂控制", watchUrl: "https://www.youtube.com/watch?v=blTlSpL5gPA", tags: ["誠品30週年", "機械手臂", "豪華朗機工", "精密控制"] },
+        { id: "G21wHvVLtVY", title: "法國IRCAM 中央控制", watchUrl: "https://www.youtube.com/watch?v=G21wHvVLtVY", tags: ["IRCAM", "法國龐畢度", "失眠寫生簿", "豪華朗機工"] },
+        { id: "dF1C0cCYdGA", title: "台北流行音樂中心公共藝術控制系統", watchUrl: "https://www.youtube.com/watch?v=dF1C0cCYdGA", tags: ["台北流行音樂中心", "幻流行光", "音樂中心", "豪華朗機工"] },
+        { id: "iLRVEH9zFao", title: "台北燈節主燈牛偶控制系統", watchUrl: "https://www.youtube.com/watch?v=iLRVEH9zFao", tags: ["台北燈會", "牛偶", "AKIBO", "主燈控制"] },
+        { id: "yNvj24m-KbA", title: "基隆車站控制系統", watchUrl: "https://www.youtube.com/watch?v=yNvj24m-KbA", tags: ["基隆火車站", "山海鳴光", "車站控制", "豪華朗機工"] },
+        { id: "7wjWHlk9EHU", title: "台南奇美博物館", watchUrl: "https://www.youtube.com/watch?v=7wjWHlk9EHU", tags: ["奇美博物館", "影子特展", "豪華朗機工", "中央控制"] },
+        { id: "0wHT3ey_Dkc", title: "台灣電力公司日光域控制系統", watchUrl: "https://www.youtube.com/watch?v=0wHT3ey_Dkc", tags: ["台電大樓", "日光域", "公共藝術", "電控系統"] },
+        { id: "RPPHKiupq58", title: "新竹台灣燈會主燈控制系統", watchUrl: "https://www.youtube.com/watch?v=RPPHKiupq58", tags: ["新竹主燈", "台灣燈會", "乘風逐光", "豪華朗機工"] },
+        { id: "b9wYHVMWJ10", title: "Arduino教父", watchUrl: "https://www.youtube.com/watch?v=b9wYHVMWJ10", tags: ["Arduino", "Massimo Banzi", "互動科技", "創辦人"] }
+      ];
+
+      // 21 Slide Images
+      const slideImages = Array.from({ length: 21 }, (_, i) => ({
+        id: i,
+        type: 'slides',
+        url: `https://www.decade.tw/images/slide/${i}.png`,
+        title: `現場展演實境紀錄 #${i}`
+      }));
+
+      // 9 Algorithm Images
+      const algoImages = Array.from({ length: 9 }, (_, i) => ({
+        id: i,
+        type: 'algo',
+        url: `https://www.decade.tw/images/algorithmPic/${i}.png`,
+        title: `AI / 演算法生成視覺模型 #${i}`
+      }));
+
+      // Works Timeline (2006-2027)
+      const worksData = [
+        {
+          year: 2027,
+          group: "2025-2027",
+          items: [
+            { title: "「故宮南院 X 豪華朗機工」－中央控制軟體技術總監", partner: "故宮南院 / 豪華朗機工" }
+          ]
+        },
+        {
+          year: 2026,
+          group: "2025-2027",
+          items: [
+            { title: "Visual Model Training (SacoMesure AI Model)", partner: "AI 視覺模型訓練" },
+            { title: "Gxxgle Home-Connection calc algorithm", partner: "連線演算法研發" },
+            { title: "「臺中國家歌劇院 - 最後一問 X 豪華朗機工」－中央控制軟體技術總監", partner: "臺中國家歌劇院 / 豪華朗機工" }
+          ]
+        },
+        {
+          year: 2025,
+          group: "2025-2027",
+          items: [
+            { title: "「兩廳院 - 國家交響樂團」－ III資策會 X NSO X AI", partner: "兩廳院 / 資策會 / NSO" },
+            { title: "「豪華朗機工」－ 宇宙寫生", partner: "豪華朗機工" },
+            { title: "「豪華朗機工」－ 日光域", partner: "豪華朗機工" },
+            { title: "「豪華朗機工」－ 手識", partner: "豪華朗機工" },
+            { title: "「豪華朗機工」－ 四合", partner: "豪華朗機工" },
+            { title: "「豪華朗機工」－ 很難很難", partner: "豪華朗機工" },
+            { title: "「ＩＯＮＩＣ」－ SacoMeasure「桃園會展中心」－ 入口裝置藝術 匯聚流 丁建中", partner: "丁建中 / 桃園會展中心" },
+            { title: "「信義區微風顯示器」－ 視訊控制中心", partner: "微風集團" },
+            { title: "「台中都會公園」－ 顯示控制中心", partner: "台中都會公園" },
+            { title: "「特拉維夫」－ 裝置藝術 丁建中", partner: "特拉維夫 / 丁建中" },
+            { title: "「IRCAM 法國龐畢度美術館」－ 失眠寫生簿 豪華朗機工", partner: "法國 IRCAM / 龐畢度" },
+            { title: "「兩廳院 舞鈴劇團」－ 兩廳院 5G手環無線點控 資策會", partner: "資策會 / 兩廳院" },
+            { title: "「密室逃脫」－ 超高頻ＲＦＩＤ", partner: "RFID 互動系統" },
+            { title: "「北區資安中心」－ 顯示控制中心", partner: "資安中心" },
+            { title: "「北區球場」－ 顯示控制中心", partner: "體育園區" },
+            { title: "「ＩＴＲＩ」－ 震動演算法分析", partner: "工研院" },
+            { title: "「台北流行音樂中心－幻流行光 Ｘ 豪華朗機工」－中央控制軟體建置與技術總監", partner: "台北流行音樂中心 / 豪華朗機工" },
+            { title: "「高雄流行音樂中心 波光之翼 Ｘ 豪華朗機工」－中央控制軟體建置與技術總監", partner: "高雄流行音樂中心 / 豪華朗機工" },
+            { title: "「基隆火車站 山海鳴光 Ｘ 豪華朗機工」－中央控制軟體建置與技術總監", partner: "基隆火車站 / 豪華朗機工" }
+          ]
+        },
+        {
+          year: 2020,
+          group: "2018-2020",
+          items: [
+            { title: "「台灣燈會－新竹主燈 Ｘ 豪華朗機工」－中央控制軟體技術總監", partner: "交通部觀光局 / 豪華朗機工" },
+            { title: "「台北燈會－台北萬華主燈 Ｘ ＡＫＩＢＯ老師」－中央控制軟體技術總監", partner: "台北市政府 / AKIBO老師" }
+          ]
+        },
+        {
+          year: 2019,
+          group: "2018-2020",
+          items: [
+            { title: "「信義誠品30週年」 一起幻想 Ｘ 豪華朗機工－機械手臂中央控制技術總監", partner: "誠品書店 / 豪華朗機工" },
+            { title: "「臺南奇美博物館」 影子特展 Ｘ 豪華朗機工－中央控制技術總監", partner: "奇美博物館 / 豪華朗機工" },
+            { title: "「台北當代藝術館 」查無此人小花展 Ｘ 豪華朗機工 －中央控制技術總監", partner: "台北當代藝術館 / 豪華朗機工" },
+            { title: "「永豐餘元太科技EINK 」電子紙控制計劃案", partner: "永豐餘 / 元太科技" }
+          ]
+        },
+        {
+          year: 2018,
+          group: "2018-2020",
+          items: [
+            { title: "「臺中世界花卉博覽會」聆聽花開的聲音 Ｘ 豪華朗機工－中央控制系統建置", partner: "台中花博 / 豪華朗機工" },
+            { title: "「GoGoRo新⾞發表會」硬體控制系統建置", partner: "Gogoro Taiwan" },
+            { title: "「宜蘭蘭傳藝中心 」互動介⾯多點控制設計", partner: "國立傳統藝術中心" },
+            { title: "「臺北小巨蛋CTC世界盃國際標準舞公開賽」RF無線控制設計", partner: "台北小巨蛋 / CTC世界盃" }
+          ]
+        },
+        {
+          year: 2017,
+          group: "2015-2017",
+          items: [
+            { title: "「松山文創園區讀衣II 」時尚 X 藝術跨界展 Ｘ JUST IN XX 周裕穎－驅動控制系統建置", partner: "JUST IN XX 周裕穎" },
+            { title: "「台北世大運」群控光電顧問", partner: "台北世大運組委會" },
+            { title: "「白晝之夜」藝術活動 Ｘ 藝術家江惠菁 Ｘ 步里赫森－電路技術支援", partner: "台北白晝之夜" },
+            { title: "「白晝之夜－台電大樓公共藝術」Ｘ 柯市長點燈－遠端控制系統", partner: "台電大樓 / 台北市政府" },
+            { title: "「元太科技EINK 電子紙」驅動控制系統規劃執行", partner: "元太科技" },
+            { title: "「Fashion Tech JustInCase 」科技服裝設計 Ｘ JUST IN XX 周裕穎－驅動控制系統規劃建置", partner: "JUST IN XX" },
+            { title: "「農業溫室與政府公開資訊」研究計劃", partner: "農委會研究專案" },
+            { title: "「臺中機器學習MachineLearning」資料研究計劃", partner: "機器學習研究" },
+            { title: "「國家歌劇院 UltraCombo群控無人機」通訊協定顧問", partner: "UltraCombo / 國家歌劇院" }
+          ]
+        },
+        {
+          year: 2016,
+          group: "2015-2017",
+          items: [
+            { title: "「台灣電力公司公共藝術」日光域 Ｘ 華麗邏輯－電控技術設計與製作", partner: "華麗邏輯 / 台電" },
+            { title: "「台灣電力公司公共藝術」河飄風 Ｘ 華麗邏輯－電路設計與製作", partner: "華麗邏輯 / 台電" },
+            { title: "「台灣電力公司公共藝術」太陽之詩 Ｘ 華麗邏輯－馬達電控技術與製作", partner: "華麗邏輯 / 台電" }
+          ]
+        },
+        {
+          year: 2015,
+          group: "2015-2017",
+          items: [
+            { title: "「2015解密國家寶藏 Ｘ 奇想樂園互動科技館」採用本公司研發Centurion ProV2.0系統", partner: "工研院 / Centurion ProV2.0" },
+            { title: "「智慧型IMU壓力感測藍芽通訊柺杖」Ｘ 國立台灣大學 ivLab Ｘ 資策會創新所－共同研發", partner: "台灣大學 / 資策會" },
+            { title: "「智慧型震動馬達感測藍芽通訊鞋墊』Ｘ 資策會創新所", partner: "資策會創新所" }
+          ]
+        },
+        {
+          year: 2014,
+          group: "2010-2014",
+          items: [
+            { title: "「敦煌擴增實境導覽裝置」小沙彌 Ｘ 台灣大學ivLab", partner: "台灣大學 ivLab" },
+            { title: "「2014解密國家寶藏－奇想樂園互動科技館」採用本公司研發Centurion ProV1.5系統", partner: "工研院 / Centurion ProV1.5" },
+            { title: "「桃園機場第二航廈公共藝術裝置 」歐基理德的飛行 X 豪華朗機工", partner: "桃園機場 / 豪華朗機工" },
+            { title: "「英國曼徹斯特」日光域 X 豪華朗機工", partner: "英國曼徹斯特 / 豪華朗機工" }
+          ]
+        },
+        {
+          year: 2013,
+          group: "2010-2014",
+          items: [
+            { title: "「臺南鹽水月津港燈節主燈」日光域 X 豪華朗機工", partner: "月津港燈節 / 豪華朗機工" },
+            { title: "「文建會科技與表演藝術結合旗艦計畫」王俊傑 X 豪華朗機工 X 北藝大科藝中心 『無人劇場Timecode系統研發』採用Centurion ProV1.0", partner: "北藝大 / 豪華朗機工" },
+            { title: "「汐止台灣科學園區大廳公共藝術」見為知著 X 豪華朗機工", partner: "汐止科學園區 / 豪華朗機工" }
+          ]
+        },
+        {
+          year: 2012,
+          group: "2010-2014",
+          items: [
+            { title: "「汐止台灣科學園區戶外公共藝術」時中光 X 豪華朗機工", partner: "汐止科學園區 / 豪華朗機工" },
+            { title: "「文建會科技與表演藝術結合旗艦計畫」M Project X 豪華朗機工 X 周先生 －共同創作", partner: "周先生 / 豪華朗機工" },
+            { title: "「足部壓力無線傳輸感測模組」X 國立台灣大學 X 資策會－共同創作", partner: "台灣大學 / 資策會" },
+            { title: "「文建會科技與表演藝術結合旗艦計畫 」線上演出『名導濾鏡』之雲端冒險演出之一 X 廣藝基金會 X 台北藝術大學", partner: "廣藝基金會 / 北藝大" },
+            { title: "「Computex Taipei 」雲端個人3D印表機 X 威盛電子股份有限公司－合作研發", partner: "威盛電子 / Computex" },
+            { title: "「Facebook互動式數位藝術櫥窗」X 台北教育大學 X 藝術家張博智 －合作研發", partner: "張博智 / 北教大" },
+            { title: "業界演講 CTimes Android Days －『踏進Arduino互動科技世界－使用Android』(200人次)", partner: "CTimes 專業論壇" },
+            { title: "「藝術裝置」福 X 豪華朗機工－互動設計", partner: "豪華朗機工" },
+            { title: "「ZigBee無線傳輸」X 德明財經科技大學－距離感測模組研發", partner: "德明財經科大" }
+          ]
+        },
+        {
+          year: 2011,
+          group: "2010-2014",
+          items: [
+            { title: "研發 LED幻彩無線傳輸控制器", partner: "自研硬體控制卡" },
+            { title: "「Facebook互動式音樂」Tender Blackmail黑信 X 音樂家陳建騏 X 藝術家張博智 X 人力飛行劇團", partner: "陳建騏 / 張博智 / 人力飛行劇團" },
+            { title: "「台北世界設計大會」聲音互動式展場 X 亞洲大學－聲音互動設計製作", partner: "台北世界設計大會 / 亞洲大學" },
+            { title: "「研發Centurion多點互動控制系統」", partner: "Centurion 系統架構" },
+            { title: "「藝術裝置」一日 X 豪華朗機工－電子控制設計", partner: "豪華朗機工" },
+            { title: "「藝術裝置」日光域 X 豪華朗機工－電子控制設計", partner: "豪華朗機工" }
+          ]
+        },
+        {
+          year: 2010,
+          group: "2010-2014",
+          items: [
+            { title: "「藝術裝置」游泳 X 豪華朗機工－電子控制設計", partner: "豪華朗機工" },
+            { title: "於台灣大學研發智慧感測手環", partner: "台灣大學" },
+            { title: "「藝術裝置」浪2 X 豪華朗機工－電子控制設計", partner: "豪華朗機工" },
+            { title: "「藝術裝置」無線音樂控制器 X 藝術家張博智－電子控制設計", partner: "張博智" },
+            { title: "「互動影像裝置」水立方時尚館 籠中鳥－藝術裝置電子控制設計", partner: "水立方時尚館" },
+            { title: "帝凱科技有限公司正式成立", partner: "公司註冊成立" }
+          ]
+        },
+        {
+          year: 2009,
+          group: "2006-2009",
+          items: [
+            { title: "於台灣大學研發智慧壓力感測鞋、智慧呼吸感測衣", partner: "台灣大學" },
+            { title: "「藝術裝置」浪1 X 豪華朗機工－電子控制設計", partner: "豪華朗機工" },
+            { title: "帝凱科技有限公司成立籌備處", partner: "籌備處設立" },
+            { title: "申請國立台北藝術大學育成中心進駐廠商，獲99年度U-START教育部大專畢業生創業服務計畫30萬補助", partner: "教育部 U-START / 北藝大" }
+          ]
+        },
+        {
+          year: 2008,
+          group: "2006-2009",
+          items: [
+            { title: "美國洛杉磯與新加坡SIGGRAPH會議發表教室多人控制系統『Many to One PC by WSN System』", partner: "SIGGRAPH (USA / SG)" },
+            { title: "「藝術裝置」時間流產 X 朗機工－電子控制設計", partner: "朗機工" }
+          ]
+        },
+        {
+          year: 2007,
+          group: "2006-2009",
+          items: [
+            { title: "「藝術裝置」南方樂浪 X 朗機工－電子控制設計", partner: "朗機工" }
+          ]
+        },
+        {
+          year: 2006,
+          group: "2006-2009",
+          items: [
+            { title: "研發與生產－台灣中國石油S3加油機控制介面卡 (Current Loop)", partner: "中油 S3 加油站" },
+            { title: "創辦Arduino.TW－台灣Arduino使用者社群", partner: "Arduino.TW 社群創立" }
+          ]
+        }
+      ];
+
+      /* --- 2. Render Video Bento Grid --- */
+      const videoGrid = document.getElementById('videoGrid');
+      const videoSearchInput = document.getElementById('videoSearchInput');
+      const videoFilters = document.getElementById('videoFilters');
+
+      let currentVideoFilter = 'all';
+      let currentVideoSearch = '';
+
+      function renderVideos() {
+        if (!videoGrid) return;
+
+        const filtered = videosData.filter(v => {
+          const matchFilter = (currentVideoFilter === 'all') || 
+            v.tags.some(t => t.includes(currentVideoFilter)) ||
+            v.title.includes(currentVideoFilter);
+
+          const matchSearch = !currentVideoSearch || 
+            v.title.toLowerCase().includes(currentVideoSearch.toLowerCase()) ||
+            v.tags.some(t => t.toLowerCase().includes(currentVideoSearch.toLowerCase()));
+
+          return matchFilter && matchSearch;
+        });
+
+        if (filtered.length === 0) {
+          videoGrid.innerHTML = `
+            <div style="grid-column: 1 / -1; text-align: center; padding: 4rem 1rem; color: var(--light-text-tertiary);">
+              <svg viewBox="0 0 24 24" class="icon-mono" width="48" height="48" style="margin-bottom: 1rem;">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <div style="font-size: 1.1rem; font-weight: 600; color: var(--light-text-secondary);">未找到符合的作品項目</div>
+              <div style="font-size: 0.88rem; margin-top: 0.4rem;">請嘗試搜尋其他關鍵字或切換標籤類別。</div>
+            </div>
+          `;
+          return;
+        }
+
+        videoGrid.innerHTML = filtered.map(v => `
+          <div class="light-video-card">
+            <div class="light-video-thumb" onclick="openVideoModal('${v.id}', '${v.title.replace(/'/g, "\\'")}')">
+              <img src="https://img.youtube.com/vi/${v.id}/hqdefault.jpg" alt="${v.title}" loading="lazy" />
+              <div class="light-play-pill">
+                <div class="light-play-icon-wrap">
+                  <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                </div>
+              </div>
+            </div>
+            <div class="light-video-body">
+              <div>
+                <h3 class="light-video-title">${v.title}</h3>
+                <div class="light-video-tags">
+                  ${v.tags.map(t => `<span class="light-tag-pill">${t}</span>`).join('')}
+                </div>
+              </div>
+              <div class="light-video-foot">
+                <button class="light-btn-watch" onclick="openVideoModal('${v.id}', '${v.title.replace(/'/g, "\\'")}')">
+                  <span>觀看紀錄</span>
+                  <svg viewBox="0 0 24 24" class="icon-mono"><polygon points="5 3 19 12 5 21 5 3" fill="currentColor"></polygon></svg>
+                </button>
+                <a href="${v.watchUrl}" target="_blank" rel="noopener noreferrer" class="light-yt-link" title="在 YouTube 上觀看">
+                  <span>YouTube</span>
+                  <svg viewBox="0 0 24 24" class="icon-mono" width="12" height="12"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      if (videoFilters) {
+        videoFilters.addEventListener('click', (e) => {
+          const btn = e.target.closest('.light-seg-btn');
+          if (!btn) return;
+          videoFilters.querySelectorAll('.light-seg-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentVideoFilter = btn.dataset.filter;
+          renderVideos();
+        });
+      }
+
+      if (videoSearchInput) {
+        videoSearchInput.addEventListener('input', (e) => {
+          currentVideoSearch = e.target.value.trim();
+          renderVideos();
+        });
+      }
+
+      /* --- 3. Render Gallery (Slides & Algorithms) --- */
+      const galleryGrid = document.getElementById('galleryGrid');
+      const galleryFilters = document.getElementById('galleryFilters');
+      let currentGalleryMode = 'all';
+
+      function renderGallery() {
+        if (!galleryGrid) return;
+
+        let items = [];
+        if (currentGalleryMode === 'all') {
+          items = [...slideImages, ...algoImages];
+        } else if (currentGalleryMode === 'slides') {
+          items = slideImages;
+        } else if (currentGalleryMode === 'algo') {
+          items = algoImages;
+        }
+
+        galleryGrid.innerHTML = items.map(item => `
+          <div class="light-gallery-item" onclick="openImageModal('${item.url}', '${item.title.replace(/'/g, "\\'")}')">
+            <img src="${item.url}" alt="${item.title}" loading="lazy" />
+            <div class="light-gallery-caption">${item.title}</div>
+          </div>
+        `).join('');
+      }
+
+      if (galleryFilters) {
+        galleryFilters.addEventListener('click', (e) => {
+          const btn = e.target.closest('.light-seg-btn');
+          if (!btn) return;
+          galleryFilters.querySelectorAll('.light-seg-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentGalleryMode = btn.dataset.gallery;
+          renderGallery();
+        });
+      }
+
+      /* --- 4. Render Timeline --- */
+      const timelineContainer = document.getElementById('timelineContainer');
+      const timelineFilters = document.getElementById('timelineFilters');
+      let currentTimelinePeriod = 'all';
+
+      function renderTimeline() {
+        if (!timelineContainer) return;
+
+        const filtered = worksData.filter(group => {
+          if (currentTimelinePeriod === 'all') return true;
+          return group.group === currentTimelinePeriod;
+        });
+
+        timelineContainer.innerHTML = filtered.map(yearGroup => `
+          <div class="light-timeline-year-group">
+            <div class="light-timeline-year-badge">${yearGroup.year}</div>
+            <div class="light-timeline-items">
+              ${yearGroup.items.map(item => `
+                <div class="light-timeline-item">
+                  <div class="light-timeline-header">
+                    <h4 class="light-timeline-item-title">${item.title}</h4>
+                    <span class="light-timeline-partner">${item.partner}</span>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        `).join('');
+      }
+
+      if (timelineFilters) {
+        timelineFilters.addEventListener('click', (e) => {
+          const btn = e.target.closest('.light-seg-btn');
+          if (!btn) return;
+          timelineFilters.querySelectorAll('.light-seg-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentTimelinePeriod = btn.dataset.period;
+          renderTimeline();
+        });
+      }
+
+      /* --- 5. Modal Viewer Logic --- */
+      const mediaModal = document.getElementById('mediaModal');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalBody = document.getElementById('modalBody');
+      const modalCloseBtn = document.getElementById('modalCloseBtn');
+
+      window.openVideoModal = function(id, title) {
+        if (!mediaModal || !modalBody || !modalTitle) return;
+        modalTitle.textContent = title;
+        modalBody.innerHTML = `
+          <iframe 
+            src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0&modestbranding=1" 
+            title="${title}" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        `;
+        mediaModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      };
+
+      window.openImageModal = function(url, title) {
+        if (!mediaModal || !modalBody || !modalTitle) return;
+        modalTitle.textContent = title;
+        modalBody.innerHTML = `<img src="${url}" alt="${title}" />`;
+        mediaModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      };
+
+      function closeModal() {
+        if (!mediaModal || !modalBody) return;
+        mediaModal.classList.remove('active');
+        modalBody.innerHTML = '';
+        document.body.style.overflow = '';
+      }
+
+      if (modalCloseBtn) {
+        modalCloseBtn.addEventListener('click', closeModal);
+      }
+
+      if (mediaModal) {
+        mediaModal.addEventListener('click', (e) => {
+          if (e.target === mediaModal) closeModal();
+        });
+      }
+
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeModal();
+      });
+
+      /* --- 6. 1-Click Copy Banking Info --- */
+      const btnCopyBank = document.getElementById('btnCopyBank');
+      const toastMessage = document.getElementById('toastMessage');
+
+      function showToast(msg) {
+        if (!toastMessage) return;
+        toastMessage.textContent = msg;
+        toastMessage.classList.add('active');
+        setTimeout(() => {
+          toastMessage.classList.remove('active');
+        }, 2400);
+      }
+
+      if (btnCopyBank) {
+        btnCopyBank.addEventListener('click', () => {
+          const bankDetails = "銀行代碼：007 (第一銀行 北投分行)\n帳號：111-10-101188\n戶名：幾十有限公司";
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(bankDetails)
+              .then(() => showToast('匯款帳號已成功複製到剪貼簿'))
+              .catch(() => fallbackCopy(bankDetails));
+          } else {
+            fallbackCopy(bankDetails);
+          }
+        });
+      }
+
+      function fallbackCopy(text) {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+          document.execCommand('copy');
+          showToast('匯款帳號已成功複製到剪貼簿');
+        } catch (err) {
+          showToast('複製失敗，請手動選取帳號');
+        }
+        document.body.removeChild(textarea);
+      }
+
+      /* --- 7. Mobile Drawer Controls --- */
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileDrawer = document.getElementById('mobileDrawer');
+
+      if (mobileMenuBtn && mobileDrawer) {
+        mobileMenuBtn.addEventListener('click', () => {
+          mobileDrawer.classList.toggle('active');
+        });
+      }
+
+      window.closeMobileDrawer = function() {
+        if (mobileDrawer) {
+          mobileDrawer.classList.remove('active');
+        }
+      };
+
+      /* --- 8. Initial Execution --- */
+      renderVideos();
+      renderGallery();
+      renderTimeline();
+    })();
+  </script>
+</body>
+</html>

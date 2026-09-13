@@ -1,0 +1,3521 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DECADE.TW — 帝凱科技有限公司 | 互動科技解決方案 (DECADE Interactive Technology)</title>
+  <meta name="description" content="帝凱互動科技專注於展場軟硬體整合、舞台燈光與中央控制系統，將伺服馬達、機械手臂、電腦燈光等媒材以演算法呈現為活靈活現的互動藝術作品。" />
+  <meta name="keywords" content="帝凱科技, 幾十有限公司, DECADE.TW, 互動科技, 展場整合, 舞台燈光, 中央控制, 伺服馬達, 機械手臂, 演算法, 豪華朗機工, Centurion" />
+  <meta name="author" content="DECADE CO., LTD." />
+  
+  <!-- Robot Crawling & Indexing Directives -->
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1" />
+  <link rel="canonical" href="https://decade.tw/agy/index.blue.html" />
+
+  <meta property="og:site_name" content="幾十有限公司 DECADE CO., LTD." />
+  <meta property="og:title" content="DECADE.TW — 帝凱科技有限公司 (DECADE Interactive Technology)" />
+  <meta property="og:description" content="互動科技解決方案 — 提供展場軟硬體整合設計規劃；舞台燈光控制。" />
+  <meta property="og:image" content="https://www.decade.tw/images/logo/decade_logo.png" />
+  <meta property="og:url" content="https://www.decade.tw/agy/index.blue.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="zh_TW" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="DECADE.TW — 帝凱科技有限公司 | 互動科技解決方案" />
+  <meta name="twitter:description" content="專注於展場軟硬體整合、舞台燈光與中央控制系統、伺服馬達與機械手臂自動化控制。" />
+  <meta name="twitter:image" content="https://www.decade.tw/images/logo/decade_logo.png" />
+
+  <!-- Schema.org JSON-LD Structured Data for Web Robots -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "幾十有限公司",
+    "alternateName": ["帝凱科技有限公司", "DECADE CO., LTD.", "DECADE.TW"],
+    "url": "https://decade.tw",
+    "logo": "https://decade.tw/images/logo/decade_logo.png",
+    "image": "https://decade.tw/images/slide/0.png",
+    "description": "帝凱互動科技專注於展場軟硬體整合、舞台燈光與中央控制系統，將伺服馬達、機械手臂、電腦燈光等媒材以演算法呈現為活靈活現的互動藝術作品。",
+    "taxID": "54332918",
+    "telephone": "+886-2-28982557",
+    "email": "xlinx@decade.tw",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "中央南路二段14-1號",
+      "addressLocality": "北投區",
+      "addressRegion": "台北市",
+      "postalCode": "112028",
+      "addressCountry": "TW"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 25.1278,
+      "longitude": 121.5015
+    },
+    "foundingDate": "2013"
+  }
+  </script>
+
+  <link rel="icon" type="image/png" href="https://www.decade.tw/images/logo/decade_logo.png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Noto+Sans+TC:wght@300;400;500;700;900&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ==========================================================================
+       DECADE.TW Design System & CSS Variables
+       ========================================================================== */
+    :root {
+      --bg-base: #080b11;
+      --bg-surface: #0f1523;
+      --bg-surface-elevated: #161f33;
+      --bg-card: rgba(22, 31, 51, 0.7);
+      --bg-card-hover: rgba(30, 42, 69, 0.85);
+      
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+
+      --accent-cyan: #00f2fe;
+      --accent-blue: #38bdf8;
+      --accent-electric: #4facfe;
+      --accent-purple: #a855f7;
+      --accent-orange: #f97316;
+      --accent-green: #10b981;
+
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-glow: rgba(0, 242, 254, 0.35);
+      
+      --gradient-cyan-blue: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+      --gradient-cyber: linear-gradient(135deg, #00f2fe 0%, #a855f7 100%);
+      --gradient-dark: linear-gradient(180deg, rgba(15, 21, 35, 0.9) 0%, rgba(8, 11, 17, 0.95) 100%);
+
+      --font-sans: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-display: 'Space Grotesk', 'Noto Sans TC', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-xl: 28px;
+      --radius-full: 9999px;
+
+      --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
+      --shadow-glow: 0 0 25px rgba(0, 242, 254, 0.2);
+      --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+
+      --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-normal: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      --nav-height: 76px;
+    }
+
+    /* Reset & Base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--nav-height) + 20px);
+      font-size: 16px;
+      color-scheme: dark;
+    }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    ::selection {
+      background: rgba(0, 242, 254, 0.25);
+      color: #fff;
+    }
+
+    /* Typography Utilities */
+    .mono { font-family: var(--font-mono); }
+    .display { font-family: var(--font-display); }
+    
+    .gradient-text {
+      background: var(--gradient-cyan-blue);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    .cyber-text {
+      background: var(--gradient-cyber);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    /* Black and white monochrome icons */
+    .icon-mono {
+      display: inline-block;
+      vertical-align: -0.18em;
+      margin-right: 0.4rem;
+      color: inherit;
+      stroke: currentColor;
+    }
+
+    /* Container */
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin-inline: auto;
+      padding-inline: 1.5rem;
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        padding-inline: 1rem;
+      }
+    }
+
+    /* Section Structure */
+    section {
+      padding-block: 6rem;
+      position: relative;
+    }
+
+    .section-header {
+      margin-bottom: 3.5rem;
+      text-align: center;
+    }
+
+    .section-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.35rem 1rem;
+      border-radius: var(--radius-full);
+      background: rgba(0, 242, 254, 0.08);
+      border: 1px solid rgba(0, 242, 254, 0.25);
+      color: var(--accent-cyan);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      backdrop-filter: blur(8px);
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .section-subtitle {
+      color: var(--text-secondary);
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin-inline: auto;
+      font-weight: 300;
+    }
+
+    /* ==========================================================================
+       Header & Navigation
+       ========================================================================== */
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--nav-height);
+      z-index: 1000;
+      transition: background-color var(--transition-normal), backdrop-filter var(--transition-normal), border-color var(--transition-normal);
+      border-bottom: 1px solid transparent;
+    }
+
+    .site-header.scrolled {
+      background-color: rgba(8, 11, 17, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-subtle);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      font-weight: 700;
+      font-size: 1.25rem;
+      font-family: var(--font-display);
+    }
+
+    .brand-logo img {
+      height: 38px;
+      width: auto;
+      filter: drop-shadow(0 0 8px rgba(0, 242, 254, 0.4));
+      transition: transform var(--transition-normal);
+    }
+
+    .brand-logo:hover img {
+      transform: scale(1.05) rotate(-2deg);
+    }
+
+    .brand-name {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name-primary {
+      letter-spacing: 0.05em;
+      font-size: 1.15rem;
+      line-height: 1.1;
+      color: #fff;
+    }
+
+    .brand-name-sub {
+      font-size: 0.72rem;
+      color: var(--text-secondary);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      font-weight: 500;
+      position: relative;
+      padding-block: 0.5rem;
+      transition: color var(--transition-fast);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gradient-cyan-blue);
+      transition: width var(--transition-fast);
+      border-radius: 2px;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #fff;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .btn-contact-nav {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(0, 242, 254, 0.12);
+      color: var(--accent-cyan);
+      border: 1px solid rgba(0, 242, 254, 0.3);
+      padding: 0.55rem 1.25rem;
+      border-radius: var(--radius-full);
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: all var(--transition-normal);
+    }
+
+    .btn-contact-nav:hover {
+      background: var(--accent-cyan);
+      color: #080b11;
+      box-shadow: 0 0 20px rgba(0, 242, 254, 0.5);
+      transform: translateY(-1px);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      color: var(--text-primary);
+      font-size: 1.5rem;
+      padding: 0.5rem;
+    }
+
+    /* Mobile Drawer */
+    .mobile-drawer {
+      position: fixed;
+      inset: 0;
+      background: rgba(8, 11, 17, 0.97);
+      backdrop-filter: blur(20px);
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      padding: 2rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition-normal);
+    }
+
+    .mobile-drawer.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .mobile-drawer a {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .mobile-drawer a:hover,
+    .mobile-drawer a.active {
+      color: var(--accent-cyan);
+    }
+
+    .mobile-close-btn {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      font-size: 2rem;
+      color: var(--text-secondary);
+    }
+
+    @media (max-width: 900px) {
+      .nav-menu,
+      .btn-contact-nav {
+        display: none;
+      }
+      .mobile-menu-btn {
+        display: block;
+      }
+    }
+
+    /* ==========================================================================
+       Hero Section & Roller Image Wall Background
+       ========================================================================== */
+    .hero-section {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      padding-top: calc(var(--nav-height) + 2rem);
+      padding-bottom: 4rem;
+      overflow: hidden;
+      background-color: var(--bg-base);
+    }
+
+    /* Roller Image Wall */
+    .hero-roller-wall {
+      position: absolute;
+      inset: -20% -15%;
+      width: 130%;
+      height: 140%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1.25rem;
+      transform: rotate(-2.5deg);
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.42;
+      filter: saturate(1.2) brightness(0.82);
+      user-select: none;
+      overflow: hidden;
+    }
+
+    .roller-row {
+      display: flex;
+      width: 100%;
+      overflow: hidden;
+      mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    }
+
+    .roller-track {
+      display: flex;
+      gap: 1.25rem;
+      flex-shrink: 0;
+      width: max-content;
+      will-change: transform;
+    }
+
+    .roller-track-left {
+      animation: rollerScrollLeft 48s linear infinite;
+    }
+
+    .roller-track-right {
+      animation: rollerScrollRight 52s linear infinite;
+    }
+
+    .roller-track-left-fast {
+      animation: rollerScrollLeft 40s linear infinite;
+    }
+
+    .roller-track-right-fast {
+      animation: rollerScrollRight 44s linear infinite;
+    }
+
+    @keyframes rollerScrollLeft {
+      0% {
+        transform: translate3d(0, 0, 0);
+      }
+      100% {
+        transform: translate3d(-50%, 0, 0);
+      }
+    }
+
+    @keyframes rollerScrollRight {
+      0% {
+        transform: translate3d(-50%, 0, 0);
+      }
+      100% {
+        transform: translate3d(0, 0, 0);
+      }
+    }
+
+    .roller-item {
+      width: 270px;
+      height: 160px;
+      flex-shrink: 0;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+      background: #0f1523;
+      position: relative;
+    }
+
+    .roller-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .roller-item {
+        width: 180px;
+        height: 110px;
+      }
+      .hero-roller-wall {
+        gap: 0.85rem;
+        inset: -15% -25%;
+        width: 150%;
+        transform: rotate(-2deg);
+      }
+      .roller-track {
+        gap: 0.85rem;
+      }
+    }
+
+    /* Roller Wall Overlay & Gradients for text contrast */
+    .hero-roller-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse at 50% 50%, rgba(8, 11, 17, 0.65) 0%, rgba(8, 11, 17, 0.88) 65%, #080b11 100%),
+        linear-gradient(to bottom, rgba(8, 11, 17, 0.95) 0%, rgba(8, 11, 17, 0.3) 30%, rgba(8, 11, 17, 0.3) 70%, #080b11 100%);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .roller-track-left,
+      .roller-track-right,
+      .roller-track-left-fast,
+      .roller-track-right-fast {
+        animation-play-state: paused !important;
+      }
+    }
+
+    /* Canvas Algorithmic Network */
+    #heroCanvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 3;
+      pointer-events: none;
+      opacity: 0.45;
+    }
+
+    .hero-glow-1 {
+      position: absolute;
+      top: 15%;
+      left: 10%;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(0, 242, 254, 0.18) 0%, transparent 70%);
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .hero-glow-2 {
+      position: absolute;
+      bottom: 20%;
+      right: 10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 70%);
+      filter: blur(100px);
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 4;
+      max-width: 920px;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      padding: 0.4rem 1.1rem;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 1.5rem;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-tag .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent-cyan);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent-cyan);
+      animation: pulse 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.4); opacity: 0.5; }
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-slogan {
+      font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+      font-weight: 500;
+      color: #e2e8f0;
+      margin-bottom: 1.5rem;
+      line-height: 1.4;
+    }
+
+    .hero-desc {
+      font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+      color: var(--text-secondary);
+      line-height: 1.8;
+      max-width: 780px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 0.85rem 1.8rem;
+      border-radius: var(--radius-full);
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all var(--transition-normal);
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--gradient-cyan-blue);
+      color: #080b11;
+      box-shadow: 0 0 30px rgba(0, 242, 254, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 40px rgba(0, 242, 254, 0.6);
+    }
+
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: #fff;
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.25);
+      transform: translateY(-2px);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-subtle);
+      max-width: 820px;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.2;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    @media (max-width: 640px) {
+      .hero-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.2rem;
+      }
+    }
+
+    /* ==========================================================================
+       Filter & Search Bar Components
+       ========================================================================== */
+    .controls-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.2rem;
+      margin-bottom: 2.5rem;
+      background: rgba(15, 21, 35, 0.6);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 0.8rem 1.2rem;
+      backdrop-filter: blur(12px);
+    }
+
+    .filter-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .pill-btn {
+      padding: 0.45rem 1rem;
+      border-radius: var(--radius-full);
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid transparent;
+      transition: all var(--transition-fast);
+    }
+
+    .pill-btn:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.09);
+    }
+
+    .pill-btn.active {
+      background: rgba(0, 242, 254, 0.15);
+      border-color: rgba(0, 242, 254, 0.4);
+      color: var(--accent-cyan);
+      font-weight: 600;
+    }
+
+    .search-input-wrap {
+      position: relative;
+      min-width: 260px;
+      flex-grow: 1;
+      max-width: 380px;
+    }
+
+    .search-input {
+      width: 100%;
+      background: rgba(8, 11, 17, 0.7);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-full);
+      padding: 0.55rem 1.2rem 0.55rem 2.4rem;
+      color: #fff;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .search-input:focus {
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 0.85rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      pointer-events: none;
+      width: 16px;
+      height: 16px;
+    }
+
+    /* ==========================================================================
+       YouTube Video Gallery (Home)
+       ========================================================================== */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1.8rem;
+    }
+
+    @media (max-width: 480px) {
+      .video-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .video-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      backdrop-filter: blur(10px);
+    }
+
+    .video-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--border-glow);
+      box-shadow: var(--shadow-card), 0 0 20px rgba(0, 242, 254, 0.15);
+    }
+
+    .video-thumb-container {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .video-thumb-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .video-card:hover .video-thumb-container img {
+      transform: scale(1.08);
+    }
+
+    .video-play-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(8, 11, 17, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background var(--transition-fast);
+    }
+
+    .video-thumb-container:hover .video-play-overlay {
+      background: rgba(8, 11, 17, 0.15);
+    }
+
+    .play-btn-circle {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: rgba(0, 242, 254, 0.9);
+      color: #080b11;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 25px rgba(0, 242, 254, 0.7);
+      transition: transform var(--transition-normal), background var(--transition-fast);
+    }
+
+    .video-thumb-container:hover .play-btn-circle {
+      transform: scale(1.15);
+      background: #fff;
+    }
+
+    .video-card-body {
+      padding: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
+    }
+
+    .video-index-tag {
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      color: var(--accent-cyan);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.4rem;
+    }
+
+    .video-card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.4;
+      margin-bottom: 1rem;
+    }
+
+    .video-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 0.8rem;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .video-action-play {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--accent-cyan);
+      transition: gap var(--transition-fast);
+    }
+
+    .video-action-play:hover {
+      gap: 0.6rem;
+    }
+
+    .video-action-external {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .video-action-external:hover {
+      color: #fff;
+    }
+
+    /* ==========================================================================
+       Galleries (Slide Gallery & Algorithm Gallery)
+       ========================================================================== */
+    .gallery-view-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.4rem;
+    }
+
+    @media (min-width: 1100px) {
+      .gallery-grid-slide {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      .gallery-grid-algo {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .gallery-item {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: var(--bg-surface-elevated);
+      border: 1px solid var(--border-subtle);
+      cursor: pointer;
+      transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-5px) scale(1.02);
+      border-color: var(--accent-cyan);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(0, 242, 254, 0.2);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(8, 11, 17, 0.9) 0%, rgba(8, 11, 17, 0.2) 60%, transparent 100%);
+      opacity: 0;
+      transition: opacity var(--transition-normal);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.2rem;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    .gallery-badge {
+      font-size: 0.72rem;
+      font-family: var(--font-mono);
+      color: var(--accent-cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .gallery-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    /* Carousel Slider Component */
+    .slider-wrapper {
+      position: relative;
+      margin-bottom: 2rem;
+      overflow: hidden;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-surface);
+      box-shadow: var(--shadow-card);
+    }
+
+    .slider-track {
+      display: flex;
+      transition: transform 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+      width: 100%;
+    }
+
+    .slider-slide {
+      min-width: 100%;
+      aspect-ratio: 16 / 9;
+      position: relative;
+      background: #05070a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .slider-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .slider-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1.5rem 2rem;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, transparent 100%);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: rgba(8, 11, 17, 0.75);
+      border: 1px solid var(--border-subtle);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+      transition: all var(--transition-fast);
+    }
+
+    .slider-btn:hover {
+      background: var(--accent-cyan);
+      color: #080b11;
+      box-shadow: 0 0 20px rgba(0, 242, 254, 0.5);
+    }
+
+    .slider-btn-prev { left: 1.5rem; }
+    .slider-btn-next { right: 1.5rem; }
+
+    /* ==========================================================================
+       Works Timeline Section
+       ========================================================================== */
+    .works-section {
+      background: linear-gradient(180deg, var(--bg-base) 0%, #0d121f 50%, var(--bg-base) 100%);
+    }
+
+    .timeline-container {
+      position: relative;
+      max-width: 1000px;
+      margin-inline: auto;
+      padding-left: 2.5rem;
+    }
+
+    .timeline-container::before {
+      content: '';
+      position: absolute;
+      top: 1rem;
+      bottom: 1rem;
+      left: 11px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent-cyan), var(--accent-purple), rgba(255, 255, 255, 0.05));
+    }
+
+    .timeline-year-group {
+      margin-bottom: 3.5rem;
+      position: relative;
+    }
+
+    .timeline-year-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      position: relative;
+      margin-bottom: 1.5rem;
+    }
+
+    .timeline-year-dot {
+      position: absolute;
+      left: -2.5rem;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--bg-base);
+      border: 3px solid var(--accent-cyan);
+      box-shadow: 0 0 15px var(--accent-cyan);
+      z-index: 2;
+    }
+
+    .timeline-year-text {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 0.3rem 1.1rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .works-items-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .work-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.2rem 1.5rem;
+      transition: all var(--transition-fast);
+      position: relative;
+      backdrop-filter: blur(10px);
+    }
+
+    .work-card:hover {
+      transform: translateX(6px);
+      border-color: rgba(0, 242, 254, 0.4);
+      background: var(--bg-card-hover);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .work-card-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+
+    .work-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #f1f5f9;
+      line-height: 1.5;
+    }
+
+    .work-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .work-tag {
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text-secondary);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .work-tag-accent {
+      background: rgba(0, 242, 254, 0.1);
+      color: var(--accent-cyan);
+      border-color: rgba(0, 242, 254, 0.2);
+    }
+
+    /* ==========================================================================
+       About Section
+       ========================================================================== */
+    .about-toggle-bar {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .about-toggle-container {
+      background: rgba(15, 21, 35, 0.8);
+      border: 1px solid var(--border-subtle);
+      padding: 0.35rem;
+      border-radius: var(--radius-full);
+      display: flex;
+      gap: 0.3rem;
+    }
+
+    .about-toggle-btn {
+      padding: 0.5rem 1.4rem;
+      border-radius: var(--radius-full);
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      transition: all var(--transition-fast);
+    }
+
+    .about-toggle-btn.active {
+      background: var(--gradient-cyan-blue);
+      color: #080b11;
+      box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+    }
+
+    .about-content-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      padding: clamp(1.8rem, 4vw, 3.5rem);
+      margin-bottom: 4rem;
+      position: relative;
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow-card);
+    }
+
+    .about-text-content {
+      font-size: 1.12rem;
+      line-height: 2;
+      color: #cbd5e1;
+      font-weight: 300;
+      white-space: pre-line;
+    }
+
+    /* Services Grid */
+    .services-title {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 4.5rem;
+    }
+
+    .service-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 1.8rem;
+      transition: all var(--transition-normal);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--border-glow);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 242, 254, 0.15);
+    }
+
+    .service-icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      background: rgba(0, 242, 254, 0.1);
+      border: 1px solid rgba(0, 242, 254, 0.25);
+      color: var(--accent-cyan);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+    }
+
+    .service-name {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    /* Media & Publications */
+    .two-col-showcase {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .two-col-showcase {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .showcase-block {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      padding: 2rem;
+    }
+
+    .showcase-header {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .showcase-header h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    .media-list, .pubs-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .media-item, .pub-item {
+      padding: 1rem;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      transition: background var(--transition-fast);
+    }
+
+    .media-item:hover, .pub-item:hover {
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .item-date {
+      font-size: 0.8rem;
+      font-family: var(--font-mono);
+      color: var(--accent-cyan);
+      margin-bottom: 0.3rem;
+    }
+
+    .item-title {
+      font-size: 0.98rem;
+      color: #e2e8f0;
+      line-height: 1.5;
+    }
+
+    /* ==========================================================================
+       Contacts & Banking Section
+       ========================================================================== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      margin-bottom: 4rem;
+    }
+
+    @media (max-width: 960px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .contact-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      padding: 2.5rem;
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow-card);
+    }
+
+    .contact-card-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .contact-info-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .info-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .info-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .info-label {
+      font-size: 0.82rem;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .info-val {
+      font-size: 1.05rem;
+      color: #f1f5f9;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .btn-copy {
+      padding: 0.3rem 0.7rem;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+      font-family: var(--font-mono);
+      transition: all var(--transition-fast);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .btn-copy:hover {
+      background: rgba(0, 242, 254, 0.15);
+      border-color: rgba(0, 242, 254, 0.3);
+      color: var(--accent-cyan);
+    }
+
+    /* Interactive Contact Form */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .form-label {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .form-input, .form-textarea {
+      background: rgba(8, 11, 17, 0.8);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 0.8rem 1.1rem;
+      color: #fff;
+      font-family: inherit;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .form-input:focus, .form-textarea:focus {
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
+    }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    /* Map Box */
+    .map-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      margin-top: 2rem;
+      box-shadow: var(--shadow-card);
+    }
+
+    .map-header {
+      padding: 1.2rem 1.8rem;
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .map-image-container {
+      position: relative;
+      max-height: 480px;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .map-image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .map-image-container:hover img {
+      transform: scale(1.03);
+    }
+
+    /* ==========================================================================
+       Modals (Video Player Modal & Image Lightbox)
+       ========================================================================== */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 8, 13, 0.92);
+      backdrop-filter: blur(20px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition-normal);
+    }
+
+    .modal-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-box {
+      width: 100%;
+      max-width: 1000px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 242, 254, 0.15);
+      transform: scale(0.95);
+      transition: transform var(--transition-normal);
+    }
+
+    .modal-backdrop.active .modal-box {
+      transform: scale(1);
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--border-subtle);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .modal-close-btn:hover {
+      background: var(--accent-cyan);
+      color: #080b11;
+      transform: rotate(90deg);
+    }
+
+    .video-modal-iframe-wrap {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      background: #000;
+    }
+
+    .video-modal-iframe-wrap iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .video-modal-details {
+      padding: 1.5rem 2rem;
+    }
+
+    /* Lightbox Modal */
+    .lightbox-img-wrap {
+      max-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #000;
+      position: relative;
+    }
+
+    .lightbox-img-wrap img {
+      max-height: 80vh;
+      max-width: 100%;
+      object-fit: contain;
+    }
+
+    .lightbox-nav-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: rgba(8, 11, 17, 0.8);
+      border: 1px solid var(--border-subtle);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .lightbox-nav-btn:hover {
+      background: var(--accent-cyan);
+      color: #080b11;
+    }
+
+    .lightbox-prev { left: 1rem; }
+    .lightbox-next { right: 1rem; }
+
+    /* ==========================================================================
+       Footer
+       ========================================================================== */
+    .site-footer {
+      border-top: 1px solid var(--border-subtle);
+      background: #05070c;
+      padding-block: 4rem 2rem;
+    }
+
+    .footer-top {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .footer-brand img {
+      height: 42px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-cyan);
+    }
+
+    .footer-bottom {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding-top: 2rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .back-to-top-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      transition: color var(--transition-fast);
+    }
+
+    .back-to-top-btn:hover {
+      color: var(--accent-cyan);
+    }
+
+    /* Toast Notification */
+    .toast-msg {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: rgba(16, 185, 129, 0.95);
+      color: #fff;
+      padding: 0.8rem 1.4rem;
+      border-radius: var(--radius-full);
+      font-weight: 600;
+      font-size: 0.9rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      z-index: 3000;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all var(--transition-normal);
+      pointer-events: none;
+    }
+
+    .toast-msg.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       Site Header & Navigation
+       ========================================================================== -->
+  <header class="site-header" id="header">
+    <div class="container nav-container">
+      <a href="#home" class="brand-logo" aria-label="DECADE.TW 首頁">
+        <img src="https://www.decade.tw/images/logo/decade_logo.png" alt="DECADE.TW 帝凱科技有限公司" />
+        <div class="brand-name">
+<!--          <span class="brand-name-primary">DECADE.TW</span>-->
+<!--          <span class="brand-name-sub">帝凱科技有限公司</span>-->
+        </div>
+      </a>
+
+      <nav aria-label="主要導航">
+        <ul class="nav-menu">
+          <li><a href="#home" class="nav-link active">首頁 · Home</a></li>
+          <li><a href="#videos" class="nav-link">影音實績 · Videos</a></li>
+          <li><a href="#galleries" class="nav-link">作品藝廊 · Galleries</a></li>
+          <li><a href="#works" class="nav-link">歷年實績 · Works</a></li>
+          <li><a href="#about" class="nav-link">關於 · About</a></li>
+          <li><a href="#contacts" class="nav-link">聯繫 · Contacts</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="#contacts" class="btn-contact-nav">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+          聯絡我們
+        </a>
+        <button class="mobile-menu-btn" id="mobileMenuOpen" aria-label="開啟選單">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <button class="mobile-close-btn" id="mobileMenuClose" aria-label="關閉選單">&times;</button>
+    <a href="#home" class="mobile-link">首頁 · Home</a>
+    <a href="#videos" class="mobile-link">影音實績 · Videos</a>
+    <a href="#galleries" class="mobile-link">作品藝廊 · Galleries</a>
+    <a href="#works" class="mobile-link">歷年實績 · Works</a>
+    <a href="#about" class="mobile-link">關於 · About</a>
+    <a href="#contacts" class="mobile-link">聯繫 · Contacts</a>
+  </div>
+
+  <main>
+    <!-- ==========================================================================
+         Hero Section
+         ========================================================================== -->
+    <section class="hero-section" id="home">
+      <!-- Roller Image Wall Background -->
+      <div class="hero-roller-wall" aria-hidden="true">
+        <!-- Row 1: Slides 0-6 & Algo 0 -->
+        <div class="roller-row">
+          <div class="roller-track roller-track-left">
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/0.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/1.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/2.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/3.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/4.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/5.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/6.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/algorithmPic/0.png" alt="" loading="eager" /></div>
+            <!-- Duplicate for seamless infinite loop -->
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/0.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/1.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/2.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/3.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/4.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/5.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/6.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/algorithmPic/0.png" alt="" loading="eager" /></div>
+          </div>
+        </div>
+
+        <!-- Row 2: Slides 7-13 & Algo 1-2 -->
+        <div class="roller-row">
+          <div class="roller-track roller-track-right">
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/7.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/8.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/9.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/10.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/11.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/12.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/13.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/algorithmPic/1.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/algorithmPic/2.png" alt="" loading="eager" /></div>
+            <!-- Duplicate for seamless infinite loop -->
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/7.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/8.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/9.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/10.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/11.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/12.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/13.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/algorithmPic/1.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/algorithmPic/2.png" alt="" loading="eager" /></div>
+          </div>
+        </div>
+
+        <!-- Row 3: Slides 14-20 & Algo 3-4 -->
+        <div class="roller-row">
+          <div class="roller-track roller-track-left-fast">
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/14.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/15.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/16.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/17.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/18.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/19.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/20.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/algorithmPic/3.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/algorithmPic/4.png" alt="" loading="eager" /></div>
+            <!-- Duplicate for seamless infinite loop -->
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/14.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/15.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/16.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/17.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/18.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/19.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/20.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/algorithmPic/3.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/algorithmPic/4.png" alt="" loading="eager" /></div>
+          </div>
+        </div>
+
+        <!-- Row 4: Algo 5-8 & Slides 0-3 -->
+        <div class="roller-row">
+          <div class="roller-track roller-track-right-fast">
+            <div class="roller-item"><img src="https://www.decade.tw/images/algorithmPic/5.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/algorithmPic/6.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/algorithmPic/7.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/algorithmPic/8.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/0.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/1.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/2.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/3.png" alt="" loading="eager" /></div>
+            <!-- Duplicate for seamless infinite loop -->
+            <div class="roller-item"><img src="https://www.decade.tw/images/algorithmPic/5.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/algorithmPic/6.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/algorithmPic/7.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/algorithmPic/8.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/0.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/1.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/2.png" alt="" loading="eager" /></div>
+            <div class="roller-item"><img src="https://www.decade.tw/images/slide/3.png" alt="" loading="eager" /></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Backdrop Dark Overlay for Readability -->
+      <div class="hero-roller-overlay"></div>
+      <canvas id="heroCanvas"></canvas>
+      <div class="hero-glow-1"></div>
+      <div class="hero-glow-2"></div>
+
+      <div class="container hero-content">
+        <div class="hero-tag">
+          <span class="pulse-dot"></span>
+          <span>DECADE INTERACTIVE TECHNOLOGY · EST. 2009</span>
+        </div>
+
+        <h1 class="hero-title">
+          <span class="gradient-text">互動科技解決方案</span><br />
+          Artistic Technology & Systems
+        </h1>
+
+        <p class="hero-slogan">
+          提供展場軟硬體整合設計規劃 ｜ 舞台燈光控制 ｜ 中央控制系統
+        </p>
+
+        <p class="hero-desc">
+          帝凱互動科技專注於展場軟硬體整合、舞台燈光與中央控制系統，將伺服馬達、機械手臂、電腦燈光等媒材以演算法呈現為活靈活現的互動藝術作品。期待在更多作品背後驅動更多繽紛，步步求精朝向下一個十年邁進。
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#videos" class="btn btn-primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            觀看影音實績
+          </a>
+          <a href="#works" class="btn btn-outline">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            歷年實績 (2006–2027)
+          </a>
+          <a href="#contacts" class="btn btn-outline">
+            聯繫合作諮詢
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-number gradient-text">2009</span>
+            <span class="stat-label">公司創立年份</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number cyber-text">50+</span>
+            <span class="stat-label">大型跨界實績專案</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number gradient-text">21</span>
+            <span class="stat-label">核心錄製代表作</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number cyber-text">100%</span>
+            <span class="stat-label">軟硬體自主演算法</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         YouTube Video Showcase (21 Items)
+         ========================================================================== -->
+    <section id="videos">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            Interactive Works In Motion
+          </span>
+          <h2 class="section-title"><svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" class="icon-mono"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>YouTube 影音展示 · Featured Videos</h2>
+          <p class="section-subtitle">
+            精選 21 部重大公共藝術、世界級燈會主燈控制、世大運、機械手臂與聲光互動裝置實錄
+          </p>
+        </div>
+
+        <!-- Video Filter Bar -->
+        <div class="controls-bar">
+          <div class="filter-pills" id="videoFilterPills">
+            <button class="pill-btn active" data-filter="all">全部影片 (21)</button>
+            <button class="pill-btn" data-filter="燈會">燈會 / 光影展</button>
+            <button class="pill-btn" data-filter="控制">中央控制 / 機械</button>
+            <button class="pill-btn" data-filter="豪華朗機工">豪華朗機工合作</button>
+            <button class="pill-btn" data-filter="音樂中心">音樂中心 / 展演</button>
+          </div>
+          <div class="search-input-wrap">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" id="videoSearchInput" class="search-input" placeholder="搜尋影音作品..." aria-label="搜尋影音作品" />
+          </div>
+        </div>
+
+        <!-- Video Grid Container -->
+        <div class="video-grid" id="videoGrid">
+          <!-- Populated dynamically with all 21 items -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Galleries (Slide Gallery 21 Images & Algorithm Gallery 9 Images)
+         ========================================================================== -->
+    <section id="galleries" style="background: rgba(15, 21, 35, 0.4);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Visual Art & Generative Code</span>
+          <h2 class="section-title"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-mono"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>作品藝廊 · Visual Galleries</h2>
+          <p class="section-subtitle">
+            包含現場實境寫真幻燈片展示，以及由演算法與 AI 模型生成的互動藝術紀錄
+          </p>
+        </div>
+
+        <!-- Gallery Tabs -->
+        <div class="gallery-view-tabs">
+          <button class="about-toggle-btn active" id="tabSlideGallery">圖片展示 · Slide Gallery (21)</button>
+          <button class="about-toggle-btn" id="tabAlgoGallery">AI / 演算法圖片 · Algorithm Gallery (9)</button>
+        </div>
+
+        <!-- Slide Gallery Section -->
+        <div id="slideGalleryContainer">
+          <!-- Carousel View -->
+          <div class="slider-wrapper">
+            <div class="slider-track" id="sliderTrack">
+              <!-- Slides inserted here -->
+            </div>
+            <button class="slider-btn slider-btn-prev" id="sliderPrev" aria-label="上一張">&#10094;</button>
+            <button class="slider-btn slider-btn-next" id="sliderNext" aria-label="下一張">&#10095;</button>
+          </div>
+
+          <!-- Slide Grid View -->
+          <div style="margin-top: 2rem; margin-bottom: 1rem; display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="font-size: 1.2rem; color: var(--text-secondary);">所有現場圖片縮圖瀏覽 (21 張)</h3>
+            <span style="font-size: 0.85rem; color: var(--text-muted);">點擊即可開啟高畫質燈箱放大瀏覽</span>
+          </div>
+          <div class="gallery-grid gallery-grid-slide" id="slideGrid">
+            <!-- Populated dynamically with slide 0 - 20 -->
+          </div>
+        </div>
+
+        <!-- Algorithm Gallery Section -->
+        <div id="algoGalleryContainer" style="display: none;">
+          <div style="text-align: center; max-width: 800px; margin: 0 auto 2.5rem; color: var(--text-secondary);">
+            <p>
+              DECADE.TW 深入鑽研演算法與數值模型運算，包含 SacoMeasure AI Model、動態視覺軌跡、Google Home-Connection 連線演算法與多點聯控演算，將純粹的數學邏輯轉化為震撼視覺。
+            </p>
+          </div>
+          <div class="gallery-grid gallery-grid-algo" id="algoGrid">
+            <!-- Populated dynamically with algo 0 - 8 -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Works Timeline Section (2006 - 2027)
+         ========================================================================== -->
+    <section id="works" class="works-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Chronological Portfolio</span>
+          <h2 class="section-title"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-mono"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>歷年實績 · Works</h2>
+          <p class="section-subtitle">
+            回顧自 2006 年至今至未來跨越 20 載的科技藝術、展場系統、機械群控與學術研發軌跡
+          </p>
+        </div>
+
+        <!-- Works Control Bar -->
+        <div class="controls-bar">
+          <div class="filter-pills" id="worksYearPills">
+            <button class="pill-btn active" data-year-group="all">全部年代</button>
+            <button class="pill-btn" data-year-group="2025-2027">2025 — 2027</button>
+            <button class="pill-btn" data-year-group="2018-2020">2018 — 2020</button>
+            <button class="pill-btn" data-year-group="2015-2017">2015 — 2017</button>
+            <button class="pill-btn" data-year-group="2010-2014">2010 — 2014</button>
+            <button class="pill-btn" data-year-group="2006-2009">2006 — 2009</button>
+          </div>
+          <div class="search-input-wrap">
+            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" id="worksSearchInput" class="search-input" placeholder="搜尋實績專案名稱、單位..." aria-label="搜尋實績" />
+          </div>
+        </div>
+
+        <!-- Works Timeline -->
+        <div class="timeline-container" id="timelineContainer">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         About Section (Bilingual, Services, Media, Publications)
+         ========================================================================== -->
+    <section id="about">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Company Profile & Heritage</span>
+          <h2 class="section-title"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-mono"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>關於 · About</h2>
+          <p class="section-subtitle">
+            跨界融合科技與藝術，創造觸動心靈的聲光感知新體驗
+          </p>
+        </div>
+
+        <!-- Language Switcher for Company Overview -->
+        <div class="about-toggle-bar">
+          <div class="about-toggle-container">
+            <button class="about-toggle-btn active" id="btnLangZh">中文簡介 · Traditional Chinese</button>
+            <button class="about-toggle-btn" id="btnLangEn">English Profile</button>
+          </div>
+        </div>
+
+        <!-- Company Profile Text Box -->
+        <div class="about-content-box">
+          <div id="aboutZh" class="about-text-content">
+帝凱互動科技成立於2009年，是ㄧ間科技藝術的技術整合公司。擅長將硬體伺服馬達、機械手臂、電腦燈光等媒材利用演算法巧妙地展現活靈活現的作品；近年來中大型展覽互動需求越來越多，每件作品中央控制系統都搭配雲端，讓數千個媒材裝置可以輕鬆控制於手機進行管理、遠端作品可以監控與調閱歷程隨時排查。DECADE.TW期待未來十年在更多作品背後驅動更多繽紛，並步步求精朝向下一個十年邁進。
+
+帝凱科技早年鑽研於嵌入式系統建置領域，透過自行研發中國石油S3軟體與加油機台通訊協定(Current Loop)的控制卡，行銷超過台灣四十間民營加油站，並透過多年累積的嵌入式系統設計，擁有豐富的規劃建置經驗，在互動技術領域穩定的導入系統，帶給觀眾更多互動想像體驗，及體現全新型態讓人耳目一新的聽覺、視覺感受。
+
+2009年起，台灣的互動科技熱潮興起，帝凱科技考量公司長期成長與發展策略，率先透過開放硬體計劃，自行研發互動控制系統－Centurion。其利用CPLD為電路基礎，加上經過數年不斷的改良與擴充軟體功能，已運行於各大展場，如2014年、2015年工研院舉辦的奇想樂園與解密國家寶藏，2012年 Computex Taipei、2011年世界設計大展、台北市立美術館、關渡美術館、鳳甲美術館、MOT藝廊、香港藝術中心、澳洲、新加坡等地。
+
+多年以來也與國內知名藝術團隊合作設計各種極具美感的聽覺、視覺互動藝術裝置，已將互動科技跨域成功的帶給觀眾前所未有的嶄新體驗。帝凱科技（DECADE.TW）－ 期待未來十年，帝凱將創造更多元、新型態形式的科技藝術產業契機，把藝術與科技融合日常生活，提供每一場更完美的視覺、聽覺饗宴，步步求精朝向下一個十年邁進。
+          </div>
+
+          <div id="aboutEn" class="about-text-content" style="display: none;">
+Founded in 2009, DECADE Interactive Technology is an art and technology integration company. DECADE.TW specializes in the use of hardware servo motors, robotic arms, computer lighting and other media using algorithms to cleverly show the living works; in recent years the demand for medium and large-scale interactive exhibitions is increasing, the central control system for each piece of artwork with the cloud, so that thousands of media devices can be easily controlled by cell phone management, remote works can be monitored and access to the history of the check at any time. DECADE.TW is looking forward to the next ten years to drive more color behind more works and to move forward to the next ten years step by step.
+
+DECADE.TW has been drilling in the field of embedded system construction for many years. Through the self-development of CPC S3 software and the control card of the communication protocol (Current Loop) of the refueling station, DECADE.TW has marketed more than 40 privately-owned refueling stations in Taiwan, and through years of accumulated embedded system design, DECADE.TW has a wealth of planning and construction experience, and has been able to steadily introduce the system in the field of interactive technology, which has brought the audience a more interactive and imaginative experience.
+
+In 2009, Taiwan’s interactive technology boom began, and considering the company’s long-term growth and development strategy, DecaTech took the lead in developing its own interactive control system, Centurion, through the Open Hardware Program, which utilizes CPLDs as the circuitry base, and after several years of continuous improvement and expansion of software functions, has been running in major exhibitions, such as in 2014, In 2015, ITRI organized the Wonderland and Decoding National Treasures, 2012 Computex Taipei, 2011 World Design Expo, Taipei Fine Arts Museum, Kuandu Museum of Fine Arts, Fengjia Museum of Fine Arts, MOT Gallery, Hong Kong Arts Center, Australia, Singapore, and so on.
+
+Over the years, DECADE has also cooperated with the famous art team in Taiwan, HOLLAND, to design a variety of aesthetically pleasing auditory and visual interactive art installations, which have successfully brought unprecedented experiences to audiences across the spectrum of interactive technology. DECADE Technology (DECADE.TW) – Looking forward to the next decade, DECADE will create more diversified and new forms of technology and art industry opportunities, integrating art and technology in daily life, providing each more perfect visual and auditory feast, and step by step, we will strive to move forward to the next decade.
+          </div>
+        </div>
+
+        <!-- 服務項目 · Services -->
+        <h3 class="services-title"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-mono"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>服務項目 · Services</h3>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="2" y1="20" x2="22" y2="20"></line><line x1="3" y1="10" x2="21" y2="10"></line><polygon points="12 2 2 7 22 7 12 2"></polygon><line x1="6" y1="10" x2="6" y2="20"></line><line x1="10" y1="10" x2="10" y2="20"></line><line x1="14" y1="10" x2="14" y2="20"></line><line x1="18" y1="10" x2="18" y2="20"></line></svg>
+            </div>
+            <div class="service-name">智慧型展場導覽系統建置與規劃</div>
+            <p style="color: var(--text-secondary); font-size: 0.92rem;">針對大型博物館、藝廊與展覽空間，提供自動感測、無感定位與智慧互動導覽整體規劃。</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            </div>
+            <div class="service-name">互動科技裝置設計與製作</div>
+            <p style="color: var(--text-secondary); font-size: 0.92rem;">機械連動機構、伺服馬達陣列、多軸控制系統與體感互動裝置客製開發。</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"></path></svg>
+            </div>
+            <div class="service-name">產品原型設計與製作</div>
+            <p style="color: var(--text-secondary); font-size: 0.92rem;">從概念構想、電路原理圖、打樣到機構外觀實裝的快速原型 (PoC/MVP) 驗證服務。</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><line x1="12" y1="3" x2="12" y2="21"></line><line x1="3" y1="12" x2="21" y2="12"></line></svg>
+            </div>
+            <div class="service-name">智慧型櫥窗</div>
+            <p style="color: var(--text-secondary); font-size: 0.92rem;">結合感應互動、透明顯示、光影變換與遠端內容派送的商用智慧櫥窗展示系統。</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            </div>
+            <div class="service-name">軟體程式設計</div>
+            <p style="color: var(--text-secondary); font-size: 0.92rem;">客製演算法開發、多點中央控制軟體、雲端 IoT 監控中控台與即時訊號通訊協定建置。</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            </div>
+            <div class="service-name">電子電路設計與開發</div>
+            <p style="color: var(--text-secondary); font-size: 0.92rem;">嵌入式微控制器 (MCU/CPLD/FPGA)、高抗噪電路板 (PCB) 佈局、無線感測與驅動電路研發。</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect><line x1="9" y1="12" x2="15" y2="12"></line><line x1="9" y1="16" x2="13" y2="16"></line></svg>
+            </div>
+            <div class="service-name">互動裝置設計諮詢與規劃</div>
+            <p style="color: var(--text-secondary); font-size: 0.92rem;">藝術家與策展團隊跨界媒合、科技藝術可行性評估、預算及時程技術顧問統籌。</p>
+          </div>
+          <div class="service-card">
+            <div class="service-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+            </div>
+            <div class="service-name">學術演講、書籍、台灣Arduino.TW</div>
+            <p style="color: var(--text-secondary); font-size: 0.92rem;">創辦台灣 Arduino.TW 社群，推動開放硬體、專業著作翻譯發行與大專院校專業技術講座。</p>
+          </div>
+        </div>
+
+        <!-- 媒體報導 & 出版品 Showcase -->
+        <div class="two-col-showcase">
+          <!-- 媒體報導 · Media -->
+          <div class="showcase-block">
+            <div class="showcase-header">
+              <span class="service-icon-box" style="width: 40px; height: 40px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 20H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v1m2 13a2 2 0 0 1-2-2V7m2 13a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path></svg></span>
+              <h3>媒體報導 · Media</h3>
+            </div>
+            <div class="media-list">
+              <div class="media-item">
+                <div class="item-date">2012年8月號</div>
+                <div class="item-title"><strong>CTimes</strong> – 封面故事 / 3D印表機 催生下一波製造革命</div>
+              </div>
+              <div class="media-item">
+                <div class="item-date">2012年7月號</div>
+                <div class="item-title"><strong>CTimes</strong> – 專欄 / 跨界整合 互動世界新體驗</div>
+              </div>
+              <div class="media-item">
+                <div class="item-date">2012年6月號</div>
+                <div class="item-title"><strong>CTimes</strong> – 科技藝廊 / 豪華朗機工 代言跨界整合新美學</div>
+              </div>
+              <div class="media-item">
+                <div class="item-date">2012年5月號</div>
+                <div class="item-title"><strong>CTimes</strong> – 專欄 / 新媒體下的跨界演出</div>
+              </div>
+              <div class="media-item">
+                <div class="item-date">2012年4月號</div>
+                <div class="item-title"><strong>CTimes</strong> – 封面故事 / Arduino的電路板互動藝術，專欄 / 開放硬體潮流下的新媒體</div>
+              </div>
+              <div class="media-item">
+                <div class="item-date">2011年</div>
+                <div class="item-title"><strong>文化創意精品專輯</strong> (2011 Charming Taiwan) － 文建會專題報導</div>
+              </div>
+              <div class="media-item">
+                <div class="item-date">2011年第四季</div>
+                <div class="item-title"><strong>新北市政府文化專刊</strong> / 科技藝術的理性與感性 － 跨界整合新美學</div>
+              </div>
+              <div class="media-item">
+                <div class="item-date">2011年11月號</div>
+                <div class="item-title"><strong>CTimes</strong> － 封面故事 / 開放硬體這條路</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 出版品 · Publications -->
+          <div class="showcase-block">
+            <div class="showcase-header">
+              <span class="service-icon-box" style="width: 40px; height: 40px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></span>
+              <h3>出版品 · Publications</h3>
+            </div>
+            <div class="pubs-list">
+              <div class="pub-item">
+                <div class="item-date">2012年 出版 ｜ O’Reilly 台灣</div>
+                <div class="item-title" style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.4rem; color: #fff;">
+                  《建置無線感測網路》
+                </div>
+                <div style="font-size: 0.9rem; color: var(--text-secondary);">
+                  <strong>原著：</strong>Robert Faludi<br />
+                  <strong>譯者：</strong>林義翔、劉士達<br />
+                  <strong>出版社：</strong>O’Reilly 台灣
+                </div>
+              </div>
+
+              <div class="pub-item">
+                <div class="item-date">2009年 出版 ｜ 旗標出版社</div>
+                <div class="item-title" style="font-size: 1.1rem; font-weight: 700; margin-bottom: 0.4rem; color: #fff;">
+                  《踏進互動科技世界－使用Arduino》
+                </div>
+                <div style="font-size: 0.9rem; color: var(--text-secondary);">
+                  <strong>原著：</strong>Massimo Banzi (Arduino 共同創辦人)<br />
+                  <strong>譯者：</strong>林義翔<br />
+                  <strong>出版社：</strong>旗標出版社
+                </div>
+              </div>
+
+              <!-- Community Badge -->
+              <div style="margin-top: 1.5rem; padding: 1.2rem; border-radius: var(--radius-md); background: rgba(0, 242, 254, 0.06); border: 1px dashed rgba(0, 242, 254, 0.3);">
+                <div style="font-weight: 700; color: var(--accent-cyan); margin-bottom: 0.3rem; display: flex; align-items: center; gap: 0.5rem;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-mono"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>社群貢獻 · Community</div>
+                <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
+                  創辦 <strong>Arduino.TW</strong>（台灣 Arduino 使用者社群），為台灣引進開放硬體與互動裝置原型開發的先鋒社群，培育無數互動設計師與新媒體工程師。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Contacts & Banking Section
+         ========================================================================== -->
+    <section id="contacts">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Get in Touch</span>
+          <h2 class="section-title"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-mono"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>聯繫 · Contacts</h2>
+          <p class="section-subtitle">
+            歡迎各界展覽策展人、藝術家、建築設計師及企業夥伴來信諮詢與洽談跨界合作
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Company Contact Info Card -->
+          <div class="contact-card">
+            <h3 class="contact-card-title">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-mono" style="color: var(--accent-cyan);"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><line x1="9" y1="6" x2="9.01" y2="6"></line><line x1="15" y1="6" x2="15.01" y2="6"></line><line x1="9" y1="10" x2="9.01" y2="10"></line><line x1="15" y1="10" x2="15.01" y2="10"></line><line x1="9" y1="14" x2="9.01" y2="14"></line><line x1="15" y1="14" x2="15.01" y2="14"></line><line x1="9" y1="18" x2="15" y2="18"></line></svg>公司資訊 · Company Info
+            </h3>
+
+            <div class="contact-info-list">
+              <div class="info-row">
+                <span class="info-label">公司名稱</span>
+                <span class="info-val">帝凱科技有限公司 DECADE Co., Ltd.</span>
+              </div>
+
+              <div class="info-row">
+                <span class="info-label">統一編號</span>
+                <div class="info-val">
+                  <span>29133824</span>
+                  <button class="btn-copy" onclick="copyText('29133824', '統一編號')">複製</button>
+                </div>
+              </div>
+
+              <div class="info-row">
+                <span class="info-label">電子信箱 (E-Mail)</span>
+                <div class="info-val">
+                  <a href="mailto:victoria@decade.tw" style="color: var(--accent-cyan);">victoria@decade.tw</a>
+                  <button class="btn-copy" onclick="copyText('victoria@decade.tw', 'Email')">複製</button>
+                </div>
+              </div>
+
+              <div class="info-row">
+                <span class="info-label">官方 LINE</span>
+                <div class="info-val">
+                  <a href="https://lin.ee/RcQIUgM" target="_blank" rel="noopener noreferrer" style="color: #06c755;">@ecz7450a (點擊加入好友)</a>
+                  <button class="btn-copy" onclick="copyText('@ecz7450a', 'LINE ID')">複製</button>
+                </div>
+              </div>
+
+              <div class="info-row">
+                <span class="info-label">官方 Facebook</span>
+                <div class="info-val">
+                  <a href="https://www.facebook.com/DECADE.TW" target="_blank" rel="noopener noreferrer" style="color: #1877f2;">facebook.com/DECADE.TW</a>
+                </div>
+              </div>
+
+              <div class="info-row">
+                <span class="info-label">公司地址（中文）</span>
+                <div class="info-val">
+                  <span>台北市北投路一段9-C號</span>
+                  <button class="btn-copy" onclick="copyText('台北市北投路一段9-C號', '中文地址')">複製</button>
+                </div>
+              </div>
+
+              <div class="info-row">
+                <span class="info-label">Address (English)</span>
+                <div class="info-val" style="font-size: 0.95rem;">
+                  <span>No.9-C, Sec. 1, Beitou Rd., Beitou Dist. Taipei City, Taiwan.</span>
+                  <button class="btn-copy" onclick="copyText('No.9-C, Sec. 1, Beitou Rd., Beitou Dist. Taipei City, Taiwan.', '英文地址')">複製</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Banking Info Sub-box -->
+            <div style="margin-top: 2rem; padding: 1.5rem; border-radius: var(--radius-lg); background: rgba(0, 242, 254, 0.04); border: 1px solid rgba(0, 242, 254, 0.2);">
+              <h4 style="font-size: 1.15rem; font-weight: 700; color: var(--accent-cyan); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-mono"><polygon points="12 2 2 7 22 7 12 2"></polygon><line x1="5" y1="10" x2="5" y2="18"></line><line x1="12" y1="10" x2="12" y2="18"></line><line x1="19" y1="10" x2="19" y2="18"></line><line x1="2" y1="21" x2="22" y2="21"></line></svg>帳務資訊 · Banking
+              </h4>
+              <div style="display: flex; flex-direction: column; gap: 0.6rem; font-size: 0.95rem;">
+                <div><strong>銀行：</strong>中國信託商業銀行－板新分行 (822)</div>
+                <div style="display: flex; align-items: center; justify-content: space-between;">
+                  <div><strong>帳號：</strong><span class="mono" style="font-size: 1.1rem; color: #fff; font-weight: 600;">4175-4026-6515</span></div>
+                  <button class="btn-copy" onclick="copyText('417540266515', '匯款帳號')">複製帳號</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Inquiry Form -->
+          <div class="contact-card">
+            <h3 class="contact-card-title">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-mono" style="color: var(--accent-cyan);"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>合作諮詢留言 · Send an Inquiry
+            </h3>
+
+            <form class="contact-form" id="inquiryForm" onsubmit="handleFormSubmit(event)">
+              <div class="form-group">
+                <label class="form-label" for="clientName">您的姓名 / 團隊或機構名稱 *</label>
+                <input type="text" id="clientName" class="form-input" placeholder="例如：林先生 / 某某藝術策展工作室" required />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="clientEmail">聯絡信箱 *</label>
+                <input type="email" id="clientEmail" class="form-input" placeholder="name@example.com" required />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="clientCategory">需求類型</label>
+                <select id="clientCategory" class="form-input" style="background-color: #0f1523;">
+                  <option value="展場軟硬體中控系統">展場軟硬體中控系統整合</option>
+                  <option value="機械手臂/伺服馬達藝術裝置">機械手臂 / 伺服馬達藝術裝置</option>
+                  <option value="舞台燈光與聲光聯控">舞台燈光與聲光聯控</option>
+                  <option value="演算法與AI模型開發">演算法與 AI 模型開發</option>
+                  <option value="學術演講/工作坊/社群合作">學術演講 / 工作坊 / 社群合作</option>
+                  <option value="其他客製專案合作">其他客製專案合作</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="clientMsg">專案內容簡述 / 預估時程 *</label>
+                <textarea id="clientMsg" class="form-textarea" placeholder="請描述您的專案構想、展出場地、預計時程或硬體控制規格..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                傳送合作意向
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Location Map Card -->
+        <div class="map-box">
+          <div class="map-header">
+            <div>
+              <h4 style="font-size: 1.15rem; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 0.5rem;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon-mono"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon><line x1="8" y1="2" x2="8" y2="18"></line><line x1="16" y1="6" x2="16" y2="22"></line></svg>帝凱科技地理位置 · Beitou Headquarters
+              </h4>
+              <p style="color: var(--text-secondary); font-size: 0.9rem;">台北市北投路一段9-C號 (No.9-C, Sec. 1, Beitou Rd., Taipei City)</p>
+            </div>
+            <a href="https://maps.google.com/?q=台北市北投路一段9-C號" target="_blank" rel="noopener noreferrer" class="btn-copy" style="padding: 0.5rem 1rem;">
+              在 Google 地圖中開啟 ↗
+            </a>
+          </div>
+          <div class="map-image-container">
+            <img src="https://www.decade.tw/images/map/decade_map.jpg" alt="DECADE.TW 帝凱科技有限公司 地圖位置" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       Footer
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <img src="https://www.decade.tw/images/logo/decade_logo.png" alt="DECADE Logo" />
+          <div>
+            <div style="font-weight: 700; font-size: 1.1rem; color: #fff;">DECADE.TW</div>
+            <div style="font-size: 0.8rem; color: var(--text-muted);">帝凱科技有限公司 · DECADE Interactive Technology</div>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <a href="#home">首頁</a>
+          <a href="#videos">影音實績</a>
+          <a href="#galleries">藝廊展示</a>
+          <a href="#works">歷年實績</a>
+          <a href="#about">關於我們</a>
+          <a href="#contacts">聯絡我們</a>
+          <a href="https://lin.ee/RcQIUgM" target="_blank" rel="noopener noreferrer">LINE 官方帳號</a>
+          <a href="https://www.facebook.com/DECADE.TW" target="_blank" rel="noopener noreferrer">Facebook</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © 2009–2027 帝凱科技有限公司 DECADE Co., Ltd. All Rights Reserved. 統編：29133824
+        </div>
+        <a href="#home" class="back-to-top-btn">
+          回到頂部 ↑
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       Interactive Video Player Modal
+       ========================================================================== -->
+  <div class="modal-backdrop" id="videoModal" role="dialog" aria-modal="true" aria-labelledby="videoModalTitle">
+    <div class="modal-box">
+      <button class="modal-close-btn" id="videoModalClose" aria-label="關閉播放器">&times;</button>
+      <div class="video-modal-iframe-wrap">
+        <iframe id="videoModalIframe" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-modal-details">
+        <h3 id="videoModalTitle" style="font-size: 1.3rem; color: #fff; margin-bottom: 0.5rem;">影片標題</h3>
+        <p id="videoModalSub" style="color: var(--accent-cyan); font-size: 0.9rem; font-family: var(--font-mono);"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       Interactive Image Lightbox Modal
+       ========================================================================== -->
+  <div class="modal-backdrop" id="imageLightbox" role="dialog" aria-modal="true" aria-labelledby="lightboxCaption">
+    <div class="modal-box" style="max-width: 1100px;">
+      <button class="modal-close-btn" id="lightboxClose" aria-label="關閉大圖">&times;</button>
+      <div class="lightbox-img-wrap">
+        <button class="lightbox-nav-btn lightbox-prev" id="lightboxPrev" aria-label="上一張">&#10094;</button>
+        <img id="lightboxImg" src="" alt="高畫質大圖" />
+        <button class="lightbox-nav-btn lightbox-next" id="lightboxNext" aria-label="下一張">&#10095;</button>
+      </div>
+      <div style="padding: 1rem 1.8rem; display: flex; justify-content: space-between; align-items: center;">
+        <div id="lightboxCaption" style="font-weight: 600; color: #fff; font-size: 1.05rem;">圖片說明</div>
+        <div id="lightboxIndex" style="font-family: var(--font-mono); color: var(--accent-cyan); font-size: 0.85rem;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Copy Toast Notification -->
+  <div class="toast-msg" id="toastMsg">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    <span id="toastText">已成功複製到剪貼簿！</span>
+  </div>
+
+  <!-- ==========================================================================
+       JavaScript Implementation
+       ========================================================================== -->
+  <script>
+    /* ==========================================================================
+       Data Definitions (Strictly parsed from decade.tw.md)
+       ========================================================================== */
+
+    // 21 YouTube Videos
+    const videosData = [
+      {
+        id: "GGZHxkKLopg",
+        title: "基隆山海鳴光",
+        watchUrl: "https://www.youtube.com/watch?v=GGZHxkKLopg",
+        embedUrl: "https://www.youtube.com/embed/GGZHxkKLopg?feature=oembed&showinfo=0&controls=0",
+        tags: ["基隆火車站", "公共藝術", "豪華朗機工", "控制"]
+      },
+      {
+        id: "et_1mErdoKY",
+        title: "台北燈節主燈偶控系統",
+        watchUrl: "https://www.youtube.com/watch?v=et_1mErdoKY",
+        embedUrl: "https://www.youtube.com/embed/et_1mErdoKY?feature=oembed",
+        tags: ["台北燈會", "燈節", "偶控", "控制"]
+      },
+      {
+        id: "RtN9LXy0nSY",
+        title: "台灣燈會新竹主燈中央控制系統",
+        watchUrl: "https://www.youtube.com/watch?v=RtN9LXy0nSY",
+        embedUrl: "https://www.youtube.com/embed/RtN9LXy0nSY?feature=oembed",
+        tags: ["台灣燈會", "新竹主燈", "豪華朗機工", "控制"]
+      },
+      {
+        id: "9_RAmF9dAQo",
+        title: "高雄流行音樂中心",
+        watchUrl: "https://www.youtube.com/watch?v=9_RAmF9dAQo",
+        embedUrl: "https://www.youtube.com/embed/9_RAmF9dAQo?feature=oembed",
+        tags: ["高雄流行音樂中心", "波光之翼", "音樂中心", "豪華朗機工"]
+      },
+      {
+        id: "AMcD4XxWp9Y",
+        title: "豪華朗機工「聆聽花開的聲音」",
+        watchUrl: "https://www.youtube.com/watch?v=AMcD4XxWp9Y",
+        embedUrl: "https://www.youtube.com/embed/AMcD4XxWp9Y?feature=oembed",
+        tags: ["台中花博", "豪華朗機工", "機械花", "中央控制"]
+      },
+      {
+        id: "uDib2sl9EQ4",
+        title: "誠品30週年機械手臂控制",
+        watchUrl: "https://www.youtube.com/watch?v=uDib2sl9EQ4",
+        embedUrl: "https://www.youtube.com/embed/uDib2sl9EQ4?feature=oembed",
+        tags: ["信義誠品", "機械手臂", "一起幻想", "豪華朗機工"]
+      },
+      {
+        id: "YPILezM36Mk",
+        title: "台電大樓馬達控制系統",
+        watchUrl: "https://www.youtube.com/watch?v=YPILezM36Mk",
+        embedUrl: "https://www.youtube.com/embed/YPILezM36Mk?feature=oembed",
+        tags: ["台電大樓", "日光域", "馬達控制", "公共藝術"]
+      },
+      {
+        id: "zv084TmAvKo",
+        title: "台中世界花卉博覽會",
+        watchUrl: "https://www.youtube.com/watch?v=zv084TmAvKo",
+        embedUrl: "https://www.youtube.com/embed/zv084TmAvKo?feature=oembed",
+        tags: ["台中花博", "花博", "中央控制", "燈會"]
+      },
+      {
+        id: "Xkbk8A6MBmI",
+        title: "台電大樓風動電路設計",
+        watchUrl: "https://www.youtube.com/watch?v=Xkbk8A6MBmI",
+        embedUrl: "https://www.youtube.com/embed/Xkbk8A6MBmI?feature=oembed",
+        tags: ["台電大樓", "風動電路", "電路設計", "河飄風"]
+      },
+      {
+        id: "mnyQ6473jj0",
+        title: "世大運開幕式",
+        watchUrl: "https://www.youtube.com/watch?v=mnyQ6473jj0",
+        embedUrl: "https://www.youtube.com/embed/mnyQ6473jj0?feature=oembed",
+        tags: ["世大運", "群控光電", "開幕式", "大型展演"]
+      },
+      {
+        id: "XWcwRYwDcVs",
+        title: "台灣科技園區裝置控制",
+        watchUrl: "https://www.youtube.com/watch?v=XWcwRYwDcVs",
+        embedUrl: "https://www.youtube.com/embed/XWcwRYwDcVs?feature=oembed",
+        tags: ["汐止科技園區", "公共藝術", "見為知著", "裝置控制"]
+      },
+      {
+        id: "uWbwuabvpgY",
+        title: "台南燈會中央控制系統",
+        watchUrl: "https://www.youtube.com/watch?v=uWbwuabvpgY",
+        embedUrl: "https://www.youtube.com/embed/uWbwuabvpgY?feature=oembed",
+        tags: ["台南燈會", "月津港", "燈會", "控制"]
+      },
+      {
+        id: "blTlSpL5gPA",
+        title: "誠品３０週年機械手臂控制 (特寫篇)",
+        watchUrl: "https://www.youtube.com/watch?v=blTlSpL5gPA",
+        embedUrl: "https://www.youtube.com/embed/blTlSpL5gPA?feature=oembed&showinfo=0&controls=0",
+        tags: ["誠品30週年", "機械手臂", "豪華朗機工", "精密控制"]
+      },
+      {
+        id: "G21wHvVLtVY",
+        title: "法國IRCAM 中央控制",
+        watchUrl: "https://www.youtube.com/watch?v=G21wHvVLtVY",
+        embedUrl: "https://www.youtube.com/embed/G21wHvVLtVY?feature=oembed",
+        tags: ["IRCAM", "法國龐畢度", "失眠寫生簿", "豪華朗機工"]
+      },
+      {
+        id: "dF1C0cCYdGA",
+        title: "台北流行音樂中心公共藝術控制系統",
+        watchUrl: "https://www.youtube.com/watch?v=dF1C0cCYdGA",
+        embedUrl: "https://www.youtube.com/embed/dF1C0cCYdGA?feature=oembed",
+        tags: ["台北流行音樂中心", "幻流行光", "音樂中心", "豪華朗機工"]
+      },
+      {
+        id: "iLRVEH9zFao",
+        title: "台北燈節主燈牛偶控制系統",
+        watchUrl: "https://www.youtube.com/watch?v=iLRVEH9zFao",
+        embedUrl: "https://www.youtube.com/embed/iLRVEH9zFao?feature=oembed",
+        tags: ["台北燈會", "牛偶", "AKIBO", "主燈控制"]
+      },
+      {
+        id: "yNvj24m-KbA",
+        title: "基隆車站控制系統",
+        watchUrl: "https://www.youtube.com/watch?v=yNvj24m-KbA",
+        embedUrl: "https://www.youtube.com/embed/yNvj24m-KbA?feature=oembed",
+        tags: ["基隆火車站", "山海鳴光", "車站控制", "豪華朗機工"]
+      },
+      {
+        id: "7wjWHlk9EHU",
+        title: "台南奇美博物館",
+        watchUrl: "https://www.youtube.com/watch?v=7wjWHlk9EHU",
+        embedUrl: "https://www.youtube.com/embed/7wjWHlk9EHU?feature=oembed",
+        tags: ["奇美博物館", "影子特展", "豪華朗機工", "中央控制"]
+      },
+      {
+        id: "0wHT3ey_Dkc",
+        title: "台灣電力公司日光域控制系統",
+        watchUrl: "https://www.youtube.com/watch?v=0wHT3ey_Dkc",
+        embedUrl: "https://www.youtube.com/embed/0wHT3ey_Dkc?feature=oembed",
+        tags: ["台電大樓", "日光域", "公共藝術", "電控系統"]
+      },
+      {
+        id: "RPPHKiupq58",
+        title: "新竹台灣燈會主燈控制系統",
+        watchUrl: "https://www.youtube.com/watch?v=RPPHKiupq58",
+        embedUrl: "https://www.youtube.com/embed/RPPHKiupq58?feature=oembed",
+        tags: ["新竹主燈", "台灣燈會", "乘風逐光", "豪華朗機工"]
+      },
+      {
+        id: "b9wYHVMWJ10",
+        title: "Arduino教父",
+        watchUrl: "https://www.youtube.com/watch?v=b9wYHVMWJ10",
+        embedUrl: "https://www.youtube.com/embed/b9wYHVMWJ10?feature=oembed",
+        tags: ["Arduino", "Massimo Banzi", "互動科技", "創辦人"]
+      }
+    ];
+
+    // 21 Slide Gallery Images
+    const slideImages = [
+      { id: 0, url: "https://www.decade.tw/images/slide/0.png", title: "展演互動現場紀錄 0" },
+      { id: 1, url: "https://www.decade.tw/images/slide/1.png", title: "展演互動現場紀錄 1" },
+      { id: 2, url: "https://www.decade.tw/images/slide/2.png", title: "展演互動現場紀錄 2" },
+      { id: 3, url: "https://www.decade.tw/images/slide/3.png", title: "展演互動現場紀錄 3" },
+      { id: 4, url: "https://www.decade.tw/images/slide/4.png", title: "展演互動現場紀錄 4" },
+      { id: 5, url: "https://www.decade.tw/images/slide/5.png", title: "展演互動現場紀錄 5" },
+      { id: 6, url: "https://www.decade.tw/images/slide/6.png", title: "展演互動現場紀錄 6" },
+      { id: 7, url: "https://www.decade.tw/images/slide/7.png", title: "展演互動現場紀錄 7" },
+      { id: 8, url: "https://www.decade.tw/images/slide/8.png", title: "展演互動現場紀錄 8" },
+      { id: 9, url: "https://www.decade.tw/images/slide/9.png", title: "展演互動現場紀錄 9" },
+      { id: 10, url: "https://www.decade.tw/images/slide/10.png", title: "展演互動現場紀錄 10" },
+      { id: 11, url: "https://www.decade.tw/images/slide/11.png", title: "展演互動現場紀錄 11" },
+      { id: 12, url: "https://www.decade.tw/images/slide/12.png", title: "展演互動現場紀錄 12" },
+      { id: 13, url: "https://www.decade.tw/images/slide/13.png", title: "展演互動現場紀錄 13" },
+      { id: 14, url: "https://www.decade.tw/images/slide/14.png", title: "展演互動現場紀錄 14" },
+      { id: 15, url: "https://www.decade.tw/images/slide/15.png", title: "展演互動現場紀錄 15" },
+      { id: 16, url: "https://www.decade.tw/images/slide/16.png", title: "展演互動現場紀錄 16" },
+      { id: 17, url: "https://www.decade.tw/images/slide/17.png", title: "展演互動現場紀錄 17" },
+      { id: 18, url: "https://www.decade.tw/images/slide/18.png", title: "展演互動現場紀錄 18" },
+      { id: 19, url: "https://www.decade.tw/images/slide/19.png", title: "展演互動現場紀錄 19" },
+      { id: 20, url: "https://www.decade.tw/images/slide/20.png", title: "展演互動現場紀錄 20" }
+    ];
+
+    // 9 Algorithm Gallery Images
+    const algoImages = [
+      { id: 0, url: "https://www.decade.tw/images/algorithmPic/0.png", title: "AI / 演算法視覺模型 0" },
+      { id: 1, url: "https://www.decade.tw/images/algorithmPic/1.png", title: "AI / 演算法視覺模型 1" },
+      { id: 2, url: "https://www.decade.tw/images/algorithmPic/2.png", title: "AI / 演算法視覺模型 2" },
+      { id: 3, url: "https://www.decade.tw/images/algorithmPic/3.png", title: "AI / 演算法視覺模型 3" },
+      { id: 4, url: "https://www.decade.tw/images/algorithmPic/4.png", title: "AI / 演算法視覺模型 4" },
+      { id: 5, url: "https://www.decade.tw/images/algorithmPic/5.png", title: "AI / 演算法視覺模型 5" },
+      { id: 6, url: "https://www.decade.tw/images/algorithmPic/6.png", title: "AI / 演算法視覺模型 6" },
+      { id: 7, url: "https://www.decade.tw/images/algorithmPic/7.png", title: "AI / 演算法視覺模型 7" },
+      { id: 8, url: "https://www.decade.tw/images/algorithmPic/8.png", title: "AI / 演算法視覺模型 8" }
+    ];
+
+    // Works Timeline Data (2006–2027)
+    const worksData = [
+      {
+        year: 2027,
+        group: "2025-2027",
+        items: [
+          { title: "「故宮南院 X 豪華朗機工」－中央控制軟體技術總監", partner: "豪華朗機工 / 故宮南院" }
+        ]
+      },
+      {
+        year: 2026,
+        group: "2025-2027",
+        items: [
+          { title: "Visual Model Training (SacoMesure AI Model)", partner: "AI Model Training" },
+          { title: "Gxxgle Home-Connection calc algorithm", partner: "演算法研發" },
+          { title: "「臺中國家歌劇院 - 最後一問 X 豪華朗機工」－中央控制軟體技術總監", partner: "豪華朗機工 / 國家歌劇院" }
+        ]
+      },
+      {
+        year: 2025,
+        group: "2025-2027",
+        items: [
+          { title: "「兩廳院 - 國家交響樂團」－ III資策會 X NSO X AI", partner: "資策會 / NSO" },
+          { title: "「豪華朗機工」－ 宇宙寫生", partner: "豪華朗機工" },
+          { title: "「豪華朗機工」－ 日光域", partner: "豪華朗機工" },
+          { title: "「豪華朗機工」－ 手識", partner: "豪華朗機工" },
+          { title: "「豪華朗機工」－ 四合", partner: "豪華朗機工" },
+          { title: "「豪華朗機工」－ 很難很難", partner: "豪華朗機工" },
+          { title: "「ＩＯＮＩＣ」－ SacoMeasure「桃園會展中心」－ 入口裝置藝術 匯聚流 丁建中", partner: "丁建中 / 桃園會展中心" },
+          { title: "「信義區微風顯示器」－ 視訊控制中心", partner: "微風集團" },
+          { title: "「台中都會公園」－ 顯示控制中心", partner: "台中都會公園" },
+          { title: "「特拉維夫」－ 裝置藝術 丁建中", partner: "丁建中 / 以色列" },
+          { title: "「IRCAM 法國龐畢度美術館」－ 失眠寫生簿 豪華朗機工", partner: "豪華朗機工 / 法國IRCAM" },
+          { title: "「兩廳院 舞鈴劇團」－ 兩廳院 5G手環無線點控 資策會", partner: "資策會 / 舞鈴劇團" },
+          { title: "「密室逃脫」－ 超高頻ＲＦＩＤ", partner: "RFID系統" },
+          { title: "「北區資安中心」－ 顯示控制中心", partner: "資安中心" },
+          { title: "「北區球場」－ 顯示控制中心", partner: "體育園區" },
+          { title: "「ＩＴＲＩ」－ 震動演算法分析", partner: "工研院" },
+          { title: "「台北流行音樂中心－幻流行光 Ｘ 豪華朗機工」－中央控制軟體建置與技術總監", partner: "豪華朗機工 / 北流" },
+          { title: "「高雄流行音樂中心 波光之翼 Ｘ 豪華朗機工」－中央控制軟體建置與技術總監", partner: "豪華朗機工 / 高流" },
+          { title: "「基隆火車站 山海鳴光 Ｘ 豪華朗機工」－中央控制軟體建置與技術總監", partner: "豪華朗機工 / 基隆車站" }
+        ]
+      },
+      {
+        year: 2020,
+        group: "2018-2020",
+        items: [
+          { title: "「台灣燈會－新竹主燈 Ｘ 豪華朗機工」－中央控制軟體技術總監", partner: "豪華朗機工 / 觀光局" },
+          { title: "「台北燈會－台北萬華主燈 Ｘ ＡＫＩＢＯ老師」－中央控制軟體技術總監", partner: "AKIBO老師 / 台北市政府" }
+        ]
+      },
+      {
+        year: 2019,
+        group: "2018-2020",
+        items: [
+          { title: "「信義誠品30週年」 一起幻想 Ｘ 豪華朗機工－機械手臂中央控制技術總監", partner: "豪華朗機工 / 誠品書店" },
+          { title: "「臺南奇美博物館」 影子特展 Ｘ 豪華朗機工－中央控制技術總監", partner: "豪華朗機工 / 奇美博物館" },
+          { title: "「台北當代藝術館 」查無此人小花展 Ｘ 豪華朗機工 －中央控制技術總監", partner: "豪華朗機工 / 當代藝術館" },
+          { title: "「永豐餘元太科技EINK 」電子紙控制計劃案", partner: "元太科技 / 永豐餘" }
+        ]
+      },
+      {
+        year: 2018,
+        group: "2018-2020",
+        items: [
+          { title: "「臺中世界花卉博覽會」聆聽花開的聲音 Ｘ 豪華朗機工－中央控制系統建置", partner: "豪華朗機工 / 台中花博" },
+          { title: "「GoGoRo新⾞發表會」硬體控制系統建置", partner: "Gogoro Taiwan" },
+          { title: "「宜蘭蘭傳藝中心 」互動介⾯多點控制設計", partner: "傳藝中心" },
+          { title: "「臺北小巨蛋CTC世界盃國際標準舞公開賽」RF無線控制設計", partner: "CTC世界盃 / 台北小巨蛋" }
+        ]
+      },
+      {
+        year: 2017,
+        group: "2015-2017",
+        items: [
+          { title: "「松山文創園區讀衣II 」時尚 X 藝術跨界展 Ｘ JUST IN XX 周裕穎－驅動控制系統建置", partner: "周裕穎 / 松菸" },
+          { title: "「台北世大運」群控光電顧問", partner: "台北世大運組委會" },
+          { title: "「白晝之夜」藝術活動 Ｘ 藝術家江惠菁 Ｘ 步里赫森－電路技術支援", partner: "白晝之夜" },
+          { title: "「白晝之夜－台電大樓公共藝術」Ｘ 柯市長點燈－遠端控制系統", partner: "台電大樓 / 台北市政府" },
+          { title: "「元太科技EINK 電子紙」驅動控制系統規劃執行", partner: "元太科技" },
+          { title: "「Fashion Tech JustInCase 」科技服裝設計 Ｘ JUST IN XX 周裕穎－驅動控制系統規劃建置", partner: "JUST IN XX" },
+          { title: "「農業溫室與政府公開資訊」研究計劃", partner: "農委會研究案" },
+          { title: "「臺中機器學習MachineLearning」資料研究計劃", partner: "機器學習專案" },
+          { title: "「國家歌劇院 UltraCombo群控無人機」通訊協定顧問", partner: "UltraCombo / 國家歌劇院" }
+        ]
+      },
+      {
+        year: 2016,
+        group: "2015-2017",
+        items: [
+          { title: "「台灣電力公司公共藝術」日光域 Ｘ 華麗邏輯－電控技術設計與製作", partner: "華麗邏輯 / 台電" },
+          { title: "「台灣電力公司公共藝術」河飄風 Ｘ 華麗邏輯－電路設計與製作", partner: "華麗邏輯 / 台電" },
+          { title: "「台灣電力公司公共藝術」太陽之詩 Ｘ 華麗邏輯－馬達電控技術與製作", partner: "華麗邏輯 / 台電" }
+        ]
+      },
+      {
+        year: 2015,
+        group: "2015-2017",
+        items: [
+          { title: "「2015解密國家寶藏 Ｘ 奇想樂園互動科技館」X 工研院 X 華麗邏輯 X 光洋波斯特 『奇想樂園互動導覽技術與互動機台』採用本公司研發Centurion ProV2.0系統", partner: "工研院 / Centurion ProV2.0" },
+          { title: "「智慧型IMU壓力感測藍芽通訊柺杖」Ｘ 國立台灣大學 ivLab Ｘ 資策會創新所－共同研發", partner: "台灣大學 / 資策會" },
+          { title: "「智慧型震動馬達感測藍芽通訊鞋墊』Ｘ 資策會創新所", partner: "資策會創新所" }
+        ]
+      },
+      {
+        year: 2014,
+        group: "2010-2014",
+        items: [
+          { title: "「敦煌擴增實境導覽裝置」小沙彌 Ｘ 台灣大學ivLab", partner: "台灣大學 ivLab" },
+          { title: "「2014解密國家寶藏－奇想樂園互動科技館」X 工研院 X 華麗邏輯 『奇想樂園互動導覽技術與互動機台』採用本公司研發Centurion ProV1.5系統", partner: "工研院 / Centurion ProV1.5" },
+          { title: "「桃園機場第二航廈公共藝術裝置 」歐基理德的飛行 X 豪華朗機工", partner: "豪華朗機工 / 桃園機場" },
+          { title: "「英國曼徹斯特」日光域 X 豪華朗機工", partner: "豪華朗機工 / 英國曼徹斯特" }
+        ]
+      },
+      {
+        year: 2013,
+        group: "2010-2014",
+        items: [
+          { title: "「臺南鹽水月津港燈節主燈」日光域 X 豪華朗機工", partner: "豪華朗機工 / 月津港燈節" },
+          { title: "「文建會科技與表演藝術結合旗艦計畫」王俊傑 X 豪華朗機工 X 台北藝術大學科技藝術中心 『無人劇場Timecode系統研發』採用本公司研發Centurion ProV1.0系統", partner: "北藝大 / 王俊傑 / 豪華朗機工" },
+          { title: "「汐止台灣科學園區大廳公共藝術」見為知著 X 豪華朗機工", partner: "豪華朗機工 / 台灣科學園區" }
+        ]
+      },
+      {
+        year: 2012,
+        group: "2010-2014",
+        items: [
+          { title: "「汐止台灣科學園區戶外公共藝術」時中光 X 豪華朗機工", partner: "豪華朗機工 / 台灣科學園區" },
+          { title: "「文建會科技與表演藝術結合旗艦計畫」M Project X 豪華朗機工 X 周先生 －共同創作", partner: "周先生 / 豪華朗機工" },
+          { title: "「足部壓力無線傳輸感測模組」X 國立台灣大學 X 資策會－共同創作", partner: "台灣大學 / 資策會" },
+          { title: "「文建會科技與表演藝術結合旗艦計畫 」線上演出『名導濾鏡』之雲端冒險演出之一 X 廣藝基金會 X 台北藝術大學", partner: "廣藝基金會 / 北藝大" },
+          { title: "「Computex Taipei 」雲端個人3D印表機 X 威盛電子股份有限公司－合作研發", partner: "威盛電子 / Computex" },
+          { title: "「Facebook互動式數位藝術櫥窗」X 台北教育大學 X 藝術家張博智 －合作研發", partner: "張博智 / 台北教育大學" },
+          { title: "業界演講 CTimes Android Days －『踏進Arduino互動科技世界－使用Android』（參與人數達200人次）", partner: "CTimes 業界演講" },
+          { title: "「藝術裝置」福 X 豪華朗機工－互動設計", partner: "豪華朗機工" },
+          { title: "「ZigBee無線傳輸」X 德明財經科技大學－距離感測模組研發", partner: "德明財經科大" }
+        ]
+      },
+      {
+        year: 2011,
+        group: "2010-2014",
+        items: [
+          { title: "研發 LED幻彩無線傳輸控制器", partner: "自主硬體研發" },
+          { title: "「Facebook互動式音樂」Tender Blackmail黑信 X 音樂家陳建騏 X 藝術家張博智 X 人力飛行劇團 －互動設計", partner: "陳建騏 / 張博智 / 人力飛行劇團" },
+          { title: "「台北世界設計大會」聲音互動式展場 X 亞洲大學－聲音互動設計製作", partner: "世界設計大會 / 亞洲大學" },
+          { title: "「研發Centurion多點互動控制系統」", partner: "CPLD 系統創立" },
+          { title: "「藝術裝置」一日 X 豪華朗機工－電子控制設計", partner: "豪華朗機工" },
+          { title: "「藝術裝置」日光域 X 豪華朗機工－電子控制設計", partner: "豪華朗機工" }
+        ]
+      },
+      {
+        year: 2010,
+        group: "2010-2014",
+        items: [
+          { title: "「藝術裝置」游泳 X 豪華朗機工－電子控制設計", partner: "豪華朗機工" },
+          { title: "於台灣大學研發智慧感測手環", partner: "台灣大學" },
+          { title: "「藝術裝置」浪2 X 豪華朗機工－電子控制設計", partner: "豪華朗機工" },
+          { title: "「藝術裝置」無線音樂控制器 X 藝術家張博智－電子控制設計", partner: "藝術家張博智" },
+          { title: "「互動影像裝置」水立方時尚館 籠中鳥－藝術裝置電子控制設計", partner: "水立方時尚館" },
+          { title: "帝凱科技有限公司正式成立", partner: "公司設立" }
+        ]
+      },
+      {
+        year: 2009,
+        group: "2006-2009",
+        items: [
+          { title: "於台灣大學研發智慧壓力感測鞋、智慧呼吸感測衣", partner: "台灣大學" },
+          { title: "「藝術裝置」浪1 X 豪華朗機工－電子控制設計", partner: "豪華朗機工" },
+          { title: "帝凱科技有限公司成立籌備處", partner: "籌備處" },
+          { title: "申請國立台北藝術大學育成中心進駐廠商，獲99年度U-START教育部大專畢業生創業服務計畫30萬創業補助", partner: "北藝大育成中心 / 教育部U-START" }
+        ]
+      },
+      {
+        year: 2008,
+        group: "2006-2009",
+        items: [
+          { title: "美國洛杉磯與新加坡SIGGRAPH會議發表教室多人控制系統『Many to One PC by WSN System』", partner: "SIGGRAPH (USA & SG)" },
+          { title: "「藝術裝置」時間流產 X 朗機工－電子控制設計", partner: "朗機工" }
+        ]
+      },
+      {
+        year: 2007,
+        group: "2006-2009",
+        items: [
+          { title: "「藝術裝置」南方樂浪 X 朗機工－電子控制設計", partner: "朗機工" }
+        ]
+      },
+      {
+        year: 2006,
+        group: "2006-2009",
+        items: [
+          { title: "研發與生產－台灣中國石油S3加油機控制介面卡", partner: "中油S3 Current Loop" },
+          { title: "創辦Arduino.TW－台灣Arduino使用者社群", partner: "Arduino.TW 社群" }
+        ]
+      }
+    ];
+
+    /* ==========================================================================
+       DOM Elements & State
+       ========================================================================== */
+    const header = document.getElementById('header');
+    const videoGrid = document.getElementById('videoGrid');
+    const videoSearchInput = document.getElementById('videoSearchInput');
+    const videoFilterPills = document.getElementById('videoFilterPills');
+    const timelineContainer = document.getElementById('timelineContainer');
+    const worksSearchInput = document.getElementById('worksSearchInput');
+    const worksYearPills = document.getElementById('worksYearPills');
+
+    // Modals
+    const videoModal = document.getElementById('videoModal');
+    const videoModalIframe = document.getElementById('videoModalIframe');
+    const videoModalTitle = document.getElementById('videoModalTitle');
+    const videoModalSub = document.getElementById('videoModalSub');
+    const videoModalClose = document.getElementById('videoModalClose');
+
+    const imageLightbox = document.getElementById('imageLightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const lightboxIndex = document.getElementById('lightboxIndex');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxPrev = document.getElementById('lightboxPrev');
+    const lightboxNext = document.getElementById('lightboxNext');
+
+    let currentLightboxArray = [];
+    let currentLightboxIndex = 0;
+
+    // Toast
+    const toastMsg = document.getElementById('toastMsg');
+    const toastText = document.getElementById('toastText');
+    let toastTimeout;
+
+    /* ==========================================================================
+       Header Scroll & Active Nav Spy
+       ========================================================================== */
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+
+      // Nav Spy
+      const sections = document.querySelectorAll('section[id]');
+      const scrollPos = window.scrollY + 120;
+      sections.forEach(sec => {
+        const top = sec.offsetTop;
+        const height = sec.offsetHeight;
+        const id = sec.getAttribute('id');
+        if (scrollPos >= top && scrollPos < top + height) {
+          document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${id}`) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    });
+
+    // Mobile Menu
+    const mobileMenuOpen = document.getElementById('mobileMenuOpen');
+    const mobileMenuClose = document.getElementById('mobileMenuClose');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    mobileMenuOpen.addEventListener('click', () => mobileDrawer.classList.add('open'));
+    mobileMenuClose.addEventListener('click', () => mobileDrawer.classList.remove('open'));
+    mobileLinks.forEach(link => link.addEventListener('click', () => mobileDrawer.classList.remove('open')));
+
+    /* ==========================================================================
+       Render Video Cards
+       ========================================================================== */
+    function renderVideos(filteredList) {
+      videoGrid.innerHTML = '';
+      if (filteredList.length === 0) {
+        videoGrid.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 4rem; color: var(--text-muted);">
+            <p style="font-size: 1.2rem; margin-bottom: 0.5rem;">查無相符影音作品</p>
+            <p style="font-size: 0.9rem;">請嘗試不同關鍵字或切換標籤</p>
+          </div>
+        `;
+        return;
+      }
+
+      filteredList.forEach((v, idx) => {
+        const card = document.createElement('div');
+        card.className = 'video-card';
+        card.innerHTML = `
+          <div class="video-thumb-container" onclick="openVideoModal('${v.id}')">
+            <img src="https://img.youtube.com/vi/${v.id}/hqdefault.jpg" alt="${v.title}" loading="lazy" onerror="this.src='https://www.decade.tw/images/logo/decade_logo.png'" />
+            <div class="video-play-overlay">
+              <div class="play-btn-circle">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </div>
+            </div>
+          </div>
+          <div class="video-card-body">
+            <div>
+              <div class="video-index-tag">NO. ${String(idx + 1).padStart(2, '0')} ｜ YOUTUBE</div>
+              <h3 class="video-card-title">${v.title}</h3>
+              <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem;">
+                ${v.tags.map(t => `<span class="work-tag">${t}</span>`).join('')}
+              </div>
+            </div>
+            <div class="video-card-footer">
+              <button class="video-action-play" onclick="openVideoModal('${v.id}')">
+                <span>播放影片</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              </button>
+              <a href="${v.watchUrl}" target="_blank" rel="noopener noreferrer" class="video-action-external">
+                <span>YouTube</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
+          </div>
+        `;
+        videoGrid.appendChild(card);
+      });
+    }
+
+    let currentVideoFilter = 'all';
+    function applyVideoFilters() {
+      const q = videoSearchInput.value.trim().toLowerCase();
+      let list = videosData;
+      if (currentVideoFilter !== 'all') {
+        list = list.filter(v => v.title.includes(currentVideoFilter) || v.tags.some(t => t.includes(currentVideoFilter)));
+      }
+      if (q) {
+        list = list.filter(v => v.title.toLowerCase().includes(q) || v.tags.some(t => t.toLowerCase().includes(q)));
+      }
+      renderVideos(list);
+    }
+
+    videoSearchInput.addEventListener('input', applyVideoFilters);
+    videoFilterPills.addEventListener('click', (e) => {
+      if (e.target.classList.contains('pill-btn')) {
+        videoFilterPills.querySelectorAll('.pill-btn').forEach(btn => btn.classList.remove('active'));
+        e.target.classList.add('active');
+        currentVideoFilter = e.target.dataset.filter;
+        applyVideoFilters();
+      }
+    });
+
+    function openVideoModal(id) {
+      const vid = videosData.find(v => v.id === id);
+      if (!vid) return;
+      videoModalIframe.src = `${vid.embedUrl}?autoplay=1`;
+      videoModalTitle.textContent = vid.title;
+      videoModalSub.textContent = `YouTube 實況紀錄 ｜ ID: ${vid.id}`;
+      videoModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeVideoModal() {
+      videoModal.classList.remove('active');
+      videoModalIframe.src = '';
+      document.body.style.overflow = '';
+    }
+
+    videoModalClose.addEventListener('click', closeVideoModal);
+    videoModal.addEventListener('click', (e) => {
+      if (e.target === videoModal) closeVideoModal();
+    });
+
+    /* ==========================================================================
+       Render Galleries (Slide Gallery & Algorithm Gallery)
+       ========================================================================== */
+    const tabSlideGallery = document.getElementById('tabSlideGallery');
+    const tabAlgoGallery = document.getElementById('tabAlgoGallery');
+    const slideGalleryContainer = document.getElementById('slideGalleryContainer');
+    const algoGalleryContainer = document.getElementById('algoGalleryContainer');
+    const slideGrid = document.getElementById('slideGrid');
+    const algoGrid = document.getElementById('algoGrid');
+    const sliderTrack = document.getElementById('sliderTrack');
+    const sliderPrev = document.getElementById('sliderPrev');
+    const sliderNext = document.getElementById('sliderNext');
+
+    let currentSliderSlide = 0;
+
+    // Build Slider & Slide Grid
+    function initSlideGallery() {
+      sliderTrack.innerHTML = '';
+      slideGrid.innerHTML = '';
+
+      slideImages.forEach((item, index) => {
+        // Slider slide
+        const slideDiv = document.createElement('div');
+        slideDiv.className = 'slider-slide';
+        slideDiv.innerHTML = `
+          <img src="${item.url}" alt="${item.title}" loading="lazy" />
+          <div class="slider-caption">
+            <div>
+              <span class="gallery-badge">SLIDE #${item.id}</span>
+              <h4 style="font-size: 1.2rem; color: #fff; margin-top: 0.2rem;">${item.title}</h4>
+            </div>
+            <button class="btn btn-outline" style="padding: 0.4rem 1rem; font-size: 0.85rem;" onclick="openLightbox(slideImages, ${index})">
+              燈箱放大檢視 ⤢
+            </button>
+          </div>
+        `;
+        sliderTrack.appendChild(slideDiv);
+
+        // Grid item
+        const gridItem = document.createElement('div');
+        gridItem.className = 'gallery-item';
+        gridItem.onclick = () => openLightbox(slideImages, index);
+        gridItem.innerHTML = `
+          <img src="${item.url}" alt="${item.title}" loading="lazy" />
+          <div class="gallery-overlay">
+            <span class="gallery-badge">PHOTO #${item.id}</span>
+            <div class="gallery-title">${item.title}</div>
+          </div>
+        `;
+        slideGrid.appendChild(gridItem);
+      });
+    }
+
+    // Build Algorithm Grid
+    function initAlgoGallery() {
+      algoGrid.innerHTML = '';
+      algoImages.forEach((item, index) => {
+        const gridItem = document.createElement('div');
+        gridItem.className = 'gallery-item';
+        gridItem.onclick = () => openLightbox(algoImages, index);
+        gridItem.innerHTML = `
+          <img src="${item.url}" alt="${item.title}" loading="lazy" />
+          <div class="gallery-overlay">
+            <span class="gallery-badge">ALGORITHM #${item.id}</span>
+            <div class="gallery-title">${item.title}</div>
+          </div>
+        `;
+        algoGrid.appendChild(gridItem);
+      });
+    }
+
+    // Slider Controls
+    function updateSlider() {
+      sliderTrack.style.transform = `translateX(-${currentSliderSlide * 100}%)`;
+    }
+
+    sliderPrev.addEventListener('click', () => {
+      currentSliderSlide = (currentSliderSlide - 1 + slideImages.length) % slideImages.length;
+      updateSlider();
+    });
+
+    sliderNext.addEventListener('click', () => {
+      currentSliderSlide = (currentSliderSlide + 1) % slideImages.length;
+      updateSlider();
+    });
+
+    // Toggle Gallery Views
+    tabSlideGallery.addEventListener('click', () => {
+      tabSlideGallery.classList.add('active');
+      tabAlgoGallery.classList.remove('active');
+      slideGalleryContainer.style.display = 'block';
+      algoGalleryContainer.style.display = 'none';
+    });
+
+    tabAlgoGallery.addEventListener('click', () => {
+      tabAlgoGallery.classList.add('active');
+      tabSlideGallery.classList.remove('active');
+      slideGalleryContainer.style.display = 'none';
+      algoGalleryContainer.style.display = 'block';
+    });
+
+    // Lightbox Functionality
+    function openLightbox(array, index) {
+      currentLightboxArray = array;
+      currentLightboxIndex = index;
+      renderLightboxCurrent();
+      imageLightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function renderLightboxCurrent() {
+      const item = currentLightboxArray[currentLightboxIndex];
+      lightboxImg.src = item.url;
+      lightboxCaption.textContent = item.title;
+      lightboxIndex.textContent = `${currentLightboxIndex + 1} / ${currentLightboxArray.length}`;
+    }
+
+    function closeLightbox() {
+      imageLightbox.classList.remove('active');
+      lightboxImg.src = '';
+      document.body.style.overflow = '';
+    }
+
+    lightboxPrev.addEventListener('click', (e) => {
+      e.stopPropagation();
+      currentLightboxIndex = (currentLightboxIndex - 1 + currentLightboxArray.length) % currentLightboxArray.length;
+      renderLightboxCurrent();
+    });
+
+    lightboxNext.addEventListener('click', (e) => {
+      e.stopPropagation();
+      currentLightboxIndex = (currentLightboxIndex + 1) % currentLightboxArray.length;
+      renderLightboxCurrent();
+    });
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    imageLightbox.addEventListener('click', (e) => {
+      if (e.target === imageLightbox) closeLightbox();
+    });
+
+    /* ==========================================================================
+       Render Works Timeline
+       ========================================================================== */
+    let currentWorksGroup = 'all';
+
+    function renderTimeline() {
+      const q = worksSearchInput.value.trim().toLowerCase();
+      timelineContainer.innerHTML = '';
+
+      let matchedYearsCount = 0;
+
+      worksData.forEach(yGroup => {
+        // Check filter group
+        if (currentWorksGroup !== 'all' && yGroup.group !== currentWorksGroup) {
+          return;
+        }
+
+        // Filter items within the year by search query
+        let items = yGroup.items;
+        if (q) {
+          items = items.filter(it => it.title.toLowerCase().includes(q) || it.partner.toLowerCase().includes(q));
+        }
+
+        if (items.length === 0) return;
+        matchedYearsCount++;
+
+        const yearGroupEl = document.createElement('div');
+        yearGroupEl.className = 'timeline-year-group';
+        yearGroupEl.innerHTML = `
+          <div class="timeline-year-badge">
+            <span class="timeline-year-dot"></span>
+            <span class="timeline-year-text">${yGroup.year}</span>
+            <span style="font-size: 0.85rem; color: var(--text-muted); font-family: var(--font-mono);">
+              (${items.length} 案)
+            </span>
+          </div>
+          <div class="works-items-list">
+            ${items.map(it => `
+              <div class="work-card">
+                <div class="work-card-content">
+                  <div class="work-title">${it.title}</div>
+                  <div class="work-tags">
+                    <span class="work-tag work-tag-accent">${it.partner}</span>
+                    <span class="work-tag">${yGroup.year} 年度</span>
+                  </div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        `;
+        timelineContainer.appendChild(yearGroupEl);
+      });
+
+      if (matchedYearsCount === 0) {
+        timelineContainer.innerHTML = `
+          <div style="text-align: center; padding: 4rem; color: var(--text-muted); background: var(--bg-card); border-radius: var(--radius-lg);">
+            <p style="font-size: 1.2rem; margin-bottom: 0.5rem;">查無相符實績專案</p>
+            <p style="font-size: 0.9rem;">請嘗試搜尋不同關鍵字（例如：豪華朗機工、燈會、資策會、Centurion）</p>
+          </div>
+        `;
+      }
+    }
+
+    worksSearchInput.addEventListener('input', renderTimeline);
+    worksYearPills.addEventListener('click', (e) => {
+      if (e.target.classList.contains('pill-btn')) {
+        worksYearPills.querySelectorAll('.pill-btn').forEach(btn => btn.classList.remove('active'));
+        e.target.classList.add('active');
+        currentWorksGroup = e.target.dataset.yearGroup;
+        renderTimeline();
+      }
+    });
+
+    /* ==========================================================================
+       About Language Switcher
+       ========================================================================== */
+    const btnLangZh = document.getElementById('btnLangZh');
+    const btnLangEn = document.getElementById('btnLangEn');
+    const aboutZh = document.getElementById('aboutZh');
+    const aboutEn = document.getElementById('aboutEn');
+
+    btnLangZh.addEventListener('click', () => {
+      btnLangZh.classList.add('active');
+      btnLangEn.classList.remove('active');
+      aboutZh.style.display = 'block';
+      aboutEn.style.display = 'none';
+    });
+
+    btnLangEn.addEventListener('click', () => {
+      btnLangEn.classList.add('active');
+      btnLangZh.classList.remove('active');
+      aboutZh.style.display = 'none';
+      aboutEn.style.display = 'block';
+    });
+
+    /* ==========================================================================
+       Copy Text & Toast Notification
+       ========================================================================== */
+    function copyText(str, label) {
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(str).then(() => showToast(`已成功複製 ${label}！`));
+      } else {
+        const textarea = document.createElement('textarea');
+        textarea.value = str;
+        textarea.style.position = 'fixed';
+        textarea.style.left = '-9999px';
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+          document.execCommand('copy');
+          showToast(`已成功複製 ${label}！`);
+        } catch (err) {
+          showToast(`複製失敗，請手動複製`);
+        }
+        document.body.removeChild(textarea);
+      }
+    }
+
+    function showToast(msg) {
+      toastText.textContent = msg;
+      toastMsg.classList.add('show');
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toastMsg.classList.remove('show');
+      }, 2500);
+    }
+
+    /* ==========================================================================
+       Contact Form Submission
+       ========================================================================== */
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('clientName').value.trim();
+      const email = document.getElementById('clientEmail').value.trim();
+      const category = document.getElementById('clientCategory').value;
+      const msg = document.getElementById('clientMsg').value.trim();
+
+      const mailtoLink = `mailto:victoria@decade.tw?subject=${encodeURIComponent(`[專案合作諮詢] ${category} - ${name}`)}&body=${encodeURIComponent(`姓名/單位：${name}\n信箱：${email}\n需求類別：${category}\n\n諮詢內容：\n${msg}`)}`;
+      
+      showToast('感謝您的來信，正在為您開啟郵件客戶端...');
+      setTimeout(() => {
+        window.location.href = mailtoLink;
+      }, 800);
+    }
+
+    /* ==========================================================================
+       Keyboard Navigation (Esc to close modals, Arrows for lightbox)
+       ========================================================================== */
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (videoModal.classList.contains('active')) closeVideoModal();
+        if (imageLightbox.classList.contains('active')) closeLightbox();
+      } else if (imageLightbox.classList.contains('active')) {
+        if (e.key === 'ArrowLeft') lightboxPrev.click();
+        if (e.key === 'ArrowRight') lightboxNext.click();
+      }
+    });
+
+    /* ==========================================================================
+       Algorithmic Constellation Network (Hero Canvas Animation)
+       ========================================================================== */
+    (function initHeroCanvas() {
+      const canvas = document.getElementById('heroCanvas');
+      const ctx = canvas.getContext('2d');
+      let width, height;
+      let particles = [];
+      const particleCount = 55;
+
+      function resize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      }
+
+      window.addEventListener('resize', resize);
+      resize();
+
+      class Particle {
+        constructor() {
+          this.x = Math.random() * width;
+          this.y = Math.random() * height;
+          this.vx = (Math.random() - 0.5) * 0.75;
+          this.vy = (Math.random() - 0.5) * 0.75;
+          this.radius = Math.random() * 2 + 1;
+        }
+
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+
+          if (this.x < 0 || this.x > width) this.vx *= -1;
+          if (this.y < 0 || this.y > height) this.vy *= -1;
+        }
+
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+          ctx.fillStyle = 'rgba(0, 242, 254, 0.75)';
+          ctx.shadowBlur = 8;
+          ctx.shadowColor = '#00f2fe';
+          ctx.fill();
+        }
+      }
+
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+
+        for (let i = 0; i < particles.length; i++) {
+          particles[i].update();
+          particles[i].draw();
+
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < 140) {
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.strokeStyle = `rgba(0, 242, 254, ${0.35 * (1 - dist / 140)})`;
+              ctx.lineWidth = 0.8;
+              ctx.shadowBlur = 0;
+              ctx.stroke();
+            }
+          }
+        }
+
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    })();
+
+    /* ==========================================================================
+       Initial Execution
+       ========================================================================== */
+    document.addEventListener('DOMContentLoaded', () => {
+      renderVideos(videosData);
+      initSlideGallery();
+      initAlgoGallery();
+      renderTimeline();
+    });
+  </script>
+</body>
+</html>

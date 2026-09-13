@@ -1,0 +1,2775 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DECADE.TW — 帝凱科技有限公司 | 互動科技解決方案 (Apple Style)</title>
+  <meta name="description" content="帝凱互動科技專注於展場軟硬體整合、舞台燈光與中央控制系統，將伺服馬達、機械手臂、電腦燈光等媒材以演算法呈現為活靈活現的互動藝術作品。" />
+  <meta name="keywords" content="帝凱科技, 幾十有限公司, DECADE.TW, 互動科技, 展場整合, 舞台燈光, 中央控制, 伺服馬達, 機械手臂, 演算法, 蘋果設計風格, Apple Design" />
+  <meta name="author" content="DECADE CO., LTD." />
+  
+  <!-- Robot Crawling & Indexing Directives -->
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1" />
+  <link rel="canonical" href="https://decade.tw/agy/index.apple.html" />
+
+  <meta property="og:site_name" content="幾十有限公司 DECADE CO., LTD." />
+  <meta property="og:title" content="DECADE.TW — 帝凱科技有限公司 | Apple Style (DECADE Interactive Technology)" />
+  <meta property="og:description" content="互動科技解決方案。提供展場軟硬體整合設計規劃；舞台燈光控制。" />
+  <meta property="og:image" content="https://www.decade.tw/images/logo/decade_logo.png" />
+  <meta property="og:url" content="https://decade.tw/agy/index.apple.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="zh_TW" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="DECADE.TW — 帝凱科技有限公司 | Apple Style" />
+  <meta name="twitter:description" content="極簡純淨美學、毛玻璃導覽列、SF Pro 排版系統與 Bento Grid 佈局。" />
+  <meta name="twitter:image" content="https://www.decade.tw/images/logo/decade_logo.png" />
+
+  <!-- Schema.org JSON-LD Structured Data for Web Robots -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "幾十有限公司",
+    "alternateName": ["帝凱科技有限公司", "DECADE CO., LTD.", "DECADE.TW"],
+    "url": "https://decade.tw",
+    "logo": "https://decade.tw/images/logo/decade_logo.png",
+    "image": "https://decade.tw/images/slide/0.png",
+    "description": "帝凱互動科技專注於展場軟硬體整合、舞台燈光與中央控制系統，將伺服馬達、機械手臂、電腦燈光等媒材以演算法呈現為活靈活現的互動藝術作品。",
+    "taxID": "54332918",
+    "telephone": "+886-2-28982557",
+    "email": "xlinx@decade.tw",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "中央南路二段14-1號",
+      "addressLocality": "北投區",
+      "addressRegion": "台北市",
+      "postalCode": "112028",
+      "addressCountry": "TW"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 25.1278,
+      "longitude": 121.5015
+    },
+    "foundingDate": "2013"
+  }
+  </script>
+
+  <link rel="icon" type="image/png" href="https://www.decade.tw/images/logo/decade_logo.png" />
+
+  <!-- Fonts: Apple System Fonts Fallback & Inter / SF Pro Feel -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ==========================================================================
+       Apple Design Language & Design Tokens
+       ========================================================================== */
+    :root {
+      --apple-bg: #000000;
+      --apple-bg-secondary: #161617;
+      --apple-bg-tertiary: #212124;
+      --apple-card: #1d1d1f;
+      --apple-card-elevated: #28282b;
+      --apple-card-border: rgba(255, 255, 255, 0.1);
+
+      --apple-text-primary: #f5f5f7;
+      --apple-text-secondary: #a1a1a6;
+      --apple-text-tertiary: #86868b;
+      --apple-text-link: #2997ff;
+
+      --apple-blue: #0071e3;
+      --apple-blue-hover: #0077ed;
+      --apple-blue-light: #2997ff;
+      --apple-green: #30d158;
+      --apple-purple: #bf5af2;
+      --apple-orange: #ff9f0a;
+
+      --apple-nav-bg: rgba(0, 0, 0, 0.8);
+      --apple-nav-border: rgba(255, 255, 255, 0.12);
+
+      --font-stack: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", "Noto Sans TC", "Helvetica Neue", sans-serif;
+      --font-mono: "SF Mono", Menlo, Monaco, Consolas, monospace;
+
+      --radius-sm: 8px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-xl: 32px;
+      --radius-pill: 980px;
+
+      --transition-apple: 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+      --transition-spring: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+
+      --nav-height: 52px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--nav-height) + 24px);
+      background-color: var(--apple-bg);
+      color: var(--apple-text-primary);
+      font-family: var(--font-stack);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      color-scheme: dark;
+    }
+
+    body {
+      background-color: var(--apple-bg);
+      color: var(--apple-text-primary);
+      line-height: 1.5;
+      overflow-x: hidden;
+      font-size: 17px;
+      letter-spacing: -0.016em;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color var(--transition-apple), opacity var(--transition-apple);
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Apple Container */
+    .apple-container {
+      max-width: 1180px;
+      margin-inline: auto;
+      padding-inline: 1.5rem;
+    }
+
+    .apple-container-wide {
+      max-width: 1360px;
+      margin-inline: auto;
+      padding-inline: 1.5rem;
+    }
+
+    /* Section Spacing & Typography */
+    section {
+      padding-block: 7rem;
+      position: relative;
+    }
+
+    .section-headline-wrap {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .apple-eyebrow {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--apple-blue-light);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.6rem;
+      display: inline-block;
+    }
+
+    .apple-headline {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      letter-spacing: -0.035em;
+      line-height: 1.1;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+
+    .apple-headline-gradient {
+      background: linear-gradient(180deg, #ffffff 0%, #a1a1a6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    .apple-subheadline {
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      font-weight: 400;
+      color: var(--apple-text-secondary);
+      max-width: 720px;
+      margin-inline: auto;
+      line-height: 1.5;
+    }
+
+    /* Apple Buttons */
+    .apple-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      padding: 0.65rem 1.4rem;
+      border-radius: var(--radius-pill);
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      transition: all var(--transition-apple);
+      white-space: nowrap;
+    }
+
+    .apple-btn-primary {
+      background-color: var(--apple-blue);
+      color: #ffffff;
+    }
+
+    .apple-btn-primary:hover {
+      background-color: var(--apple-blue-hover);
+      transform: scale(1.02);
+    }
+
+    .apple-btn-secondary {
+      background-color: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      backdrop-filter: blur(10px);
+    }
+
+    .apple-btn-secondary:hover {
+      background-color: rgba(255, 255, 255, 0.18);
+      transform: scale(1.02);
+    }
+
+    .apple-link {
+      color: var(--apple-text-link);
+      font-size: 17px;
+      font-weight: 400;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .apple-link:hover {
+      text-decoration: underline;
+    }
+
+    .apple-link span {
+      font-size: 1.1em;
+      line-height: 1;
+      transition: transform var(--transition-apple);
+    }
+
+    .apple-link:hover span {
+      transform: translateX(3px);
+    }
+
+    /* ==========================================================================
+       Apple Global Navigation
+       ========================================================================== */
+    .apple-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--nav-height);
+      background-color: var(--apple-nav-bg);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--apple-nav-border);
+      z-index: 1000;
+      transition: background-color var(--transition-apple);
+    }
+
+    .apple-nav-inner {
+      max-width: 1024px;
+      margin-inline: auto;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-inline: 1.5rem;
+    }
+
+    .apple-nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: -0.01em;
+      color: #fff;
+    }
+
+    .apple-nav-brand img {
+      height: 22px;
+      width: auto;
+    }
+
+    .apple-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.8rem;
+      list-style: none;
+    }
+
+    .apple-nav-link {
+      font-size: 12px;
+      color: var(--apple-text-secondary);
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      transition: color var(--transition-apple);
+    }
+
+    .apple-nav-link:hover,
+    .apple-nav-link.active {
+      color: #ffffff;
+    }
+
+    .apple-nav-cta {
+      background-color: var(--apple-blue);
+      color: #ffffff;
+      padding: 0.35rem 0.9rem;
+      border-radius: var(--radius-pill);
+      font-size: 12px;
+      font-weight: 400;
+      transition: background-color var(--transition-apple);
+    }
+
+    .apple-nav-cta:hover {
+      background-color: var(--apple-blue-hover);
+    }
+
+    .apple-mobile-btn {
+      display: none;
+      color: #fff;
+      font-size: 1.2rem;
+    }
+
+    @media (max-width: 820px) {
+      .apple-nav-links, .apple-nav-cta {
+        display: none;
+      }
+      .apple-mobile-btn {
+        display: block;
+      }
+    }
+
+    /* Mobile Menu Drawer */
+    .apple-mobile-drawer {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.95);
+      backdrop-filter: blur(25px);
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 3rem 2rem;
+      gap: 1.8rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition-apple);
+    }
+
+    .apple-mobile-drawer.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .apple-mobile-drawer a {
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--apple-text-secondary);
+    }
+
+    .apple-mobile-drawer a:hover,
+    .apple-mobile-drawer a.active {
+      color: #fff;
+    }
+
+    .apple-mobile-close {
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      font-size: 2rem;
+      color: var(--apple-text-secondary);
+    }
+
+    /* ==========================================================================
+       Hero Section & Apple Roller Image Wall Background
+       ========================================================================== */
+    .apple-hero-section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      padding-top: calc(var(--nav-height) + 3rem);
+      padding-bottom: 5rem;
+      overflow: hidden;
+      background-color: var(--apple-bg);
+    }
+
+    /* Roller Image Wall (Apple Style) */
+    .apple-roller-wall {
+      position: absolute;
+      inset: -20% -15%;
+      width: 130%;
+      height: 140%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1.4rem;
+      transform: rotate(-2.5deg);
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.38;
+      filter: saturate(1.1) brightness(0.75);
+      user-select: none;
+      overflow: hidden;
+    }
+
+    .apple-roller-row {
+      display: flex;
+      width: 100%;
+      overflow: hidden;
+      mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+    }
+
+    .apple-roller-track {
+      display: flex;
+      gap: 1.4rem;
+      flex-shrink: 0;
+      width: max-content;
+      will-change: transform;
+    }
+
+    .apple-roller-track-left {
+      animation: appleRollerLeft 52s linear infinite;
+    }
+
+    .apple-roller-track-right {
+      animation: appleRollerRight 56s linear infinite;
+    }
+
+    .apple-roller-track-left-fast {
+      animation: appleRollerLeft 44s linear infinite;
+    }
+
+    .apple-roller-track-right-fast {
+      animation: appleRollerRight 48s linear infinite;
+    }
+
+    @keyframes appleRollerLeft {
+      0% { transform: translate3d(0, 0, 0); }
+      100% { transform: translate3d(-50%, 0, 0); }
+    }
+
+    @keyframes appleRollerRight {
+      0% { transform: translate3d(-50%, 0, 0); }
+      100% { transform: translate3d(0, 0, 0); }
+    }
+
+    .apple-roller-card {
+      width: 290px;
+      height: 175px;
+      flex-shrink: 0;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background-color: var(--apple-card);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+    }
+
+    .apple-roller-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .apple-roller-card {
+        width: 200px;
+        height: 120px;
+      }
+      .apple-roller-wall {
+        gap: 0.9rem;
+      }
+      .apple-roller-track {
+        gap: 0.9rem;
+      }
+    }
+
+    /* Apple Dark Blur Overlay on top of Roller Wall */
+    .apple-roller-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      background:
+        radial-gradient(ellipse at 50% 50%, rgba(0, 0, 0, 0.65) 0%, rgba(0, 0, 0, 0.9) 70%, #000000 100%),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.95) 0%, transparent 20%, transparent 80%, #000000 100%);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .apple-roller-track-left,
+      .apple-roller-track-right,
+      .apple-roller-track-left-fast,
+      .apple-roller-track-right-fast {
+        animation-play-state: paused !important;
+      }
+    }
+
+    .apple-hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 860px;
+      margin-inline: auto;
+    }
+
+    .apple-hero-title {
+      font-size: clamp(3.2rem, 8vw, 6.2rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      margin-bottom: 1rem;
+    }
+
+    .apple-hero-slogan {
+      font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: #fff;
+      margin-bottom: 1.5rem;
+    }
+
+    .apple-hero-desc {
+      font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+      color: var(--apple-text-secondary);
+      font-weight: 400;
+      line-height: 1.6;
+      max-width: 740px;
+      margin-inline: auto;
+      margin-bottom: 2.5rem;
+    }
+
+    .apple-hero-actions {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 4.5rem;
+    }
+
+    /* Apple Stats Ribbon */
+    .apple-stats-ribbon {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--apple-card-border);
+      max-width: 840px;
+      margin-inline: auto;
+    }
+
+    .apple-stat-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .apple-stat-num {
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: #fff;
+      line-height: 1.1;
+    }
+
+    .apple-stat-label {
+      font-size: 13px;
+      color: var(--apple-text-tertiary);
+      margin-top: 0.3rem;
+      font-weight: 400;
+    }
+
+    @media (max-width: 640px) {
+      .apple-stats-ribbon {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+    }
+
+    /* ==========================================================================
+       Apple Segmented Controls & Search Bar
+       ========================================================================== */
+    .apple-controls-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.2rem;
+      margin-bottom: 3rem;
+    }
+
+    .apple-segmented-control {
+      display: inline-flex;
+      background-color: var(--apple-bg-secondary);
+      padding: 4px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--apple-card-border);
+    }
+
+    .apple-seg-btn {
+      padding: 0.45rem 1.1rem;
+      border-radius: var(--radius-pill);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--apple-text-secondary);
+      transition: all var(--transition-apple);
+    }
+
+    .apple-seg-btn:hover {
+      color: #fff;
+    }
+
+    .apple-seg-btn.active {
+      background-color: var(--apple-card-elevated);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    .apple-search-box {
+      position: relative;
+      min-width: 260px;
+    }
+
+    .apple-search-input {
+      background-color: var(--apple-bg-secondary);
+      border: 1px solid var(--apple-card-border);
+      border-radius: var(--radius-pill);
+      padding: 0.5rem 1.2rem 0.5rem 2.4rem;
+      color: #fff;
+      font-size: 14px;
+      outline: none;
+      width: 100%;
+      transition: border-color var(--transition-apple), box-shadow var(--transition-apple);
+    }
+
+    .apple-search-input:focus {
+      border-color: var(--apple-blue-light);
+      box-shadow: 0 0 0 3px rgba(41, 151, 255, 0.25);
+    }
+
+    .apple-search-icon {
+      position: absolute;
+      left: 0.9rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--apple-text-tertiary);
+      width: 15px;
+      height: 15px;
+      pointer-events: none;
+    }
+
+    /* ==========================================================================
+       Apple Bento Grid for Videos (21 YouTube Items)
+       ========================================================================== */
+    .apple-video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 1.8rem;
+    }
+
+    @media (max-width: 480px) {
+      .apple-video-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .apple-video-card {
+      background-color: var(--apple-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--apple-card-border);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform var(--transition-apple), border-color var(--transition-apple), box-shadow var(--transition-apple);
+    }
+
+    .apple-video-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255, 255, 255, 0.25);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+    }
+
+    .apple-video-thumb {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background-color: #000;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .apple-video-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-spring);
+    }
+
+    .apple-video-card:hover .apple-video-thumb img {
+      transform: scale(1.05);
+    }
+
+    .apple-play-pill {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.25);
+      transition: background var(--transition-apple);
+    }
+
+    .apple-video-thumb:hover .apple-play-pill {
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    .play-circle {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.95);
+      color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      transition: transform var(--transition-spring);
+    }
+
+    .apple-video-thumb:hover .play-circle {
+      transform: scale(1.12);
+      background: #ffffff;
+    }
+
+    .apple-video-body {
+      padding: 1.6rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      flex-grow: 1;
+    }
+
+    .apple-card-tag {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--apple-blue-light);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    .apple-video-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #fff;
+      line-height: 1.35;
+      margin-bottom: 1rem;
+    }
+
+    .apple-tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .apple-pill-tag {
+      font-size: 12px;
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--apple-text-secondary);
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--radius-pill);
+    }
+
+    .apple-video-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1rem;
+      border-top: 1px solid var(--apple-card-border);
+    }
+
+    /* ==========================================================================
+       Apple Galleries (Slide Gallery 21 & Algorithm Gallery 9)
+       ========================================================================== */
+    .apple-gallery-tabs-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .apple-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 1024px) {
+      .apple-gallery-grid-slide {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      .apple-gallery-grid-algo {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .apple-gallery-card {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background-color: var(--apple-card);
+      border: 1px solid var(--apple-card-border);
+      cursor: pointer;
+      transition: transform var(--transition-apple), border-color var(--transition-apple), box-shadow var(--transition-apple);
+    }
+
+    .apple-gallery-card:hover {
+      transform: translateY(-4px) scale(1.02);
+      border-color: rgba(255, 255, 255, 0.3);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+    }
+
+    .apple-gallery-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-spring);
+    }
+
+    .apple-gallery-card:hover img {
+      transform: scale(1.08);
+    }
+
+    .apple-gallery-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.2) 60%, transparent 100%);
+      opacity: 0;
+      transition: opacity var(--transition-apple);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.2rem;
+    }
+
+    .apple-gallery-card:hover .apple-gallery-card-overlay {
+      opacity: 1;
+    }
+
+    /* Apple Featured Carousel Slider */
+    .apple-hero-slider {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      background-color: #050505;
+      border: 1px solid var(--apple-card-border);
+      margin-bottom: 2.5rem;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+    }
+
+    .apple-slider-track {
+      display: flex;
+      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+      width: 100%;
+    }
+
+    .apple-slide-item {
+      min-width: 100%;
+      aspect-ratio: 16 / 9;
+      position: relative;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .apple-slide-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .apple-slider-info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2rem 2.5rem;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 100%);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .apple-slide-ctrl-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(30, 30, 32, 0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--apple-card-border);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      transition: all var(--transition-apple);
+    }
+
+    .apple-slide-ctrl-btn:hover {
+      background: #ffffff;
+      color: #000;
+      transform: translateY(-50%) scale(1.08);
+    }
+
+    .apple-slide-prev { left: 1.5rem; }
+    .apple-slide-next { right: 1.5rem; }
+
+    /* ==========================================================================
+       Apple Works Chronology (2006 — 2027)
+       ========================================================================== */
+    .apple-works-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      max-width: 960px;
+      margin-inline: auto;
+    }
+
+    .apple-year-block {
+      background-color: var(--apple-card);
+      border: 1px solid var(--apple-card-border);
+      border-radius: var(--radius-xl);
+      padding: 2rem 2.5rem;
+      transition: border-color var(--transition-apple);
+    }
+
+    .apple-year-block:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .apple-year-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid var(--apple-card-border);
+      margin-bottom: 1.2rem;
+    }
+
+    .apple-year-title {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: #fff;
+    }
+
+    .apple-year-count {
+      font-size: 13px;
+      color: var(--apple-text-tertiary);
+      font-weight: 500;
+    }
+
+    .apple-work-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      padding-block: 0.9rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      transition: transform var(--transition-apple);
+    }
+
+    .apple-work-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .apple-work-item:hover {
+      transform: translateX(4px);
+    }
+
+    .apple-work-name {
+      font-size: 16px;
+      font-weight: 500;
+      color: #e5e5ea;
+      line-height: 1.45;
+    }
+
+    .apple-work-partner {
+      font-size: 13px;
+      color: var(--apple-blue-light);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 640px) {
+      .apple-year-block {
+        padding: 1.5rem;
+      }
+      .apple-work-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.3rem;
+      }
+    }
+
+    /* ==========================================================================
+       Apple About Section (Bilingual, Services, Media, Publications)
+       ========================================================================== */
+    .apple-about-box {
+      background-color: var(--apple-card);
+      border: 1px solid var(--apple-card-border);
+      border-radius: var(--radius-xl);
+      padding: clamp(2rem, 5vw, 4rem);
+      margin-bottom: 4rem;
+      max-width: 980px;
+      margin-inline: auto;
+    }
+
+    .apple-about-text {
+      font-size: 1.25rem;
+      line-height: 1.8;
+      color: #d1d1d6;
+      font-weight: 400;
+      letter-spacing: -0.015em;
+      white-space: pre-line;
+    }
+
+    /* Services Grid */
+    .apple-services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 5rem;
+    }
+
+    .apple-service-card {
+      background-color: var(--apple-card);
+      border: 1px solid var(--apple-card-border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      transition: transform var(--transition-apple), border-color var(--transition-apple);
+    }
+
+    .apple-service-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+
+    .apple-service-icon {
+      font-size: 2rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .apple-service-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #fff;
+    }
+
+    .apple-service-desc {
+      font-size: 14px;
+      color: var(--apple-text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Media & Publications Dual Column */
+    .apple-dual-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      max-width: 1080px;
+      margin-inline: auto;
+    }
+
+    @media (max-width: 900px) {
+      .apple-dual-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .apple-showcase-panel {
+      background-color: var(--apple-card);
+      border: 1px solid var(--apple-card-border);
+      border-radius: var(--radius-xl);
+      padding: 2.5rem;
+    }
+
+    .apple-panel-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--apple-card-border);
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .apple-item-row {
+      padding-block: 0.85rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .apple-item-row:last-child {
+      border-bottom: none;
+    }
+
+    .apple-item-date {
+      font-size: 12px;
+      color: var(--apple-blue-light);
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .apple-item-title {
+      font-size: 15px;
+      color: #f5f5f7;
+      line-height: 1.5;
+    }
+
+    /* ==========================================================================
+       Apple Contacts & Banking
+       ========================================================================== */
+    .apple-contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+      max-width: 1080px;
+      margin-inline: auto;
+      margin-bottom: 3.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .apple-contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .apple-contact-card {
+      background-color: var(--apple-card);
+      border: 1px solid var(--apple-card-border);
+      border-radius: var(--radius-xl);
+      padding: 2.5rem;
+    }
+
+    .apple-data-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      padding-block: 1rem;
+      border-bottom: 1px solid var(--apple-card-border);
+    }
+
+    .apple-data-row:first-child {
+      padding-top: 0;
+    }
+
+    .apple-data-row:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .apple-data-label {
+      font-size: 12px;
+      color: var(--apple-text-tertiary);
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .apple-data-val {
+      font-size: 16px;
+      color: #fff;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.8rem;
+    }
+
+    .apple-copy-btn {
+      padding: 0.3rem 0.8rem;
+      border-radius: var(--radius-pill);
+      background-color: rgba(255, 255, 255, 0.1);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--apple-text-primary);
+      transition: all var(--transition-apple);
+    }
+
+    .apple-copy-btn:hover {
+      background-color: var(--apple-blue);
+      color: #fff;
+    }
+
+    .apple-map-container {
+      background-color: var(--apple-card);
+      border: 1px solid var(--apple-card-border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      max-width: 1080px;
+      margin-inline: auto;
+    }
+
+    .apple-map-header {
+      padding: 1.5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--apple-card-border);
+    }
+
+    .apple-map-img {
+      max-height: 480px;
+      width: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .apple-map-img:hover {
+      transform: scale(1.02);
+    }
+
+    /* Apple Form */
+    .apple-input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .apple-input-label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--apple-text-secondary);
+    }
+
+    .apple-text-input, .apple-textarea-input {
+      background-color: var(--apple-bg);
+      border: 1px solid var(--apple-card-border);
+      border-radius: var(--radius-md);
+      padding: 0.8rem 1.1rem;
+      color: #fff;
+      font-size: 15px;
+      font-family: inherit;
+      outline: none;
+      transition: border-color var(--transition-apple), box-shadow var(--transition-apple);
+    }
+
+    .apple-text-input:focus, .apple-textarea-input:focus {
+      border-color: var(--apple-blue-light);
+      box-shadow: 0 0 0 3px rgba(41, 151, 255, 0.25);
+    }
+
+    /* ==========================================================================
+       Apple Modals (Video Modal & Lightbox)
+       ========================================================================== */
+    .apple-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(20px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity var(--transition-apple);
+    }
+
+    .apple-modal-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .apple-modal-window {
+      width: 100%;
+      max-width: 960px;
+      background-color: var(--apple-card);
+      border: 1px solid var(--apple-card-border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9);
+      position: relative;
+      transform: scale(0.96);
+      transition: transform var(--transition-apple);
+    }
+
+    .apple-modal-backdrop.active .apple-modal-window {
+      transform: scale(1);
+    }
+
+    .apple-modal-close-circle {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      font-size: 1.2rem;
+      transition: all var(--transition-apple);
+    }
+
+    .apple-modal-close-circle:hover {
+      background: #ffffff;
+      color: #000;
+    }
+
+    /* Apple Toast */
+    .apple-toast {
+      position: fixed;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background-color: rgba(30, 30, 32, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--apple-card-border);
+      color: #fff;
+      padding: 0.75rem 1.6rem;
+      border-radius: var(--radius-pill);
+      font-size: 14px;
+      font-weight: 500;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      z-index: 3000;
+      opacity: 0;
+      transition: all var(--transition-apple);
+      pointer-events: none;
+    }
+
+    .apple-toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* Apple Global Footer */
+    .apple-footer {
+      background-color: var(--apple-bg-secondary);
+      border-top: 1px solid var(--apple-card-border);
+      padding-block: 4rem 3rem;
+      font-size: 12px;
+      color: var(--apple-text-tertiary);
+    }
+
+    .apple-footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--apple-card-border);
+      margin-bottom: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .apple-footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .apple-footer-col h5 {
+      color: #f5f5f7;
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+    }
+
+    .apple-footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .apple-footer-col a:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================================================
+       Apple Global Navigation
+       ========================================================================== -->
+  <nav class="apple-nav" id="appleNav">
+    <div class="apple-nav-inner">
+      <a href="#hero" class="apple-nav-brand">
+        <img src="https://www.decade.tw/images/logo/decade_logo.png" alt="DECADE.TW Logo" />
+        <span>DECADE.TW</span>
+      </a>
+
+      <ul class="apple-nav-links">
+        <li><a href="#hero" class="apple-nav-link active">概覽</a></li>
+        <li><a href="#videos" class="apple-nav-link">影音實績</a></li>
+        <li><a href="#galleries" class="apple-nav-link">作品藝廊</a></li>
+        <li><a href="#works" class="apple-nav-link">歷年實績</a></li>
+        <li><a href="#about" class="apple-nav-link">關於帝凱</a></li>
+        <li><a href="#contacts" class="apple-nav-link">聯繫洽談</a></li>
+      </ul>
+
+      <a href="#contacts" class="apple-nav-cta">聯絡我們</a>
+
+      <button class="apple-mobile-btn" id="mobileToggle" aria-label="選單">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Drawer -->
+  <div class="apple-mobile-drawer" id="mobileDrawer">
+    <button class="apple-mobile-close" id="mobileClose" aria-label="關閉選單">&times;</button>
+    <a href="#hero" class="mobile-link">首頁 · 概覽</a>
+    <a href="#videos" class="mobile-link">影音實績 (21)</a>
+    <a href="#galleries" class="mobile-link">作品藝廊</a>
+    <a href="#works" class="mobile-link">歷年實績 (2006–2027)</a>
+    <a href="#about" class="mobile-link">關於帝凱</a>
+    <a href="#contacts" class="mobile-link">聯繫合作</a>
+  </div>
+
+  <main>
+    <!-- ==========================================================================
+         Hero Section with Apple-Style Roller Image Wall Background
+         ========================================================================== -->
+    <section class="apple-hero-section" id="hero">
+      <!-- Continuous Roller Image Wall Background -->
+      <div class="apple-roller-wall" aria-hidden="true">
+        <!-- Row 1: Slide 0-6 & Algo 0 -->
+        <div class="apple-roller-row">
+          <div class="apple-roller-track apple-roller-track-left">
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/0.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/1.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/2.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/3.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/4.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/5.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/6.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/algorithmPic/0.png" alt="" loading="eager" /></div>
+            <!-- Duplicates for seamless loop -->
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/0.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/1.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/2.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/3.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/4.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/5.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/6.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/algorithmPic/0.png" alt="" loading="eager" /></div>
+          </div>
+        </div>
+
+        <!-- Row 2: Slide 7-13 & Algo 1-2 -->
+        <div class="apple-roller-row">
+          <div class="apple-roller-track apple-roller-track-right">
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/7.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/8.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/9.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/10.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/11.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/12.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/13.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/algorithmPic/1.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/algorithmPic/2.png" alt="" loading="eager" /></div>
+            <!-- Duplicates -->
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/7.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/8.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/9.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/10.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/11.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/12.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/13.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/algorithmPic/1.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/algorithmPic/2.png" alt="" loading="eager" /></div>
+          </div>
+        </div>
+
+        <!-- Row 3: Slide 14-20 & Algo 3-4 -->
+        <div class="apple-roller-row">
+          <div class="apple-roller-track apple-roller-track-left-fast">
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/14.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/15.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/16.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/17.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/18.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/19.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/20.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/algorithmPic/3.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/algorithmPic/4.png" alt="" loading="eager" /></div>
+            <!-- Duplicates -->
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/14.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/15.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/16.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/17.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/18.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/19.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/20.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/algorithmPic/3.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/algorithmPic/4.png" alt="" loading="eager" /></div>
+          </div>
+        </div>
+
+        <!-- Row 4: Algo 5-8 & Slide 0-3 -->
+        <div class="apple-roller-row">
+          <div class="apple-roller-track apple-roller-track-right-fast">
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/algorithmPic/5.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/algorithmPic/6.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/algorithmPic/7.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/algorithmPic/8.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/0.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/1.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/2.png" alt="" loading="eager" /></div>
+            <!-- Duplicates -->
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/algorithmPic/5.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/algorithmPic/6.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/algorithmPic/7.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/algorithmPic/8.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/0.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/1.png" alt="" loading="eager" /></div>
+            <div class="apple-roller-card"><img src="https://www.decade.tw/images/slide/2.png" alt="" loading="eager" /></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Vignette and Dark Blur Overlay -->
+      <div class="apple-roller-overlay"></div>
+
+      <div class="apple-container apple-hero-content">
+        <span class="apple-eyebrow">DECADE Interactive Technology</span>
+        
+        <h1 class="apple-hero-title">
+          <span class="apple-headline-gradient">互動科技解決方案。</span>
+        </h1>
+
+        <p class="apple-hero-slogan">
+          展場軟硬體整合設計規劃。舞台燈光與中央控制。
+        </p>
+
+        <p class="apple-hero-desc">
+          帝凱互動科技專注於展場軟硬體整合、舞台燈光與中央控制系統，將伺服馬達、機械手臂、電腦燈光等媒材以演算法呈現為活靈活現的互動藝術作品。
+        </p>
+
+        <div class="apple-hero-actions">
+          <a href="#videos" class="apple-btn apple-btn-primary">
+            觀看影音實績
+          </a>
+          <a href="#works" class="apple-link">
+            歷年實績 (2006–2027) <span>›</span>
+          </a>
+          <a href="#about" class="apple-link">
+            進一步了解帝凱 <span>›</span>
+          </a>
+        </div>
+
+        <div class="apple-stats-ribbon">
+          <div class="apple-stat-item">
+            <span class="apple-stat-num">2009</span>
+            <span class="apple-stat-label">創立年份</span>
+          </div>
+          <div class="apple-stat-item">
+            <span class="apple-stat-num">50+</span>
+            <span class="apple-stat-label">重大專案</span>
+          </div>
+          <div class="apple-stat-item">
+            <span class="apple-stat-num">21</span>
+            <span class="apple-stat-label">影音錄製</span>
+          </div>
+          <div class="apple-stat-item">
+            <span class="apple-stat-num">100%</span>
+            <span class="apple-stat-label">自主研發</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         YouTube Video Showcase (Apple Bento Grid)
+         ========================================================================== -->
+    <section id="videos">
+      <div class="apple-container-wide">
+        <div class="section-headline-wrap">
+          <span class="apple-eyebrow">Motion & Artistry</span>
+          <h2 class="apple-headline">21 部影音代表作。</h2>
+          <p class="apple-subheadline">
+            從台北燈節、高雄流行音樂中心、台中花博機械花，到法國 IRCAM 龐畢度中控系統。
+          </p>
+        </div>
+
+        <!-- Controls -->
+        <div class="apple-controls-bar">
+          <div class="apple-segmented-control" id="videoCategoryControl">
+            <button class="apple-seg-btn active" data-filter="all">全部 (21)</button>
+            <button class="apple-seg-btn" data-filter="燈會">燈節與燈會</button>
+            <button class="apple-seg-btn" data-filter="控制">中央控制與機械</button>
+            <button class="apple-seg-btn" data-filter="豪華朗機工">豪華朗機工</button>
+            <button class="apple-seg-btn" data-filter="音樂中心">流行音樂中心</button>
+          </div>
+
+          <div class="apple-search-box">
+            <svg class="apple-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" id="videoSearchInput" class="apple-search-input" placeholder="搜尋影音作品..." />
+          </div>
+        </div>
+
+        <!-- Grid Container -->
+        <div class="apple-video-grid" id="videoGrid">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Galleries (Slide Gallery 21 & Algorithm Gallery 9)
+         ========================================================================== -->
+    <section id="galleries" style="background-color: var(--apple-bg-secondary);">
+      <div class="apple-container-wide">
+        <div class="section-headline-wrap">
+          <span class="apple-eyebrow">Visual Engineering</span>
+          <h2 class="apple-headline">作品藝廊。實境與演算法。</h2>
+          <p class="apple-subheadline">
+            包含 21 張現場實境寫真紀錄，以及 9 張由 SacoMeasure AI 模型與演算法生成的幾何視覺。
+          </p>
+        </div>
+
+        <div class="apple-gallery-tabs-wrap">
+          <div class="apple-segmented-control">
+            <button class="apple-seg-btn active" id="btnSlideTab">圖片展示 · Slide (21)</button>
+            <button class="apple-seg-btn" id="btnAlgoTab">AI / 演算法圖片 · Algorithm (9)</button>
+          </div>
+        </div>
+
+        <!-- Slide Gallery Container -->
+        <div id="slideViewContainer">
+          <!-- Featured Slide Carousel -->
+          <div class="apple-hero-slider">
+            <div class="apple-slider-track" id="sliderTrack">
+              <!-- Slides populated here -->
+            </div>
+            <button class="apple-slide-ctrl-btn apple-slide-prev" id="sliderPrev" aria-label="上一張">&#10094;</button>
+            <button class="apple-slide-ctrl-btn apple-slide-next" id="sliderNext" aria-label="下一張">&#10095;</button>
+          </div>
+
+          <!-- Slide Grid -->
+          <div class="apple-gallery-grid apple-gallery-grid-slide" id="slideGrid">
+            <!-- Populated by JavaScript -->
+          </div>
+        </div>
+
+        <!-- Algorithm Gallery Container -->
+        <div id="algoViewContainer" style="display: none;">
+          <div class="apple-gallery-grid apple-gallery-grid-algo" id="algoGrid">
+            <!-- Populated by JavaScript -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Works Timeline Section (2006–2027)
+         ========================================================================== -->
+    <section id="works">
+      <div class="apple-container">
+        <div class="section-headline-wrap">
+          <span class="apple-eyebrow">Milestones</span>
+          <h2 class="apple-headline">歷年實績。跨越二十載。</h2>
+          <p class="apple-subheadline">
+            回顧自 2006 年中油 S3 加油機介面卡、創辦 Arduino.TW，至 2027 年故宮南院之完整技術總監與中控系統建置。
+          </p>
+        </div>
+
+        <!-- Controls -->
+        <div class="apple-controls-bar">
+          <div class="apple-segmented-control" id="worksFilterControl">
+            <button class="apple-seg-btn active" data-era="all">全部實績</button>
+            <button class="apple-seg-btn" data-era="2025-2027">2025–2027</button>
+            <button class="apple-seg-btn" data-era="2018-2020">2018–2020</button>
+            <button class="apple-seg-btn" data-era="2015-2017">2015–2017</button>
+            <button class="apple-seg-btn" data-era="2010-2014">2010–2014</button>
+            <button class="apple-seg-btn" data-era="2006-2009">2006–2009</button>
+          </div>
+
+          <div class="apple-search-box">
+            <svg class="apple-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" id="worksSearchInput" class="apple-search-input" placeholder="搜尋專案或機構..." />
+          </div>
+        </div>
+
+        <!-- Works List by Year -->
+        <div class="apple-works-list" id="worksContainer">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         About Section (Bilingual, Services, Media, Publications)
+         ========================================================================== -->
+    <section id="about" style="background-color: var(--apple-bg-secondary);">
+      <div class="apple-container">
+        <div class="section-headline-wrap">
+          <span class="apple-eyebrow">About DECADE.TW</span>
+          <h2 class="apple-headline">關於帝凱。科技與藝術的交會。</h2>
+          <p class="apple-subheadline">
+            擅長以演算法巧妙驅動伺服馬達、機械手臂與電腦燈光，創造深刻的視覺與聽覺體驗。
+          </p>
+        </div>
+
+        <!-- Language Segmented Control -->
+        <div style="display: flex; justify-content: center; margin-bottom: 2.5rem;">
+          <div class="apple-segmented-control">
+            <button class="apple-seg-btn active" id="btnAboutZh">繁體中文 · Chinese</button>
+            <button class="apple-seg-btn" id="btnAboutEn">English Profile</button>
+          </div>
+        </div>
+
+        <!-- Text Box -->
+        <div class="apple-about-box">
+          <div id="aboutZh" class="apple-about-text">
+帝凱互動科技成立於2009年，是ㄧ間科技藝術的技術整合公司。擅長將硬體伺服馬達、機械手臂、電腦燈光等媒材利用演算法巧妙地展現活靈活現的作品；近年來中大型展覽互動需求越來越多，每件作品中央控制系統都搭配雲端，讓數千個媒材裝置可以輕鬆控制於手機進行管理、遠端作品可以監控與調閱歷程隨時排查。DECADE.TW期待未來十年在更多作品背後驅動更多繽紛，並步步求精朝向下一個十年邁進。
+
+帝凱科技早年鑽研於嵌入式系統建置領域，透過自行研發中國石油S3軟體與加油機台通訊協定(Current Loop)的控制卡，行銷超過台灣四十間民營加油站，並透過多年累積的嵌入式系統設計，擁有豐富的規劃建置經驗，在互動技術領域穩定的導入系統，帶給觀眾更多互動想像體驗，及體現全新型態讓人耳目一新的聽覺、視覺感受。
+
+2009年起，台灣的互動科技熱潮興起，帝凱科技考量公司長期成長與發展策略，率先透過開放硬體計劃，自行研發互動控制系統－Centurion。其利用CPLD為電路基礎，加上經過數年不斷的改良與擴充軟體功能，已運行於各大展場，如2014年、2015年工研院舉辦的奇想樂園與解密國家寶藏，2012年 Computex Taipei、2011年世界設計大展、台北市立美術館、關渡美術館、鳳甲美術館、MOT藝廊、香港藝術中心、澳洲、新加坡等地。
+
+多年以來也與國內知名藝術團隊合作設計各種極具美感的聽覺、視覺互動藝術裝置，已將互動科技跨域成功的帶給觀眾前所未有的嶄新體驗。帝凱科技（DECADE.TW）－ 期待未來十年，帝凱將創造更多元、新型態形式的科技藝術產業契機，把藝術與科技融合日常生活，提供每一場更完美的視覺、聽覺饗宴，步步求精朝向下一個十年邁進。
+          </div>
+
+          <div id="aboutEn" class="apple-about-text" style="display: none;">
+Founded in 2009, DECADE Interactive Technology is an art and technology integration company. DECADE.TW specializes in the use of hardware servo motors, robotic arms, computer lighting and other media using algorithms to cleverly show the living works; in recent years the demand for medium and large-scale interactive exhibitions is increasing, the central control system for each piece of artwork with the cloud, so that thousands of media devices can be easily controlled by cell phone management, remote works can be monitored and access to the history of the check at any time. DECADE.TW is looking forward to the next ten years to drive more color behind more works and to move forward to the next ten years step by step.
+
+DECADE.TW has been drilling in the field of embedded system construction for many years. Through the self-development of CPC S3 software and the control card of the communication protocol (Current Loop) of the refueling station, DECADE.TW has marketed more than 40 privately-owned refueling stations in Taiwan, and through years of accumulated embedded system design, DECADE.TW has a wealth of planning and construction experience, and has been able to steadily introduce the system in the field of interactive technology, which has brought the audience a more interactive and imaginative experience.
+
+In 2009, Taiwan’s interactive technology boom began, and considering the company’s long-term growth and development strategy, DecaTech took the lead in developing its own interactive control system, Centurion, through the Open Hardware Program, which utilizes CPLDs as the circuitry base, and after several years of continuous improvement and expansion of software functions, has been running in major exhibitions, such as in 2014, In 2015, ITRI organized the Wonderland and Decoding National Treasures, 2012 Computex Taipei, 2011 World Design Expo, Taipei Fine Arts Museum, Kuandu Museum of Fine Arts, Fengjia Museum of Fine Arts, MOT Gallery, Hong Kong Arts Center, Australia, Singapore, and so on.
+
+Over the years, DECADE has also cooperated with the famous art team in Taiwan, HOLLAND, to design a variety of aesthetically pleasing auditory and visual interactive art installations, which have successfully brought unprecedented experiences to audiences across the spectrum of interactive technology. DECADE Technology (DECADE.TW) – Looking forward to the next decade, DECADE will create more diversified and new forms of technology and art industry opportunities, integrating art and technology in daily life, providing each more perfect visual and auditory feast, and step by step, we will strive to move forward to the next decade.
+          </div>
+        </div>
+
+        <!-- 服務項目 · Services Grid -->
+        <div class="section-headline-wrap" style="margin-bottom: 3rem;">
+          <h3 style="font-size: 2rem; font-weight: 700; color: #fff;">專業服務項目。</h3>
+        </div>
+
+        <div class="apple-services-grid">
+          <div class="apple-service-card">
+            <div class="apple-service-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="2" y1="20" x2="22" y2="20"></line><line x1="3" y1="10" x2="21" y2="10"></line><polygon points="12 2 2 7 22 7 12 2"></polygon><line x1="6" y1="10" x2="6" y2="20"></line><line x1="10" y1="10" x2="10" y2="20"></line><line x1="14" y1="10" x2="14" y2="20"></line><line x1="18" y1="10" x2="18" y2="20"></line></svg>
+            </div>
+            <div class="apple-service-title">智慧型展場導覽系統</div>
+            <p class="apple-service-desc">大型博物館、藝廊與展示館之自動感測、無感定位與智慧導覽整體建置與規劃。</p>
+          </div>
+          <div class="apple-service-card">
+            <div class="apple-service-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            </div>
+            <div class="apple-service-title">互動科技裝置設計</div>
+            <p class="apple-service-desc">伺服馬達陣列、多軸機械手臂動態調度、體感回饋與大型裝置藝術客製製作。</p>
+          </div>
+          <div class="apple-service-card">
+            <div class="apple-service-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"></path><path d="M10 22h4"></path><path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"></path></svg>
+            </div>
+            <div class="apple-service-title">產品原型設計製作</div>
+            <p class="apple-service-desc">從概念驗證 (PoC)、電路研發、外觀機構整合到快速試產打樣一站式支援。</p>
+          </div>
+          <div class="apple-service-card">
+            <div class="apple-service-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"></rect><line x1="12" y1="3" x2="12" y2="21"></line><line x1="3" y1="12" x2="21" y2="12"></line></svg>
+            </div>
+            <div class="apple-service-title">智慧型櫥窗整合</div>
+            <p class="apple-service-desc">結合感應互動、透明顯示、光影即時變換與雲端派送的精品智慧櫥窗系統。</p>
+          </div>
+          <div class="apple-service-card">
+            <div class="apple-service-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+            </div>
+            <div class="apple-service-title">軟體程式設計</div>
+            <p class="apple-service-desc">專屬演算法研發、多點中控系統開發、雲端 IoT 儀表板與即時通訊協定撰寫。</p>
+          </div>
+          <div class="apple-service-card">
+            <div class="apple-service-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            </div>
+            <div class="apple-service-title">電子電路設計開發</div>
+            <p class="apple-service-desc">嵌入式微控制器 (MCU/CPLD/FPGA)、高抗噪電路板 (PCB) 佈局與驅動電路研發。</p>
+          </div>
+          <div class="apple-service-card">
+            <div class="apple-service-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect><line x1="9" y1="12" x2="15" y2="12"></line><line x1="9" y1="16" x2="13" y2="16"></line></svg>
+            </div>
+            <div class="apple-service-title">互動裝置設計諮詢</div>
+            <p class="apple-service-desc">提供藝術家與策展團隊跨界媒合、科技藝術可行性評估與預算時程總監顧問。</p>
+          </div>
+          <div class="apple-service-card">
+            <div class="apple-service-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+            </div>
+            <div class="apple-service-title">學術演講與社群</div>
+            <p class="apple-service-desc">創辦台灣 Arduino.TW 使用者社群，推廣開放硬體、專業著作翻譯發行與大專院校講座。</p>
+          </div>
+        </div>
+
+        <!-- Media & Publications Showcase -->
+        <div class="apple-dual-grid">
+          <div class="apple-showcase-panel">
+            <h4 class="apple-panel-title"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 0.5rem;"><path d="M19 20H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v1m2 13a2 2 0 0 1-2-2V7m2 13a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"></path></svg>媒體專題報導</h4>
+            <div class="apple-item-row">
+              <div class="apple-item-date">2012年8月號</div>
+              <div class="apple-item-title"><strong>CTimes</strong> – 封面故事 / 3D印表機 催生下一波製造革命</div>
+            </div>
+            <div class="apple-item-row">
+              <div class="apple-item-date">2012年7月號</div>
+              <div class="apple-item-title"><strong>CTimes</strong> – 專欄 / 跨界整合 互動世界新體驗</div>
+            </div>
+            <div class="apple-item-row">
+              <div class="apple-item-date">2012年6月號</div>
+              <div class="apple-item-title"><strong>CTimes</strong> – 科技藝廊 / 豪華朗機工 代言跨界整合新美學</div>
+            </div>
+            <div class="apple-item-row">
+              <div class="apple-item-date">2012年5月號</div>
+              <div class="apple-item-title"><strong>CTimes</strong> – 專欄 / 新媒體下的跨界演出</div>
+            </div>
+            <div class="apple-item-row">
+              <div class="apple-item-date">2012年4月號</div>
+              <div class="apple-item-title"><strong>CTimes</strong> - 封面故事 / Arduino的電路板互動藝術，專欄 / 開放硬體潮流下的新媒體</div>
+            </div>
+            <div class="apple-item-row">
+              <div class="apple-item-date">2011年</div>
+              <div class="apple-item-title"><strong>文化創意精品專輯</strong> (2011 Charming Taiwan) － 文建會專題報導</div>
+            </div>
+            <div class="apple-item-row">
+              <div class="apple-item-date">2011年第四季</div>
+              <div class="apple-item-title"><strong>新北市政府文化專刊</strong> / 科技藝術的理性與感性 － 跨界整合新美學</div>
+            </div>
+            <div class="apple-item-row">
+              <div class="apple-item-date">2011年11月號</div>
+              <div class="apple-item-title"><strong>CTimes</strong> － 封面故事 / 開放硬體這條路</div>
+            </div>
+          </div>
+
+          <div class="apple-showcase-panel">
+            <h4 class="apple-panel-title"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 0.5rem;"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>專業權威出版品</h4>
+            <div class="apple-item-row" style="padding-bottom: 1.5rem;">
+              <div class="apple-item-date">2012年 出版 · O’Reilly 台灣</div>
+              <div style="font-size: 1.15rem; font-weight: 600; color: #fff; margin-bottom: 0.3rem;">
+                《建置無線感測網路》
+              </div>
+              <div style="font-size: 14px; color: var(--apple-text-secondary);">
+                <strong>原著：</strong>Robert Faludi<br />
+                <strong>譯者：</strong>林義翔、劉士達<br />
+                <strong>出版社：</strong>O’Reilly 台灣
+              </div>
+            </div>
+
+            <div class="apple-item-row" style="padding-bottom: 1.5rem;">
+              <div class="apple-item-date">2009年 出版 · 旗標出版社</div>
+              <div style="font-size: 1.15rem; font-weight: 600; color: #fff; margin-bottom: 0.3rem;">
+                《踏進互動科技世界－使用Arduino》
+              </div>
+              <div style="font-size: 14px; color: var(--apple-text-secondary);">
+                <strong>原著：</strong>Massimo Banzi (Arduino 共同創辦人)<br />
+                <strong>譯者：</strong>林義翔<br />
+                <strong>出版社：</strong>旗標出版社
+              </div>
+            </div>
+
+            <div style="margin-top: 1rem; padding: 1.2rem; border-radius: var(--radius-md); background: rgba(0, 113, 227, 0.1); border: 1px solid rgba(41, 151, 255, 0.25);">
+              <div style="font-weight: 600; color: var(--apple-blue-light); margin-bottom: 0.3rem;">創辦 Arduino.TW 社群</div>
+              <p style="font-size: 13px; color: var(--apple-text-secondary); line-height: 1.5;">
+                台灣開放硬體運動與創客教育的先驅樞紐，長期致力於推動科技藝術教育與跨界整合技術人才培育。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         Contacts & Banking
+         ========================================================================== -->
+    <section id="contacts">
+      <div class="apple-container">
+        <div class="section-headline-wrap">
+          <span class="apple-eyebrow">Connect</span>
+          <h2 class="apple-headline">聯繫洽談。開創下一個十年。</h2>
+          <p class="apple-subheadline">
+            歡迎藝術家、建築設計師、策展機構及企業合作夥伴聯繫洽詢。
+          </p>
+        </div>
+
+        <div class="apple-contact-grid">
+          <!-- Info Card -->
+          <div class="apple-contact-card">
+            <h4 style="font-size: 1.4rem; font-weight: 700; color: #fff; margin-bottom: 1.5rem;">公司基本資訊</h4>
+            <div class="apple-data-row">
+              <span class="apple-data-label">公司全銜</span>
+              <div class="apple-data-val">帝凱科技有限公司 DECADE Co., Ltd.</div>
+            </div>
+
+            <div class="apple-data-row">
+              <span class="apple-data-label">統一編號</span>
+              <div class="apple-data-val">
+                <span>29133824</span>
+                <button class="apple-copy-btn" onclick="copyValue('29133824', '統一編號')">複製</button>
+              </div>
+            </div>
+
+            <div class="apple-data-row">
+              <span class="apple-data-label">電子郵件</span>
+              <div class="apple-data-val">
+                <a href="mailto:victoria@decade.tw" style="color: var(--apple-blue-light);">victoria@decade.tw</a>
+                <button class="apple-copy-btn" onclick="copyValue('victoria@decade.tw', '電子信箱')">複製</button>
+              </div>
+            </div>
+
+            <div class="apple-data-row">
+              <span class="apple-data-label">官方 LINE</span>
+              <div class="apple-data-val">
+                <a href="https://lin.ee/RcQIUgM" target="_blank" rel="noopener noreferrer" style="color: var(--apple-green);">@ecz7450a (點擊加入)</a>
+                <button class="apple-copy-btn" onclick="copyValue('@ecz7450a', 'LINE ID')">複製</button>
+              </div>
+            </div>
+
+            <div class="apple-data-row">
+              <span class="apple-data-label">Facebook 專頁</span>
+              <div class="apple-data-val">
+                <a href="https://www.facebook.com/DECADE.TW" target="_blank" rel="noopener noreferrer" style="color: var(--apple-blue-light);">facebook.com/DECADE.TW</a>
+              </div>
+            </div>
+
+            <div class="apple-data-row">
+              <span class="apple-data-label">地址 (中文)</span>
+              <div class="apple-data-val">
+                <span>台北市北投路一段9-C號</span>
+                <button class="apple-copy-btn" onclick="copyValue('台北市北投路一段9-C號', '中文地址')">複製</button>
+              </div>
+            </div>
+
+            <div class="apple-data-row">
+              <span class="apple-data-label">Address (English)</span>
+              <div class="apple-data-val" style="font-size: 14px;">
+                <span>No.9-C, Sec. 1, Beitou Rd., Beitou Dist. Taipei City, Taiwan.</span>
+                <button class="apple-copy-btn" onclick="copyValue('No.9-C, Sec. 1, Beitou Rd., Beitou Dist. Taipei City, Taiwan.', '英文地址')">複製</button>
+              </div>
+            </div>
+
+            <!-- Banking Subbox -->
+            <div style="margin-top: 1.8rem; padding: 1.4rem; border-radius: var(--radius-md); background: rgba(255, 255, 255, 0.05); border: 1px solid var(--apple-card-border);">
+              <h5 style="font-size: 14px; font-weight: 600; color: #fff; margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.5rem;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 22 7 12 2"></polygon><line x1="5" y1="10" x2="5" y2="18"></line><line x1="12" y1="10" x2="12" y2="18"></line><line x1="19" y1="10" x2="19" y2="18"></line><line x1="2" y1="21" x2="22" y2="21"></line></svg>帳務資訊 · Banking
+              </h5>
+              <div style="font-size: 14px; color: var(--apple-text-secondary); margin-bottom: 0.4rem;">
+                中國信託商業銀行－板新分行 (822)
+              </div>
+              <div style="display: flex; align-items: center; justify-content: space-between;">
+                <span style="font-family: var(--font-mono); font-size: 1.1rem; color: #fff; font-weight: 600;">4175-4026-6515</span>
+                <button class="apple-copy-btn" onclick="copyValue('417540266515', '匯款帳號')">複製帳號</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <div class="apple-contact-card">
+            <h4 style="font-size: 1.4rem; font-weight: 700; color: #fff; margin-bottom: 1.5rem;">合作意向諮詢表單</h4>
+            <form onsubmit="handleContactSubmit(event)">
+              <div class="apple-input-group">
+                <label class="apple-input-label" for="clientName">您的姓名或單位名稱 *</label>
+                <input type="text" id="clientName" class="apple-text-input" placeholder="例如：林設計師 / 某某美術館" required />
+              </div>
+
+              <div class="apple-input-group">
+                <label class="apple-input-label" for="clientEmail">電子郵件信箱 *</label>
+                <input type="email" id="clientEmail" class="apple-text-input" placeholder="name@example.com" required />
+              </div>
+
+              <div class="apple-input-group">
+                <label class="apple-input-label" for="clientCategory">專案類型</label>
+                <select id="clientCategory" class="apple-text-input" style="background-color: #000;">
+                  <option value="展場軟硬體中控系統">展場軟硬體中控系統整合</option>
+                  <option value="機械手臂/伺服馬達藝術裝置">機械手臂 / 伺服馬達藝術裝置</option>
+                  <option value="舞台燈光與聲光聯控">舞台燈光與聲光聯控</option>
+                  <option value="演算法與AI模型開發">演算法與 AI 模型開發</option>
+                  <option value="學術演講/工作坊/社群合作">學術演講 / 工作坊 / 社群合作</option>
+                  <option value="其他客製專案合作">其他客製專案合作</option>
+                </select>
+              </div>
+
+              <div class="apple-input-group">
+                <label class="apple-input-label" for="clientMsg">專案內容與需求細節 *</label>
+                <textarea id="clientMsg" class="apple-textarea-input" style="min-height: 120px;" placeholder="請簡述預計展出場地、時程或軟硬體規格需求..." required></textarea>
+              </div>
+
+              <button type="submit" class="apple-btn apple-btn-primary" style="width: 100%; margin-top: 0.5rem; padding-block: 0.8rem;">
+                傳送合作意向信件
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Map Box -->
+        <div class="apple-map-container">
+          <div class="apple-map-header">
+            <div>
+              <h5 style="font-size: 1.15rem; font-weight: 600; color: #fff;">帝凱科技有限公司 地圖指引</h5>
+              <p style="font-size: 13px; color: var(--apple-text-secondary); margin-top: 0.2rem;">台北市北投路一段9-C號</p>
+            </div>
+            <a href="https://maps.google.com/?q=台北市北投路一段9-C號" target="_blank" rel="noopener noreferrer" class="apple-copy-btn" style="padding: 0.5rem 1rem;">
+              開啟 Google 地圖 ↗
+            </a>
+          </div>
+          <img src="https://www.decade.tw/images/map/decade_map.jpg" alt="DECADE.TW 地圖" class="apple-map-img" loading="lazy" />
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================================================
+       Apple Footer
+       ========================================================================== -->
+  <footer class="apple-footer">
+    <div class="apple-container">
+      <div class="apple-footer-grid">
+        <div class="apple-footer-col">
+          <h5>探索實績</h5>
+          <ul>
+            <li><a href="#videos">影音實績 (21)</a></li>
+            <li><a href="#galleries">作品藝廊</a></li>
+            <li><a href="#works">歷年專案 (2006–2027)</a></li>
+          </ul>
+        </div>
+        <div class="apple-footer-col">
+          <h5>關於帝凱</h5>
+          <ul>
+            <li><a href="#about">公司願景簡介</a></li>
+            <li><a href="#about">專業服務項目</a></li>
+            <li><a href="#about">媒體專題報導</a></li>
+            <li><a href="#about">專業出版著作</a></li>
+          </ul>
+        </div>
+        <div class="apple-footer-col">
+          <h5>社群與開放硬體</h5>
+          <ul>
+            <li><a href="https://lin.ee/RcQIUgM" target="_blank" rel="noopener noreferrer">LINE 官方帳號</a></li>
+            <li><a href="https://www.facebook.com/DECADE.TW" target="_blank" rel="noopener noreferrer">Facebook 粉絲頁</a></li>
+            <li><a href="#about">台灣 Arduino.TW 社群</a></li>
+          </ul>
+        </div>
+        <div class="apple-footer-col">
+          <h5>公司與帳務</h5>
+          <ul>
+            <li><span>統一編號：29133824</span></li>
+            <li><span>信箱：victoria@decade.tw</span></li>
+            <li><span>中信板新分行 822</span></li>
+            <li><span>帳號：4175-4026-6515</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem;">
+        <div>
+          Copyright © 2009–2027 帝凱科技有限公司 DECADE Co., Ltd. 保留一切權利。
+        </div>
+        <div>
+          <a href="#hero" style="color: var(--apple-text-secondary);">回到頁首 ↑</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       Apple Video Modal
+       ========================================================================== -->
+  <div class="apple-modal-backdrop" id="videoModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="apple-modal-window">
+      <button class="apple-modal-close-circle" id="videoModalClose" aria-label="關閉">&times;</button>
+      <div style="position: relative; aspect-ratio: 16 / 9; width: 100%; background: #000;">
+        <iframe id="videoModalIframe" style="position: absolute; inset: 0; width: 100%; height: 100%; border: none;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div style="padding: 1.5rem 2rem;">
+        <h3 id="modalTitle" style="font-size: 1.3rem; color: #fff; margin-bottom: 0.3rem;">標題</h3>
+        <p id="modalSub" style="font-size: 13px; color: var(--apple-blue-light);"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       Apple Lightbox Modal
+       ========================================================================== -->
+  <div class="apple-modal-backdrop" id="imageLightbox" role="dialog" aria-modal="true">
+    <div class="apple-modal-window" style="max-width: 1050px;">
+      <button class="apple-modal-close-circle" id="lightboxClose" aria-label="關閉">&times;</button>
+      <div style="max-height: 80vh; display: flex; align-items: center; justify-content: center; background: #000; position: relative;">
+        <button class="apple-slide-ctrl-btn apple-slide-prev" id="lightboxPrev" style="left: 1rem;" aria-label="上一張">&#10094;</button>
+        <img id="lightboxImg" src="" alt="大圖" style="max-height: 80vh; max-width: 100%; object-fit: contain;" />
+        <button class="apple-slide-ctrl-btn apple-slide-next" id="lightboxNext" style="right: 1rem;" aria-label="下一張">&#10095;</button>
+      </div>
+      <div style="padding: 1.2rem 2rem; display: flex; justify-content: space-between; align-items: center;">
+        <div id="lightboxTitle" style="font-size: 1.05rem; font-weight: 600; color: #fff;">圖片標題</div>
+        <div id="lightboxIndex" style="font-size: 13px; color: var(--apple-blue-light); font-family: var(--font-mono);"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Apple Toast -->
+  <div class="apple-toast" id="appleToast">
+    已成功複製到剪貼簿。
+  </div>
+
+  <!-- ==========================================================================
+       JavaScript Implementation
+       ========================================================================== -->
+  <script>
+    /* ==========================================================================
+       Data Definition (Parsed from decade.tw.md)
+       ========================================================================== */
+    const videosData = [
+      { id: "GGZHxkKLopg", title: "基隆山海鳴光", watchUrl: "https://www.youtube.com/watch?v=GGZHxkKLopg", embedUrl: "https://www.youtube.com/embed/GGZHxkKLopg?feature=oembed&showinfo=0&controls=0", tags: ["基隆火車站", "公共藝術", "豪華朗機工", "控制"] },
+      { id: "et_1mErdoKY", title: "台北燈節主燈偶控系統", watchUrl: "https://www.youtube.com/watch?v=et_1mErdoKY", embedUrl: "https://www.youtube.com/embed/et_1mErdoKY?feature=oembed", tags: ["台北燈會", "燈節", "偶控", "控制"] },
+      { id: "RtN9LXy0nSY", title: "台灣燈會新竹主燈中央控制系統", watchUrl: "https://www.youtube.com/watch?v=RtN9LXy0nSY", embedUrl: "https://www.youtube.com/embed/RtN9LXy0nSY?feature=oembed", tags: ["台灣燈會", "新竹主燈", "豪華朗機工", "控制"] },
+      { id: "9_RAmF9dAQo", title: "高雄流行音樂中心", watchUrl: "https://www.youtube.com/watch?v=9_RAmF9dAQo", embedUrl: "https://www.youtube.com/embed/9_RAmF9dAQo?feature=oembed", tags: ["高雄流行音樂中心", "波光之翼", "音樂中心", "豪華朗機工"] },
+      { id: "AMcD4XxWp9Y", title: "豪華朗機工「聆聽花開的聲音」", watchUrl: "https://www.youtube.com/watch?v=AMcD4XxWp9Y", embedUrl: "https://www.youtube.com/embed/AMcD4XxWp9Y?feature=oembed", tags: ["台中花博", "豪華朗機工", "機械花", "中央控制"] },
+      { id: "uDib2sl9EQ4", title: "誠品30週年機械手臂控制", watchUrl: "https://www.youtube.com/watch?v=uDib2sl9EQ4", embedUrl: "https://www.youtube.com/embed/uDib2sl9EQ4?feature=oembed", tags: ["信義誠品", "機械手臂", "一起幻想", "豪華朗機工"] },
+      { id: "YPILezM36Mk", title: "台電大樓馬達控制系統", watchUrl: "https://www.youtube.com/watch?v=YPILezM36Mk", embedUrl: "https://www.youtube.com/embed/YPILezM36Mk?feature=oembed", tags: ["台電大樓", "日光域", "馬達控制", "公共藝術"] },
+      { id: "zv084TmAvKo", title: "台中世界花卉博覽會", watchUrl: "https://www.youtube.com/watch?v=zv084TmAvKo", embedUrl: "https://www.youtube.com/embed/zv084TmAvKo?feature=oembed", tags: ["台中花博", "花博", "中央控制", "燈會"] },
+      { id: "Xkbk8A6MBmI", title: "台電大樓風動電路設計", watchUrl: "https://www.youtube.com/watch?v=Xkbk8A6MBmI", embedUrl: "https://www.youtube.com/embed/Xkbk8A6MBmI?feature=oembed", tags: ["台電大樓", "風動電路", "電路設計", "河飄風"] },
+      { id: "mnyQ6473jj0", title: "世大運開幕式", watchUrl: "https://www.youtube.com/watch?v=mnyQ6473jj0", embedUrl: "https://www.youtube.com/embed/mnyQ6473jj0?feature=oembed", tags: ["世大運", "群控光電", "開幕式", "大型展演"] },
+      { id: "XWcwRYwDcVs", title: "台灣科技園區裝置控制", watchUrl: "https://www.youtube.com/watch?v=XWcwRYwDcVs", embedUrl: "https://www.youtube.com/embed/XWcwRYwDcVs?feature=oembed", tags: ["汐止科技園區", "公共藝術", "見為知著", "裝置控制"] },
+      { id: "uWbwuabvpgY", title: "台南燈會中央控制系統", watchUrl: "https://www.youtube.com/watch?v=uWbwuabvpgY", embedUrl: "https://www.youtube.com/embed/uWbwuabvpgY?feature=oembed", tags: ["台南燈會", "月津港", "燈會", "控制"] },
+      { id: "blTlSpL5gPA", title: "誠品３０週年機械手臂控制", watchUrl: "https://www.youtube.com/watch?v=blTlSpL5gPA", embedUrl: "https://www.youtube.com/embed/blTlSpL5gPA?feature=oembed&showinfo=0&controls=0", tags: ["誠品30週年", "機械手臂", "豪華朗機工", "精密控制"] },
+      { id: "G21wHvVLtVY", title: "法國IRCAM 中央控制", watchUrl: "https://www.youtube.com/watch?v=G21wHvVLtVY", embedUrl: "https://www.youtube.com/embed/G21wHvVLtVY?feature=oembed", tags: ["IRCAM", "法國龐畢度", "失眠寫生簿", "豪華朗機工"] },
+      { id: "dF1C0cCYdGA", title: "台北流行音樂中心公共藝術控制系統", watchUrl: "https://www.youtube.com/watch?v=dF1C0cCYdGA", embedUrl: "https://www.youtube.com/embed/dF1C0cCYdGA?feature=oembed", tags: ["台北流行音樂中心", "幻流行光", "音樂中心", "豪華朗機工"] },
+      { id: "iLRVEH9zFao", title: "台北燈節主燈牛偶控制系統", watchUrl: "https://www.youtube.com/watch?v=iLRVEH9zFao", embedUrl: "https://www.youtube.com/embed/iLRVEH9zFao?feature=oembed", tags: ["台北燈會", "牛偶", "AKIBO", "主燈控制"] },
+      { id: "yNvj24m-KbA", title: "基隆車站控制系統", watchUrl: "https://www.youtube.com/watch?v=yNvj24m-KbA", embedUrl: "https://www.youtube.com/embed/yNvj24m-KbA?feature=oembed", tags: ["基隆火車站", "山海鳴光", "車站控制", "豪華朗機工"] },
+      { id: "7wjWHlk9EHU", title: "台南奇美博物館", watchUrl: "https://www.youtube.com/watch?v=7wjWHlk9EHU", embedUrl: "https://www.youtube.com/embed/7wjWHlk9EHU?feature=oembed", tags: ["奇美博物館", "影子特展", "豪華朗機工", "中央控制"] },
+      { id: "0wHT3ey_Dkc", title: "台灣電力公司日光域控制系統", watchUrl: "https://www.youtube.com/watch?v=0wHT3ey_Dkc", embedUrl: "https://www.youtube.com/embed/0wHT3ey_Dkc?feature=oembed", tags: ["台電大樓", "日光域", "公共藝術", "電控系統"] },
+      { id: "RPPHKiupq58", title: "新竹台灣燈會主燈控制系統", watchUrl: "https://www.youtube.com/watch?v=RPPHKiupq58", embedUrl: "https://www.youtube.com/embed/RPPHKiupq58?feature=oembed", tags: ["新竹主燈", "台灣燈會", "乘風逐光", "豪華朗機工"] },
+      { id: "b9wYHVMWJ10", title: "Arduino教父", watchUrl: "https://www.youtube.com/watch?v=b9wYHVMWJ10", embedUrl: "https://www.youtube.com/embed/b9wYHVMWJ10?feature=oembed", tags: ["Arduino", "Massimo Banzi", "互動科技", "創辦人"] }
+    ];
+
+    // 21 Slide Images
+    const slideImages = Array.from({ length: 21 }, (_, i) => ({
+      id: i,
+      url: `https://www.decade.tw/images/slide/${i}.png`,
+      title: `現場實境寫真紀錄 #${i}`
+    }));
+
+    // 9 Algorithm Images
+    const algoImages = Array.from({ length: 9 }, (_, i) => ({
+      id: i,
+      url: `https://www.decade.tw/images/algorithmPic/${i}.png`,
+      title: `AI / 演算法視覺模型 #${i}`
+    }));
+
+    // Works Timeline (2006-2027)
+    const worksData = [
+      {
+        year: 2027,
+        group: "2025-2027",
+        items: [
+          { title: "「故宮南院 X 豪華朗機工」－中央控制軟體技術總監", partner: "故宮南院 / 豪華朗機工" }
+        ]
+      },
+      {
+        year: 2026,
+        group: "2025-2027",
+        items: [
+          { title: "Visual Model Training (SacoMesure AI Model)", partner: "AI 視覺模型訓練" },
+          { title: "Gxxgle Home-Connection calc algorithm", partner: "連線演算法研發" },
+          { title: "「臺中國家歌劇院 - 最後一問 X 豪華朗機工」－中央控制軟體技術總監", partner: "臺中國家歌劇院 / 豪華朗機工" }
+        ]
+      },
+      {
+        year: 2025,
+        group: "2025-2027",
+        items: [
+          { title: "「兩廳院 - 國家交響樂團」－ III資策會 X NSO X AI", partner: "兩廳院 / 資策會 / NSO" },
+          { title: "「豪華朗機工」－ 宇宙寫生", partner: "豪華朗機工" },
+          { title: "「豪華朗機工」－ 日光域", partner: "豪華朗機工" },
+          { title: "「豪華朗機工」－ 手識", partner: "豪華朗機工" },
+          { title: "「豪華朗機工」－ 四合", partner: "豪華朗機工" },
+          { title: "「豪華朗機工」－ 很難很難", partner: "豪華朗機工" },
+          { title: "「ＩＯＮＩＣ」－ SacoMeasure「桃園會展中心」－ 入口裝置藝術 匯聚流 丁建中", partner: "丁建中 / 桃園會展中心" },
+          { title: "「信義區微風顯示器」－ 視訊控制中心", partner: "微風集團" },
+          { title: "「台中都會公園」－ 顯示控制中心", partner: "台中都會公園" },
+          { title: "「特拉維夫」－ 裝置藝術 丁建中", partner: "特拉維夫 / 丁建中" },
+          { title: "「IRCAM 法國龐畢度美術館」－ 失眠寫生簿 豪華朗機工", partner: "法國 IRCAM / 龐畢度" },
+          { title: "「兩廳院 舞鈴劇團」－ 兩廳院 5G手環無線點控 資策會", partner: "資策會 / 兩廳院" },
+          { title: "「密室逃脫」－ 超高頻ＲＦＩＤ", partner: "RFID 互動系統" },
+          { title: "「北區資安中心」－ 顯示控制中心", partner: "資安中心" },
+          { title: "「北區球場」－ 顯示控制中心", partner: "體育園區" },
+          { title: "「ＩＴＲＩ」－ 震動演算法分析", partner: "工研院" },
+          { title: "「台北流行音樂中心－幻流行光 Ｘ 豪華朗機工」－中央控制軟體建置與技術總監", partner: "台北流行音樂中心 / 豪華朗機工" },
+          { title: "「高雄流行音樂中心 波光之翼 Ｘ 豪華朗機工」－中央控制軟體建置與技術總監", partner: "高雄流行音樂中心 / 豪華朗機工" },
+          { title: "「基隆火車站 山海鳴光 Ｘ 豪華朗機工」－中央控制軟體建置與技術總監", partner: "基隆火車站 / 豪華朗機工" }
+        ]
+      },
+      {
+        year: 2020,
+        group: "2018-2020",
+        items: [
+          { title: "「台灣燈會－新竹主燈 Ｘ 豪華朗機工」－中央控制軟體技術總監", partner: "交通部觀光局 / 豪華朗機工" },
+          { title: "「台北燈會－台北萬華主燈 Ｘ ＡＫＩＢＯ老師」－中央控制軟體技術總監", partner: "台北市政府 / AKIBO老師" }
+        ]
+      },
+      {
+        year: 2019,
+        group: "2018-2020",
+        items: [
+          { title: "「信義誠品30週年」 一起幻想 Ｘ 豪華朗機工－機械手臂中央控制技術總監", partner: "誠品書店 / 豪華朗機工" },
+          { title: "「臺南奇美博物館」 影子特展 Ｘ 豪華朗機工－中央控制技術總監", partner: "奇美博物館 / 豪華朗機工" },
+          { title: "「台北當代藝術館 」查無此人小花展 Ｘ 豪華朗機工 －中央控制技術總監", partner: "台北當代藝術館 / 豪華朗機工" },
+          { title: "「永豐餘元太科技EINK 」電子紙控制計劃案", partner: "永豐餘 / 元太科技" }
+        ]
+      },
+      {
+        year: 2018,
+        group: "2018-2020",
+        items: [
+          { title: "「臺中世界花卉博覽會」聆聽花開的聲音 Ｘ 豪華朗機工－中央控制系統建置", partner: "台中花博 / 豪華朗機工" },
+          { title: "「GoGoRo新⾞發表會」硬體控制系統建置", partner: "Gogoro Taiwan" },
+          { title: "「宜蘭蘭傳藝中心 」互動介⾯多點控制設計", partner: "國立傳統藝術中心" },
+          { title: "「臺北小巨蛋CTC世界盃國際標準舞公開賽」RF無線控制設計", partner: "台北小巨蛋 / CTC世界盃" }
+        ]
+      },
+      {
+        year: 2017,
+        group: "2015-2017",
+        items: [
+          { title: "「松山文創園區讀衣II 」時尚 X 藝術跨界展 Ｘ JUST IN XX 周裕穎－驅動控制系統建置", partner: "JUST IN XX 周裕穎" },
+          { title: "「台北世大運」群控光電顧問", partner: "台北世大運組委會" },
+          { title: "「白晝之夜」藝術活動 Ｘ 藝術家江惠菁 Ｘ 步里赫森－電路技術支援", partner: "台北白晝之夜" },
+          { title: "「白晝之夜－台電大樓公共藝術」Ｘ 柯市長點燈－遠端控制系統", partner: "台電大樓 / 台北市政府" },
+          { title: "「元太科技EINK 電子紙」驅動控制系統規劃執行", partner: "元太科技" },
+          { title: "「Fashion Tech JustInCase 」科技服裝設計 Ｘ JUST IN XX 周裕穎－驅動控制系統規劃建置", partner: "JUST IN XX" },
+          { title: "「農業溫室與政府公開資訊」研究計劃", partner: "農委會研究專案" },
+          { title: "「臺中機器學習MachineLearning」資料研究計劃", partner: "機器學習研究" },
+          { title: "「國家歌劇院 UltraCombo群控無人機」通訊協定顧問", partner: "UltraCombo / 國家歌劇院" }
+        ]
+      },
+      {
+        year: 2016,
+        group: "2015-2017",
+        items: [
+          { title: "「台灣電力公司公共藝術」日光域 Ｘ 華麗邏輯－電控技術設計與製作", partner: "華麗邏輯 / 台電" },
+          { title: "「台灣電力公司公共藝術」河飄風 Ｘ 華麗邏輯－電路設計與製作", partner: "華麗邏輯 / 台電" },
+          { title: "「台灣電力公司公共藝術」太陽之詩 Ｘ 華麗邏輯－馬達電控技術與製作", partner: "華麗邏輯 / 台電" }
+        ]
+      },
+      {
+        year: 2015,
+        group: "2015-2017",
+        items: [
+          { title: "「2015解密國家寶藏 Ｘ 奇想樂園互動科技館」採用本公司研發Centurion ProV2.0系統", partner: "工研院 / Centurion ProV2.0" },
+          { title: "「智慧型IMU壓力感測藍芽通訊柺杖」Ｘ 國立台灣大學 ivLab Ｘ 資策會創新所－共同研發", partner: "台灣大學 / 資策會" },
+          { title: "「智慧型震動馬達感測藍芽通訊鞋墊』Ｘ 資策會創新所", partner: "資策會創新所" }
+        ]
+      },
+      {
+        year: 2014,
+        group: "2010-2014",
+        items: [
+          { title: "「敦煌擴增實境導覽裝置」小沙彌 Ｘ 台灣大學ivLab", partner: "台灣大學 ivLab" },
+          { title: "「2014解密國家寶藏－奇想樂園互動科技館」採用本公司研發Centurion ProV1.5系統", partner: "工研院 / Centurion ProV1.5" },
+          { title: "「桃園機場第二航廈公共藝術裝置 」歐基理德的飛行 X 豪華朗機工", partner: "桃園機場 / 豪華朗機工" },
+          { title: "「英國曼徹斯特」日光域 X 豪華朗機工", partner: "英國曼徹斯特 / 豪華朗機工" }
+        ]
+      },
+      {
+        year: 2013,
+        group: "2010-2014",
+        items: [
+          { title: "「臺南鹽水月津港燈節主燈」日光域 X 豪華朗機工", partner: "月津港燈節 / 豪華朗機工" },
+          { title: "「文建會科技與表演藝術結合旗艦計畫」王俊傑 X 豪華朗機工 X 北藝大科藝中心 『無人劇場Timecode系統研發』採用Centurion ProV1.0", partner: "北藝大 / 豪華朗機工" },
+          { title: "「汐止台灣科學園區大廳公共藝術」見為知著 X 豪華朗機工", partner: "汐止科學園區 / 豪華朗機工" }
+        ]
+      },
+      {
+        year: 2012,
+        group: "2010-2014",
+        items: [
+          { title: "「汐止台灣科學園區戶外公共藝術」時中光 X 豪華朗機工", partner: "汐止科學園區 / 豪華朗機工" },
+          { title: "「文建會科技與表演藝術結合旗艦計畫」M Project X 豪華朗機工 X 周先生 －共同創作", partner: "周先生 / 豪華朗機工" },
+          { title: "「足部壓力無線傳輸感測模組」X 國立台灣大學 X 資策會－共同創作", partner: "台灣大學 / 資策會" },
+          { title: "「文建會科技與表演藝術結合旗艦計畫 」線上演出『名導濾鏡』之雲端冒險演出之一 X 廣藝基金會 X 台北藝術大學", partner: "廣藝基金會 / 北藝大" },
+          { title: "「Computex Taipei 」雲端個人3D印表機 X 威盛電子股份有限公司－合作研發", partner: "威盛電子 / Computex" },
+          { title: "「Facebook互動式數位藝術櫥窗」X 台北教育大學 X 藝術家張博智 －合作研發", partner: "張博智 / 北教大" },
+          { title: "業界演講 CTimes Android Days －『踏進Arduino互動科技世界－使用Android』(200人次)", partner: "CTimes 專業論壇" },
+          { title: "「藝術裝置」福 X 豪華朗機工－互動設計", partner: "豪華朗機工" },
+          { title: "「ZigBee無線傳輸」X 德明財經科技大學－距離感測模組研發", partner: "德明財經科大" }
+        ]
+      },
+      {
+        year: 2011,
+        group: "2010-2014",
+        items: [
+          { title: "研發 LED幻彩無線傳輸控制器", partner: "自研硬體控制卡" },
+          { title: "「Facebook互動式音樂」Tender Blackmail黑信 X 音樂家陳建騏 X 藝術家張博智 X 人力飛行劇團", partner: "陳建騏 / 張博智 / 人力飛行劇團" },
+          { title: "「台北世界設計大會」聲音互動式展場 X 亞洲大學－聲音互動設計製作", partner: "台北世界設計大會 / 亞洲大學" },
+          { title: "「研發Centurion多點互動控制系統」", partner: "Centurion 系統架構" },
+          { title: "「藝術裝置」一日 X 豪華朗機工－電子控制設計", partner: "豪華朗機工" },
+          { title: "「藝術裝置」日光域 X 豪華朗機工－電子控制設計", partner: "豪華朗機工" }
+        ]
+      },
+      {
+        year: 2010,
+        group: "2010-2014",
+        items: [
+          { title: "「藝術裝置」游泳 X 豪華朗機工－電子控制設計", partner: "豪華朗機工" },
+          { title: "於台灣大學研發智慧感測手環", partner: "台灣大學" },
+          { title: "「藝術裝置」浪2 X 豪華朗機工－電子控制設計", partner: "豪華朗機工" },
+          { title: "「藝術裝置」無線音樂控制器 X 藝術家張博智－電子控制設計", partner: "張博智" },
+          { title: "「互動影像裝置」水立方時尚館 籠中鳥－藝術裝置電子控制設計", partner: "水立方時尚館" },
+          { title: "帝凱科技有限公司正式成立", partner: "公司註冊成立" }
+        ]
+      },
+      {
+        year: 2009,
+        group: "2006-2009",
+        items: [
+          { title: "於台灣大學研發智慧壓力感測鞋、智慧呼吸感測衣", partner: "台灣大學" },
+          { title: "「藝術裝置」浪1 X 豪華朗機工－電子控制設計", partner: "豪華朗機工" },
+          { title: "帝凱科技有限公司成立籌備處", partner: "籌備處設立" },
+          { title: "申請國立台北藝術大學育成中心進駐廠商，獲99年度U-START教育部大專畢業生創業服務計畫30萬補助", partner: "教育部 U-START / 北藝大" }
+        ]
+      },
+      {
+        year: 2008,
+        group: "2006-2009",
+        items: [
+          { title: "美國洛杉磯與新加坡SIGGRAPH會議發表教室多人控制系統『Many to One PC by WSN System』", partner: "SIGGRAPH (USA / SG)" },
+          { title: "「藝術裝置」時間流產 X 朗機工－電子控制設計", partner: "朗機工" }
+        ]
+      },
+      {
+        year: 2007,
+        group: "2006-2009",
+        items: [
+          { title: "「藝術裝置」南方樂浪 X 朗機工－電子控制設計", partner: "朗機工" }
+        ]
+      },
+      {
+        year: 2006,
+        group: "2006-2009",
+        items: [
+          { title: "研發與生產－台灣中國石油S3加油機控制介面卡 (Current Loop)", partner: "中油 S3 加油站" },
+          { title: "創辦Arduino.TW－台灣Arduino使用者社群", partner: "Arduino.TW 社群創立" }
+        ]
+      }
+    ];
+
+    /* ==========================================================================
+       UI Elements & Interactivity
+       ========================================================================== */
+    const videoGrid = document.getElementById('videoGrid');
+    const videoSearchInput = document.getElementById('videoSearchInput');
+    const videoCategoryControl = document.getElementById('videoCategoryControl');
+
+    const sliderTrack = document.getElementById('sliderTrack');
+    const sliderPrev = document.getElementById('sliderPrev');
+    const sliderNext = document.getElementById('sliderNext');
+    const slideGrid = document.getElementById('slideGrid');
+    const algoGrid = document.getElementById('algoGrid');
+
+    const worksContainer = document.getElementById('worksContainer');
+    const worksFilterControl = document.getElementById('worksFilterControl');
+    const worksSearchInput = document.getElementById('worksSearchInput');
+
+    const videoModal = document.getElementById('videoModal');
+    const videoModalIframe = document.getElementById('videoModalIframe');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalSub = document.getElementById('modalSub');
+    const videoModalClose = document.getElementById('videoModalClose');
+
+    const imageLightbox = document.getElementById('imageLightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxTitle = document.getElementById('lightboxTitle');
+    const lightboxIndex = document.getElementById('lightboxIndex');
+    const lightboxClose = document.getElementById('lightboxClose');
+    const lightboxPrev = document.getElementById('lightboxPrev');
+    const lightboxNext = document.getElementById('lightboxNext');
+
+    let currentLightboxArray = [];
+    let currentLightboxIdx = 0;
+    let currentSlideIndex = 0;
+
+    // Render Videos
+    let currentVideoFilter = 'all';
+    function renderVideos() {
+      const q = videoSearchInput.value.trim().toLowerCase();
+      let list = videosData;
+      if (currentVideoFilter !== 'all') {
+        list = list.filter(v => v.title.includes(currentVideoFilter) || v.tags.some(t => t.includes(currentVideoFilter)));
+      }
+      if (q) {
+        list = list.filter(v => v.title.toLowerCase().includes(q) || v.tags.some(t => t.toLowerCase().includes(q)));
+      }
+
+      videoGrid.innerHTML = '';
+      if (list.length === 0) {
+        videoGrid.innerHTML = `<div style="grid-column: 1 / -1; text-align: center; padding: 4rem; color: var(--apple-text-tertiary);">查無相符影音項目</div>`;
+        return;
+      }
+
+      list.forEach((v, idx) => {
+        const card = document.createElement('div');
+        card.className = 'apple-video-card';
+        card.innerHTML = `
+          <div class="apple-video-thumb" onclick="playVideo('${v.id}')">
+            <img src="https://img.youtube.com/vi/${v.id}/hqdefault.jpg" alt="${v.title}" loading="lazy" />
+            <div class="apple-play-pill">
+              <div class="play-circle">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+              </div>
+            </div>
+          </div>
+          <div class="apple-video-body">
+            <div>
+              <span class="apple-card-tag">#${String(idx + 1).padStart(2, '0')} · YouTube</span>
+              <h3 class="apple-video-title">${v.title}</h3>
+              <div class="apple-tag-list">
+                ${v.tags.map(t => `<span class="apple-pill-tag">${t}</span>`).join('')}
+              </div>
+            </div>
+            <div class="apple-video-footer">
+              <button class="apple-link" onclick="playVideo('${v.id}')">
+                觀看影片 <span>›</span>
+              </button>
+              <a href="${v.watchUrl}" target="_blank" rel="noopener noreferrer" style="font-size: 13px; color: var(--apple-text-tertiary);">
+                YouTube ↗
+              </a>
+            </div>
+          </div>
+        `;
+        videoGrid.appendChild(card);
+      });
+    }
+
+    videoSearchInput.addEventListener('input', renderVideos);
+    videoCategoryControl.addEventListener('click', (e) => {
+      if (e.target.classList.contains('apple-seg-btn')) {
+        videoCategoryControl.querySelectorAll('.apple-seg-btn').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+        currentVideoFilter = e.target.dataset.filter;
+        renderVideos();
+      }
+    });
+
+    function playVideo(id) {
+      const v = videosData.find(item => item.id === id);
+      if (!v) return;
+      videoModalIframe.src = `${v.embedUrl}?autoplay=1`;
+      modalTitle.textContent = v.title;
+      modalSub.textContent = `YouTube 實況影片 · ${v.id}`;
+      videoModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    videoModalClose.addEventListener('click', () => {
+      videoModal.classList.remove('active');
+      videoModalIframe.src = '';
+      document.body.style.overflow = '';
+    });
+    videoModal.addEventListener('click', (e) => {
+      if (e.target === videoModal) videoModalClose.click();
+    });
+
+    // Render Galleries
+    function initGalleries() {
+      // Slide Slider & Grid
+      sliderTrack.innerHTML = '';
+      slideGrid.innerHTML = '';
+      slideImages.forEach((item, index) => {
+        // slider item
+        const slideItem = document.createElement('div');
+        slideItem.className = 'apple-slide-item';
+        slideItem.innerHTML = `
+          <img src="${item.url}" alt="${item.title}" loading="lazy" />
+          <div class="apple-slider-info">
+            <div>
+              <span class="apple-card-tag">精選現場展示</span>
+              <h4 style="font-size: 1.4rem; color: #fff; font-weight: 600;">${item.title}</h4>
+            </div>
+            <button class="apple-btn apple-btn-secondary" onclick="openLightbox(slideImages, ${index})">
+              全螢幕檢視
+            </button>
+          </div>
+        `;
+        sliderTrack.appendChild(slideItem);
+
+        // grid item
+        const gItem = document.createElement('div');
+        gItem.className = 'apple-gallery-card';
+        gItem.onclick = () => openLightbox(slideImages, index);
+        gItem.innerHTML = `
+          <img src="${item.url}" alt="${item.title}" loading="lazy" />
+          <div class="apple-gallery-card-overlay">
+            <span class="apple-card-tag">Slide #${item.id}</span>
+            <div style="font-size: 15px; font-weight: 600; color: #fff;">${item.title}</div>
+          </div>
+        `;
+        slideGrid.appendChild(gItem);
+      });
+
+      // Algo Grid
+      algoGrid.innerHTML = '';
+      algoImages.forEach((item, index) => {
+        const gItem = document.createElement('div');
+        gItem.className = 'apple-gallery-card';
+        gItem.onclick = () => openLightbox(algoImages, index);
+        gItem.innerHTML = `
+          <img src="${item.url}" alt="${item.title}" loading="lazy" />
+          <div class="apple-gallery-card-overlay">
+            <span class="apple-card-tag">Algorithm #${item.id}</span>
+            <div style="font-size: 15px; font-weight: 600; color: #fff;">${item.title}</div>
+          </div>
+        `;
+        algoGrid.appendChild(gItem);
+      });
+    }
+
+    function updateSlider() {
+      sliderTrack.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
+    }
+
+    sliderPrev.addEventListener('click', () => {
+      currentSlideIndex = (currentSlideIndex - 1 + slideImages.length) % slideImages.length;
+      updateSlider();
+    });
+    sliderNext.addEventListener('click', () => {
+      currentSlideIndex = (currentSlideIndex + 1) % slideImages.length;
+      updateSlider();
+    });
+
+    // Gallery Tab Switching
+    const btnSlideTab = document.getElementById('btnSlideTab');
+    const btnAlgoTab = document.getElementById('btnAlgoTab');
+    const slideViewContainer = document.getElementById('slideViewContainer');
+    const algoViewContainer = document.getElementById('algoViewContainer');
+
+    btnSlideTab.addEventListener('click', () => {
+      btnSlideTab.classList.add('active');
+      btnAlgoTab.classList.remove('active');
+      slideViewContainer.style.display = 'block';
+      algoViewContainer.style.display = 'none';
+    });
+    btnAlgoTab.addEventListener('click', () => {
+      btnAlgoTab.classList.add('active');
+      btnSlideTab.classList.remove('active');
+      slideViewContainer.style.display = 'none';
+      algoViewContainer.style.display = 'block';
+    });
+
+    // Lightbox
+    function openLightbox(arr, idx) {
+      currentLightboxArray = arr;
+      currentLightboxIdx = idx;
+      renderLightbox();
+      imageLightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function renderLightbox() {
+      const it = currentLightboxArray[currentLightboxIdx];
+      lightboxImg.src = it.url;
+      lightboxTitle.textContent = it.title;
+      lightboxIndex.textContent = `${currentLightboxIdx + 1} / ${currentLightboxArray.length}`;
+    }
+
+    lightboxPrev.addEventListener('click', (e) => {
+      e.stopPropagation();
+      currentLightboxIdx = (currentLightboxIdx - 1 + currentLightboxArray.length) % currentLightboxArray.length;
+      renderLightbox();
+    });
+    lightboxNext.addEventListener('click', (e) => {
+      e.stopPropagation();
+      currentLightboxIdx = (currentLightboxIdx + 1) % currentLightboxArray.length;
+      renderLightbox();
+    });
+    lightboxClose.addEventListener('click', () => {
+      imageLightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+    imageLightbox.addEventListener('click', (e) => {
+      if (e.target === imageLightbox) lightboxClose.click();
+    });
+
+    // Render Works
+    let currentWorksEra = 'all';
+    function renderWorks() {
+      const q = worksSearchInput.value.trim().toLowerCase();
+      worksContainer.innerHTML = '';
+      let matchCount = 0;
+
+      worksData.forEach(yGroup => {
+        if (currentWorksEra !== 'all' && yGroup.group !== currentWorksEra) return;
+
+        let items = yGroup.items;
+        if (q) {
+          items = items.filter(it => it.title.toLowerCase().includes(q) || it.partner.toLowerCase().includes(q));
+        }
+
+        if (items.length === 0) return;
+        matchCount++;
+
+        const block = document.createElement('div');
+        block.className = 'apple-year-block';
+        block.innerHTML = `
+          <div class="apple-year-header">
+            <span class="apple-year-title">${yGroup.year}</span>
+            <span class="apple-year-count">${items.length} 件專案</span>
+          </div>
+          <div>
+            ${items.map(it => `
+              <div class="apple-work-item">
+                <span class="apple-work-name">${it.title}</span>
+                <span class="apple-work-partner">${it.partner}</span>
+              </div>
+            `).join('')}
+          </div>
+        `;
+        worksContainer.appendChild(block);
+      });
+
+      if (matchCount === 0) {
+        worksContainer.innerHTML = `<div style="text-align: center; padding: 4rem; color: var(--apple-text-tertiary);">查無相符實績紀錄</div>`;
+      }
+    }
+
+    worksSearchInput.addEventListener('input', renderWorks);
+    worksFilterControl.addEventListener('click', (e) => {
+      if (e.target.classList.contains('apple-seg-btn')) {
+        worksFilterControl.querySelectorAll('.apple-seg-btn').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+        currentWorksEra = e.target.dataset.era;
+        renderWorks();
+      }
+    });
+
+    // About Language Toggle
+    const btnAboutZh = document.getElementById('btnAboutZh');
+    const btnAboutEn = document.getElementById('btnAboutEn');
+    const aboutZh = document.getElementById('aboutZh');
+    const aboutEn = document.getElementById('aboutEn');
+
+    btnAboutZh.addEventListener('click', () => {
+      btnAboutZh.classList.add('active');
+      btnAboutEn.classList.remove('active');
+      aboutZh.style.display = 'block';
+      aboutEn.style.display = 'none';
+    });
+    btnAboutEn.addEventListener('click', () => {
+      btnAboutEn.classList.add('active');
+      btnAboutZh.classList.remove('active');
+      aboutZh.style.display = 'none';
+      aboutEn.style.display = 'block';
+    });
+
+    // Copy & Toast
+    const appleToast = document.getElementById('appleToast');
+    let toastTimer;
+    function copyValue(text, label) {
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text);
+      } else {
+        const t = document.createElement('textarea');
+        t.value = text;
+        document.body.appendChild(t);
+        t.select();
+        document.execCommand('copy');
+        document.body.removeChild(t);
+      }
+      appleToast.textContent = `已複製 ${label} 到剪貼簿。`;
+      appleToast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        appleToast.classList.remove('show');
+      }, 2400);
+    }
+
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('clientName').value.trim();
+      const email = document.getElementById('clientEmail').value.trim();
+      const category = document.getElementById('clientCategory').value;
+      const msg = document.getElementById('clientMsg').value.trim();
+
+      const mailto = `mailto:victoria@decade.tw?subject=${encodeURIComponent(`[專案合作洽詢] ${category} - ${name}`)}&body=${encodeURIComponent(`聯絡人/單位：${name}\n信箱：${email}\n專案類別：${category}\n\n洽詢內容：\n${msg}`)}`;
+      
+      appleToast.textContent = '感謝您的諮詢，正在開啟郵件客戶端...';
+      appleToast.classList.add('show');
+      setTimeout(() => {
+        window.location.href = mailto;
+      }, 700);
+    }
+
+    // Keyboard & Mobile drawer
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (videoModal.classList.contains('active')) videoModalClose.click();
+        if (imageLightbox.classList.contains('active')) lightboxClose.click();
+      } else if (imageLightbox.classList.contains('active')) {
+        if (e.key === 'ArrowLeft') lightboxPrev.click();
+        if (e.key === 'ArrowRight') lightboxNext.click();
+      }
+    });
+
+    const mobileToggle = document.getElementById('mobileToggle');
+    const mobileClose = document.getElementById('mobileClose');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    mobileToggle.addEventListener('click', () => mobileDrawer.classList.add('open'));
+    mobileClose.addEventListener('click', () => mobileDrawer.classList.remove('open'));
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => mobileDrawer.classList.remove('open'));
+    });
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      renderVideos();
+      initGalleries();
+      renderWorks();
+    });
+  </script>
+</body>
+</html>

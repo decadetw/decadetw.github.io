@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>帝凱互動科技 DECADE Interactive Technology</title>
+<link rel="icon" href="https://www.decade.tw/images/logo/decade_logo.png" type="image/png">
+<style>
+/* ═══════════════════════════════════════════
+   RESET & BASE
+   ═══════════════════════════════════════════ */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0a0f;--bg2:#12121a;--bg3:#1a1a2e;
+  --text:#e8e8f0;--text2:#a0a0b8;
+  --accent:#00d4ff;--accent2:#7b2ff7;--accent3:#ff2d75;
+  --gold:#d4a843;
+  --font-main:'Noto Sans TC','Noto Sans JP',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --font-mono:'Fira Code','Cascadia Code','Source Code Pro',monospace;
+  --max-w:1200px;--nav-h:64px;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--bg);color:var(--text);font-family:var(--font-main);line-height:1.7;overflow-x:hidden}
+a{color:var(--accent);text-decoration:none;transition:color .3s}
+a:hover{color:var(--accent2)}
+img{max-width:100%;height:auto;display:block}
+h1,h2,h3,h4{font-weight:700;line-height:1.3}
+h1{font-size:clamp(2rem,5vw,3.5rem)}
+h2{font-size:clamp(1.5rem,3vw,2.2rem)}
+h3{font-size:clamp(1.1rem,2vw,1.4rem)}
+
+/* ═══════════════════════════════════════════
+   NAVIGATION
+   ═══════════════════════════════════════════ */
+nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);background:rgba(10,10,15,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.06);z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1rem,4vw,3rem)}
+nav .logo{display:flex;align-items:center;gap:.75rem}
+nav .logo img{height:36px;width:auto}
+nav .logo span{font-size:1.1rem;font-weight:700;letter-spacing:.08em;color:var(--text)}
+nav .nav-links{display:flex;gap:1.5rem;list-style:none}
+nav .nav-links a{color:var(--text2);font-size:.9rem;font-weight:500;letter-spacing:.05em;transition:color .3s}
+nav .nav-links a:hover,nav .nav-links a.active{color:var(--accent)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:.5rem}
+.hamburger span{width:24px;height:2px;background:var(--text);transition:all .3s}
+
+/* ═══════════════════════════════════════════
+   HERO / HOME
+   ═══════════════════════════════════════════ */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:calc(var(--nav-h) + 2rem) 2rem 4rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 80%,rgba(0,212,255,.08) 0%,transparent 60%),radial-gradient(ellipse at 30% 20%,rgba(123,47,247,.06) 0%,transparent 50%);z-index:0}
+.hero>*{position:relative;z-index:1}
+.hero h1{margin-bottom:1rem;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero .tagline{font-size:clamp(1rem,2vw,1.3rem);color:var(--text2);max-width:700px;margin-bottom:2rem}
+.hero .desc{font-size:.95rem;color:var(--text2);max-width:800px;margin:0 auto 3rem;line-height:1.9}
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);animation:bounce 2s infinite}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(10px)}}
+
+/* ═══════════════════════════════════════════
+   SECTION COMMON
+   ═══════════════════════════════════════════ */
+section{padding:5rem clamp(1rem,4vw,3rem)}
+.section-header{text-align:center;margin-bottom:3rem}
+.section-header h2{margin-bottom:.5rem}
+.section-header p{color:var(--text2);font-size:.95rem}
+.section-divider{width:60px;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));margin:1rem auto;border-radius:2px}
+
+/* ═══════════════════════════════════════════
+   VIDEO GRID
+   ═══════════════════════════════════════════ */
+.video-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,380px),1fr));gap:1.5rem;max-width:var(--max-w);margin:0 auto}
+.video-card{background:var(--bg2);border:1px solid rgba(255,255,255,.05);border-radius:12px;overflow:hidden;transition:transform .3s,box-shadow .3s}
+.video-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,212,255,.1)}
+.video-card .embed-wrap{position:relative;padding-bottom:56.25%;height:0;overflow:hidden}
+.video-card .embed-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+.video-card .vid-label{padding:.75rem 1rem;font-size:.85rem;color:var(--text2);border-top:1px solid rgba(255,255,255,.05)}
+.video-card .vid-num{color:var(--accent);font-family:var(--font-mono);font-size:.8rem;margin-right:.5rem}
+
+/* ═══════════════════════════════════════════
+   GALLERY (SLIDE)
+   ═══════════════════════════════════════════ */
+.gallery-scroll{display:flex;gap:1rem;overflow-x:auto;padding:1rem 0 2rem;scroll-snap-type:x mandatory;max-width:var(--max-w);margin:0 auto;scrollbar-width:thin;scrollbar-color:var(--accent2) transparent}
+.gallery-scroll::-webkit-scrollbar{height:6px}
+.gallery-scroll::-webkit-scrollbar-thumb{background:var(--accent2);border-radius:3px}
+.gallery-item{flex:0 0 280px;scroll-snap-align:center;border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,.05);cursor:pointer;transition:transform .3s,box-shadow .3s}
+.gallery-item:hover{transform:scale(1.03);box-shadow:0 8px 30px rgba(123,47,247,.15)}
+.gallery-item img{width:100%;height:180px;object-fit:cover;display:block}
+
+/* ALGO GALLERY */
+.algo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;max-width:var(--max-w);margin:0 auto}
+.algo-item{border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,.05);transition:transform .3s}
+.algo-item:hover{transform:scale(1.04)}
+.algo-item img{width:100%;height:160px;object-fit:cover;display:block}
+
+/* ═══════════════════════════════════════════
+   LIGHTBOX
+   ═══════════════════════════════════════════ */
+.lightbox{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:2000;align-items:center;justify-content:center;cursor:pointer}
+.lightbox.open{display:flex}
+.lightbox img{max-width:90vw;max-height:85vh;border-radius:8px;box-shadow:0 0 60px rgba(0,212,255,.2)}
+.lightbox .close-btn{position:absolute;top:1.5rem;right:1.5rem;color:#fff;font-size:2rem;cursor:pointer;width:48px;height:48px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,.1);transition:background .3s}
+.lightbox .close-btn:hover{background:rgba(255,255,255,.2)}
+
+/* ═══════════════════════════════════════════
+   WORKS TIMELINE
+   ═══════════════════════════════════════════ */
+.timeline{max-width:var(--max-w);margin:0 auto;position:relative;padding-left:2rem}
+.timeline::before{content:'';position:absolute;left:1.5rem;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--accent),var(--accent2),var(--accent3))}
+.timeline-year{margin-bottom:2.5rem}
+.timeline-year .year-label{font-family:var(--font-mono);font-size:1.6rem;font-weight:700;color:var(--accent);margin-bottom:.75rem;display:flex;align-items:center;gap:.75rem}
+.timeline-year .year-label::before{content:'';width:12px;height:12px;border-radius:50%;background:var(--accent);flex-shrink:0}
+.timeline-item{padding:.5rem 0 .5rem 2rem;position:relative;border-left:2px solid rgba(255,255,255,.06)}
+.timeline-item::before{content:'';position:absolute;left:-7px;top:.85rem;width:10px;height:10px;border-radius:50%;background:var(--accent2);border:2px solid var(--bg)}
+.timeline-item .proj-title{font-weight:600;color:var(--text);margin-bottom:.2rem}
+.timeline-item .proj-role{font-size:.85rem;color:var(--text2);font-style:italic}
+
+/* ═══════════════════════════════════════════
+   ABOUT
+   ═══════════════════════════════════════════ */
+.about-content{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:1fr;gap:3rem}
+.about-block{background:var(--bg2);border:1px solid rgba(255,255,255,.05);border-radius:14px;padding:2rem}
+.about-block h3{margin-bottom:1rem;color:var(--accent)}
+.about-block p{margin-bottom:1rem;color:var(--text2);font-size:.95rem}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin-top:1rem}
+.service-card{background:var(--bg3);border:1px solid rgba(255,255,255,.06);border-radius:10px;padding:1.2rem;text-align:center;transition:transform .3s}
+.service-card:hover{transform:translateY(-3px)}
+.service-card .svc-icon{font-size:1.8rem;margin-bottom:.5rem}
+.service-card .svc-text{font-size:.85rem;color:var(--text2)}
+.media-list{list-style:none;max-width:var(--max-w);margin:0 auto}
+.media-list li{padding:.6rem 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.9rem;color:var(--text2)}
+.pub-list{list-style:none;max-width:var(--max-w);margin:0 auto}
+.pub-list li{padding:.8rem 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:.9rem;color:var(--text2)}
+
+/* ═══════════════════════════════════════════
+   CONTACTS
+   ═══════════════════════════════════════════ */
+.contact-grid{max-width:var(--max-w);margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:2rem}
+.contact-card{background:var(--bg2);border:1px solid rgba(255,255,255,.05);border-radius:14px;padding:2rem}
+.contact-card h3{margin-bottom:1.2rem;color:var(--gold)}
+.contact-row{display:flex;align-items:flex-start;gap:.75rem;padding:.5rem 0;font-size:.9rem}
+.contact-row .label{font-weight:600;color:var(--accent);min-width:100px;white-space:nowrap}
+.contact-row .value{color:var(--text2);word-break:break-all}
+.map-wrap{border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.05);margin-top:2rem;max-width:var(--max-w);margin-left:auto;margin-right:auto}
+.map-wrap img{width:100%;height:auto;display:block}
+.contact-links{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1rem}
+.contact-links a{display:inline-flex;align-items:center;gap:.4rem;background:var(--bg3);border:1px solid rgba(255,255,255,.08);border-radius:8px;padding:.5rem 1rem;font-size:.85rem;transition:all .3s}
+.contact-links a:hover{border-color:var(--accent);color:var(--accent)}
+
+/* ═══════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════ */
+footer{text-align:center;padding:3rem 2rem;border-top:1px solid rgba(255,255,255,.05);font-size:.8rem;color:var(--text2)}
+
+/* ═══════════════════════════════════════════
+   PARTICLES CANVAS
+   ═══════════════════════════════════════════ */
+#particles{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.4}
+section,.hero,footer{position:relative;z-index:1}
+
+/* ═══════════════════════════════════════════
+   ANIMATIONS
+   ═══════════════════════════════════════════ */
+.fade-in{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════ */
+@media(max-width:768px){
+  nav .nav-links{display:none;position:absolute;top:var(--nav-h);left:0;right:0;background:rgba(10,10,15,.97);flex-direction:column;padding:1.5rem;gap:1rem;border-bottom:1px solid rgba(255,255,255,.06)}
+  nav .nav-links.open{display:flex}
+  .hamburger{display:flex}
+  .video-grid{grid-template-columns:1fr}
+  .timeline{padding-left:1.5rem}
+  .timeline-item{padding-left:1.5rem}
+  .contact-grid{grid-template-columns:1fr}
+  .contact-row{flex-direction:column;gap:.3rem}
+  .contact-row .label{min-width:auto}
+  .algo-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+  .algo-item img{height:120px}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ PARTICLES ═══════════════ -->
+<canvas id="particles"></canvas>
+
+<!-- ═══════════════ NAVIGATION ═══════════════ -->
+<nav>
+  <div class="logo">
+    <img src="https://www.decade.tw/images/logo/decade_logo.png" alt="DECADE Logo">
+    <span>DECADE.TW</span>
+  </div>
+  <div class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#home" class="active">首頁</a></li>
+    <li><a href="#works">歷年實績</a></li>
+    <li><a href="#about">關於</a></li>
+    <li><a href="#contacts">聯繫</a></li>
+  </ul>
+</nav>
+
+<!-- ═══════════════ HOME / HERO ═══════════════ -->
+<section id="home" class="hero">
+  <h1>互動科技解決方案</h1>
+  <p class="tagline">展場軟硬體整合設計規劃 · 舞台燈光控制 · 中央控制系統</p>
+  <div class="desc">
+    帝凱互動科技專注於展場軟硬體整合、舞台燈光與中央控制系統，將伺服馬達、機械手臂、電腦燈光等媒材以演算法呈現為活靈活現的互動藝術作品。
+  </div>
+  <div class="scroll-hint"><span style="color:var(--text2)">↓</span></div>
+</section>
+
+<!-- ═══════════════ YOUTUBE VIDEOS ═══════════════ -->
+<section id="videos" style="background:var(--bg2)">
+  <div class="section-header fade-in">
+    <h2>▶️ YouTube 影片展示</h2>
+    <div class="section-divider"></div>
+    <p>二十一件互動藝術作品影片記錄</p>
+  </div>
+  <div class="video-grid" id="videoGrid"></div>
+</section>
+
+<!-- ═══════════════ SLIDE GALLERY ═══════════════ -->
+<section id="gallery">
+  <div class="section-header fade-in">
+    <h2>🖼️ 圖片展示 · Slide Gallery</h2>
+    <div class="section-divider"></div>
+    <p>點擊放大查看</p>
+  </div>
+  <div class="gallery-scroll" id="slideGallery"></div>
+</section>
+
+<!-- ═══════════════ ALGORITHM GALLERY ═══════════════ -->
+<section id="algo-gallery" style="background:var(--bg2)">
+  <div class="section-header fade-in">
+    <h2>🖼️ AI / 演算法圖片 · Algorithm Gallery</h2>
+    <div class="section-divider"></div>
+    <p>演算法視覺化展示</p>
+  </div>
+  <div class="algo-grid" id="algoGrid"></div>
+</section>
+
+<!-- ═══════════════ WORKS TIMELINE ═══════════════ -->
+<section id="works" style="background:var(--bg2)">
+  <div class="section-header fade-in">
+    <h2>💼 歷年實績 · Works</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="timeline" id="timeline"></div>
+</section>
+
+<!-- ═══════════════ ABOUT ═══════════════ -->
+<section id="about">
+  <div class="section-header fade-in">
+    <h2>ℹ️ 關於 · About</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="about-content">
+    <!-- 公司簡介 -->
+    <div class="about-block fade-in">
+      <h3>公司簡介</h3>
+      <p>帝凱互動科技成立於2009年，是一間科技藝術的技術整合公司。擅長將硬體伺服馬達、機械手臂、電腦燈光等媒材利用演算法巧妙地展現活靈活現的作品；近年來中大型展覽互動需求越來越多，每件作品中央控制系統都搭配雲端，讓數千個媒材裝置可以輕鬆控制於手機進行管理、遠端作品可以監控與調閱歷程隨時排查。DECADE.TW期待未來十年在更多作品背後驅動更多繽紛，並步步求精朝向下一個十年邁進。</p>
+      <p>帝凱科技早年鑽研於嵌入式系統建置領域，透過自行研發中國石油S3軟體與加油機台通訊協定(Current Loop)的控制卡，行銷超過台灣四十間民營加油站，並透過多年累積的嵌入式系統設計，擁有豐富的規劃建置經驗，在互動技術領域穩定的導入系統，帶給觀眾更多互動想像體驗，及體現全新型態讓人耳目一新的聽覺、視覺感受。</p>
+      <p>2009年起，台灣的互動科技熱潮興起，帝凱科技考量公司長期成長與發展策略，率先透過開放硬體計劃，自行研發互動控制系統－Centurion。其利用CPLD為電路基礎，加上經過數年不斷的改良與擴充軟體功能，已運行於各大展場，如2014年、2015年工研院舉辦的奇想樂園與解密國家寶藏，2012年 Computex Taipei、2011年世界設計大展、台北市立美術館、關渡美術館、鳳甲美術館、MOT藝廊、香港藝術中心、澳洲、新加坡等地。多年以來也與國內知名藝術團隊 合作設計各種極具美感的聽覺、視覺互動藝術裝置，已將互動科技跨域成功的帶給觀眾前所未有的嶄新體驗。</p>
+      <p>帝凱科技（DECADE.TW）－ 期待未來十年，帝凱將創造更多元、新型態形式的科技藝術產業契機，把藝術與科技融合日常生活，提供每一場更完美的視覺、聽覺饗宴，步步求精朝向下一個十年邁進。</p>
+    </div>
+    <!-- About English -->
+    <div class="about-block fade-in">
+      <h3>About (English)</h3>
+      <p>Founded in 2009, DECADE Interactive Technology is an art and technology integration company. DECADE.TW specializes in the use of hardware servo motors, robotic arms, computer lighting and other media using algorithms to cleverly show the living works; in recent years the demand for medium and large-scale interactive exhibitions is increasing, the central control system for each piece of artwork with the cloud, so that thousands of media devices can be easily controlled by cell phone management, remote works can be monitored and access to the history of the check at any time. DECADE.TW is looking forward to the next ten years to drive more color behind more works and to move forward to the next ten years step by step.</p>
+      <p>DECADE.TW has been drilling in the field of embedded system construction for many years. Through the self-development of CPC S3 software and the control card of the communication protocol (Current Loop) of the refueling station, DECADE.TW has marketed more than 40 privately-owned refueling stations in Taiwan, and through years of accumulated embedded system design, DECADE.TW has a wealth of planning and construction experience, and has been able to steadily introduce the system in the field of interactive technology, which has brought the audience a more interactive and imaginative experience.</p>
+      <p>In 2009, Taiwan's interactive technology boom began, and considering the company's long-term growth and development strategy, DecaTech took the lead in developing its own interactive control system, Centurion, through the Open Hardware Program, which utilizes CPLDs as the circuitry base, and after several years of continuous improvement and expansion of software functions, has been running in major exhibitions.</p>
+    </div>
+    <!-- Services -->
+    <div class="about-block fade-in">
+      <h3>服務項目 · Services</h3>
+      <div class="services-grid">
+        <div class="service-card"><div class="svc-icon">🏛️</div><div class="svc-text">智慧型展場導覽系統建置與規劃</div></div>
+        <div class="service-card"><div class="svc-icon">🎨</div><div class="svc-text">互動科技裝置設計與製作</div></div>
+        <div class="service-card"><div class="svc-icon">🔧</div><div class="svc-text">產品原型設計與製作</div></div>
+        <div class="service-card"><div class="svc-icon">🪟</div><div class="svc-text">智慧型櫥窗</div></div>
+        <div class="service-card"><div class="svc-icon">💻</div><div class="svc-text">軟體程式設計</div></div>
+        <div class="service-card"><div class="svc-icon">⚡</div><div class="svc-text">電子電路設計與開發</div></div>
+        <div class="service-card"><div class="svc-icon">💡</div><div class="svc-text">互動裝置設計諮詢與規劃</div></div>
+        <div class="service-card"><div class="svc-icon">🎤</div><div class="svc-text">學術演講、書籍、台灣Arduino.TW</div></div>
+      </div>
+    </div>
+    <!-- Media -->
+    <div class="about-block fade-in">
+      <h3>媒體報導 · Media</h3>
+      <ul class="media-list">
+        <li>2012年8月號 CTimes – 封面故事 / 3D印表機 催生下一波製造革命</li>
+        <li>2012年7月號 CTimes – 專欄 / 跨界整合 互動世界新體驗</li>
+        <li>2012年6月號 CTimes – 科技藝廊 / 豪華朗機工 代言跨界整合新美學</li>
+        <li>2012年5月號 CTimes – 專欄 / 新媒體下的跨界演出</li>
+        <li>2012年4月號 CTimes – 封面故事 / Arduino的電路板互動藝術，專欄 / 開放硬體潮流下的新媒體</li>
+        <li>2011年文化創意精品專輯(2011 Charming Taiwan)，文建會</li>
+        <li>2011年第四季 新北市政府文化專刊 / 科技藝術的理性與感性 － 跨界整合新美學</li>
+        <li>2011年11月號 CTimes － 封面故事 / 開放硬體這條路</li>
+      </ul>
+    </div>
+    <!-- Publications -->
+    <div class="about-block fade-in">
+      <h3>出版品 · Publications</h3>
+      <ul class="pub-list">
+        <li>建置無線感測網路，Robert Faludi著，林義翔、劉士達譯，O'Reilly台灣，2012年</li>
+        <li>踏進互動科技世界－使用Arduino，Massimo Banzi著，林義翔譯，旗標出版社，2009年</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ CONTACTS ═══════════════ -->
+<section id="contacts" style="background:var(--bg2)">
+  <div class="section-header fade-in">
+    <h2>📇 聯繫 · Contacts</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-card fade-in">
+      <h3>公司資訊</h3>
+      <div class="contact-row"><span class="label">公司名稱</span><span class="value">帝凱科技有限公司 DECADE Co., Ltd.</span></div>
+      <div class="contact-row"><span class="label">地址（中）</span><span class="value">台北市北投路一段9-C號</span></div>
+      <div class="contact-row"><span class="label">地址（英）</span><span class="value">No.9-C, Sec. 1, Beitou Rd., Beitou Dist. Taipei City, Taiwan.</span></div>
+      <div class="contact-row"><span class="label">統一編號</span><span class="value">29133824</span></div>
+      <div class="contact-row"><span class="label">e-Mail</span><span class="value"><a href="mailto:victoria@decade.tw">victoria@decade.tw</a></span></div>
+    </div>
+    <div class="contact-card fade-in">
+      <h3>線上連結</h3>
+      <div class="contact-links">
+        <a href="https://www.facebook.com/DECADE.TW" target="_blank" rel="noopener">📘 Facebook</a>
+        <a href="https://lin.ee/RcQIUgM" target="_blank" rel="noopener">💬 LINE</a>
+        <a href="https://lin.ee/ecz7450a" target="_blank" rel="noopener">@ecz7450a</a>
+        <a href="mailto:victoria@decade.tw">✉️ Email</a>
+      </div>
+      <h3 style="margin-top:1.5rem">帳務資訊 · Banking</h3>
+      <div class="contact-row"><span class="label">銀行</span><span class="value">中國信託商業銀行－板新分行(822)</span></div>
+      <div class="contact-row"><span class="label">帳號</span><span class="value">4175-4026-6515</span></div>
+    </div>
+  </div>
+  <div class="map-wrap fade-in">
+    <img src="https://www.decade.tw/images/map/decade_map.jpg" alt="帝凱科技 地圖" loading="lazy">
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <p>&copy; 2009–2027 帝凱科技有限公司 DECADE Co., Ltd. All Rights Reserved.</p>
+  <p style="margin-top:.5rem">台北市北投路一段9-C號 &middot; victoria@decade.tw &middot; 統一編號 29133824</p>
+</footer>
+
+<!-- ═══════════════ LIGHTBOX ═══════════════ -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <div class="close-btn">&times;</div>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<!-- ═══════════════ JAVASCRIPT ═══════════════ -->
+<script>
+/* ──────────────────────────────────────────────
+   DATA — 21 YouTube videos
+   ────────────────────────────────────────────── */
+const YOUTUBE_VIDEOS = [
+  {id:'GGZHxkKLopg', title:'基隆山海鳴光'},
+  {id:'et_1mErdoKY', title:'台北燈節主燈偶控系統'},
+  {id:'RtN9LXy0nSY', title:'台灣燈會新竹主燈中央控制系統'},
+  {id:'9_RAmF9dAQo', title:'高雄流行音樂中心'},
+  {id:'AMcD4XxWp9Y', title:'豪華朗機工「聆聽花開的聲音」'},
+  {id:'uDib2sl9EQ4', title:'誠品30週年機械手臂控制'},
+  {id:'YPILezM36Mk', title:'台電大樓馬達控制系統'},
+  {id:'zv084TmAvKo', title:'台中世界花卉博覽會'},
+  {id:'Xkbk8A6MBmI', title:'台電大樓風動電路設計'},
+  {id:'mnyQ6473jj0', title:'世大運開幕式'},
+  {id:'XWcwRYwDcVs', title:'台灣科技園區裝置控制'},
+  {id:'uWbwuabvpgY', title:'台南燈會中央控制系統'},
+  {id:'blTlSpL5gPA', title:'誠品30週年機械手臂控制'},
+  {id:'G21wHvVLtVY', title:'法國IRCAM 中央控制'},
+  {id:'dF1C0cCYdGA', title:'台北流行音樂中心公共藝術控制系統'},
+  {id:'iLRVEH9zFao', title:'台北燈節主燈牛偶控制系統'},
+  {id:'yNvj24m-KbA', title:'基隆車站控制系統'},
+  {id:'7wjWHlk9EHU', title:'台南奇美博物館'},
+  {id:'0wHT3ey_Dkc', title:'台灣電力公司日光域控制系統'},
+  {id:'RPPHKiupq58', title:'新竹台灣燈會主燈控制系統'},
+  {id:'b9wYHVMWJ10', title:'Arduino教父'}
+];
+
+/* ──────────────────────────────────────────────
+   DATA — Slide gallery (21 images)
+   ────────────────────────────────────────────── */
+const SLIDE_IMAGES = [
+  'https://www.decade.tw/images/slide/0.png',
+  'https://www.decade.tw/images/slide/1.png',
+  'https://www.decade.tw/images/slide/10.png',
+  'https://www.decade.tw/images/slide/11.png',
+  'https://www.decade.tw/images/slide/12.png',
+  'https://www.decade.tw/images/slide/13.png',
+  'https://www.decade.tw/images/slide/14.png',
+  'https://www.decade.tw/images/slide/15.png',
+  'https://www.decade.tw/images/slide/16.png',
+  'https://www.decade.tw/images/slide/17.png',
+  'https://www.decade.tw/images/slide/18.png',
+  'https://www.decade.tw/images/slide/19.png',
+  'https://www.decade.tw/images/slide/2.png',
+  'https://www.decade.tw/images/slide/20.png',
+  'https://www.decade.tw/images/slide/3.png',
+  'https://www.decade.tw/images/slide/4.png',
+  'https://www.decade.tw/images/slide/5.png',
+  'https://www.decade.tw/images/slide/6.png',
+  'https://www.decade.tw/images/slide/7.png',
+  'https://www.decade.tw/images/slide/8.png',
+  'https://www.decade.tw/images/slide/9.png'
+];
+
+/* ──────────────────────────────────────────────
+   DATA — Algorithm gallery (9 images)
+   ────────────────────────────────────────────── */
+const ALGO_IMAGES = [
+  'https://www.decade.tw/images/algorithmPic/0.png',
+  'https://www.decade.tw/images/algorithmPic/1.png',
+  'https://www.decade.tw/images/algorithmPic/2.png',
+  'https://www.decade.tw/images/algorithmPic/3.png',
+  'https://www.decade.tw/images/algorithmPic/4.png',
+  'https://www.decade.tw/images/algorithmPic/5.png',
+  'https://www.decade.tw/images/algorithmPic/6.png',
+  'https://www.decade.tw/images/algorithmPic/7.png',
+  'https://www.decade.tw/images/algorithmPic/8.png'
+];
+
+/* ──────────────────────────────────────────────
+   DATA — Works timeline (year → projects)
+   ────────────────────────────────────────────── */
+const WORKS_DATA = {
+  '2027': ['「故宮南院 X 豪華朗機工」－中央控制軟體技術總監'],
+  '2026': [
+    'Visual Model Training(SacoMesure AI Model)',
+    'Gxxgle Home-Connection calc algorithm',
+    '「臺中國家歌劇院 - 最後一問 X 豪華朗機工」－中央控制軟體技術總監'
+  ],
+  '2025': [
+    '「兩廳院 - 國家交響樂團」－ III資策會 X NSO X AI',
+    '「豪華朗機工」－ 宇宙寫生',
+    '「豪華朗機工」－ 日光域',
+    '「豪華朗機工」－ 手識',
+    '「豪華朗機工」－ 四合',
+    '「豪華朗機工」－ 很難很難',
+    '「ＩＯＮＩＣ」－ SacoMeasure「桃園會展中心」－ 入口裝置藝術 匯聚流 丁建中',
+    '「信義區微風顯示器」－ 視訊控制中心',
+    '「台中都會公園」－ 顯示控制中心',
+    '「特拉維夫」－ 裝置藝術 丁建中',
+    '「IRCAM 法國龐畢度美術館」－ 失眠寫生簿 豪華朗機工',
+    '「兩廳院 舞鈴劇團」－ 兩廳院 5G手環無線點控 資策會',
+    '「密室逃脫」－ 超高頻ＲＦＩＤ',
+    '「北區資安中心」－ 顯示控制中心',
+    '「北區球場」－ 顯示控制中心',
+    '「ＩＴＲＩ」－ 震動演算法分析',
+    '「台北流行音樂中心－幻流行光 Ｘ 豪華朗機工」－中央控制軟體建置與技術總監',
+    '「高雄流行音樂中心 波光之翼 Ｘ 豪華朗機工」－中央控制軟體建置與技術總監',
+    '「基隆火車站 山海鳴光 Ｘ 豪華朗機工」－中央控制軟體建置與技術總監'
+  ],
+  '2020': [
+    '「台灣燈會－新竹主燈 Ｘ 豪華朗機工」－中央控制軟體技術總監',
+    '「台北燈會－台北萬華主燈 Ｘ ＡＫＩＢＯ老師」－中央控制軟體技術總監'
+  ],
+  '2019': [
+    '「信義誠品30週年」 一起幻想 Ｘ 豪華朗機工－機械手臂中央控制技術總監',
+    '「臺南奇美博物館」 影子特展 Ｘ 豪華朗機工－中央控制技術總監',
+    '「台北當代藝術館 」查無此人小花展 Ｘ 豪華朗機工 －中央控制技術總監',
+    '「永豐餘元太科技EINK 」電子紙控制計劃案'
+  ],
+  '2018': [
+    '「臺中世界花卉博覽會」聆聽花開的聲音 Ｘ 豪華朗機工－中央控制系統建置',
+    '「GoGoRo新⾞發表會」硬體控制系統建置',
+    '「宜蘭蘭傳藝中心 」互動介⾯多點控制設計',
+    '「臺北小巨蛋CTC世界盃國際標準舞公開賽」RF無線控制設計'
+  ],
+  '2017': [
+    '「松山文創園區讀衣II 」時尚 X 藝術跨界展 Ｘ JUST IN XX 周裕穎－驅動控制系統建置',
+    '「台北世大運」群控光電顧問',
+    '「白晝之夜」藝術活動 Ｘ 藝術家江惠菁 Ｘ 步里赫森－電路技術支援',
+    '「白晝之夜－台電大樓公共藝術」Ｘ 柯市長點燈－遠端控制系統',
+    '「元太科技EINK 電子紙」驅動控制系統規劃執行',
+    '「Fashion Tech JustInCase 」科技服裝設計 Ｘ JUST IN XX 周裕穎－驅動控制系統規劃建置',
+    '「農業溫室與政府公開資訊」研究計劃',
+    '「臺中機器學習MachineLearning」資料研究計劃',
+    '「國家歌劇院 UltraCombo群控無人機」通訊協定顧問'
+  ],
+  '2016': [
+    '「台灣電力公司公共藝術」日光域 Ｘ 華麗邏輯－電控技術設計與製作',
+    '「台灣電力公司公共藝術」河飄風 Ｘ 華麗邏輯－電路設計與製作',
+    '「台灣電力公司公共藝術」太陽之詩 Ｘ 華麗邏輯－馬達電控技術與製作'
+  ],
+  '2015': [
+    '「2015解密國家寶藏 Ｘ 奇想樂園互動科技館」X 工研院 X 華麗邏輯 X 光洋波斯特 『奇想樂園互動導覽技術與互動機台』採用本公司研發Centurion ProV2.0系統',
+    '「智慧型IMU壓力感測藍芽通訊柺杖」Ｘ 國立台灣大學 ivLab Ｘ 資策會創新所－共同研發',
+    '「智慧型震動馬達感測藍芽通訊鞋墊」Ｘ 資策會創新所',
+    '「敦煌擴增實境導覽裝置」小沙彌 Ｘ 台灣大學ivLab 2014年',
+    '「2014解密國家寶藏－奇想樂園互動科技館」X 工研院 X 華麗邏輯 『奇想樂園互動導覽技術與互動機台』採用本公司研發Centurion ProV1.5系統',
+    '「桃園機場第二航廈公共藝術裝置 」歐基理德的飛行 X 豪華朗機工',
+    '「英國曼側斯特」日光域 X 豪華朗機工',
+    '「臺南鹽水月津港燈節主燈」日光域 X 豪華朗機工 2013年',
+    '「文建會科技與表演藝術結合旗艦計畫」王俊傑 X 豪華朗機工 X 台北藝術大學科技藝術中心 『無人劇場Timecode系統研發』採用本公司研發Centurion ProV1.0系統',
+    '「汐止台灣科學園區大廳公共藝術」見為知著 X 豪華朗機工',
+    '「汐止台灣科學園區戶外公共藝術」時中光 X 豪華朗機工 2012年',
+    '「文建會科技與表演藝術結合旗艦計畫」M Project X 豪華朗機工 X 周先生 －共同創作',
+    '「足部壓力無線傳輸感測模組」X 國立台灣大學 X 資策會－共同創作',
+    '「文建會科技與表演藝術結合旗艦計畫 」線上演出『名導濾鏡』之雲端冒險演出之一 X 廣藝基金會 X 台北藝術大學',
+    '「Computex Taipei 」雲端個人3D印表機 X 威盛電子股份有限公司－合作研發',
+    '「Facebook互動式數位藝術櫥窗」X 台北教育大學 X 藝術家張博智 －合作研發',
+    '業界演講 CTimes Android Days －『踏進Arduino互動科技世界－使用Android』（參與人數達200人次）',
+    '「藝術裝置」福 X 豪華朗機工－互動設計',
+    '「ZigBee無線傳輸」X 德明財經科技大學－距離感測模組研發',
+    '研發 LED幻彩無線傳輸控制器 2011年',
+    '「Facebook互動式音樂」Tender Blackmail黑信 X 音樂家陳建騏 X 藝術家張博智 X 人力飛行劇團 －互動設計',
+    '「台北世界設計大會」聲音互動式展場 X 亞洲大學－聲音互動設計製作',
+    '「研發Centurion多點互動控制系統」',
+    '「藝術裝置」一日 X 豪華朗機工－電子控制設計',
+    '「藝術裝置」日光域 X 豪華朗機工－電子控制設計',
+    '「藝術裝置」游泳 X 豪華朗機工－電子控制設計 2010年',
+    '於台灣大學研發智慧感測手環',
+    '「藝術裝置」浪2 X 豪華朗機工－電子控制設計',
+    '「藝術裝置」無線音樂控制器 X 藝術家張博智－電子控制設計',
+    '「互動影像裝置」水立方時尚館 籠中鳥－藝術裝置電子控制設計 帝凱科技有限公司正式成立 2009年',
+    '於台灣大學研發智慧壓力感測鞋、智慧呼吸感測衣',
+    '「藝術裝置」浪1 X 豪華朗機工－電子控制設計',
+    '帝凱科技有限公司成立籌備處',
+    '申請國立台北藝術大學育成中心進駐廠商，獲99年度U-START教育部大專畢業生創業服務計畫30萬創業補助 2008年',
+    '美國洛杉磯與新加坡SIGGRAPH會議發表教室多人控制系統『Many to One PC by WSN System』',
+    '「藝術裝置」時間流產 X 朗機工－電子控制設計',
+    '「藝術裝置」南方樂浪 X 朗機工－電子控制設計 2007年',
+    '研發與生產－台灣中國石油S3加油機控制介面卡 2006年',
+    '創辦Arduino.TW－台灣Arduino使用者社群'
+  ]
+};
+
+/* ──────────────────────────────────────────────
+   RENDER — Videos
+   ────────────────────────────────────────────── */
+(function renderVideos(){
+  const grid = document.getElementById('videoGrid');
+  YOUTUBE_VIDEOS.forEach((v,i) => {
+    const card = document.createElement('div');
+    card.className = 'video-card fade-in';
+    card.innerHTML = `
+      <div class="embed-wrap">
+        <iframe src="https://www.youtube.com/embed/${v.id}?rel=0&modestbranding=1"
+                title="${v.title}" allowfullscreen
+                loading="lazy" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture"></iframe>
+      </div>
+      <div class="vid-label"><span class="vid-num">#${i+1}</span>${v.title}</div>`;
+    grid.appendChild(card);
+  });
+})();
+
+/* ──────────────────────────────────────────────
+   RENDER — Slide Gallery
+   ────────────────────────────────────────────── */
+(function renderSlides(){
+  const gal = document.getElementById('slideGallery');
+  SLIDE_IMAGES.forEach(src => {
+    const item = document.createElement('div');
+    item.className = 'gallery-item fade-in';
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = 'DECADE Slide';
+    img.loading = 'lazy';
+    img.onclick = () => openLightbox(src);
+    item.appendChild(img);
+    gal.appendChild(item);
+  });
+})();
+
+/* ──────────────────────────────────────────────
+   RENDER — Algorithm Gallery
+   ────────────────────────────────────────────── */
+(function renderAlgo(){
+  const grid = document.getElementById('algoGrid');
+  ALGO_IMAGES.forEach(src => {
+    const item = document.createElement('div');
+    item.className = 'algo-item fade-in';
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = 'Algorithm Visualization';
+    img.loading = 'lazy';
+    img.onclick = () => openLightbox(src);
+    item.appendChild(img);
+    grid.appendChild(item);
+  });
+})();
+
+/* ──────────────────────────────────────────────
+   RENDER — Works Timeline
+   ────────────────────────────────────────────── */
+(function renderTimeline(){
+  const tl = document.getElementById('timeline');
+  const sortedYears = Object.keys(WORKS_DATA).sort((a,b) => b - a);
+  sortedYears.forEach(year => {
+    const yearBlock = document.createElement('div');
+    yearBlock.className = 'timeline-year fade-in';
+    const label = document.createElement('div');
+    label.className = 'year-label';
+    label.textContent = year;
+    yearBlock.appendChild(label);
+    WORKS_DATA[year].forEach(proj => {
+      const item = document.createElement('div');
+      item.className = 'timeline-item';
+      /* Parse role if contains 「…」－ */
+      const parts = proj.split('－');
+      const title = parts[0].trim();
+      const role = parts.length > 1 ? parts.slice(1).join('－').trim() : '';
+      item.innerHTML = `<div class="proj-title">${escHtml(title)}</div>` +
+        (role ? `<div class="proj-role">${escHtml(role)}</div>` : '');
+      yearBlock.appendChild(item);
+    });
+    tl.appendChild(yearBlock);
+  });
+})();
+
+/* ──────────────────────────────────────────────
+   LIGHTBOX
+   ────────────────────────────────────────────── */
+function openLightbox(src){
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLightbox(){
+  document.getElementById('lightbox').classList.remove('open');
+}
+document.getElementById('lightbox').addEventListener('keydown', e => {
+  if(e.key === 'Escape') closeLightbox();
+});
+
+/* ──────────────────────────────────────────────
+   SCROLL ANIMATIONS (IntersectionObserver)
+   ────────────────────────────────────────────── */
+(function initScrollAnims(){
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){ e.target.classList.add('visible'); observer.unobserve(e.target); }
+    });
+  }, {threshold:0.1, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+})();
+
+/* ──────────────────────────────────────────────
+   ACTIVE NAV HIGHLIGHT
+   ────────────────────────────────────────────── */
+(function navHighlight(){
+  const sections = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('.nav-links a');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        links.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
+        if(active) active.classList.add('active');
+      }
+    });
+  }, {threshold:0.3});
+  sections.forEach(s => observer.observe(s));
+})();
+
+/* ──────────────────────────────────────────────
+   PARTICLES CANVAS
+   ────────────────────────────────────────────── */
+(function initParticles(){
+  const c = document.getElementById('particles');
+  const ctx = c.getContext('2d');
+  let w, h, particles = [];
+  const COUNT = 60;
+
+  function resize(){
+    w = c.width = window.innerWidth;
+    h = c.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  for(let i = 0; i < COUNT; i++){
+    particles.push({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: (Math.random() - 0.5) * 0.4,
+      r: Math.random() * 1.5 + 0.5
+    });
+  }
+
+  function draw(){
+    ctx.clearRect(0, 0, w, h);
+    particles.forEach(p => {
+      p.x += p.vx; p.y += p.vy;
+      if(p.x < 0) p.x = w; if(p.x > w) p.x = 0;
+      if(p.y < 0) p.y = h; if(p.y > h) p.y = 0;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(0,212,255,0.6)';
+      ctx.fill();
+    });
+    /* Draw connections */
+    for(let i = 0; i < particles.length; i++){
+      for(let j = i+1; j < particles.length; j++){
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if(dist < 150){
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(123,47,247,${0.15 * (1 - dist/150)})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+/* ──────────────────────────────────────────────
+   UTILITY
+   ────────────────────────────────────────────── */
+function escHtml(s){
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+</script>
+</body>
+</html>
