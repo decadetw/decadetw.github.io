@@ -1,0 +1,2728 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-theme="auto">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <title>DECADE.TW 帝凱科技有限公司 — 互動科技解決方案 · Apple Liquid Glass</title>
+  <meta name="description" content="帝凱科技專注於展場軟硬體整合、舞台燈光與中央控制系統，將伺服馬達、機械手臂、電腦燈光等媒材以演算法呈現為活靈活現的互動藝術作品。">
+  <meta name="keywords" content="帝凱科技, DECADE.TW, 豪華朗機工, 中央控制系統, 展場軟硬體整合, 舞台燈光, 機械手臂, 互動藝術, Arduino.TW, Centurion">
+  <meta property="og:title" content="DECADE.TW 帝凱科技有限公司 — 互動科技解決方案">
+  <meta property="og:description" content="以演算法賦予空間生命。國家級主燈、跨界公共藝術、舞台燈光與雲端中央控制系統。">
+  <meta property="og:image" content="https://www.decade.tw/images/logo/decade_logo.png">
+  <meta property="og:type" content="website">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="icon" type="image/png" href="https://www.decade.tw/images/logo/decade_logo.png">
+
+  <!-- Zero-FOUC theme initialization -->
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('decade_liquid_theme') || 'auto';
+      document.documentElement.setAttribute('data-theme', savedTheme);
+      const metaTheme = document.querySelector('meta[name="color-scheme"]');
+      if (metaTheme) {
+        metaTheme.content = savedTheme === 'auto' ? 'light dark' : savedTheme;
+      }
+    })();
+  </script>
+
+  <style>
+    /* ==========================================================================
+       APPLE LIQUID GLASS DESIGN SYSTEM & THEME TOKENS
+       ========================================================================== */
+    :root, [data-theme="dark"] {
+      /* Base Lighting & Ambient - Dark Starfield */
+      --bg-base: #060913;
+      --bg-gradient: radial-gradient(120% 120% at 50% -10%, #151d38 0%, #080c18 60%, #03050a 100%);
+      --text-primary: #f5f7fa;
+      --text-secondary: rgba(235, 240, 255, 0.72);
+      --text-tertiary: rgba(220, 230, 250, 0.45);
+      
+      /* Liquid Glass Accents */
+      --accent-cyan: #22d3ee;
+      --accent-blue: #38bdf8;
+      --accent-indigo: #818cf8;
+      --accent-purple: #c084fc;
+      --accent-emerald: #34d399;
+      --accent-amber: #fbbf24;
+      --accent-rose: #fb7185;
+
+      /* Glass Materials (Dark Default) */
+      --glass-bg: rgba(255, 255, 255, 0.06);
+      --glass-bg-hover: rgba(255, 255, 255, 0.10);
+      --glass-bg-active: rgba(255, 255, 255, 0.16);
+      --glass-border: rgba(255, 255, 255, 0.15);
+      --glass-border-specular: rgba(255, 255, 255, 0.40);
+      --glass-inner-bevel: rgba(255, 255, 255, 0.25);
+      --glass-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.55), 0 2px 10px rgba(0, 0, 0, 0.35);
+      --glass-dock-bg: rgba(13, 18, 36, 0.78);
+      --glass-dock-border: rgba(255, 255, 255, 0.20);
+      --card-highlight: radial-gradient(800px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, 0.14), transparent 45%);
+
+      /* Roller Window-Height Mask Overlay */
+      --roller-mask-bg: radial-gradient(ellipse 95% 85% at 50% 50%, rgba(6, 9, 19, 0.72) 0%, rgba(6, 9, 19, 0.90) 70%, var(--bg-base) 100%), linear-gradient(180deg, rgba(6, 9, 19, 0.8) 0%, transparent 15%, transparent 85%, var(--bg-base) 100%);
+      --roller-opacity: 0.65;
+      --roller-opacity-hover: 0.96;
+
+      /* Liquid Fluid Orbs */
+      --orb-1: rgba(56, 189, 248, 0.28);
+      --orb-2: rgba(192, 132, 252, 0.25);
+      --orb-3: rgba(34, 211, 238, 0.22);
+      --orb-4: rgba(251, 113, 133, 0.18);
+
+      --blur-strength: 28px;
+      --radius-sm: 12px;
+      --radius-md: 20px;
+      --radius-lg: 28px;
+      --radius-full: 9999px;
+
+      --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, "PingFang TC", "Noto Sans TC", sans-serif;
+      --transition-smooth: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-spring: all 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    /* Light Theme Explicit Override */
+    [data-theme="light"] {
+      --bg-base: #f5f7fc;
+      --bg-gradient: radial-gradient(120% 120% at 50% -10%, #e0e9fb 0%, #edf2fc 50%, #f7f9fd 100%);
+      --text-primary: #0f172a;
+      --text-secondary: rgba(15, 23, 42, 0.76);
+      --text-tertiary: rgba(15, 23, 42, 0.48);
+
+      --glass-bg: rgba(255, 255, 255, 0.74);
+      --glass-bg-hover: rgba(255, 255, 255, 0.90);
+      --glass-bg-active: rgba(255, 255, 255, 0.98);
+      --glass-border: rgba(255, 255, 255, 0.90);
+      --glass-border-specular: rgba(255, 255, 255, 1);
+      --glass-inner-bevel: rgba(255, 255, 255, 0.95);
+      --glass-shadow: 0 16px 40px -10px rgba(79, 95, 130, 0.14), 0 2px 8px rgba(79, 95, 130, 0.05);
+      --glass-dock-bg: rgba(255, 255, 255, 0.86);
+      --glass-dock-border: rgba(255, 255, 255, 0.96);
+      --card-highlight: radial-gradient(800px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, 0.75), transparent 50%);
+
+      /* Roller Window-Height Mask Overlay */
+      --roller-mask-bg: radial-gradient(ellipse 95% 85% at 50% 50%, rgba(245, 247, 252, 0.70) 0%, rgba(245, 247, 252, 0.92) 70%, var(--bg-base) 100%), linear-gradient(180deg, rgba(245, 247, 252, 0.8) 0%, transparent 15%, transparent 85%, var(--bg-base) 100%);
+      --roller-opacity: 0.58;
+      --roller-opacity-hover: 0.92;
+
+      --orb-1: rgba(56, 189, 248, 0.22);
+      --orb-2: rgba(192, 132, 252, 0.20);
+      --orb-3: rgba(34, 211, 238, 0.18);
+      --orb-4: rgba(251, 191, 36, 0.18);
+    }
+
+    /* System Auto Theme Matching */
+    @media (prefers-color-scheme: light) {
+      [data-theme="auto"] {
+        --bg-base: #f5f7fc;
+        --bg-gradient: radial-gradient(120% 120% at 50% -10%, #e0e9fb 0%, #edf2fc 50%, #f7f9fd 100%);
+        --text-primary: #0f172a;
+        --text-secondary: rgba(15, 23, 42, 0.76);
+        --text-tertiary: rgba(15, 23, 42, 0.48);
+        --glass-bg: rgba(255, 255, 255, 0.74);
+        --glass-bg-hover: rgba(255, 255, 255, 0.90);
+        --glass-bg-active: rgba(255, 255, 255, 0.98);
+        --glass-border: rgba(255, 255, 255, 0.90);
+        --glass-border-specular: rgba(255, 255, 255, 1);
+        --glass-inner-bevel: rgba(255, 255, 255, 0.95);
+        --glass-shadow: 0 16px 40px -10px rgba(79, 95, 130, 0.14), 0 2px 8px rgba(79, 95, 130, 0.05);
+        --glass-dock-bg: rgba(255, 255, 255, 0.86);
+        --glass-dock-border: rgba(255, 255, 255, 0.96);
+        --card-highlight: radial-gradient(800px circle at var(--mx, 50%) var(--my, 50%), rgba(255, 255, 255, 0.75), transparent 50%);
+        --roller-mask-bg: radial-gradient(ellipse 95% 85% at 50% 50%, rgba(245, 247, 252, 0.70) 0%, rgba(245, 247, 252, 0.92) 70%, var(--bg-base) 100%), linear-gradient(180deg, rgba(245, 247, 252, 0.8) 0%, transparent 15%, transparent 85%, var(--bg-base) 100%);
+        --roller-opacity: 0.58;
+        --roller-opacity-hover: 0.92;
+        --orb-1: rgba(56, 189, 248, 0.22);
+        --orb-2: rgba(192, 132, 252, 0.20);
+        --orb-3: rgba(34, 211, 238, 0.18);
+        --orb-4: rgba(251, 191, 36, 0.18);
+      }
+    }
+
+    /* Global Reset & Base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-family: var(--font-sans);
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      background: var(--bg-gradient);
+      position: relative;
+    }
+
+    /* LOGO SPECIFICATION: minima height 80px */
+    .logo-img, .dock-logo, .footer-logo, .hero-logo, img[src*="decade_logo"] {
+      min-height: 50px !important;
+      height: 50px;
+      width: auto;
+      object-fit: contain;
+      cursor: pointer;
+      transition: var(--transition-spring);
+    }
+
+    .logo-img:hover, .dock-logo:hover, .hero-logo:hover {
+      transform: scale(1.05);
+      filter: drop-shadow(0 6px 16px rgba(56, 189, 248, 0.45));
+    }
+
+    /* Ambient Liquid Aurora Background */
+    .liquid-ambient-canvas {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .liquid-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(95px);
+      opacity: 0.85;
+      mix-blend-mode: screen;
+      will-change: transform;
+      animation: orbDrift 22s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
+    }
+
+    [data-theme="light"] .liquid-orb,
+    [data-theme="auto"] .liquid-orb {
+      mix-blend-mode: multiply;
+      opacity: 0.5;
+    }
+
+    .orb-1 {
+      width: 580px;
+      height: 580px;
+      top: -10%;
+      left: 15%;
+      background: var(--orb-1);
+      animation-duration: 26s;
+    }
+    .orb-2 {
+      width: 650px;
+      height: 650px;
+      top: 25%;
+      right: -10%;
+      background: var(--orb-2);
+      animation-duration: 32s;
+      animation-delay: -5s;
+    }
+    .orb-3 {
+      width: 520px;
+      height: 520px;
+      top: 60%;
+      left: -8%;
+      background: var(--orb-3);
+      animation-duration: 28s;
+      animation-delay: -10s;
+    }
+    .orb-4 {
+      width: 500px;
+      height: 500px;
+      bottom: -5%;
+      right: 18%;
+      background: var(--orb-4);
+      animation-duration: 34s;
+      animation-delay: -15s;
+    }
+
+    @keyframes orbDrift {
+      0% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(40px, -60px) scale(1.08); }
+      66% { transform: translate(-50px, 30px) scale(0.94); }
+      100% { transform: translate(30px, 50px) scale(1.04); }
+    }
+
+    /* Container */
+    .container {
+      width: min(1280px, 92vw);
+      margin-inline: auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ==========================================================================
+       HERO IMAGE ROLLER BACKGROUND SCALED AS WINDOW HEIGHT
+       (SPEC: use image roller as background scale as window height on page first section)
+       ========================================================================== */
+    .hero-section {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100dvh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding-top: clamp(110px, 15vh, 160px);
+      padding-bottom: clamp(50px, 8vh, 90px);
+      text-align: center;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+
+    .hero-roller-backdrop {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+      pointer-events: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: clamp(10px, 1.8vh, 24px);
+      padding-block: clamp(8px, 1.5vh, 20px);
+    }
+
+    .hero-roller-row {
+      display: flex;
+      width: 100%;
+      flex: 1;
+      min-height: 0;
+      align-items: center;
+      overflow: hidden;
+      user-select: none;
+      position: relative;
+    }
+
+    .roller-track {
+      display: flex;
+      align-items: center;
+      gap: clamp(12px, 1.8vw, 24px);
+      width: max-content;
+      height: 100%;
+      will-change: transform;
+    }
+
+    .roller-track-left {
+      animation: rollLeftMarquee 45s linear infinite;
+    }
+
+    .roller-track-right {
+      animation: rollRightMarquee 50s linear infinite;
+    }
+
+    .roller-track-left-alt {
+      animation: rollLeftMarquee 42s linear infinite;
+    }
+
+    .hero-roller-backdrop:hover .roller-track {
+      animation-play-state: paused;
+    }
+
+    @keyframes rollLeftMarquee {
+      0% { transform: translate3d(0, 0, 0); }
+      100% { transform: translate3d(-50%, 0, 0); }
+    }
+
+    @keyframes rollRightMarquee {
+      0% { transform: translate3d(-50%, 0, 0); }
+      100% { transform: translate3d(0, 0, 0); }
+    }
+
+    /* Card scales automatically with available row/window height */
+    .roller-card {
+      height: 100%;
+      max-height: clamp(140px, 28vh, 320px);
+      aspect-ratio: 16 / 10;
+      width: auto;
+      flex-shrink: 0;
+      border-radius: 18px;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      transition: var(--transition-spring);
+    }
+
+    .roller-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: var(--roller-opacity);
+      filter: saturate(110%);
+      transition: all 0.4s ease;
+    }
+
+    .roller-card:hover {
+      transform: scale(1.08) translateY(-4px);
+      z-index: 5;
+      border-color: var(--accent-cyan);
+      box-shadow: 0 16px 36px rgba(34, 211, 238, 0.4);
+    }
+
+    .roller-card:hover img {
+      opacity: var(--roller-opacity-hover);
+      filter: saturate(130%);
+    }
+
+    .roller-card-tag {
+      position: absolute;
+      bottom: 8px;
+      left: 10px;
+      font-size: 0.72rem;
+      padding: 3px 8px;
+      border-radius: 9999px;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(10px);
+      color: #ffffff;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .roller-card:hover .roller-card-tag {
+      opacity: 1;
+    }
+
+    /* Full Window Height Translucent Liquid Glass Mask */
+    .hero-roller-mask {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--roller-mask-bg);
+      backdrop-filter: blur(4.5px);
+      -webkit-backdrop-filter: blur(4.5px);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* ==========================================================================
+       GLASS MORPHISM COMPONENTS
+       ========================================================================== */
+    .liquid-glass {
+      background: var(--glass-bg);
+      backdrop-filter: blur(var(--blur-strength)) saturate(190%);
+      -webkit-backdrop-filter: blur(var(--blur-strength)) saturate(190%);
+      border: 1px solid var(--glass-border);
+      border-top-color: var(--glass-border-specular);
+      box-shadow: inset 0 1px 1.5px 0 var(--glass-inner-bevel), var(--glass-shadow);
+      border-radius: var(--radius-md);
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition-smooth);
+    }
+
+    .liquid-glass::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--card-highlight);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .liquid-glass:hover::after {
+      opacity: 1;
+    }
+
+    .liquid-glass:hover {
+      border-color: rgba(255, 255, 255, 0.35);
+      transform: translateY(-3px);
+    }
+
+    /* Pill Badges */
+    .glass-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      border-radius: var(--radius-full);
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      color: var(--text-primary);
+      box-shadow: inset 0 1px 1px 0 var(--glass-inner-bevel);
+      letter-spacing: 0.02em;
+    }
+
+    .glass-pill.accent {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.22), rgba(192, 132, 252, 0.22));
+      border-color: rgba(56, 189, 248, 0.45);
+      color: var(--accent-cyan);
+    }
+
+    /* Buttons */
+    .glass-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      border-radius: var(--radius-full);
+      text-decoration: none;
+      cursor: pointer;
+      transition: var(--transition-spring);
+      position: relative;
+      border: 1px solid var(--glass-border);
+      color: var(--text-primary);
+      background: var(--glass-bg);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: inset 0 1px 1.5px 0 var(--glass-inner-bevel), 0 8px 24px -6px rgba(0, 0, 0, 0.25);
+    }
+
+    .glass-btn:hover {
+      transform: translateY(-2px) scale(1.02);
+      background: var(--glass-bg-hover);
+      border-color: rgba(255, 255, 255, 0.45);
+      box-shadow: inset 0 1px 2px 0 rgba(255, 255, 255, 0.5), 0 14px 30px -8px rgba(0, 0, 0, 0.35);
+    }
+
+    .glass-btn:active {
+      transform: translateY(1px) scale(0.98);
+    }
+
+    .glass-btn.primary {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.85), rgba(99, 102, 241, 0.88));
+      border-color: rgba(255, 255, 255, 0.45);
+      color: #ffffff;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+    .glass-btn.primary:hover {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.95), rgba(99, 102, 241, 1));
+      box-shadow: 0 12px 32px -4px rgba(56, 189, 248, 0.45);
+    }
+
+    /* ==========================================================================
+       NAVIGATION / FLOATING LIQUID DOCK
+       ========================================================================== */
+    .liquid-dock-wrap {
+      position: fixed;
+      top: 14px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      z-index: 100;
+      pointer-events: none;
+      padding-inline: 16px;
+    }
+
+    .liquid-dock {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 94px;
+      padding: 8px 22px;
+      border-radius: var(--radius-full);
+      background: var(--glass-dock-bg);
+      backdrop-filter: blur(34px) saturate(200%);
+      -webkit-backdrop-filter: blur(34px) saturate(200%);
+      border: 1px solid var(--glass-dock-border);
+      border-top-color: var(--glass-border-specular);
+      box-shadow: inset 0 1px 1.5px 0 var(--glass-inner-bevel), 0 18px 45px -12px rgba(0, 0, 0, 0.45);
+      pointer-events: auto;
+      transition: var(--transition-smooth);
+    }
+
+    .dock-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding-right: 16px;
+      margin-right: 6px;
+      border-right: 1px solid var(--glass-border);
+      text-decoration: none;
+      color: var(--text-primary);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      font-size: 1.15rem;
+    }
+
+    .dock-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      list-style: none;
+    }
+
+    .dock-link {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      font-size: 0.92rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      border-radius: var(--radius-full);
+      transition: var(--transition-smooth);
+    }
+
+    .dock-link:hover, .dock-link.active {
+      color: var(--text-primary);
+      background: var(--glass-bg-hover);
+      box-shadow: inset 0 1px 1px 0 var(--glass-inner-bevel);
+    }
+
+    .dock-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding-left: 14px;
+      margin-left: 6px;
+      border-left: 1px solid var(--glass-border);
+    }
+
+    /* Theme Segmented Switcher */
+    .theme-segmented {
+      display: flex;
+      align-items: center;
+      padding: 4px;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-full);
+      box-shadow: inset 0 1px 1px var(--glass-inner-bevel);
+      gap: 2px;
+    }
+
+    .theme-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: var(--radius-full);
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      white-space: nowrap;
+    }
+
+    .theme-btn:hover {
+      color: var(--text-primary);
+    }
+
+    .theme-btn.active {
+      background: var(--glass-bg-active);
+      color: var(--text-primary);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+    }
+
+    /* Mobile Hamburger */
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      font-size: 1.4rem;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 50%;
+    }
+
+    /* Mobile Drawer */
+    .mobile-drawer {
+      position: fixed;
+      inset: 0;
+      z-index: 105;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .mobile-drawer.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .mobile-drawer-sheet {
+      background: var(--glass-dock-bg);
+      border-top: 1px solid var(--glass-dock-border);
+      border-radius: 28px 28px 0 0;
+      padding: 24px;
+      transform: translateY(100%);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .mobile-drawer.open .mobile-drawer-sheet {
+      transform: translateY(0);
+    }
+
+    .drawer-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .drawer-nav a {
+      padding: 13px 18px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      text-decoration: none;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Hero Foreground Content Elements */
+    .hero-brand-card {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      padding: 12px 28px 12px 18px;
+      margin-bottom: 24px;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      animation: floatBadge 4.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatBadge {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-6px); }
+    }
+
+    .hero-title {
+      font-size: clamp(2.6rem, 6.5vw, 5.2rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.035em;
+      margin-bottom: 24px;
+      max-width: 960px;
+      margin-inline: auto;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #ffffff 15%, var(--accent-cyan) 60%, var(--accent-purple) 95%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    [data-theme="light"] .gradient-text,
+    [data-theme="auto"] .gradient-text {
+      background: linear-gradient(135deg, #091e42 15%, #0284c7 60%, #7c3aed 95%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.05rem, 2vw, 1.35rem);
+      color: var(--text-secondary);
+      max-width: 780px;
+      margin-inline: auto;
+      line-height: 1.6;
+      margin-bottom: 38px;
+      font-weight: 400;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: clamp(32px, 5vh, 60px);
+    }
+
+    /* Bento Stats Grid */
+    .stats-bento {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .stat-card {
+      padding: 24px 18px;
+      text-align: center;
+      border-radius: var(--radius-md);
+    }
+
+    .stat-num {
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 6px;
+      background: linear-gradient(135deg, var(--text-primary), var(--accent-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .stat-desc {
+      font-size: 0.78rem;
+      color: var(--text-tertiary);
+    }
+
+    /* ==========================================================================
+       SECTION COMMONS
+       ========================================================================== */
+    .section-wrap {
+      padding-block: 70px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .section-title-group h2 {
+      font-size: clamp(1.8rem, 3.6vw, 2.6rem);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      margin-bottom: 8px;
+    }
+
+    .section-title-group p {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      max-width: 620px;
+    }
+
+    /* Segmented Controls */
+    .segmented-control {
+      display: inline-flex;
+      align-items: center;
+      padding: 5px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-full);
+      box-shadow: inset 0 1px 1px var(--glass-inner-bevel);
+      gap: 4px;
+      overflow-x: auto;
+      max-width: 100%;
+    }
+
+    .segment-btn {
+      padding: 8px 18px;
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      font-weight: 600;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      white-space: nowrap;
+    }
+
+    .segment-btn:hover {
+      color: var(--text-primary);
+    }
+
+    .segment-btn.active {
+      background: var(--glass-bg-active);
+      color: var(--text-primary);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+    }
+
+    /* Search Input */
+    .glass-search-wrap {
+      position: relative;
+      width: min(360px, 100%);
+    }
+
+    .glass-search-input {
+      width: 100%;
+      padding: 10px 18px 10px 42px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--glass-border);
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      color: var(--text-primary);
+      font-size: 0.9rem;
+      outline: none;
+      transition: var(--transition-smooth);
+      box-shadow: inset 0 1px 1px var(--glass-inner-bevel);
+    }
+
+    .glass-search-input:focus {
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.25);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-tertiary);
+      pointer-events: none;
+    }
+
+    /* ==========================================================================
+       YOUTUBE VIDEOS SHOWCASE (21 Videos - POP-UP WINDOW ONLY)
+       ========================================================================== */
+    .videos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 24px;
+    }
+
+    .video-card {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .video-thumb-wrap {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .video-thumb {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .video-card:hover .video-thumb {
+      transform: scale(1.06);
+    }
+
+    .play-glass-badge {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(4px);
+      transition: var(--transition-smooth);
+    }
+
+    .video-card:hover .play-glass-badge {
+      background: rgba(0, 0, 0, 0.18);
+      backdrop-filter: blur(2px);
+    }
+
+    .play-icon-circle {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(14px) saturate(180%);
+      -webkit-backdrop-filter: blur(14px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.65);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.8);
+      transition: var(--transition-spring);
+    }
+
+    .play-icon-circle svg {
+      fill: #ffffff;
+      width: 24px;
+      height: 24px;
+      transform: translateX(2px);
+    }
+
+    .video-card:hover .play-icon-circle {
+      transform: scale(1.15);
+      background: var(--accent-cyan);
+      border-color: #ffffff;
+    }
+
+    .video-card:hover .play-icon-circle svg {
+      fill: #060913;
+    }
+
+    .video-info {
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .video-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .video-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      line-height: 1.35;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+    }
+
+    .video-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-top: auto;
+    }
+
+    /* ==========================================================================
+       GALLERY SECTION (Slides & Algorithm Pics - POP-UP LIGHTBOX ONLY)
+       ========================================================================== */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .gallery-item {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      cursor: pointer;
+      aspect-ratio: 4 / 3;
+      position: relative;
+    }
+
+    .gallery-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .gallery-item:hover .gallery-img {
+      transform: scale(1.08);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 40%, rgba(6, 9, 19, 0.85) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 18px;
+      opacity: 0.9;
+      transition: opacity 0.3s ease;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    .gallery-item-title {
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .gallery-item-tag {
+      font-size: 0.75rem;
+      color: var(--accent-cyan);
+    }
+
+    /* ==========================================================================
+       WORKS CHRONOLOGICAL SECTION (2006–2027)
+       ========================================================================== */
+    .works-header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .timeline-era {
+      margin-bottom: 40px;
+    }
+
+    .timeline-era-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .era-badge {
+      padding: 6px 18px;
+      font-size: 1.1rem;
+      font-weight: 800;
+      border-radius: var(--radius-full);
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+      color: #060913;
+    }
+
+    .era-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--glass-border), transparent);
+    }
+
+    .works-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 16px;
+    }
+
+    .work-card {
+      padding: 20px;
+      border-radius: var(--radius-md);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .work-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .work-title {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.4;
+    }
+
+    .work-role {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .work-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: auto;
+    }
+
+    .work-tag-chip {
+      font-size: 0.74rem;
+      padding: 3px 10px;
+      border-radius: var(--radius-full);
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      color: var(--text-tertiary);
+    }
+
+    /* ==========================================================================
+       ABOUT & BENTO SECTION
+       ========================================================================== */
+    .about-bento-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+    }
+
+    .about-story-card {
+      padding: 36px;
+      border-radius: var(--radius-lg);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .about-lang-switch {
+      align-self: flex-start;
+      margin-bottom: 24px;
+    }
+
+    .about-text {
+      font-size: 1.02rem;
+      line-height: 1.8;
+      color: var(--text-secondary);
+    }
+
+    .about-side-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .services-card, .media-card, .pub-card {
+      padding: 28px;
+      border-radius: var(--radius-lg);
+    }
+
+    .services-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .service-item {
+      padding: 12px 14px;
+      border-radius: var(--radius-sm);
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .media-items, .pub-items {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .media-pill-item, .pub-pill-item {
+      padding: 12px 16px;
+      border-radius: var(--radius-sm);
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      font-size: 0.86rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* ==========================================================================
+       CONTACTS & BANKING
+       ========================================================================== */
+    .contacts-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .contact-card {
+      padding: 28px;
+      border-radius: var(--radius-lg);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact-icon-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .contact-rows {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 8px;
+      flex: 1;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .contact-row-label {
+      font-size: 0.82rem;
+      color: var(--text-tertiary);
+    }
+
+    .contact-row-value {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      text-align: right;
+    }
+
+    .copy-chip-btn {
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--glass-border);
+      background: var(--glass-bg);
+      color: var(--accent-cyan);
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .copy-chip-btn:hover {
+      background: var(--accent-cyan);
+      color: #060913;
+    }
+
+    .map-box {
+      margin-top: 14px;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+      border: 1px solid var(--glass-border);
+      cursor: pointer;
+      position: relative;
+    }
+
+    .map-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .map-box:hover img {
+      transform: scale(1.05);
+    }
+
+    .map-box-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 0.88rem;
+      gap: 6px;
+    }
+
+    .map-box:hover .map-box-overlay {
+      opacity: 1;
+    }
+
+    /* ==========================================================================
+       MODALS & LIGHTBOX (Apple Native Dialog with light-dismiss)
+       ========================================================================== */
+    dialog.liquid-modal {
+      border: none;
+      padding: 0;
+      background: transparent;
+      max-width: min(960px, 94vw);
+      width: 100%;
+      margin: auto;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.75);
+    }
+
+    dialog.liquid-modal::backdrop {
+      background: rgba(6, 9, 19, 0.78);
+      backdrop-filter: blur(26px);
+      -webkit-backdrop-filter: blur(26px);
+    }
+
+    .modal-frame {
+      background: var(--glass-dock-bg);
+      backdrop-filter: blur(36px) saturate(200%);
+      -webkit-backdrop-filter: blur(36px) saturate(200%);
+      border: 1px solid var(--glass-dock-border);
+      border-top-color: var(--glass-border-specular);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .modal-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .modal-close-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: 1px solid var(--glass-border);
+      background: var(--glass-bg);
+      color: var(--text-primary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      transition: var(--transition-smooth);
+    }
+
+    .modal-close-btn:hover {
+      background: rgba(251, 113, 133, 0.35);
+      border-color: var(--accent-rose);
+      transform: scale(1.08);
+    }
+
+    .modal-video-aspect {
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      background: #000;
+    }
+
+    .modal-video-aspect iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .modal-details {
+      padding: 20px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    /* Lightbox Modal */
+    dialog.lightbox-modal {
+      border: none;
+      padding: 0;
+      background: transparent;
+      max-width: min(1100px, 95vw);
+      width: 100%;
+      margin: auto;
+    }
+
+    dialog.lightbox-modal::backdrop {
+      background: rgba(4, 6, 12, 0.88);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+    }
+
+    .lightbox-frame {
+      background: var(--glass-dock-bg);
+      border: 1px solid var(--glass-dock-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .lightbox-img-wrap {
+      max-height: 75vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.35);
+      padding: 16px;
+    }
+
+    .lightbox-img {
+      max-width: 100%;
+      max-height: 70vh;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .lightbox-nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 24px;
+      border-top: 1px solid var(--glass-border);
+    }
+
+    /* Toast Notification */
+    .liquid-toast {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      opacity: 0;
+      padding: 12px 24px;
+      background: var(--glass-dock-bg);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border: 1px solid var(--glass-dock-border);
+      border-radius: var(--radius-full);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+      color: var(--text-primary);
+      font-size: 0.92rem;
+      font-weight: 600;
+      z-index: 1000;
+      pointer-events: none;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .liquid-toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* ==========================================================================
+       FOOTER
+       ========================================================================== */
+    .liquid-footer {
+      margin-top: 100px;
+      border-top: 1px solid var(--glass-border);
+      background: var(--glass-bg);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      padding-block: 48px 36px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-weight: 700;
+      font-size: 1.15rem;
+    }
+
+    .system-status-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-emerald);
+      box-shadow: 0 0 10px var(--accent-emerald);
+      animation: pulseGreen 2s infinite;
+    }
+
+    @keyframes pulseGreen {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--glass-border);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.85rem;
+      color: var(--text-tertiary);
+    }
+
+    /* Back to Top Floating Button */
+    .back-to-top-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--glass-dock-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-dock-border);
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(0.8);
+      transition: var(--transition-spring);
+      z-index: 90;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    .back-to-top-btn.visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: scale(1);
+    }
+
+    .back-to-top-btn:hover {
+      transform: scale(1.12);
+      border-color: var(--accent-cyan);
+    }
+
+    /* ==========================================================================
+       RESPONSIVE ADAPTATIONS
+       ========================================================================== */
+    @media (max-width: 1024px) {
+      .about-bento-grid {
+        grid-template-columns: 1fr;
+      }
+      .contacts-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .stats-bento {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .dock-links {
+        display: none;
+      }
+      .mobile-menu-btn {
+        display: block;
+      }
+      .liquid-dock {
+        min-height: 86px;
+        padding: 6px 16px;
+      }
+      .logo-img, .dock-logo, .footer-logo, .hero-logo, img[src*="decade_logo"] {
+        min-height: 80px !important;
+        height: 80px;
+      }
+      .theme-segmented {
+        display: none; /* Accessible in mobile drawer */
+      }
+      .videos-grid {
+        grid-template-columns: 1fr;
+      }
+      .works-cards-grid {
+        grid-template-columns: 1fr;
+      }
+      .contacts-grid {
+        grid-template-columns: 1fr;
+      }
+      .stats-bento {
+        grid-template-columns: 1fr;
+      }
+      .services-list {
+        grid-template-columns: 1fr;
+      }
+      .hero-section {
+        padding-top: 120px;
+        padding-bottom: 40px;
+        min-height: 100vh;
+        min-height: 100dvh;
+      }
+      .roller-card {
+        max-height: 24vh;
+      }
+      .hero-roller-backdrop {
+        gap: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient Liquid Glass Refraction Canvas -->
+  <div class="liquid-ambient-canvas" aria-hidden="true">
+    <div class="liquid-orb orb-1"></div>
+    <div class="liquid-orb orb-2"></div>
+    <div class="liquid-orb orb-3"></div>
+    <div class="liquid-orb orb-4"></div>
+  </div>
+
+  <!-- Floating Liquid Glass Dock Header -->
+  <header class="liquid-dock-wrap" role="banner">
+    <nav class="liquid-dock" aria-label="Main Navigation">
+      <a href="#" class="dock-brand" title="點擊檢視 DECADE.TW 品牌識別" onclick="event.preventDefault(); openSingleImage('https://www.decade.tw/images/logo/decade_logo.png', 'DECADE.TW 帝凱科技有限公司 Logo', '科技藝術中央控制與互動系統整合先驅');">
+        <!-- Minimum height 80px logo -->
+        <img src="https://www.decade.tw/images/logo/decade_logo.png" alt="DECADE Logo" class="dock-logo">
+        <span>DECADE.TW</span>
+      </a>
+
+      <ul class="dock-links" role="list">
+        <li><a href="#home" class="dock-link active">首頁</a></li>
+        <li><a href="#videos" class="dock-link">現場影片</a></li>
+        <li><a href="#gallery" class="dock-link">影像紀錄</a></li>
+        <li><a href="#works" class="dock-link">歷年實績</a></li>
+        <li><a href="#about" class="dock-link">關於帝凱</a></li>
+        <li><a href="#contacts" class="dock-link">聯繫合作</a></li>
+      </ul>
+
+      <div class="dock-controls">
+        <!-- Prominent Dark/Light/Auto Segmented Control -->
+        <div class="theme-segmented" role="group" aria-label="切換深淺模式">
+          <button class="theme-btn" data-theme-val="light" title="切換為淺色模式">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <span>淺色</span>
+          </button>
+          <button class="theme-btn" data-theme-val="dark" title="切換為深色模式">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            <span>深色</span>
+          </button>
+          <button class="theme-btn active" data-theme-val="auto" title="隨系統自動切換">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a10 10 0 0 0 0 20z"></path></svg>
+            <span>自動</span>
+          </button>
+        </div>
+
+        <button id="mobileMenuBtn" class="mobile-menu-btn" title="開啟選單" aria-label="選單">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div id="mobileDrawer" class="mobile-drawer" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="mobile-drawer-sheet">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <span style="font-weight:700; font-size:1.15rem;">DECADE.TW 導覽選單</span>
+        <button id="closeDrawerBtn" class="modal-close-btn" aria-label="關閉選單">&times;</button>
+      </div>
+
+      <!-- Mobile Theme Selector -->
+      <div style="margin-bottom:14px; padding:12px; border-radius:18px; background:var(--glass-bg); border:1px solid var(--glass-border); display:flex; justify-content:space-between; align-items:center;">
+        <span style="font-size:0.9rem; font-weight:600;">外觀主題風格</span>
+        <div class="theme-segmented" role="group" aria-label="手機端深淺切換">
+          <button class="theme-btn" data-theme-val="light">淺色</button>
+          <button class="theme-btn" data-theme-val="dark">深色</button>
+          <button class="theme-btn active" data-theme-val="auto">自動</button>
+        </div>
+      </div>
+
+      <nav class="drawer-nav">
+        <a href="#home" class="drawer-link">首頁 · Home <span>&rarr;</span></a>
+        <a href="#videos" class="drawer-link">精選現場影片 · 21 Videos <span>&rarr;</span></a>
+        <a href="#gallery" class="drawer-link">影像紀錄庫 · Gallery <span>&rarr;</span></a>
+        <a href="#works" class="drawer-link">歷年實績 · Works 2006–2027 <span>&rarr;</span></a>
+        <a href="#about" class="drawer-link">關於帝凱 · About <span>&rarr;</span></a>
+        <a href="#contacts" class="drawer-link">聯繫與帳務 · Contacts <span>&rarr;</span></a>
+      </nav>
+    </div>
+  </div>
+
+  <main>
+    <!-- HERO SECTION: SCALED AS WINDOW HEIGHT (100vh) WITH 3-ROW IMAGE ROLLER BACKGROUND -->
+    <section id="home" class="hero-section">
+      <!-- Full-Height 3-Row Image Roller Background (Requirement: use image roller as background scale as window height on page first section) -->
+      <div class="hero-roller-backdrop" aria-label="首頁全屏動態影像輪播背景">
+        <!-- Row 1: Rolling Left (Slides 0..6 looped, scaled to 1/3 window height) -->
+        <div class="hero-roller-row">
+          <div class="roller-track roller-track-left">
+            <div class="roller-card" onclick="openLightbox(0)" title="點擊在彈跳視窗檢視：大型互動展演現場實績 #00"><img src="https://www.decade.tw/images/slide/0.png" alt="大型互動展演現場實績 #00" loading="lazy"><span class="roller-card-tag">大型互動展演現場實績 #00</span></div><div class="roller-card" onclick="openLightbox(1)" title="點擊在彈跳視窗檢視：大型互動展演現場實績 #01"><img src="https://www.decade.tw/images/slide/1.png" alt="大型互動展演現場實績 #01" loading="lazy"><span class="roller-card-tag">大型互動展演現場實績 #01</span></div><div class="roller-card" onclick="openLightbox(2)" title="點擊在彈跳視窗檢視：大型互動展演現場實績 #02"><img src="https://www.decade.tw/images/slide/2.png" alt="大型互動展演現場實績 #02" loading="lazy"><span class="roller-card-tag">大型互動展演現場實績 #02</span></div><div class="roller-card" onclick="openLightbox(3)" title="點擊在彈跳視窗檢視：大型互動展演現場實績 #03"><img src="https://www.decade.tw/images/slide/3.png" alt="大型互動展演現場實績 #03" loading="lazy"><span class="roller-card-tag">大型互動展演現場實績 #03</span></div><div class="roller-card" onclick="openLightbox(4)" title="點擊在彈跳視窗檢視：大型互動展演現場實績 #04"><img src="https://www.decade.tw/images/slide/4.png" alt="大型互動展演現場實績 #04" loading="lazy"><span class="roller-card-tag">大型互動展演現場實績 #04</span></div><div class="roller-card" onclick="openLightbox(5)" title="點擊在彈跳視窗檢視：大型互動展演現場實績 #05"><img src="https://www.decade.tw/images/slide/5.png" alt="大型互動展演現場實績 #05" loading="lazy"><span class="roller-card-tag">大型互動展演現場實績 #05</span></div><div class="roller-card" onclick="openLightbox(6)" title="點擊在彈跳視窗檢視：大型互動展演現場實績 #06"><img src="https://www.decade.tw/images/slide/6.png" alt="大型互動展演現場實績 #06" loading="lazy"><span class="roller-card-tag">大型互動展演現場實績 #06</span></div>
+            <div class="roller-card" onclick="openLightbox(0)" title="點擊在彈跳視窗檢視：大型互動展演現場實績 #00"><img src="https://www.decade.tw/images/slide/0.png" alt="大型互動展演現場實績 #00" loading="lazy"><span class="roller-card-tag">大型互動展演現場實績 #00</span></div><div class="roller-card" onclick="openLightbox(1)" title="點擊在彈跳視窗檢視：大型互動展演現場實績 #01"><img src="https://www.decade.tw/images/slide/1.png" alt="大型互動展演現場實績 #01" loading="lazy"><span class="roller-card-tag">大型互動展演現場實績 #01</span></div><div class="roller-card" onclick="openLightbox(2)" title="點擊在彈跳視窗檢視：大型互動展演現場實績 #02"><img src="https://www.decade.tw/images/slide/2.png" alt="大型互動展演現場實績 #02" loading="lazy"><span class="roller-card-tag">大型互動展演現場實績 #02</span></div><div class="roller-card" onclick="openLightbox(3)" title="點擊在彈跳視窗檢視：大型互動展演現場實績 #03"><img src="https://www.decade.tw/images/slide/3.png" alt="大型互動展演現場實績 #03" loading="lazy"><span class="roller-card-tag">大型互動展演現場實績 #03</span></div><div class="roller-card" onclick="openLightbox(4)" title="點擊在彈跳視窗檢視：大型互動展演現場實績 #04"><img src="https://www.decade.tw/images/slide/4.png" alt="大型互動展演現場實績 #04" loading="lazy"><span class="roller-card-tag">大型互動展演現場實績 #04</span></div><div class="roller-card" onclick="openLightbox(5)" title="點擊在彈跳視窗檢視：大型互動展演現場實績 #05"><img src="https://www.decade.tw/images/slide/5.png" alt="大型互動展演現場實績 #05" loading="lazy"><span class="roller-card-tag">大型互動展演現場實績 #05</span></div><div class="roller-card" onclick="openLightbox(6)" title="點擊在彈跳視窗檢視：大型互動展演現場實績 #06"><img src="https://www.decade.tw/images/slide/6.png" alt="大型互動展演現場實績 #06" loading="lazy"><span class="roller-card-tag">大型互動展演現場實績 #06</span></div>
+          </div>
+        </div>
+
+        <!-- Row 2: Rolling Right (Slides 7..13 looped, scaled to 1/3 window height) -->
+        <div class="hero-roller-row">
+          <div class="roller-track roller-track-right">
+            <div class="roller-card" onclick="openLightbox(7)" title="點擊在彈跳視窗檢視：大型互動展演現場實績 #07"><img src="https://www.decade.tw/images/slide/7.png" alt="大型互動展演現場實績 #07" loading="lazy"><span class="roller-card-tag">大型互動展演現場實績 #07</span></div><div class="roller-card" onclick="openLightbox(8)" title="點擊在彈跳視窗檢視：大型互動展演現場實績 #08"><img src="https://www.decade.tw/images/slide/8.png" alt="大型互動展演現場實績 #08" loading="lazy"><span class="roller-card-tag">大型互動展演現場實績 #08</span></div><div class="roller-card" onclick="openLightbox(9)" title="點擊在彈跳視窗檢視：大型互動展演現場實績 #09"><img src="https://www.decade.tw/images/slide/9.png" alt="大型互動展演現場實績 #09" loading="lazy"><span class="roller-card-tag">大型互動展演現場實績 #09</span></div><div class="roller-card" onclick="openLightbox(10)" title="點擊在彈跳視窗檢視：大型互動展演現場實績 #10"><img src="https://www.decade.tw/images/slide/10.png" alt="大型互動展演現場實績 #10" loading="lazy"><span class="roller-card-tag">大型互動展演現場實績 #10</span></div><div class="roller-card" onclick="openLightbox(11)" title="點擊在彈跳視窗檢視：大型互動展演現場實績 #11"><img src="https://www.decade.tw/images/slide/11.png" alt="大型互動展演現場實績 #11" loading="lazy"><span class="roller-card-tag">大型互動展演現場實績 #11</span></div><div class="roller-card" onclick="openLightbox(12)" title="點擊在彈跳視窗檢視：大型互動展演現場實績 #12"><img src="https://www.decade.tw/images/slide/12.png" alt="大型互動展演現場實績 #12" loading="lazy"><span class="roller-card-tag">大型互動展演現場實績 #12</span></div><div class="roller-card" onclick="openLightbox(13)" title="點擊在彈跳視窗檢視：大型互動展演現場實績 #13"><img src="https://www.decade.tw/images/slide/13.png" alt="大型互動展演現場實績 #13" loading="lazy"><span class="roller-card-tag">大型互動展演現場實績 #13</span></div>
+            <div class="roller-card" onclick="openLightbox(7)" title="點擊在彈跳視窗檢視：大型互動展演現場實績 #07"><img src="https://www.decade.tw/images/slide/7.png" alt="大型互動展演現場實績 #07" loading="lazy"><span class="roller-card-tag">大型互動展演現場實績 #07</span></div><div class="roller-card" onclick="openLightbox(8)" title="點擊在彈跳視窗檢視：大型互動展演現場實績 #08"><img src="https://www.decade.tw/images/slide/8.png" alt="大型互動展演現場實績 #08" loading="lazy"><span class="roller-card-tag">大型互動展演現場實績 #08</span></div><div class="roller-card" onclick="openLightbox(9)" title="點擊在彈跳視窗檢視：大型互動展演現場實績 #09"><img src="https://www.decade.tw/images/slide/9.png" alt="大型互動展演現場實績 #09" loading="lazy"><span class="roller-card-tag">大型互動展演現場實績 #09</span></div><div class="roller-card" onclick="openLightbox(10)" title="點擊在彈跳視窗檢視：大型互動展演現場實績 #10"><img src="https://www.decade.tw/images/slide/10.png" alt="大型互動展演現場實績 #10" loading="lazy"><span class="roller-card-tag">大型互動展演現場實績 #10</span></div><div class="roller-card" onclick="openLightbox(11)" title="點擊在彈跳視窗檢視：大型互動展演現場實績 #11"><img src="https://www.decade.tw/images/slide/11.png" alt="大型互動展演現場實績 #11" loading="lazy"><span class="roller-card-tag">大型互動展演現場實績 #11</span></div><div class="roller-card" onclick="openLightbox(12)" title="點擊在彈跳視窗檢視：大型互動展演現場實績 #12"><img src="https://www.decade.tw/images/slide/12.png" alt="大型互動展演現場實績 #12" loading="lazy"><span class="roller-card-tag">大型互動展演現場實績 #12</span></div><div class="roller-card" onclick="openLightbox(13)" title="點擊在彈跳視窗檢視：大型互動展演現場實績 #13"><img src="https://www.decade.tw/images/slide/13.png" alt="大型互動展演現場實績 #13" loading="lazy"><span class="roller-card-tag">大型互動展演現場實績 #13</span></div>
+          </div>
+        </div>
+
+        <!-- Row 3: Rolling Left (Slides 14..20 looped, scaled to 1/3 window height) -->
+        <div class="hero-roller-row">
+          <div class="roller-track roller-track-left-alt">
+            <div class="roller-card" onclick="openLightbox(14)" title="點擊在彈跳視窗檢視：大型互動展演現場實績 #14"><img src="https://www.decade.tw/images/slide/14.png" alt="大型互動展演現場實績 #14" loading="lazy"><span class="roller-card-tag">大型互動展演現場實績 #14</span></div><div class="roller-card" onclick="openLightbox(15)" title="點擊在彈跳視窗檢視：大型互動展演現場實績 #15"><img src="https://www.decade.tw/images/slide/15.png" alt="大型互動展演現場實績 #15" loading="lazy"><span class="roller-card-tag">大型互動展演現場實績 #15</span></div><div class="roller-card" onclick="openLightbox(16)" title="點擊在彈跳視窗檢視：大型互動展演現場實績 #16"><img src="https://www.decade.tw/images/slide/16.png" alt="大型互動展演現場實績 #16" loading="lazy"><span class="roller-card-tag">大型互動展演現場實績 #16</span></div><div class="roller-card" onclick="openLightbox(17)" title="點擊在彈跳視窗檢視：大型互動展演現場實績 #17"><img src="https://www.decade.tw/images/slide/17.png" alt="大型互動展演現場實績 #17" loading="lazy"><span class="roller-card-tag">大型互動展演現場實績 #17</span></div><div class="roller-card" onclick="openLightbox(18)" title="點擊在彈跳視窗檢視：大型互動展演現場實績 #18"><img src="https://www.decade.tw/images/slide/18.png" alt="大型互動展演現場實績 #18" loading="lazy"><span class="roller-card-tag">大型互動展演現場實績 #18</span></div><div class="roller-card" onclick="openLightbox(19)" title="點擊在彈跳視窗檢視：大型互動展演現場實績 #19"><img src="https://www.decade.tw/images/slide/19.png" alt="大型互動展演現場實績 #19" loading="lazy"><span class="roller-card-tag">大型互動展演現場實績 #19</span></div><div class="roller-card" onclick="openLightbox(20)" title="點擊在彈跳視窗檢視：大型互動展演現場實績 #20"><img src="https://www.decade.tw/images/slide/20.png" alt="大型互動展演現場實績 #20" loading="lazy"><span class="roller-card-tag">大型互動展演現場實績 #20</span></div>
+            <div class="roller-card" onclick="openLightbox(14)" title="點擊在彈跳視窗檢視：大型互動展演現場實績 #14"><img src="https://www.decade.tw/images/slide/14.png" alt="大型互動展演現場實績 #14" loading="lazy"><span class="roller-card-tag">大型互動展演現場實績 #14</span></div><div class="roller-card" onclick="openLightbox(15)" title="點擊在彈跳視窗檢視：大型互動展演現場實績 #15"><img src="https://www.decade.tw/images/slide/15.png" alt="大型互動展演現場實績 #15" loading="lazy"><span class="roller-card-tag">大型互動展演現場實績 #15</span></div><div class="roller-card" onclick="openLightbox(16)" title="點擊在彈跳視窗檢視：大型互動展演現場實績 #16"><img src="https://www.decade.tw/images/slide/16.png" alt="大型互動展演現場實績 #16" loading="lazy"><span class="roller-card-tag">大型互動展演現場實績 #16</span></div><div class="roller-card" onclick="openLightbox(17)" title="點擊在彈跳視窗檢視：大型互動展演現場實績 #17"><img src="https://www.decade.tw/images/slide/17.png" alt="大型互動展演現場實績 #17" loading="lazy"><span class="roller-card-tag">大型互動展演現場實績 #17</span></div><div class="roller-card" onclick="openLightbox(18)" title="點擊在彈跳視窗檢視：大型互動展演現場實績 #18"><img src="https://www.decade.tw/images/slide/18.png" alt="大型互動展演現場實績 #18" loading="lazy"><span class="roller-card-tag">大型互動展演現場實績 #18</span></div><div class="roller-card" onclick="openLightbox(19)" title="點擊在彈跳視窗檢視：大型互動展演現場實績 #19"><img src="https://www.decade.tw/images/slide/19.png" alt="大型互動展演現場實績 #19" loading="lazy"><span class="roller-card-tag">大型互動展演現場實績 #19</span></div><div class="roller-card" onclick="openLightbox(20)" title="點擊在彈跳視窗檢視：大型互動展演現場實績 #20"><img src="https://www.decade.tw/images/slide/20.png" alt="大型互動展演現場實績 #20" loading="lazy"><span class="roller-card-tag">大型互動展演現場實績 #20</span></div>
+          </div>
+        </div>
+
+        <!-- Translucent Liquid Glass Full-Height Mask -->
+        <div class="hero-roller-mask" aria-hidden="true"></div>
+      </div>
+
+      <!-- Foreground Hero Content Floating on top of the Liquid Roller -->
+      <div class="container">
+        <!-- Big Brand Glass Card with Min 80px Logo -->
+<!--        <div class="liquid-glass hero-brand-card" onclick="openSingleImage('https://www.decade.tw/images/logo/decade_logo.png', 'DECADE.TW 官方品牌識別', '帝凱科技有限公司 DECADE Interactive Technology');" title="點擊在彈出視窗檢視 Logo">-->
+<!--          <img src="https://www.decade.tw/images/logo/decade_logo.png" alt="DECADE.TW Logo" class="hero-logo">-->
+<!--          <div style="text-align:left;">-->
+<!--            <div style="font-weight:700; font-size:1.1rem; color:var(&#45;&#45;text-primary);">DECADE.TW 帝凱科技x</div>-->
+<!--            <div style="font-size:0.8rem; color:var(&#45;&#45;accent-cyan); font-weight:600;">INTERACTIVE ENGINEERING</div>-->
+<!--          </div>-->
+<!--        </div>-->
+
+        <h1 class="hero-title">
+          以演算法，<br>
+          <span class="gradient-text">賦予空間活靈活現的生命</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          帝凱互動科技專注於展場軟硬體整合、舞台燈光與中央控制系統。<br>
+          將伺服馬達、機械手臂、電腦燈光等媒材，以精準演算法呈現為極具動態震撼的科技藝術。
+        </p>
+
+        <div class="hero-actions">
+          <a href="#videos" class="glass-btn primary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            觀看精選影片實績 (21部)
+          </a>
+          <a href="#works" class="glass-btn">
+            探索歷年指標專案 (2006–2027)
+            <span>&darr;</span>
+          </a>
+        </div>
+
+        <!-- Stats Bento -->
+        <div class="stats-bento">
+          <div class="liquid-glass stat-card">
+            <div class="stat-num">2009</div>
+            <div class="stat-label">跨越近二十載</div>
+            <div class="stat-desc">科技藝術軟硬體深度整合先驅</div>
+          </div>
+          <div class="liquid-glass stat-card">
+            <div class="stat-num">50+</div>
+            <div class="stat-label">國家級與國際指標作品</div>
+            <div class="stat-desc">主燈、花博、世大運與知名美術館</div>
+          </div>
+          <div class="liquid-glass stat-card">
+            <div class="stat-num">21</div>
+            <div class="stat-label">部現場高清動態實錄</div>
+            <div class="stat-desc">伺服馬達、機械臂、光電中央控制</div>
+          </div>
+          <div class="liquid-glass stat-card">
+            <div class="stat-num">40+</div>
+            <div class="stat-label">全台加油站工業控制</div>
+            <div class="stat-desc">中油 S3 Current Loop 專利技術奠基</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: YOUTUBE VIDEOS (21部影片 - 彈跳視窗播放) -->
+    <section id="videos" class="section-wrap container">
+      <div class="section-header">
+        <div class="section-title-group">
+          <div class="glass-pill" style="margin-bottom:8px;">▶️ YOUTUBE VIDEO ARCHIVES</div>
+          <h2>動態光影 · 現場實錄</h2>
+          <p>收錄自 2009 年至今 21 部重大公共藝術、國家級主燈、巨型機械花與機械手臂動態調試影片（點擊於彈出視窗即時播放）。</p>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="segmented-control" id="videoFilterControl">
+          <button class="segment-btn active" data-filter="all">全部 (21)</button>
+          <button class="segment-btn" data-filter="國家級燈會">國家級燈會</button>
+          <button class="segment-btn" data-filter="公共藝術 & 地標">公共藝術 & 地標</button>
+          <button class="segment-btn" data-filter="巨型動力機械">巨型動力機械</button>
+          <button class="segment-btn" data-filter="機械手臂控制">機械手臂控制</button>
+          <button class="segment-btn" data-filter="國際展演與劇場">國際展演 & 其他</button>
+        </div>
+      </div>
+
+      <!-- Videos Grid -->
+      <div class="videos-grid" id="videosContainer">
+        <!-- Rendered dynamically via JS -->
+      </div>
+    </section>
+
+    <!-- SECTION: GALLERY (Slide 21 + Algorithm 9 - 彈跳燈箱放大) -->
+    <section id="gallery" class="section-wrap container">
+      <div class="section-header">
+        <div class="section-title-group">
+          <div class="glass-pill" style="margin-bottom:8px;">🖼️ VISUAL & ALGORITHM ARCHIVES</div>
+          <h2>影像紀錄 · 演算法圖庫</h2>
+          <p>高解析度展覽實境紀錄與底層電路、CPLD、感測演算法研發軌跡（點擊於彈出視窗全螢幕檢視）。</p>
+        </div>
+
+        <div class="segmented-control" id="galleryTabControl">
+          <button class="segment-btn active" data-tab="slides">展演現場紀錄 (21張)</button>
+          <button class="segment-btn" data-tab="algorithms">演算法與電路研發 (9張)</button>
+        </div>
+      </div>
+
+      <!-- Gallery Grid -->
+      <div class="gallery-grid" id="galleryContainer">
+        <!-- Rendered dynamically via JS -->
+      </div>
+    </section>
+
+    <!-- SECTION: WORKS (2006-2027) -->
+    <section id="works" class="section-wrap container">
+      <div class="section-header">
+        <div class="section-title-group">
+          <div class="glass-pill" style="margin-bottom:8px;">💼 CHRONOLOGICAL WORKS (2006–2027)</div>
+          <h2>歷年實績 · 專案總覽</h2>
+          <p>橫跨國家級地標、國際雙年展、巨型動力機械、穿戴式感測與嵌入式控制全紀錄。</p>
+        </div>
+
+        <div class="glass-search-wrap">
+          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="worksSearchInput" class="glass-search-input" placeholder="搜尋專案、合作對象或關鍵字...">
+        </div>
+      </div>
+
+      <div class="works-header-bar">
+        <div class="segmented-control" id="worksEraControl">
+          <button class="segment-btn active" data-era="all">全時期</button>
+          <button class="segment-btn" data-era="2027">2027 未來願景</button>
+          <button class="segment-btn" data-era="2026">2026</button>
+          <button class="segment-btn" data-era="2025">2025 旗艦作品</button>
+          <button class="segment-btn" data-era="2020">2020</button>
+          <button class="segment-btn" data-era="2019">2019</button>
+          <button class="segment-btn" data-era="2018">2018</button>
+          <button class="segment-btn" data-era="2017">2017</button>
+          <button class="segment-btn" data-era="2016">2016</button>
+          <button class="segment-btn" data-era="2015">2015</button>
+          <button class="segment-btn" data-era="2006–2014">2006–2014 奠基期</button>
+        </div>
+        <div id="worksCountDisplay" class="glass-pill" style="font-size:0.8rem; color:var(--text-tertiary);">
+          顯示共 52 個專案
+        </div>
+      </div>
+
+      <div id="worksTimelineContainer">
+        <!-- Rendered dynamically -->
+      </div>
+    </section>
+
+    <!-- SECTION: ABOUT & SERVICES BENTO -->
+    <section id="about" class="section-wrap container">
+      <div class="section-header">
+        <div class="section-title-group">
+          <div class="glass-pill" style="margin-bottom:8px;">ℹ️ COMPANY PROFILE & SERVICES</div>
+          <h2>關於帝凱 · 核心能力</h2>
+          <p>從嵌入式工業控制到國際科技藝術舞台，十餘年持續驅動動態光電與演算法之美。</p>
+        </div>
+      </div>
+
+      <div class="about-bento-grid">
+        <!-- Main Story Card -->
+        <div class="liquid-glass about-story-card">
+          <div class="segmented-control about-lang-switch" id="aboutLangSwitch">
+            <button class="segment-btn active" data-lang="zh">繁體中文</button>
+            <button class="segment-btn" data-lang="en">English Profile</button>
+          </div>
+
+          <div id="aboutContentZh" class="about-text">
+            <h3 style="font-size:1.45rem; font-weight:700; margin-bottom:14px; color:var(--text-primary);">
+              帝凱互動科技 — 科技與藝術的中央控制核心
+            </h3>
+            <p style="margin-bottom:16px;">
+              帝凱互動科技成立於 2009 年，是一間科技藝術的技術整合公司。擅長將硬體伺服馬達、機械手臂、電腦燈光等媒材利用演算法巧妙地展現活靈活現的作品；近年來中大型展覽互動需求越來越多，每件作品中央控制系統都搭配雲端，讓數千個媒材裝置可以輕鬆控制於手機進行管理、遠端作品可以監控與調閱歷程隨時排查。
+            </p>
+            <p style="margin-bottom:16px;">
+              DECADE.TW 期待未來十年在更多作品背後驅動更多繽紛，並步步求精朝向下一個十年邁進。帝凱科技早年鑽研於嵌入式系統建置領域，透過自行研發中國石油 S3 軟體與加油機台通訊協定（Current Loop）的控制卡，行銷超過台灣四十間民營加油站，並透過多年累積的嵌入式系統設計，擁有豐富的規劃建置經驗，在互動技術領域穩定的導入系統，帶給觀眾更多互動想像體驗，及體現全新型態讓人耳目一新的聽覺、視覺感受。
+            </p>
+            <p>
+              2009 年起，台灣的互動科技熱潮興起，帝凱科技率先透過開放硬體計劃，自行研發以 CPLD 為電路基礎之互動控制系統「Centurion」，已運行於工研院奇想樂園、解密國家寶藏、Computex Taipei、世界設計大展、北美館、關渡美術館、鳳甲美術館、MOT藝廊、香港藝術中心、澳洲、新加坡等地。帝凱將創造更多元、新型態形式的科技藝術產業契機，把藝術與科技融合日常生活。
+            </p>
+          </div>
+
+          <div id="aboutContentEn" class="about-text" style="display:none;">
+            <h3 style="font-size:1.45rem; font-weight:700; margin-bottom:14px; color:var(--text-primary);">
+              DECADE Interactive Technology — Orchestrating Art & Tech
+            </h3>
+            <p style="margin-bottom:16px;">
+              Founded in 2009, DECADE Interactive Technology is an art and technology integration engineering company. DECADE.TW specializes in the use of hardware servo motors, robotic arms, computer lighting, and dynamic physical media driven by tailored algorithms to deliver breathtaking kinetic works.
+            </p>
+            <p style="margin-bottom:16px;">
+              With increasing demands for large-scale interactive exhibitions, our central control systems seamlessly integrate cloud IoT infrastructure, allowing thousands of kinetic elements and illumination points to be monitored, synchronized, and adjusted in real time from mobile dashboards.
+            </p>
+            <p>
+              Originally grounded in embedded systems—such as proprietary Current Loop communication cards deployed across 40+ gas stations in Taiwan—DECADE pioneered the open-hardware movement by founding Arduino.TW and building the proprietary Centurion CPLD platform. DECADE looks forward to shaping next-generation experiential landmarks worldwide.
+            </p>
+          </div>
+        </div>
+
+        <!-- Side Bento Cards -->
+        <div class="about-side-cards">
+          <!-- Services Card -->
+          <div class="liquid-glass services-card">
+            <div class="glass-pill accent" style="margin-bottom:8px;">8 大核心服務 · SERVICES</div>
+            <h4 style="font-size:1.2rem; font-weight:700;">專業技術整合規劃</h4>
+            <div class="services-list">
+              <div class="service-item">
+                <span style="color:var(--accent-cyan);">◈</span> 智慧展場導覽系統
+              </div>
+              <div class="service-item">
+                <span style="color:var(--accent-cyan);">◈</span> 互動科技裝置設計
+              </div>
+              <div class="service-item">
+                <span style="color:var(--accent-cyan);">◈</span> 產品原型設計製作
+              </div>
+              <div class="service-item">
+                <span style="color:var(--accent-cyan);">◈</span> 智慧型互動櫥窗
+              </div>
+              <div class="service-item">
+                <span style="color:var(--accent-cyan);">◈</span> 軟體演算法程式設計
+              </div>
+              <div class="service-item">
+                <span style="color:var(--accent-cyan);">◈</span> 電子電路設計開發
+              </div>
+              <div class="service-item">
+                <span style="color:var(--accent-cyan);">◈</span> 互動裝置諮詢規劃
+              </div>
+              <div class="service-item">
+                <span style="color:var(--accent-cyan);">◈</span> 學術演講·Arduino.TW
+              </div>
+            </div>
+          </div>
+
+          <!-- Publications & Media Bento -->
+          <div class="liquid-glass pub-card">
+            <div class="glass-pill" style="margin-bottom:8px;">📚 專書出版 & 媒體報導</div>
+            <h4 style="font-size:1.15rem; font-weight:700;">權威著作與業界肯定</h4>
+            <div class="pub-items">
+              <div class="pub-pill-item">
+                <strong>《建置無線感測網路》</strong><br>
+                Robert Faludi 著 · 林義翔、劉士達 譯（O'Reilly 台灣，2012年）
+              </div>
+              <div class="pub-pill-item">
+                <strong>《踏進互動科技世界－使用Arduino》</strong><br>
+                Massimo Banzi 著 · 林義翔 譯（旗標出版社，2009年）
+              </div>
+              <div class="media-pill-item">
+                <strong>CTimes 封面故事 & 專欄</strong>：3D印表機革命、跨界整合新美學、開放硬體這條路；文化部 Charming Taiwan 專輯；新北市文化專刊報導。
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: CONTACTS & BANKING -->
+    <section id="contacts" class="section-wrap container">
+      <div class="section-header">
+        <div class="section-title-group">
+          <div class="glass-pill" style="margin-bottom:8px;">📇 CONTACTS & INFORMATION</div>
+          <h2>聯繫合作 · 帳務資訊</h2>
+          <p>歡迎展覽策展、公共藝術規劃、劇場合作與硬體控制技術諮詢。</p>
+        </div>
+      </div>
+
+      <div class="contacts-grid">
+        <!-- Contact Card 1 -->
+        <div class="liquid-glass contact-card">
+          <div class="contact-icon-title">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent-cyan);">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span>公司資訊 · Company</span>
+          </div>
+          <div class="contact-rows">
+            <div class="contact-row">
+              <span class="contact-row-label">公司名稱</span>
+              <span class="contact-row-value">帝凱科技有限公司</span>
+            </div>
+            <div class="contact-row">
+              <span class="contact-row-label">統一編號</span>
+              <div style="display:flex; align-items:center; gap:6px;">
+                <span class="contact-row-value">29133824</span>
+                <button class="copy-chip-btn" onclick="copyText('29133824', '統一編號已複製')">複製</button>
+              </div>
+            </div>
+            <div class="contact-row">
+              <span class="contact-row-label">官方電子郵件</span>
+              <div style="display:flex; align-items:center; gap:6px;">
+                <span class="contact-row-value" style="font-size:0.88rem;">victoria@decade.tw</span>
+                <button class="copy-chip-btn" onclick="copyText('victoria@decade.tw', 'Email 已複製')">複製</button>
+              </div>
+            </div>
+            <div class="contact-row">
+              <span class="contact-row-label">官方 LINE</span>
+              <div style="display:flex; align-items:center; gap:6px;">
+                <span class="contact-row-value">@ecz7450a</span>
+                <a href="https://lin.ee/RcQIUgM" target="_blank" rel="noopener noreferrer" class="copy-chip-btn" style="text-decoration:none;">加好友</a>
+              </div>
+            </div>
+            <div class="contact-row">
+              <span class="contact-row-label">Facebook</span>
+              <a href="https://www.facebook.com/DECADE.TW" target="_blank" rel="noopener noreferrer" class="copy-chip-btn" style="text-decoration:none;">
+                DECADE.TW 粉絲專頁 &rarr;
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Card 2: Banking -->
+        <div class="liquid-glass contact-card">
+          <div class="contact-icon-title">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent-purple);">
+              <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+              <line x1="2" y1="10" x2="22" y2="10"></line>
+            </svg>
+            <span>帳務資訊 · Banking</span>
+          </div>
+          <div class="contact-rows">
+            <div class="contact-row">
+              <span class="contact-row-label">金融機構</span>
+              <span class="contact-row-value">中國信託商業銀行 (822)</span>
+            </div>
+            <div class="contact-row">
+              <span class="contact-row-label">分行名稱</span>
+              <span class="contact-row-value">板新分行</span>
+            </div>
+            <div class="contact-row">
+              <span class="contact-row-label">匯款帳號</span>
+              <div style="display:flex; align-items:center; gap:6px;">
+                <span class="contact-row-value" style="font-family:monospace; font-size:1.05rem;">4175-4026-6515</span>
+                <button class="copy-chip-btn" onclick="copyText('417540266515', '銀行帳號已複製')">複製</button>
+              </div>
+            </div>
+            <div class="contact-row">
+              <span class="contact-row-label">帳戶戶名</span>
+              <span class="contact-row-value">帝凱科技有限公司</span>
+            </div>
+          </div>
+          <p style="font-size:0.78rem; color:var(--text-tertiary); margin-top:14px; line-height:1.5;">
+            * 匯款後請來信或透過 LINE 官方帳號提供帳號後五碼以利即時對帳與開立發票。
+          </p>
+        </div>
+
+        <!-- Contact Card 3: Location -->
+        <div class="liquid-glass contact-card">
+          <div class="contact-icon-title">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent-emerald);">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span>公司地址 · Location</span>
+          </div>
+          <div class="contact-rows">
+            <div>
+              <div class="contact-row-label" style="margin-bottom:4px;">中文地址</div>
+              <div style="font-weight:600; font-size:0.95rem; color:var(--text-primary);">台北市北投路一段9-C號</div>
+            </div>
+            <div>
+              <div class="contact-row-label" style="margin-bottom:4px;">English Address</div>
+              <div style="font-size:0.84rem; color:var(--text-secondary); line-height:1.4;">
+                No.9-C, Sec. 1, Beitou Rd., Beitou Dist., Taipei City, Taiwan
+              </div>
+            </div>
+          </div>
+          <!-- Click map image opens in POP-UP window, NOT new page -->
+          <div class="map-box" onclick="openSingleImage('https://www.decade.tw/images/map/decade_map.jpg', '帝凱科技地理位置地圖', '台北市北投路一段9-C號');" title="點擊在彈出視窗檢視大地圖">
+            <img src="https://www.decade.tw/images/map/decade_map.jpg" alt="DECADE 帝凱科技地理位置地圖" loading="lazy">
+            <div class="map-box-overlay">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>
+              <span>點擊在彈跳視窗檢視地圖</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- LIQUID GLASS FOOTER -->
+  <footer class="liquid-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <img src="https://www.decade.tw/images/logo/decade_logo.png" alt="DECADE Logo" class="footer-logo" onclick="openSingleImage('https://www.decade.tw/images/logo/decade_logo.png', 'DECADE.TW 帝凱科技有限公司 Logo', '科技藝術中央控制與互動系統整合先驅');" title="點擊檢視 Logo">
+          <span>帝凱科技有限公司 DECADE Interactive Technology</span>
+        </div>
+
+        <div class="system-status-indicator">
+          <span class="status-dot"></span>
+          <span>Cloud IoT Core & Central Control Ready · 2026 Edition</span>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2009–2026 DECADE.TW 帝凱科技有限公司. 版權所有 All Rights Reserved.
+        </div>
+        <div style="display:flex; gap:16px;">
+          <span>統編：29133824</span>
+          <span>Designed with Apple Liquid Glass Aesthetics</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- YOUTUBE VIDEO POP-UP MODAL DIALOG (closedby="any") -->
+  <dialog id="videoModal" closedby="any" class="liquid-modal" aria-labelledby="modalVideoTitle">
+    <div class="modal-frame">
+      <div class="modal-bar">
+        <span id="modalVideoTitle" class="modal-title">影片標題</span>
+        <button id="closeVideoModalBtn" class="modal-close-btn" aria-label="關閉影片">&times;</button>
+      </div>
+      <div class="modal-video-aspect">
+        <iframe id="videoIframe" src="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="modal-details">
+        <div>
+          <span id="modalVideoBadge" class="glass-pill accent" style="margin-bottom:6px; display:inline-block;">分類</span>
+          <p id="modalVideoDesc" style="font-size:0.9rem; color:var(--text-secondary); max-width:650px;">影片說明文字</p>
+        </div>
+        <div style="display:flex; gap:8px;">
+          <button id="copyVideoLinkBtn" class="glass-btn" style="padding:8px 18px; font-size:0.85rem;">
+            複製影片連結
+          </button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- IMAGE LIGHTBOX POP-UP MODAL DIALOG (closedby="any") -->
+  <dialog id="imageLightbox" closedby="any" class="lightbox-modal" aria-label="影像檢視器">
+    <div class="lightbox-frame">
+      <div class="modal-bar">
+        <div>
+          <span id="lightboxTitle" class="modal-title">作品影像</span>
+          <span id="lightboxCounter" class="glass-pill" style="font-size:0.75rem; margin-left:8px;">1 / 21</span>
+        </div>
+        <button id="closeLightboxBtn" class="modal-close-btn" aria-label="關閉檢視器">&times;</button>
+      </div>
+      <div class="lightbox-img-wrap">
+        <img id="lightboxImg" class="lightbox-img" src="" alt="放大檢視影像">
+      </div>
+      <div class="lightbox-nav-bar" id="lightboxNavBar">
+        <button id="prevImgBtn" class="glass-btn" style="padding:6px 16px; font-size:0.85rem;">&larr; 上一張</button>
+        <p id="lightboxDesc" style="font-size:0.85rem; color:var(--text-secondary); text-align:center;">影像備註說明</p>
+        <button id="nextImgBtn" class="glass-btn" style="padding:6px 16px; font-size:0.85rem;">下一張 &rarr;</button>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="liquidToast" class="liquid-toast" role="status" aria-live="polite">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--accent-emerald);">
+      <polyline points="20 6 9 17 4 12"></polyline>
+    </svg>
+    <span id="toastMessage">已複製到剪貼簿</span>
+  </div>
+
+  <!-- BACK TO TOP BUTTON -->
+  <button id="backToTopBtn" class="back-to-top-btn" title="回到頂部" aria-label="回到頂部">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+  </button>
+
+  <!-- INLINE DATA & JAVASCRIPT LOGIC -->
+  <script>
+    // Embedded Data from decade.tw.md
+    const VIDEO_DATA = [{"title": "基隆山海鳴光", "id": "GGZHxkKLopg", "category": "公共藝術 & 地標", "year": "2025", "desc": "基隆火車站公共藝術中央控制軟體建置與技術總監，跨界打造海港山光互動展演。"}, {"title": "台北燈節主燈偶控系統", "id": "et_1mErdoKY", "category": "國家級燈會", "year": "2020", "desc": "台北燈節主燈巨型動態牛偶控制系統，高精準度伺服同步運動。"}, {"title": "台灣燈會新竹主燈中央控制系統", "id": "RtN9LXy0nSY", "category": "國家級燈會", "year": "2020", "desc": "新竹主燈巨型動態裝置中央控制軟體技術總監，結合光電演算法。"}, {"title": "高雄流行音樂中心", "id": "9_RAmF9dAQo", "category": "公共藝術 & 地標", "year": "2025", "desc": "高雄流行音樂中心「波光之翼」中央控制軟體建置與技術總監。"}, {"title": "豪華朗機工「聆聽花開的聲音」", "id": "AMcD4XxWp9Y", "category": "巨型動力機械", "year": "2018", "desc": "台中花博地標巨型機械花朵，數百朵機械花瓣與光電即時聯控。"}, {"title": "誠品30週年機械手臂控制", "id": "uDib2sl9EQ4", "category": "機械手臂控制", "year": "2019", "desc": "信義誠品30週年「一起幻想」工業機械手臂演算法與運動群控。"}, {"title": "台電大樓馬達控制系統", "id": "YPILezM36Mk", "category": "公共藝術 & 地標", "year": "2016", "desc": "台電大樓公共藝術「日光域」數百顆燈光與伺服馬達電控技術設計與製作。"}, {"title": "台中世界花卉博覽會", "id": "zv084TmAvKo", "category": "巨型動力機械", "year": "2018", "desc": "中央控制系統建置，演算仿生開合與燈光律動。"}, {"title": "台電大樓風動電路設計", "id": "Xkbk8A6MBmI", "category": "電路與中央控制", "year": "2016", "desc": "台電大樓公共藝術「河飄風」動態電路設計與製作。"}, {"title": "世大運開幕式", "id": "mnyQ6473jj0", "category": "大型盛典光電", "year": "2017", "desc": "台北世大運開幕群控光電顧問，大型萬人場館通訊排查與同步控管。"}, {"title": "台灣科技園區裝置控制", "id": "XWcwRYwDcVs", "category": "公共藝術 & 地標", "year": "2012", "desc": "汐止台灣科學園區大廳與戶外公共藝術裝置中央時序控制。"}, {"title": "台南燈會中央控制系統", "id": "uWbwuabvpgY", "category": "國家級燈會", "year": "2013", "desc": "台南鹽水月津港燈節主燈「日光域」控制系統與現場調試。"}, {"title": "誠品３０週年機械手臂控制 (特寫)", "id": "blTlSpL5gPA", "category": "機械手臂控制", "year": "2019", "desc": "精準時間軸同步驅動機械手臂多軸運動軌跡。"}, {"title": "法國IRCAM 中央控制", "id": "G21wHvVLtVY", "category": "國際展演與劇場", "year": "2025", "desc": "法國龐畢度美術館 IRCAM「失眠寫生簿」國際巡展中央控制系統。"}, {"title": "台北流行音樂中心公共藝術控制系統", "id": "dF1C0cCYdGA", "category": "公共藝術 & 地標", "year": "2025", "desc": "北流「幻流行光」戶外地標燈光矩陣與即時音訊聯動控制。"}, {"title": "台北燈節主燈牛偶控制系統 (動態調試)", "id": "iLRVEH9zFao", "category": "國家級燈會", "year": "2020", "desc": "中央控制軟體技術總監，複合媒材多維度協同控制。"}, {"title": "基隆車站控制系統", "id": "yNvj24m-KbA", "category": "公共藝術 & 地標", "year": "2025", "desc": "基隆火車站公共藝術多點分佈式控制與遠端監控平台。"}, {"title": "台南奇美博物館", "id": "7wjWHlk9EHU", "category": "博物館特展", "year": "2019", "desc": "奇美博物館「影子特展」中央控制技術總監，光影與機械精妙交織。"}, {"title": "台灣電力公司日光域控制系統", "id": "0wHT3ey_Dkc", "category": "公共藝術 & 地標", "year": "2016", "desc": "公共藝術「太陽之詩」馬達電控技術與製作，打造綠能流動詩篇。"}, {"title": "新竹台灣燈會主燈控制系統 (現場實況)", "id": "RPPHKiupq58", "category": "國家級燈會", "year": "2020", "desc": "全台指標級主燈中央排程與安全防護監控系統。"}, {"title": "Arduino教父 Massimo Banzi 訪台", "id": "b9wYHVMWJ10", "category": "社群與科技推廣", "year": "2009", "desc": "創立 Arduino.TW 社群，推動開放硬體、物聯網與互動藝術在台生根。"}];
+    const SLIDES_DATA = [{"src": "https://www.decade.tw/images/slide/0.png", "title": "大型互動展演現場實績 #00", "desc": "展場軟硬體整合、伺服馬達驅控與光電動態裝置紀錄"}, {"src": "https://www.decade.tw/images/slide/1.png", "title": "大型互動展演現場實績 #01", "desc": "展場軟硬體整合、伺服馬達驅控與光電動態裝置紀錄"}, {"src": "https://www.decade.tw/images/slide/2.png", "title": "大型互動展演現場實績 #02", "desc": "展場軟硬體整合、伺服馬達驅控與光電動態裝置紀錄"}, {"src": "https://www.decade.tw/images/slide/3.png", "title": "大型互動展演現場實績 #03", "desc": "展場軟硬體整合、伺服馬達驅控與光電動態裝置紀錄"}, {"src": "https://www.decade.tw/images/slide/4.png", "title": "大型互動展演現場實績 #04", "desc": "展場軟硬體整合、伺服馬達驅控與光電動態裝置紀錄"}, {"src": "https://www.decade.tw/images/slide/5.png", "title": "大型互動展演現場實績 #05", "desc": "展場軟硬體整合、伺服馬達驅控與光電動態裝置紀錄"}, {"src": "https://www.decade.tw/images/slide/6.png", "title": "大型互動展演現場實績 #06", "desc": "展場軟硬體整合、伺服馬達驅控與光電動態裝置紀錄"}, {"src": "https://www.decade.tw/images/slide/7.png", "title": "大型互動展演現場實績 #07", "desc": "展場軟硬體整合、伺服馬達驅控與光電動態裝置紀錄"}, {"src": "https://www.decade.tw/images/slide/8.png", "title": "大型互動展演現場實績 #08", "desc": "展場軟硬體整合、伺服馬達驅控與光電動態裝置紀錄"}, {"src": "https://www.decade.tw/images/slide/9.png", "title": "大型互動展演現場實績 #09", "desc": "展場軟硬體整合、伺服馬達驅控與光電動態裝置紀錄"}, {"src": "https://www.decade.tw/images/slide/10.png", "title": "大型互動展演現場實績 #10", "desc": "展場軟硬體整合、伺服馬達驅控與光電動態裝置紀錄"}, {"src": "https://www.decade.tw/images/slide/11.png", "title": "大型互動展演現場實績 #11", "desc": "展場軟硬體整合、伺服馬達驅控與光電動態裝置紀錄"}, {"src": "https://www.decade.tw/images/slide/12.png", "title": "大型互動展演現場實績 #12", "desc": "展場軟硬體整合、伺服馬達驅控與光電動態裝置紀錄"}, {"src": "https://www.decade.tw/images/slide/13.png", "title": "大型互動展演現場實績 #13", "desc": "展場軟硬體整合、伺服馬達驅控與光電動態裝置紀錄"}, {"src": "https://www.decade.tw/images/slide/14.png", "title": "大型互動展演現場實績 #14", "desc": "展場軟硬體整合、伺服馬達驅控與光電動態裝置紀錄"}, {"src": "https://www.decade.tw/images/slide/15.png", "title": "大型互動展演現場實績 #15", "desc": "展場軟硬體整合、伺服馬達驅控與光電動態裝置紀錄"}, {"src": "https://www.decade.tw/images/slide/16.png", "title": "大型互動展演現場實績 #16", "desc": "展場軟硬體整合、伺服馬達驅控與光電動態裝置紀錄"}, {"src": "https://www.decade.tw/images/slide/17.png", "title": "大型互動展演現場實績 #17", "desc": "展場軟硬體整合、伺服馬達驅控與光電動態裝置紀錄"}, {"src": "https://www.decade.tw/images/slide/18.png", "title": "大型互動展演現場實績 #18", "desc": "展場軟硬體整合、伺服馬達驅控與光電動態裝置紀錄"}, {"src": "https://www.decade.tw/images/slide/19.png", "title": "大型互動展演現場實績 #19", "desc": "展場軟硬體整合、伺服馬達驅控與光電動態裝置紀錄"}, {"src": "https://www.decade.tw/images/slide/20.png", "title": "大型互動展演現場實績 #20", "desc": "展場軟硬體整合、伺服馬達驅控與光電動態裝置紀錄"}];
+    const ALGO_DATA = [{"src": "https://www.decade.tw/images/algorithmPic/0.png", "title": "演算法與硬體電路研發 #00", "desc": "Centurion 系統架構、CPLD 邏輯電路、多點通訊與運動路徑演算"}, {"src": "https://www.decade.tw/images/algorithmPic/1.png", "title": "演算法與硬體電路研發 #01", "desc": "Centurion 系統架構、CPLD 邏輯電路、多點通訊與運動路徑演算"}, {"src": "https://www.decade.tw/images/algorithmPic/2.png", "title": "演算法與硬體電路研發 #02", "desc": "Centurion 系統架構、CPLD 邏輯電路、多點通訊與運動路徑演算"}, {"src": "https://www.decade.tw/images/algorithmPic/3.png", "title": "演算法與硬體電路研發 #03", "desc": "Centurion 系統架構、CPLD 邏輯電路、多點通訊與運動路徑演算"}, {"src": "https://www.decade.tw/images/algorithmPic/4.png", "title": "演算法與硬體電路研發 #04", "desc": "Centurion 系統架構、CPLD 邏輯電路、多點通訊與運動路徑演算"}, {"src": "https://www.decade.tw/images/algorithmPic/5.png", "title": "演算法與硬體電路研發 #05", "desc": "Centurion 系統架構、CPLD 邏輯電路、多點通訊與運動路徑演算"}, {"src": "https://www.decade.tw/images/algorithmPic/6.png", "title": "演算法與硬體電路研發 #06", "desc": "Centurion 系統架構、CPLD 邏輯電路、多點通訊與運動路徑演算"}, {"src": "https://www.decade.tw/images/algorithmPic/7.png", "title": "演算法與硬體電路研發 #07", "desc": "Centurion 系統架構、CPLD 邏輯電路、多點通訊與運動路徑演算"}, {"src": "https://www.decade.tw/images/algorithmPic/8.png", "title": "演算法與硬體電路研發 #08", "desc": "Centurion 系統架構、CPLD 邏輯電路、多點通訊與運動路徑演算"}];
+    const WORKS_DATA = [{"year": "2027", "items": [{"title": "「故宮南院 X 豪華朗機工」", "role": "中央控制軟體技術總監", "tags": ["中央控制", "國家級展館", "豪華朗機工"]}]}, {"year": "2026", "items": [{"title": "Visual Model Training (SacoMesure AI Model)", "role": "視覺AI模型訓練研發", "tags": ["AI演算法", "機器視覺", "模型訓練"]}, {"title": "Gxxgle Home-Connection calc algorithm", "role": "通訊演算與邊緣計算架構", "tags": ["IoT演算法", "雲端架構", "邊緣運算"]}, {"title": "「臺中國家歌劇院 - 最後一問 X 豪華朗機工」", "role": "中央控制軟體技術總監", "tags": ["中央控制", "國家歌劇院", "豪華朗機工"]}]}, {"year": "2025", "items": [{"title": "「兩廳院 - 國家交響樂團」", "role": "III資策會 X NSO X AI 跨界技術整合", "tags": ["NSO", "資策會", "AI即時運算"]}, {"title": "「豪華朗機工」－ 宇宙寫生", "role": "動態控制與系統架構", "tags": ["藝術裝置", "豪華朗機工"]}, {"title": "「豪華朗機工」－ 日光域", "role": "系統維護與雲端控制升級", "tags": ["地標裝置", "豪華朗機工"]}, {"title": "「豪華朗機工」－ 手識", "role": "伺服運動控制系統", "tags": ["精密機械", "豪華朗機工"]}, {"title": "「豪華朗機工」－ 四合", "role": "中央控制軟體整合", "tags": ["互動藝術", "豪華朗機工"]}, {"title": "「豪華朗機工」－ 很難很難", "role": "機械與燈光運動控制", "tags": ["多軸聯動", "豪華朗機工"]}, {"title": "「ＩＯＮＩＣ」－ SacoMeasure「桃園會展中心」", "role": "入口裝置藝術「匯聚流」丁建中 技術顧問", "tags": ["會展地標", "流體動態"]}, {"title": "「信義區微風顯示器」", "role": "視訊控制中心系統建置", "tags": ["視訊群控", "商業空間"]}, {"title": "「台中都會公園」", "role": "顯示控制中心系統建置", "tags": ["戶外顯示", "中央控制"]}, {"title": "「特拉維夫」－ 裝置藝術 丁建中", "role": "海外國際裝置電控系統", "tags": ["海外巡演", "電控設計"]}, {"title": "「IRCAM 法國龐畢度美術館」－ 失眠寫生簿", "role": "豪華朗機工 國際展演中央控制", "tags": ["龐畢度", "國際展覽", "豪華朗機工"]}, {"title": "「兩廳院 舞鈴劇團」", "role": "兩廳院 5G手環無線點控（資策會）", "tags": ["5G低延遲", "穿戴裝置", "資策會"]}, {"title": "「密室逃脫」", "role": "超高頻 RFID 智慧觸發與場景引擎", "tags": ["RFID", "微秒級反應", "遊戲引擎"]}, {"title": "「北區資安中心」", "role": "顯示控制中心系統整合", "tags": ["資安高可用", "視訊聯控"]}, {"title": "「北區球場」", "role": "大型運動場地顯示控制中心", "tags": ["體育場館", "LED顯示"]}, {"title": "「ＩＴＲＩ 工研院」", "role": "震動演算法分析與訊號調校", "tags": ["工研院", "震動演算法", "訊號分析"]}, {"title": "「台北流行音樂中心－幻流行光 Ｘ 豪華朗機工」", "role": "中央控制軟體建置與技術總監", "tags": ["北流", "公共藝術", "中央控制"]}, {"title": "「高雄流行音樂中心 波光之翼 Ｘ 豪華朗機工」", "role": "中央控制軟體建置與技術總監", "tags": ["高流", "地標光影", "中央控制"]}, {"title": "「基隆火車站 山海鳴光 Ｘ 豪華朗機工」", "role": "中央控制軟體建置與技術總監", "tags": ["基隆車站", "公共藝術", "中央控制"]}]}, {"year": "2020", "items": [{"title": "「台灣燈會－新竹主燈 Ｘ 豪華朗機工」", "role": "中央控制軟體技術總監", "tags": ["國家主燈", "中央控制", "豪華朗機工"]}, {"title": "「台北燈會－台北萬華主燈 Ｘ ＡＫＩＢＯ老師」", "role": "中央控制軟體技術總監", "tags": ["台北燈節", "大型動態偶", "AKIBO"]}]}, {"year": "2019", "items": [{"title": "「信義誠品30週年」 一起幻想 Ｘ 豪華朗機工", "role": "機械手臂中央控制技術總監", "tags": ["工業機械手臂", "演算法", "信義誠品"]}, {"title": "「臺南奇美博物館」 影子特展 Ｘ 豪華朗機工", "role": "中央控制技術總監", "tags": ["奇美博物館", "影子藝術", "中央控制"]}, {"title": "「台北當代藝術館」 查無此人小花展 Ｘ 豪華朗機工", "role": "中央控制技術總監", "tags": ["當代藝術館", "展覽總監"]}, {"title": "「永豐餘元太科技 EINK」", "role": "電子紙控制計劃案研發與控制架構", "tags": ["元太科技", "E-Ink", "超低功耗"]}]}, {"year": "2018", "items": [{"title": "「臺中世界花卉博覽會」 聆聽花開的聲音 Ｘ 豪華朗機工", "role": "中央控制系統建置與演算法排程", "tags": ["台中花博", "巨型機械花", "國家代表作"]}, {"title": "「GoGoRo 新車發表會」", "role": "硬體控制系統建置與即時聲光連動", "tags": ["Gogoro", "發表會電控"]}, {"title": "「宜蘭傳統藝術中心」", "role": "互動介面多點控制設計", "tags": ["多點觸控", "智慧導覽"]}, {"title": "「臺北小巨蛋 CTC世界盃國際標準舞公開賽」", "role": "RF 無線多點群控系統設計", "tags": ["RF群控", "小巨蛋"]}]}, {"year": "2017", "items": [{"title": "「松山文創園區 讀衣II」 時尚 X 藝術跨界展 Ｘ JUST IN XX 周裕穎", "role": "驅動控制系統建置", "tags": ["科技時尚", "馬達驅動"]}, {"title": "「台北世大運」", "role": "群控光電顧問", "tags": ["世界級盛典", "光電群控"]}, {"title": "「白晝之夜」 藝術活動 Ｘ 藝術家江惠菁 Ｘ 步里赫森", "role": "電路技術支援", "tags": ["白晝之夜", "動態電路"]}, {"title": "「白晝之夜－台電大樓公共藝術」 Ｘ 柯市長點燈", "role": "遠端控制系統與現場聯調", "tags": ["台電大樓", "遠端聯控"]}, {"title": "「元太科技 EINK 電子紙」", "role": "驅動控制系統規劃執行", "tags": ["電子紙驅控", "元太科技"]}, {"title": "「Fashion Tech JustInCase」 科技服裝設計 Ｘ JUST IN XX 周裕穎", "role": "驅動控制系統規劃建置", "tags": ["穿戴科技", "微型驅動"]}, {"title": "「農業溫室與政府公開資訊」", "role": "環境監控與大數據研究計劃", "tags": ["智慧農業", "公開數據"]}, {"title": "「臺中機器學習 MachineLearning」", "role": "資料研究與邊緣運算計劃", "tags": ["機器學習", "數據分析"]}, {"title": "「國家歌劇院 UltraCombo 群控無人機」", "role": "群控通訊協定顧問", "tags": ["無人機群飛", "通訊協定"]}]}, {"year": "2016", "items": [{"title": "「台灣電力公司公共藝術」 日光域 Ｘ 華麗邏輯", "role": "電控技術設計與製作", "tags": ["公共藝術", "日光域", "電控製作"]}, {"title": "「台灣電力公司公共藝術」 河飄風 Ｘ 華麗邏輯", "role": "電路設計與製作", "tags": ["風動感測", "類比電路"]}, {"title": "「台灣電力公司公共藝術」 太陽之詩 Ｘ 華麗邏輯", "role": "馬達電控技術與製作", "tags": ["伺服馬達", "太陽之詩"]}]}, {"year": "2015", "items": [{"title": "「2015解密國家寶藏 Ｘ 奇想樂園互動科技館」", "role": "採用本公司研發 Centurion Pro V2.0 系統 (工研院 X 華麗邏輯 X 光洋波斯特)", "tags": ["工研院", "Centurion系統", "互動導覽"]}, {"title": "「智慧型 IMU 壓力感測藍芽通訊柺杖」", "role": "國立台灣大學 ivLab Ｘ 資策會創新所 共同研發", "tags": ["台大ivLab", "資策會", "BLE醫療感測"]}, {"title": "「智慧型震動馬達感測藍芽通訊鞋墊」", "role": "資策會創新所 共同研發", "tags": ["穿戴感測", "震動反饋"]}]}, {"year": "2006–2014", "items": [{"title": "「敦煌擴增實境導覽裝置」 小沙彌", "role": "台灣大學 ivLab (2014)", "tags": ["AR導覽", "台大ivLab"]}, {"title": "「2014解密國家寶藏－奇想樂園互動科技館」", "role": "採用 Centurion Pro V1.5 系統 (工研院 X 華麗邏輯) (2014)", "tags": ["工研院", "互動機台"]}, {"title": "「桃園機場第二航廈公共藝術裝置」 歐基理德的飛行 Ｘ 豪華朗機工", "role": "電控系統整合 (2013)", "tags": ["桃機二航", "公共藝術"]}, {"title": "「英國曼徹斯特」 日光域 Ｘ 豪華朗機工", "role": "海外展出控制系統 (2013)", "tags": ["國際展覽", "英國曼徹斯特"]}, {"title": "「臺南鹽水月津港燈節主燈」 日光域 Ｘ 豪華朗機工", "role": "主燈控制系統 (2013)", "tags": ["月津港燈節", "主燈電控"]}, {"title": "「無人劇場 Timecode 系統研發」 王俊傑 Ｘ 豪華朗機工 Ｘ 北藝大科藝中心", "role": "旗艦計畫 採用 Centurion Pro V1.0 系統 (2012)", "tags": ["無人劇場", "Timecode", "北藝大"]}, {"title": "「汐止台灣科學園區大廳公共藝術」 見為知著 Ｘ 豪華朗機工", "role": "動態機構與光電控制 (2012)", "tags": ["科學園區", "公共藝術"]}, {"title": "「汐止台灣科學園區戶外公共藝術」 時中光 Ｘ 豪華朗機工", "role": "戶外動態控制 (2012)", "tags": ["戶外公共藝術"]}, {"title": "「文建會科技與表演藝術結合旗艦計畫」 M Project Ｘ 豪華朗機工 Ｘ 周先生", "role": "跨界共同創作 (2012)", "tags": ["表演藝術", "跨界創作"]}, {"title": "「足部壓力無線傳輸感測模組」 國立台灣大學 Ｘ 資策會", "role": "感測硬體共同創作 (2012)", "tags": ["台大", "資策會", "無線感測"]}, {"title": "「線上演出『名導濾鏡』之雲端冒險」 廣藝基金會 Ｘ 台北藝術大學", "role": "雲端互動技術整合 (2012)", "tags": ["雲端演出", "數位劇場"]}, {"title": "「Computex Taipei」 雲端個人 3D 印表機 Ｘ 威盛電子", "role": "合作研發嵌入式主板 (2012)", "tags": ["3D印表機", "威盛電子", "Computex"]}, {"title": "「Facebook 互動式數位藝術櫥窗」 台北教育大學 Ｘ 藝術家張博智", "role": "社群即時互動硬體 (2011)", "tags": ["數位櫥窗", "社群互動"]}, {"title": "業界演講 CTimes Android Days －『踏進Arduino互動科技世界－使用Android』", "role": "主講人（現場超過 200 人次） (2011)", "tags": ["CTimes", "Android", "專業演講"]}, {"title": "「藝術裝置」 福 Ｘ 豪華朗機工", "role": "互動機構與光電設計 (2011)", "tags": ["藝術裝置", "豪華朗機工"]}, {"title": "「ZigBee 無線傳輸」 德明財經科技大學", "role": "距離感測模組產學研發 (2011)", "tags": ["ZigBee", "產學合作"]}, {"title": "研發 LED 幻彩無線傳輸控制器", "role": "自主專利硬體電路設計 (2011)", "tags": ["LED控制器", "自主硬體"]}, {"title": "「Facebook 互動式音樂」 Tender Blackmail 黑信 Ｘ 陳建騏 Ｘ 張博智 Ｘ 人力飛行劇團", "role": "互動音訊硬體設計 (2011)", "tags": ["陳建騏", "音樂互動", "劇場"]}, {"title": "「台北世界設計大會」 聲音互動式展場 Ｘ 亞洲大學", "role": "聲音互動設計製作 (2011)", "tags": ["世界設計大會", "聲學互動"]}, {"title": "研發 Centurion 多點互動控制系統", "role": "以 CPLD 為電路基礎之自主中央控制架構 (2010)", "tags": ["Centurion核心", "CPLD", "自主研發"]}, {"title": "「藝術裝置」 一日 / 日光域 / 游泳 Ｘ 豪華朗機工", "role": "電子控制總成設計 (2010)", "tags": ["早期代表作", "豪華朗機工"]}, {"title": "於台灣大學研發智慧感測手環", "role": "生醫感測與無線資料傳輸 (2010)", "tags": ["智慧手環", "台大合作"]}, {"title": "「藝術裝置」 浪2 / 無線音樂控制器 Ｘ 張博智", "role": "電子控制設計 (2010)", "tags": ["張博智", "無線控制"]}, {"title": "「水立方時尚館 籠中鳥」 帝凱科技有限公司正式成立", "role": "藝術裝置電控設計 · 帝凱正式立案 (2009)", "tags": ["帝凱成立", "時尚裝置"]}, {"title": "於台灣大學研發智慧壓力感測鞋、智慧呼吸感測衣", "role": "穿戴式生理量測先鋒 (2009)", "tags": ["智慧鞋", "呼吸感測"]}, {"title": "獲教育部 99年度 U-START 大專畢業生創業服務計畫 30 萬創業補助", "role": "進駐國立台北藝術大學育成中心 (2008)", "tags": ["U-START", "北藝大育成"]}, {"title": "美國洛杉磯與新加坡 SIGGRAPH 國際會議發表教室多人控制系統", "role": "『Many to One PC by WSN System』 (2008)", "tags": ["SIGGRAPH", "國際論文", "WSN"]}, {"title": "「藝術裝置」 時間流產 / 南方樂浪 Ｘ 朗機工", "role": "電子控制設計 (2007)", "tags": ["朗機工", "初期創作"]}, {"title": "研發與生產－台灣中國石油 S3 加油機控制介面卡", "role": "行銷全台超過40間民營加油站 (Current Loop 協定) (2006)", "tags": ["中油S3", "嵌入式系統", "工業通訊"]}, {"title": "創辦 Arduino.TW－台灣 Arduino 使用者社群", "role": "全台最大開放硬體自造者技術社群 (2006)", "tags": ["Arduino.TW", "開放硬體", "社群創辦"]}]}];
+
+    // State Variables
+    let currentGalleryTab = 'slides';
+    let currentLightboxList = SLIDES_DATA;
+    let currentLightboxIndex = 0;
+    let currentPlayingVideoId = '';
+
+    // DOM Elements
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    const closeDrawerBtn = document.getElementById('closeDrawerBtn');
+    const videosContainer = document.getElementById('videosContainer');
+    const videoFilterControl = document.getElementById('videoFilterControl');
+    const galleryContainer = document.getElementById('galleryContainer');
+    const galleryTabControl = document.getElementById('galleryTabControl');
+    const worksTimelineContainer = document.getElementById('worksTimelineContainer');
+    const worksSearchInput = document.getElementById('worksSearchInput');
+    const worksEraControl = document.getElementById('worksEraControl');
+    const worksCountDisplay = document.getElementById('worksCountDisplay');
+    const videoModal = document.getElementById('videoModal');
+    const closeVideoModalBtn = document.getElementById('closeVideoModalBtn');
+    const videoIframe = document.getElementById('videoIframe');
+    const modalVideoTitle = document.getElementById('modalVideoTitle');
+    const modalVideoDesc = document.getElementById('modalVideoDesc');
+    const modalVideoBadge = document.getElementById('modalVideoBadge');
+    const copyVideoLinkBtn = document.getElementById('copyVideoLinkBtn');
+    const imageLightbox = document.getElementById('imageLightbox');
+    const closeLightboxBtn = document.getElementById('closeLightboxBtn');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxTitle = document.getElementById('lightboxTitle');
+    const lightboxDesc = document.getElementById('lightboxDesc');
+    const lightboxCounter = document.getElementById('lightboxCounter');
+    const lightboxNavBar = document.getElementById('lightboxNavBar');
+    const prevImgBtn = document.getElementById('prevImgBtn');
+    const nextImgBtn = document.getElementById('nextImgBtn');
+    const liquidToast = document.getElementById('liquidToast');
+    const toastMessage = document.getElementById('toastMessage');
+    const backToTopBtn = document.getElementById('backToTopBtn');
+    const aboutLangSwitch = document.getElementById('aboutLangSwitch');
+    const aboutContentZh = document.getElementById('aboutContentZh');
+    const aboutContentEn = document.getElementById('aboutContentEn');
+
+    /* ==========================================================================
+       THEME CONTROLLER (Dark / Light / Auto)
+       ========================================================================== */
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('decade_liquid_theme', theme);
+      const metaTheme = document.querySelector('meta[name="color-scheme"]');
+      if (metaTheme) {
+        metaTheme.content = theme === 'auto' ? 'light dark' : theme;
+      }
+      // Sync all theme buttons (header dock and mobile drawer)
+      document.querySelectorAll('.theme-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.themeVal === theme);
+      });
+
+      const themeNames = {
+        'light': '☀️ 淺色明亮模式',
+        'dark': '🌙 深色星空模式',
+        'auto': '⚙️ 系統自動同步模式'
+      };
+      showToast(`已切換為：${themeNames[theme] || theme}`);
+    }
+
+    // Bind all theme buttons across page
+    document.querySelectorAll('.theme-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        applyTheme(btn.dataset.themeVal);
+      });
+    });
+
+    // Init theme buttons state
+    const currentInitTheme = localStorage.getItem('decade_liquid_theme') || 'auto';
+    document.querySelectorAll('.theme-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.themeVal === currentInitTheme);
+    });
+
+    /* ==========================================================================
+       MOBILE DRAWER CONTROLLER
+       ========================================================================== */
+    function openMobileDrawer() {
+      mobileDrawer.classList.add('open');
+      mobileDrawer.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMobileDrawer() {
+      mobileDrawer.classList.remove('open');
+      mobileDrawer.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    mobileMenuBtn.addEventListener('click', openMobileDrawer);
+    closeDrawerBtn.addEventListener('click', closeMobileDrawer);
+    mobileDrawer.addEventListener('click', (e) => {
+      if (e.target === mobileDrawer) closeMobileDrawer();
+    });
+    document.querySelectorAll('.drawer-link').forEach(link => {
+      link.addEventListener('click', closeMobileDrawer);
+    });
+
+    /* ==========================================================================
+       POP-UP WINDOW: VIDEO MODAL (Never open new page)
+       ========================================================================== */
+    function renderVideos(filter = 'all') {
+      const filtered = filter === 'all' 
+        ? VIDEO_DATA 
+        : VIDEO_DATA.filter(v => v.category.includes(filter) || (filter === '國際展演與劇場' && (v.category.includes('國際') || v.category.includes('社群'))));
+
+      videosContainer.innerHTML = filtered.map(v => `
+        <article class="liquid-glass video-card" onclick="openVideoModal('${v.id}')" role="button" tabindex="0" aria-label="彈出視窗播放影片：${v.title}">
+          <div class="video-thumb-wrap">
+            <img class="video-thumb" src="https://img.youtube.com/vi/${v.id}/hqdefault.jpg" alt="${v.title}" loading="lazy" onerror="this.src='https://www.decade.tw/images/logo/decade_logo.png'">
+            <div class="play-glass-badge">
+              <div class="play-icon-circle">
+                <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+              </div>
+            </div>
+          </div>
+          <div class="video-info">
+            <div class="video-meta">
+              <span class="glass-pill accent">${v.year}</span>
+              <span class="glass-pill">${v.category}</span>
+            </div>
+            <h3 class="video-title">${v.title}</h3>
+            <p class="video-desc">${v.desc}</p>
+          </div>
+        </article>
+      `).join('');
+
+      attachCardMouseSpotlight();
+    }
+
+    videoFilterControl.querySelectorAll('.segment-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        videoFilterControl.querySelectorAll('.segment-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderVideos(btn.dataset.filter);
+      });
+    });
+
+    function openVideoModal(videoId) {
+      const video = VIDEO_DATA.find(v => v.id === videoId);
+      if (!video) return;
+      currentPlayingVideoId = videoId;
+      modalVideoTitle.textContent = video.title;
+      modalVideoDesc.textContent = video.desc;
+      modalVideoBadge.textContent = `${video.year} · ${video.category}`;
+      videoIframe.src = `https://www.youtube.com/embed/${video.id}?autoplay=1&rel=0`;
+      videoModal.showModal();
+    }
+
+    function closeVideoModal() {
+      videoIframe.src = '';
+      currentPlayingVideoId = '';
+      if (videoModal.open) {
+        videoModal.close();
+      }
+    }
+
+    closeVideoModalBtn.addEventListener('click', closeVideoModal);
+
+    copyVideoLinkBtn.addEventListener('click', () => {
+      if (currentPlayingVideoId) {
+        copyText(`https://www.youtube.com/watch?v=${currentPlayingVideoId}`, 'YouTube 連結已複製到剪貼簿');
+      }
+    });
+
+    // Light-dismiss fallback for dialogs without native closedby support
+    function setupDialogLightDismiss(dialogElement, onCloseCallback) {
+      dialogElement.addEventListener('click', (event) => {
+        if (event.target !== dialogElement) return;
+        const rect = dialogElement.getBoundingClientRect();
+        const isInDialog = (
+          rect.top <= event.clientY &&
+          event.clientY <= rect.top + rect.height &&
+          rect.left <= event.clientX &&
+          event.clientX <= rect.left + rect.width
+        );
+        if (!isInDialog) {
+          if (onCloseCallback) onCloseCallback();
+          dialogElement.close();
+        }
+      });
+    }
+
+    setupDialogLightDismiss(videoModal, () => { videoIframe.src = ''; });
+
+    /* ==========================================================================
+       POP-UP WINDOW: IMAGE LIGHTBOX (Never open new page)
+       ========================================================================== */
+    function renderGallery(tab = 'slides') {
+      currentGalleryTab = tab;
+      const data = tab === 'slides' ? SLIDES_DATA : ALGO_DATA;
+      currentLightboxList = data;
+
+      galleryContainer.innerHTML = data.map((item, index) => `
+        <div class="liquid-glass gallery-item" onclick="openLightbox(${index})" role="button" tabindex="0" aria-label="彈出視窗檢視：${item.title}">
+          <img class="gallery-img" src="${item.src}" alt="${item.title}" loading="lazy">
+          <div class="gallery-overlay">
+            <span class="gallery-item-tag">${tab === 'slides' ? 'EXHIBITION ARCHIVE' : 'RESEARCH & ALGORITHM'}</span>
+            <div class="gallery-item-title">${item.title}</div>
+          </div>
+        </div>
+      `).join('');
+
+      attachCardMouseSpotlight();
+    }
+
+    galleryTabControl.querySelectorAll('.segment-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        galleryTabControl.querySelectorAll('.segment-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderGallery(btn.dataset.tab);
+      });
+    });
+
+    function openLightbox(index) {
+      currentLightboxList = SLIDES_DATA; // Defaults to full slides list when opened from roller or slides
+      currentLightboxIndex = index;
+      lightboxNavBar.style.display = 'flex';
+      updateLightboxContent();
+      imageLightbox.showModal();
+    }
+
+    function openSingleImage(src, title, desc) {
+      lightboxImg.src = src;
+      lightboxTitle.textContent = title || '影像預覽';
+      lightboxDesc.textContent = desc || '';
+      lightboxCounter.textContent = '單張檢視';
+      lightboxNavBar.style.display = 'none'; // Hide prev/next for single image
+      imageLightbox.showModal();
+    }
+
+    function updateLightboxContent() {
+      const item = currentLightboxList[currentLightboxIndex];
+      if (!item) return;
+      lightboxImg.src = item.src;
+      lightboxTitle.textContent = item.title;
+      lightboxDesc.textContent = item.desc || '';
+      lightboxCounter.textContent = `${currentLightboxIndex + 1} / ${currentLightboxList.length}`;
+    }
+
+    function prevLightbox() {
+      if (currentLightboxList.length <= 1) return;
+      currentLightboxIndex = (currentLightboxIndex - 1 + currentLightboxList.length) % currentLightboxList.length;
+      updateLightboxContent();
+    }
+
+    function nextLightbox() {
+      if (currentLightboxList.length <= 1) return;
+      currentLightboxIndex = (currentLightboxIndex + 1) % currentLightboxList.length;
+      updateLightboxContent();
+    }
+
+    prevImgBtn.addEventListener('click', prevLightbox);
+    nextImgBtn.addEventListener('click', nextLightbox);
+    closeLightboxBtn.addEventListener('click', () => imageLightbox.close());
+
+    setupDialogLightDismiss(imageLightbox, null);
+
+    window.addEventListener('keydown', (e) => {
+      if (imageLightbox.open && lightboxNavBar.style.display !== 'none') {
+        if (e.key === 'ArrowLeft') prevLightbox();
+        if (e.key === 'ArrowRight') nextLightbox();
+      }
+    });
+
+    /* ==========================================================================
+       RENDER WORKS (2006–2027)
+       ========================================================================== */
+    function renderWorks(selectedEra = 'all', searchQuery = '') {
+      let totalVisible = 0;
+      const normalizedQuery = searchQuery.trim().toLowerCase();
+
+      const eras = WORKS_DATA.filter(era => {
+        if (selectedEra === 'all') return true;
+        return era.year === selectedEra;
+      });
+
+      let html = '';
+
+      eras.forEach(era => {
+        const matchedItems = era.items.filter(item => {
+          if (!normalizedQuery) return true;
+          return item.title.toLowerCase().includes(normalizedQuery) ||
+                 item.role.toLowerCase().includes(normalizedQuery) ||
+                 item.tags.some(t => t.toLowerCase().includes(normalizedQuery));
+        });
+
+        if (matchedItems.length > 0) {
+          totalVisible += matchedItems.length;
+          html += `
+            <div class="timeline-era">
+              <div class="timeline-era-header">
+                <span class="era-badge">${era.year}</span>
+                <span style="font-size:0.92rem; font-weight:600; color:var(--text-secondary);">${matchedItems.length} 件專案</span>
+                <div class="era-line"></div>
+              </div>
+              <div class="works-cards-grid">
+                ${matchedItems.map(item => `
+                  <article class="liquid-glass work-card">
+                    <div class="work-header">
+                      <h4 class="work-title">${item.title}</h4>
+                      <span class="glass-pill" style="font-size:0.75rem;">${era.year}</span>
+                    </div>
+                    <p class="work-role">${item.role}</p>
+                    <div class="work-tags">
+                      ${item.tags.map(tag => `<span class="work-tag-chip">#${tag}</span>`).join('')}
+                    </div>
+                  </article>
+                `).join('')}
+              </div>
+            </div>
+          `;
+        }
+      });
+
+      worksTimelineContainer.innerHTML = html || `
+        <div class="liquid-glass" style="padding:48px; text-align:center; border-radius:var(--radius-lg);">
+          <p style="font-size:1.1rem; color:var(--text-secondary); margin-bottom:12px;">查無符合「${searchQuery}」的專案作品</p>
+          <button class="glass-btn" onclick="clearWorksSearch()">清除搜尋條件</button>
+        </div>
+      `;
+
+      worksCountDisplay.textContent = `顯示共 52 個專案中符合的 ${totalVisible} 個項目`;
+      attachCardMouseSpotlight();
+    }
+
+    function clearWorksSearch() {
+      worksSearchInput.value = '';
+      worksEraControl.querySelector('.segment-btn[data-era="all"]').click();
+    }
+
+    worksSearchInput.addEventListener('input', (e) => {
+      const activeEraBtn = worksEraControl.querySelector('.segment-btn.active');
+      const activeEra = activeEraBtn ? activeEraBtn.dataset.era : 'all';
+      renderWorks(activeEra, e.target.value);
+    });
+
+    worksEraControl.querySelectorAll('.segment-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        worksEraControl.querySelectorAll('.segment-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        renderWorks(btn.dataset.era, worksSearchInput.value);
+      });
+    });
+
+    /* ==========================================================================
+       ABOUT LANGUAGE SWITCHER
+       ========================================================================== */
+    aboutLangSwitch.querySelectorAll('.segment-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        aboutLangSwitch.querySelectorAll('.segment-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        if (btn.dataset.lang === 'zh') {
+          aboutContentZh.style.display = 'block';
+          aboutContentEn.style.display = 'none';
+        } else {
+          aboutContentZh.style.display = 'none';
+          aboutContentEn.style.display = 'block';
+        }
+      });
+    });
+
+    /* ==========================================================================
+       ONE-CLICK COPY & TOAST
+       ========================================================================== */
+    let toastTimeout;
+    function showToast(message) {
+      clearTimeout(toastTimeout);
+      toastMessage.textContent = message;
+      liquidToast.classList.add('show');
+      toastTimeout = setTimeout(() => {
+        liquidToast.classList.remove('show');
+      }, 2600);
+    }
+
+    function copyText(text, successMsg = '已複製到剪貼簿') {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          showToast(successMsg);
+        }).catch(() => {
+          fallbackCopy(text, successMsg);
+        });
+      } else {
+        fallbackCopy(text, successMsg);
+      }
+    }
+
+    function fallbackCopy(text, successMsg) {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand('copy');
+        showToast(successMsg);
+      } catch (err) {
+        showToast('複製失敗，請手動選取複製');
+      }
+      document.body.removeChild(textarea);
+    }
+
+    /* ==========================================================================
+       INTERACTIVE APPLE LIQUID SPECULAR MOUSE TRACKING
+       ========================================================================== */
+    function attachCardMouseSpotlight() {
+      document.querySelectorAll('.liquid-glass').forEach(card => {
+        card.onmousemove = (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          card.style.setProperty('--mx', `${x}px`);
+          card.style.setProperty('--my', `${y}px`);
+        };
+      });
+    }
+
+    /* ==========================================================================
+       SCROLL & DOCK ACTIVE STATE OBSERVER
+       ========================================================================== */
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 400) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+
+      // Highlight active nav item
+      const sections = ['home', 'videos', 'gallery', 'works', 'about', 'contacts'];
+      const scrollPos = window.scrollY + 200;
+
+      for (const id of sections) {
+        const el = document.getElementById(id);
+        if (el) {
+          const top = el.offsetTop;
+          const height = el.offsetHeight;
+          if (scrollPos >= top && scrollPos < top + height) {
+            document.querySelectorAll('.dock-link').forEach(link => {
+              link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+            });
+            break;
+          }
+        }
+      }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    /* ==========================================================================
+       INITIALIZATION
+       ========================================================================== */
+    document.addEventListener('DOMContentLoaded', () => {
+      renderVideos();
+      renderGallery();
+      renderWorks();
+      attachCardMouseSpotlight();
+    });
+  </script>
+</body>
+</html>
