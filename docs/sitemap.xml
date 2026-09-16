@@ -110,8 +110,8 @@
     <!-- Featured Video Work -->
     <video:video>
       <video:thumbnail_loc>https://img.youtube.com/vi/38u3iO5V258/hqdefault.jpg</video:thumbnail_loc>
-      <video:title>臺中世界花卉博覽會-聆聽花開的聲音 | 幾十有限公司</video:title>
-      <video:description>幾十有限公司參與打造大型機械動態花朵裝置「聆聽花開的聲音」，展現伺服馬達與電腦燈光極致整合。</video:description>
+      <video:title>臺中世界花卉博覽會-聆聽花開的聲音 | 帝凱科技有限公司</video:title>
+      <video:description>帝凱科技有限公司參與打造大型機械動態花朵裝置「聆聽花開的聲音」，展現伺服馬達與電腦燈光極致整合。</video:description>
       <video:player_loc>https://www.youtube.com/embed/38u3iO5V258</video:player_loc>
       <video:publication_date>2018-11-03T00:00:00+08:00</video:publication_date>
       <video:family_friendly>yes</video:family_friendly>
@@ -128,7 +128,7 @@
     <image:image>
       <image:loc>https://decade.tw/images/logo/decade_logo.png</image:loc>
       <image:title>DECADE CO., LTD. Logo</image:title>
-      <image:caption>幾十有限公司官方標誌</image:caption>
+      <image:caption>帝凱科技有限公司官方標誌</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://decade.tw/images/slide/10.png</image:loc>
