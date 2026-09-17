@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DECADE 有限公司 | Welcome Experience</title>
+  <meta name="description" content="帝凱科技有限公司 (DECADE CO., LTD.) - 互動系統、科技裝置藝術、視覺演算法。隨機迎賓入口。">
+  <meta name="keywords" content="帝凱科技有限公司, 帝凱科技, DECADE.TW, 互動系統, 科技裝置藝術, 展場整合, 舞台燈光, 演算法, 豪華朗機工">
+  <meta name="author" content="DECADE CO., LTD.">
+  <meta name="theme-color" content="#0a0a0a">
+  
+  <!-- Robot Crawling & Indexing Directives -->
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="bingbot" content="index, follow, max-snippet:-1">
+  <link rel="canonical" href="https://decade.tw/agy/">
+
+  <!-- Open Graph / Facebook / Discord -->
+  <meta property="og:site_name" content="帝凱科技有限公司 DECADE CO., LTD.">
+  <meta property="og:title" content="DECADE 帝凱科技有限公司 | 科技裝置藝術 • 互動系統">
+  <meta property="og:description" content="帝凱科技有限公司 (DECADE CO., LTD.) 專注於展場軟硬體整合、舞台燈光與中央控制系統、伺服馬達與機械手臂自動化控制、視覺演算法。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://decade.tw/agy/">
+  <meta property="og:image" content="https://decade.tw/images/logo/decade_logo.png">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:locale:alternate" content="en_US">
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="DECADE 帝凱科技有限公司 | 科技裝置藝術 • 互動系統">
+  <meta name="twitter:description" content="帝凱科技有限公司 (DECADE CO., LTD.) 專注於展場軟硬體整合、舞台燈光與中央控制系統、伺服馬達與機械手臂自動化控制、視覺演算法。">
+  <meta name="twitter:image" content="https://decade.tw/images/logo/decade_logo.png">
+
+  <!-- Schema.org JSON-LD Structured Data for Web Robots -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "帝凱科技有限公司",
+    "alternateName": ["DECADE CO., LTD.", "帝凱科技有限公司", "DECADE.TW"],
+    "url": "https://decade.tw",
+    "logo": "https://decade.tw/images/logo/decade_logo.png",
+    "image": "https://decade.tw/images/slide/0.png",
+    "description": "帝凱科技有限公司專注於展場軟硬體整合、舞台燈光控制、中央控制系統、伺服馬達與機械手臂自動化控制、演算法視覺生成。",
+    "taxID": "54332918",
+    "telephone": "+886-2-28982557",
+    "email": "xlinx@decade.tw",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "中央南路二段14-1號",
+      "addressLocality": "北投區",
+      "addressRegion": "台北市",
+      "postalCode": "112028",
+      "addressCountry": "TW"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 25.1278,
+      "longitude": 121.5015
+    },
+    "foundingDate": "2013",
+    "sameAs": [
+      "https://decade.tw",
+      "https://www.facebook.com/decadetw"
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  
+  <script>
+    /**
+     * DECADE.TW - Welcome Page Random Router
+     * 
+     * Dynamically picks one of the available index.xxx.html variants
+     * as the welcome page, preserving hash anchors and session variety.
+     */
+    (function() {
+      // Registered index.xxx.html variants
+      window.DECADE_VARIANTS = [
+        // {
+        //   id: 'ori',
+        //   file: 'index.ori.html',
+        //   title: '帝凱科技科技ori版 (ori)',
+        //   subtitle: 'ori Edition',
+        //   desc: 'ori',
+        //   tag: 'ori'
+        // },
+
+        {
+          id: 'liquidGlass',
+          file: 'index.liquid_glass.html',
+          title: '帝凱科技科技liquidGlass版 (liquidGlass)',
+          subtitle: 'liquidGlass Edition',
+          desc: 'liquidGlass',
+          tag: 'liquidGlass'
+        },
+        {
+          id: 'bigtext',
+          file: 'index.bigtext.html',
+          title: '帝凱科技科技bigtext版 (bigtext)',
+          subtitle: 'bigtext Edition',
+          desc: 'bigtext',
+          tag: 'bigtext'
+        },
+        {
+          id: 'blue',
+          file: 'index.blue.html',
+          title: '帝凱科技科技藝術版 (Cyber-Kinetic)',
+          subtitle: 'Cyber Kinetic Edition',
+          desc: '深色高科技風、動態網格系統、4 滾輪無限影像牆、互動時間軸與作品展示。',
+          tag: 'CYBER-KINETIC'
+        },
+        {
+          id: 'apple',
+          file: 'index.apple.html',
+          title: '蘋果極簡風格版 (Apple Minimalist)',
+          subtitle: 'Apple Minimalist Edition',
+          desc: '純淨極簡美學、毛玻璃浮動導覽、SF Pro 排版與 Bento Card 佈局。',
+          tag: 'APPLE-MINIMAL'
+        },
+        {
+          id: 'light',
+          file: 'index.light.html',
+          title: '現代純白極簡版 (Modern Light)',
+          subtitle: 'Modern Light Edition',
+          desc: '當代畫廊純白美學、清透亮色系、4 滾輪無限影像牆、極簡灰階線條與高對比排版。',
+          tag: 'MODERN-LIGHT'
+        }
+      ];
+
+      // Query parameters
+      const params = new URLSearchParams(window.location.search);
+      const isHubMode = params.has('hub') || params.has('menu') || params.has('select') || params.has('preview') || params.has('choose');
+      const directTarget = params.get('theme') || params.get('v') || params.get('page');
+
+      // 1. Direct target override (e.g. ?v=blue or ?v=apple)
+      if (directTarget) {
+        const match = window.DECADE_VARIANTS.find(v => 
+          v.id === directTarget.toLowerCase() || 
+          v.file.toLowerCase().includes(directTarget.toLowerCase())
+        );
+        if (match) {
+          window.location.replace(match.file + window.location.hash);
+          return;
+        }
+      }
+
+      // 2. If user specifically requested the Hub/Welcome selector UI, do not auto-redirect instantly
+      if (isHubMode) {
+        window.__DECADE_PAUSE_REDIRECT__ = true;
+        return;
+      }
+
+      // 3. Random selection with anti-repeat session fairness
+      let lastVariant = null;
+      try {
+        lastVariant = sessionStorage.getItem('decade_last_variant');
+      } catch (e) {}
+
+      let pool = window.DECADE_VARIANTS.map(v => v.file);
+      if (lastVariant && pool.length > 1) {
+        const filtered = pool.filter(f => f !== lastVariant);
+        if (filtered.length > 0) pool = filtered;
+      }
+
+      const pickedFile = pool[Math.floor(Math.random() * pool.length)];
+
+      try {
+        sessionStorage.setItem('decade_last_variant', pickedFile);
+      } catch (e) {}
+
+      // 4. Instant redirection preserving any existing URL hash
+      const targetDestination = pickedFile + window.location.hash;
+      window.location.replace(targetDestination);
+    })();
+  </script>
+
+  <style>
+    :root {
+      --bg-primary: #0a0a0a;
+      --bg-surface: #141414;
+      --bg-surface-elevated: #1e1e1e;
+      --border-subtle: #262626;
+      --border-highlight: #404040;
+      --text-primary: #f5f5f7;
+      --text-secondary: #a1a1a6;
+      --text-tertiary: #6e6e73;
+      --text-inverse: #0a0a0a;
+      --accent-white: #ffffff;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --font-sans: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 20px;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Ambient background grid */
+    .bg-grid {
+      position: fixed;
+      inset: 0;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .bg-radial {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.05) 0%, rgba(10, 10, 10, 0.95) 75%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 860px;
+      margin: auto;
+      text-align: center;
+    }
+
+    /* Top Brand & Badge */
+    .brand-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding: 6px 16px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      border-radius: 999px;
+    }
+
+    .brand-icon {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: var(--text-primary);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .brand-tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+    }
+
+    h1.hero-title {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 12px;
+      color: var(--text-primary);
+    }
+
+    p.hero-subtitle {
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 580px;
+      margin: 0 auto 36px;
+      line-height: 1.6;
+    }
+
+    /* Loading Status Pulse */
+    .status-card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 16px 24px;
+      margin-bottom: 40px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    .pulse-indicator {
+      position: relative;
+      width: 12px;
+      height: 12px;
+    }
+
+    .pulse-dot {
+      width: 100%;
+      height: 100%;
+      background: var(--text-primary);
+      border-radius: 50%;
+    }
+
+    .pulse-ring {
+      position: absolute;
+      inset: -4px;
+      border: 1.5px solid var(--text-primary);
+      border-radius: 50%;
+      animation: pulseAnim 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+    }
+
+    @keyframes pulseAnim {
+      0% {
+        transform: scale(0.6);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(1.8);
+        opacity: 0;
+      }
+    }
+
+    .status-text {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-primary);
+      text-align: left;
+    }
+
+    .status-sub {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      font-family: var(--font-mono);
+    }
+
+    /* Variant Cards Grid */
+    .variants-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+      margin-bottom: 32px;
+      text-align: left;
+    }
+
+    .variant-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+      text-decoration: none;
+      color: inherit;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .variant-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(255, 255, 255, 0.04), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .variant-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-highlight);
+      background: var(--bg-surface-elevated);
+    }
+
+    .variant-card:hover::before {
+      opacity: 1;
+    }
+
+    .card-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-sm);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: var(--text-primary);
+      stroke-width: 1.8;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .card-badge {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .card-title {
+      font-size: 19px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .card-subtitle {
+      font-size: 12px;
+      font-family: var(--font-mono);
+      color: var(--text-tertiary);
+      margin-bottom: 14px;
+    }
+
+    .card-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 24px;
+      flex-grow: 1;
+    }
+
+    .card-action {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 16px;
+      border-top: 1px solid var(--border-subtle);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .card-action svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--text-primary);
+      stroke-width: 2;
+      fill: none;
+      transition: transform 0.2s ease;
+    }
+
+    .variant-card:hover .card-action svg {
+      transform: translateX(4px);
+    }
+
+    /* Actions Bar */
+    .actions-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 8px;
+    }
+
+    .btn-random {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--text-primary);
+      color: var(--text-inverse);
+      padding: 14px 28px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn-random:hover {
+      opacity: 0.92;
+      transform: scale(1.02);
+    }
+
+    .btn-random svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--text-inverse);
+      stroke-width: 2;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--text-secondary);
+      padding: 13px 24px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 500;
+      border: 1px solid var(--border-subtle);
+      cursor: pointer;
+      transition: border-color 0.2s ease, color 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--border-highlight);
+      color: var(--text-primary);
+    }
+
+    .footer-info {
+      margin-top: 48px;
+      font-size: 12px;
+      color: var(--text-tertiary);
+      font-family: var(--font-mono);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: center;
+    }
+
+    /* Monochrome Icons Utility */
+    .icon-mono {
+      stroke: currentColor;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Noscript fallback */
+    noscript .noscript-banner {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-highlight);
+      padding: 16px 20px;
+      border-radius: var(--radius-sm);
+      margin-bottom: 24px;
+      font-size: 14px;
+      color: var(--text-primary);
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="bg-radial"></div>
+
+  <main class="container">
+    <noscript>
+      <div class="noscript-banner">
+        JavaScript 已停用。請直接點選下方任一版本進入帝凱科技有限公司官網：
+      </div>
+    </noscript>
+
+    <div class="brand-wrap">
+      <svg class="brand-icon" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9"></circle>
+        <path d="M12 7v5l3 3"></path>
+      </svg>
+      <span class="brand-tag">DECADE.TW • WELCOME ROUTER</span>
+    </div>
+
+    <h1 class="hero-title">帝凱科技有限公司</h1>
+    <p class="hero-subtitle">
+      DECADE CO., LTD. — 科技裝置藝術 • 互動系統 • 視覺演算法<br>
+      系統將自動為您隨機開啟迎賓版本，或於下方自由挑選探索體驗。
+    </p>
+
+    <div class="status-card" id="statusCard">
+      <div class="pulse-indicator">
+        <div class="pulse-dot"></div>
+        <div class="pulse-ring"></div>
+      </div>
+      <div>
+        <div class="status-text" id="statusText">正在隨機挑選迎賓首頁...</div>
+        <div class="status-sub" id="statusSub">Randomizing Welcome Page Variant</div>
+      </div>
+    </div>
+
+    <div class="variants-grid">
+      <!-- Variant 1: Cyber Kinetic (index.blue.html) -->
+      <a href="index.blue.html" class="variant-card" id="cardBlue">
+        <div>
+          <div class="card-head">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+            </div>
+            <span class="card-badge">INDEX.BLUE</span>
+          </div>
+          <h2 class="card-title">帝凱科技科技藝術版</h2>
+          <div class="card-subtitle">Cyber-Kinetic Edition</div>
+          <p class="card-desc">
+            深色高科技風、互動網格背景、4 滾輪無限影像牆、年表歷程與各項演算法互動展示。
+          </p>
+        </div>
+        <div class="card-action">
+          <span>直接開啟體驗</span>
+          <svg viewBox="0 0 24 24">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </div>
+      </a>
+
+      <!-- Variant 2: Apple Minimalist (index.apple.html) -->
+      <a href="index.apple.html" class="variant-card" id="cardApple">
+        <div>
+          <div class="card-head">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M8 12h8"></path>
+                <path d="M12 8v8"></path>
+              </svg>
+            </div>
+            <span class="card-badge">INDEX.APPLE</span>
+          </div>
+          <h2 class="card-title">蘋果極簡風格版</h2>
+          <div class="card-subtitle">Apple Minimalist Edition</div>
+          <p class="card-desc">
+            純淨極簡美學、毛玻璃導覽列、SF Pro 排版系統、Bento Card 佈局與精細過渡動畫。
+          </p>
+        </div>
+        <div class="card-action">
+          <span>直接開啟體驗</span>
+          <svg viewBox="0 0 24 24">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </div>
+      </a>
+
+      <!-- Variant 3: Modern Light (index.light.html) -->
+      <a href="index.light.html" class="variant-card" id="cardLight">
+        <div>
+          <div class="card-head">
+            <div class="card-icon">
+              <!-- Monochrome Sun / Brightness SVG -->
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+              </svg>
+            </div>
+            <span class="card-badge">INDEX.LIGHT</span>
+          </div>
+          <h2 class="card-title">現代純白極簡版</h2>
+          <div class="card-subtitle">Modern Light Edition</div>
+          <p class="card-desc">
+            當代畫廊純白美學、高對比俐落排版、4 滾輪無限影像牆、精細動態與完整作品年表。
+          </p>
+        </div>
+        <div class="card-action">
+          <span>直接開啟體驗</span>
+          <svg viewBox="0 0 24 24">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </div>
+      </a>
+    </div>
+
+    <div class="actions-bar">
+      <button class="btn-random" id="btnRandomPick" type="button">
+        <!-- Strictly monochrome SVG Dice Icon -->
+        <svg viewBox="0 0 24 24">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+          <circle cx="8.5" cy="8.5" r="1.5" fill="currentColor"></circle>
+          <circle cx="15.5" cy="8.5" r="1.5" fill="currentColor"></circle>
+          <circle cx="15.5" cy="15.5" r="1.5" fill="currentColor"></circle>
+          <circle cx="8.5" cy="15.5" r="1.5" fill="currentColor"></circle>
+          <circle cx="12" cy="12" r="1.5" fill="currentColor"></circle>
+        </svg>
+        <span>隨機進入 (Random Pick)</span>
+      </button>
+
+      <a href="index.html?hub=1" class="btn-outline" id="btnStayHub">
+        <!-- Monochrome Slider / Settings Icon -->
+        <svg class="icon-mono" width="16" height="16" viewBox="0 0 24 24">
+          <line x1="4" y1="21" x2="4" y2="14"></line>
+          <line x1="4" y1="10" x2="4" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="12"></line>
+          <line x1="12" y1="8" x2="12" y2="3"></line>
+          <line x1="20" y1="21" x2="20" y2="16"></line>
+          <line x1="20" y1="12" x2="20" y2="3"></line>
+          <line x1="1" y1="14" x2="7" y2="14"></line>
+          <line x1="9" y1="8" x2="15" y2="8"></line>
+          <line x1="17" y1="16" x2="23" y2="16"></line>
+        </svg>
+        <span>保持在選擇面板</span>
+      </a>
+    </div>
+
+    <footer class="footer-info">
+      <div>DECADE CO., LTD. • 統一編號 54332918</div>
+      <div>TAIPEI, TAIWAN • ALL RIGHTS RESERVED</div>
+    </footer>
+  </main>
+
+  <script>
+    // Interactive handlers for the welcome hub
+    (function() {
+      const btnRandom = document.getElementById('btnRandomPick');
+      const statusText = document.getElementById('statusText');
+      const statusSub = document.getElementById('statusSub');
+
+      function pickAndNavigate() {
+        const variants = window.DECADE_VARIANTS || [
+          { file: 'index.blue.html' },
+          { file: 'index.apple.html' }
+        ];
+
+        let lastVariant = null;
+        try {
+          lastVariant = sessionStorage.getItem('decade_last_variant');
+        } catch(e) {}
+
+        let pool = variants.map(v => v.file);
+        if (lastVariant && pool.length > 1) {
+          pool = pool.filter(f => f !== lastVariant);
+        }
+
+        const picked = pool[Math.floor(Math.random() * pool.length)];
+        try {
+          sessionStorage.setItem('decade_last_variant', picked);
+        } catch(e) {}
+
+        if (statusText) statusText.textContent = '即將進入 ' + picked + '...';
+        if (statusSub) statusSub.textContent = 'Navigating to selected variant';
+
+        setTimeout(() => {
+          window.location.replace(picked + window.location.hash);
+        }, 150);
+      }
+
+      if (btnRandom) {
+        btnRandom.addEventListener('click', pickAndNavigate);
+      }
+
+      // If stay in hub mode, update status
+      if (window.__DECADE_PAUSE_REDIRECT__) {
+        if (statusText) statusText.textContent = '歡迎面板已就緒，請選擇任一版本或點擊隨機進入';
+        if (statusSub) statusSub.textContent = 'Welcome Hub Ready • Select an edition or click Random Pick';
+      }
+    })();
+  </script>
+</body>
+</html>

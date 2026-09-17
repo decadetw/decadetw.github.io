@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Main Root / Welcome Page -->
+  <url>
+    <loc>https://decade.tw/</loc>
+    <lastmod>2026-09-13T04:30:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="zh-TW" href="https://decade.tw/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://decade.tw/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://decade.tw/" />
+  </url>
+
+  <!-- AGY Random Welcome Page -->
+  <url>
+    <loc>https://decade.tw/agy/</loc>
+    <lastmod>2026-09-13T04:30:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- AGY Welcome Router File -->
+  <url>
+    <loc>https://decade.tw/agy/index.html</loc>
+    <lastmod>2026-09-13T04:30:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Variant 1: Cyber-Kinetic Edition -->
+  <url>
+    <loc>https://decade.tw/agy/index.blue.html</loc>
+    <lastmod>2026-09-13T04:30:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+
+    <!-- Project Portfolio Slide Images -->
+    <image:image>
+      <image:loc>https://decade.tw/images/slide/0.png</image:loc>
+      <image:title>臺中世界花卉博覽會 - 聆聽花開的聲音 (The Sound of Blooming)</image:title>
+      <image:caption>大型機械動態花朵裝置藝術，軟硬體整合與馬達燈光協同運作。</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://decade.tw/images/slide/1.png</image:loc>
+      <image:title>台北當代美術館 - 查無此人小花計劃</image:title>
+      <image:caption>結合當代光影與音律的感應式互動裝置藝術。</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://decade.tw/images/slide/2.png</image:loc>
+      <image:title>台電大樓公共藝術 - 美好的下午 (A Beautiful Afternoon)</image:title>
+      <image:caption>公共空間光影裝置與中央控制系統整合。</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://decade.tw/images/slide/3.png</image:loc>
+      <image:title>見微之著 - 台灣科學園區大廳</image:title>
+      <image:caption>高科技園區大廳大型動力機械裝置。</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://decade.tw/images/slide/4.png</image:loc>
+      <image:title>誠品30週年信義藝術計畫 - 夢想呼吸</image:title>
+      <image:caption>大型商場立面與中庭懸吊動態發光裝置。</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://decade.tw/images/slide/5.png</image:loc>
+      <image:title>金曲獎 GMA 頒獎典禮數位互動系統</image:title>
+      <image:caption>大型電視頒獎典禮即時視覺與燈光控制整合。</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://decade.tw/images/slide/6.png</image:loc>
+      <image:title>世大運 Universiade 聖火裝置控制系統</image:title>
+      <image:caption>世界級綜合體育盛事聖火台機械動力與安全控制。</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://decade.tw/images/slide/7.png</image:loc>
+      <image:title>國立臺灣美術館 - 漫遊者科技藝術展</image:title>
+      <image:caption>互動光球與重力感知裝置。</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://decade.tw/images/slide/8.png</image:loc>
+      <image:title>光之方舟 - 戶外大型科技地景藝術</image:title>
+      <image:caption>戶外耐候型伺服馬達與耐候結構控制。</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://decade.tw/images/slide/9.png</image:loc>
+      <image:title>台北燈節主燈互動控制系統</image:title>
+      <image:caption>萬人群眾互動與音效即時驅動燈光演出。</image:caption>
+    </image:image>
+
+    <!-- Algorithm Visuals -->
+    <image:image>
+      <image:loc>https://decade.tw/images/algorithmPic/0.png</image:loc>
+      <image:title>粒子流體力學演算法 (Particle Fluid Dynamics)</image:title>
+      <image:caption>基於 Navier-Stokes 實時物理模擬的生成視覺。</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://decade.tw/images/algorithmPic/1.png</image:loc>
+      <image:title>生物形態自組織演算法 (Morphogenesis)</image:title>
+      <image:caption>模擬自然界珊瑚與葉脈生長規律的數學演算法。</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://decade.tw/images/algorithmPic/2.png</image:loc>
+      <image:title>多維動態向量場 (Vector Field Simulation)</image:title>
+      <image:caption>多目標伺服馬達群協同運動軌跡生成演算法。</image:caption>
+    </image:image>
+
+    <!-- Featured Video Work -->
+    <video:video>
+      <video:thumbnail_loc>https://img.youtube.com/vi/38u3iO5V258/hqdefault.jpg</video:thumbnail_loc>
+      <video:title>臺中世界花卉博覽會-聆聽花開的聲音 | 帝凱科技有限公司</video:title>
+      <video:description>帝凱科技有限公司參與打造大型機械動態花朵裝置「聆聽花開的聲音」，展現伺服馬達與電腦燈光極致整合。</video:description>
+      <video:player_loc>https://www.youtube.com/embed/38u3iO5V258</video:player_loc>
+      <video:publication_date>2018-11-03T00:00:00+08:00</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+
+  <!-- Variant 2: Apple Minimalist Edition -->
+  <url>
+    <loc>https://decade.tw/agy/index.apple.html</loc>
+    <lastmod>2026-09-13T04:30:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+
+    <image:image>
+      <image:loc>https://decade.tw/images/logo/decade_logo.png</image:loc>
+      <image:title>DECADE CO., LTD. Logo</image:title>
+      <image:caption>帝凱科技有限公司官方標誌</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://decade.tw/images/slide/10.png</image:loc>
+      <image:title>晶圓奇境 - 半導體科技藝術展</image:title>
+      <image:caption>精密機械運動與光學折射投影系統。</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://decade.tw/images/slide/11.png</image:loc>
+      <image:title>風動之舞 - 巨型懸吊動能矩陣</image:title>
+      <image:caption>數百組步進馬達毫米級同步定位系統。</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Variant 3: Modern Light Edition -->
+  <url>
+    <loc>https://decade.tw/agy/index.light.html</loc>
+    <lastmod>2026-09-13T04:45:00+08:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+
+    <image:image>
+      <image:loc>https://decade.tw/images/slide/12.png</image:loc>
+      <image:title>微風集團信義區視訊控制中心</image:title>
+      <image:caption>大型商場即時高解析度影音矩陣傳輸系統。</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://decade.tw/images/slide/13.png</image:loc>
+      <image:title>國家兩廳院舞鈴劇團 - 5G無線手環互動</image:title>
+      <image:caption>資策會與兩廳院 5G 低延遲無線感測控制整合。</image:caption>
+    </image:image>
+  </url>
+
+</urlset>
