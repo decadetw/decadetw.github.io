@@ -1,8 +1,9 @@
 # DECADE.TW — 帝凱科技有限公司 (DECADE Interactive Technology)
-> single HTML file, don't use node
-> use image roller as background scale as window height on page first section 
+> single HTML file, don't use nodeJS
+> don't reference others exits code
+> use video or image roller as background scale as window height on page first section 
 > when click image and video use pop-up window not open new page
-> logo image minima height 50px
+> logo image minima height 60px
 > user can switch dark and light style
 
 > don't reference others exits code

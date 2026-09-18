@@ -1,13 +1,12 @@
 # ==============================================================================
 # DECADE CO., LTD. (帝凱科技有限公司)
 # Web Robot Crawling & Indexing Policy
-# Website: https://decade.tw
+# Website: https://www.decade.tw
 # ==============================================================================
 
 # Global Crawler Rules
 User-agent: *
 Allow: /
-Allow: /agy/
 Allow: /images/
 Disallow: /*.json$
 Disallow: /*.log$
@@ -15,8 +14,7 @@ Disallow: /*.tmp$
 Disallow: /*.bak$
 
 # Sitemap Declarations
-Sitemap: https://decade.tw/sitemap.xml
-Sitemap: https://decade.tw/agy/sitemap.xml
+Sitemap: https://www.decade.tw/sitemap.xml
 
 # Crawl-delay for courteous indexing
 Crawl-delay: 1
@@ -28,7 +26,6 @@ Crawl-delay: 1
 # Googlebot (Web, Mobile, News)
 User-agent: Googlebot
 Allow: /
-Allow: /agy/
 Allow: /images/
 
 # Googlebot Image Crawler (Portfolio Works & Algorithm Visuals)
@@ -45,7 +42,6 @@ Allow: /
 # Microsoft Bing
 User-agent: Bingbot
 Allow: /
-Allow: /agy/
 Allow: /images/
 
 # Apple Search Crawler
